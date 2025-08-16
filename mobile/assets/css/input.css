@@ -4,22 +4,22 @@
 
 @layer base {
   body {
-    font-family: "DanaFaNum";
+    font-family: 'DanaFaNum';
   }
 }
 :root {
-  --primary: #EC1E28;
-  --primary-50: #FFEAED;
-  --primary-100: #FFCAD0;
-  --primary-200: #F49595;
-  --primary-300: #EC6A6C;
-  --primary-400: #F64446;
-  --primary-500: #FB2C28;
-  --primary-600: #EC1E28;
-  --primary-700: #DA0C23;
-  --primary-800: #CD001B;
-  --primary-900: #BF000B;
-  --primary-950: #9B0009;
+  --primary: #ec1e28;
+  --primary-50: #ffeaed;
+  --primary-100: #ffcad0;
+  --primary-200: #f49595;
+  --primary-300: #ec6a6c;
+  --primary-400: #f64446;
+  --primary-500: #fb2c28;
+  --primary-600: #ec1e28;
+  --primary-700: #da0c23;
+  --primary-800: #cd001b;
+  --primary-900: #bf000b;
+  --primary-950: #9b0009;
 
   --secondary: #ffb52a;
   --secondary-50: #fff8e3;
@@ -32,41 +32,54 @@
   --secondary-700: #ffa328;
   --secondary-800: #ff9326;
   --secondary-900: #fd7523;
-  --secondary-950: #F46007;
+  --secondary-950: #f46007;
 
+  --special-1: #ff5050cc;
+  --special-2: #db934b33;
 
-  --special-1: #FF5050CC;
-  --special-2: #DB934B33;
-
-
-  ---bg: url("");
-  --default-bg: url("../images/default-back.jpg");
-  --tourlist-bg: url("../images/tour-list-back.jpg");
-  --articlelist-bg: url("../images/article-list-back.png");
-  --hotellist-bg: url("../images/hotel-list-back.jpg");
-  --article-bg: url("../images/article-back.jpg");
-  --footer-bg: url("../images/footer-back.jpg");
-  --contact-bg: url("../images/contact-back.jpg");
+  ---bg: url('');
+  --default-bg: url('../images/default-back.jpg');
+  --tourlist-bg: url('../images/tour-list-back.jpg');
+  --articlelist-bg: url('../images/article-list-back.png');
+  --hotellist-bg: url('../images/hotel-list-back.jpg');
+  --article-bg: url('../images/article-back.jpg');
+  --footer-bg: url('../images/footer-back.jpg');
+  --contact-bg: url('../images/contact-back.jpg');
 }
 
 @font-face {
   font-display: swap;
-  font-family: "DanaFaNum";
+  font-family: 'DanaFaNum';
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/DanaFaNum-Regular.ttf") format("truetype");
+  src: url('../fonts/DanaFaNum-Regular.ttf') format('truetype');
 }
 @font-face {
   font-display: swap;
-  font-family: "DanaFaNum";
+  font-family: 'DanaFaNum';
   font-style: normal;
   font-weight: 500;
-  src: url("../fonts/DanaFaNum-Medium.ttf") format("truetype");
+  src: url('../fonts/DanaFaNum-Medium.ttf') format('truetype');
 }
 @font-face {
   font-display: swap;
-  font-family: "DanaFaNum";
+  font-family: 'DanaFaNum';
   font-style: normal;
   font-weight: 700;
-  src: url("../fonts/DanaFaNum-Bold.ttf") format("truetype");
+  src: url('../fonts/DanaFaNum-Bold.ttf') format('truetype');
+}
+
+.mask-shape {
+  width: 100vw;
+  height: 100vh;
+
+  background: #F4F4F5;
+
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 272 187'><path d='M0 129.626C0 123.437 3.56966 117.803 9.16597 115.159L249.166 1.78647C259.78 -3.22734 272 4.51508 272 16.2535V187H0V129.626Z' fill='white'/></svg>");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 272 187'><path d='M0 129.626C0 123.437 3.56966 117.803 9.16597 115.159L249.166 1.78647C259.78 -3.22734 272 4.51508 272 16.2535V187H0V129.626Z' fill='white'/></svg>");
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
 }
