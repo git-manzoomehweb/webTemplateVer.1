@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/output.css">
+</head>
+
+<body>
+    <header class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
+        <section class="relative z-30">
+            <div class="flex items-center justify-between border-b border-solid border-zinc-300">
+                <div class="flex items-center gap-2 h-16">
+                    <div class="flex items-center gap-3">
+                        <svg width="48" height="48" class="flex-shrink-0 cursor-pointer bars3">
+                            <use href="../assets/images/sprite-icons.svg#icon-menu-mobile"></use>
+                        </svg>
+                        <div
+                            class="Login_Information relative group z-40 flex items-center text-sm text-center transition-all cursor-pointer duration-300 hover:bg-primary-600">
+                            <!-- <basis core="call" file="authentication/modal" lid="1"></basis> -->
+                            <div
+                                class="w-8 h-8 flex items-center justify-center border-2 rounded-full border-solid border-primary-600">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12.4009 14.5156C7.42189 14.5156 5.19189 17.2696 5.19189 19.9996C5.19189 20.1986 5.27089 20.3896 5.41189 20.5306C5.55189 20.6706 5.74289 20.7496 5.94189 20.7496L18.8599 20.7316C19.2739 20.7306 19.6089 20.3946 19.6089 19.9816C19.6089 17.2606 17.3799 14.5156 12.4009 14.5156Z"
+                                        fill="white" stroke="var(--primary-600)" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12.4009 13.001C15.0889 13.001 17.2759 10.813 17.2759 8.125C17.2759 5.437 15.0889 3.25 12.4009 3.25C9.71288 3.25 7.52588 5.437 7.52588 8.125C7.52588 10.813 9.71288 13.001 12.4009 13.001Z"
+                                        fill="white" stroke="var(--primary-600)" />
+                                </svg>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <a href="/">
+                    <img src="../assets/images/logo.png" alt="logo-header" width="80" height="48" loading="lazy"
+                        class="transition-all duration-300 hover:scale-90 w-20 h-12" />
+                </a>
+            </div>
+            <!-- header menu -->
+            <div
+                class="header-menu bg-white fixed z-50 translate-x-[1024px] inset-0 w-full transition-all duration-300 overflow-scroll">
+                <div class="mx-auto w-[90%]">
+                    <section>
+                        <div class="flex items-center justify-between pt-3">
+                            <a href="/">
+                                <img src="../assets/images/logo.png" alt="logo-header" width="80" height="44"
+                                    loading="lazy" class="w-20 h-auto transition-all duration-300 hover:scale-105" />
+                            </a>
+                            <svg width="48" height="48" class="cursor-pointer header-menu-close">
+                                <use href="../assets/images/sprite-icons.svg#icon-close-menu-mobile"></use>
+                            </svg>
+                        </div>
+                    </section>
+                    <section class="relative mt-2">
+                        <input
+                            class="header-input w-full h-14 pr-12 bg-zinc-100 rounded-xl text-zinc-900 placeholder-zinc-700 outline-none"
+                            type="text" autocomplete="on" placeholder="جستجو" required name="search-content-name">
+                        <svg width="48" height="48" class="search-header absolute right-1 top-1">
+                            <use href="../assets/images/sprite-icons.svg#icon-search-header"></use>
+                        </svg>
+                    </section>
+                    <section>
+                        <nav class="mt-6">
+                            <ul class="text-sm divide-y divide-zinc-100">
+                                <li class="pt-4 pb-5"><a href="/" class="font-medium text-sm text-zinc-900" data-activepage="home">صفحه اصلی</a></li>
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="" class="ttext-zinc-900 font-medium text-sm" data-activepage="hotel">هتل</a>
+                                        <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
+                                            <use href="../assets/images/sprite-icons.svg#icon-chevron-down-zinc"></use>
+                                        </svg>
+                                    </div>
+                                    <!-- submenu -->
+                                    <ul
+                                        class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
+                                        <li class="px-6 py-2"><a href="" class="text-zinc-900">ویزای شینگن</a></li>
+                                        <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
+                                        <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
+                                    </ul>
+                                    <!-- submenu end -->
+                                </li>
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="" class="ttext-zinc-900 font-medium text-sm" data-activepage="blog">بلاگ</a>
+                                        <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
+                                            <use href="../assets/images/sprite-icons.svg#icon-chevron-down-zinc"></use>
+                                        </svg>
+                                    </div>
+                                    <!-- submenu -->
+                                    <ul
+                                        class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
+                                        <li class="px-6 py-2"><a href="" class="text-zinc-900">ویزای شینگن</a></li>
+                                        <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
+                                        <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
+                                    </ul>
+                                    <!-- submenu end -->
+                                </li>
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="" class="ttext-zinc-900 font-medium text-sm" data-activepage="services">سرویس ها</a>
+                                        <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
+                                            <use href="../assets/images/sprite-icons.svg#icon-chevron-down-zinc"></use>
+                                        </svg>
+                                    </div>
+                                    <!-- submenu -->
+                                    <ul
+                                        class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
+                                        <li class="px-6 py-2"><a href="" class="text-zinc-900">ویزای شینگن</a></li>
+                                        <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
+                                        <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
+                                    </ul>
+                                    <!-- submenu end -->
+                                </li>
+                                <li class="flex items-center py-4">
+                                    <a href="" class="w-full font-medium text-sm text-zinc-900" data-activepage="contact-us">ارتباط با ما</a>
+                                </li>
+                                <li class="flex items-center py-4">
+                                    <a href="" class="w-full font-medium text-sm text-zinc-900" data-activepage="about-us">درباره ما</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </section>
+                    <section class="flex items-center justify-center mt-8 border border-solid border-primary-600 text-primary-600 rounded-xl h-12">
+                        <a href="tel:" class="flex items-center justify-center w-full h-full text-sm font-medium">تماس با کارشناسان</a>
+                    </section>
+                </div><svg xmlns="http://www.w3.org/2000/svg" width="272" height="187" viewBox="0 0 272 187" fill="none">
+                    <path d="M0 129.626C0 123.437 3.56966 117.803 9.16597 115.159L249.166 1.78647C259.78 -3.22734 272 4.51508 272 16.2535V187H0V129.626Z" fill="#F4F4F5"/>
+                    </svg>
+            </div>
+            <!-- header menu -->
+        </section>
+    </header>
+
+    <script src="../assets/js/template-core.js"></script>
+</body>
+
+</html>
