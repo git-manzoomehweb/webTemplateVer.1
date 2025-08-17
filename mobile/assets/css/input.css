@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    font-family: 'DanaFaNum';
+    font-family: "DanaFaNum";
   }
 }
 :root {
@@ -37,49 +37,78 @@
   --special-1: #ff5050cc;
   --special-2: #db934b33;
 
-  ---bg: url('');
-  --default-bg: url('../images/default-back.jpg');
-  --tourlist-bg: url('../images/tour-list-back.jpg');
-  --articlelist-bg: url('../images/article-list-back.png');
-  --hotellist-bg: url('../images/hotel-list-back.jpg');
-  --article-bg: url('../images/article-back.jpg');
-  --footer-bg: url('../images/footer-back.jpg');
-  --contact-bg: url('../images/contact-back.jpg');
+  ---bg: url("");
+  --default-bg: url("../images/default-back.jpg");
+  --tourlist-bg: url("../images/tour-list-back.jpg");
+  --articlelist-bg: url("../images/article-list-back.png");
+  --hotellist-bg: url("../images/hotel-list-back.jpg");
+  --article-bg: url("../images/article-back.jpg");
+  --footer-bg: url("../images/footer-back.jpg");
+  --contact-bg: url("../images/contact-back.jpg");
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'DanaFaNum';
+  font-family: "DanaFaNum";
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/DanaFaNum-Regular.ttf') format('truetype');
+  src: url("../fonts/DanaFaNum-Regular.ttf") format("truetype");
 }
 @font-face {
   font-display: swap;
-  font-family: 'DanaFaNum';
+  font-family: "DanaFaNum";
   font-style: normal;
   font-weight: 500;
-  src: url('../fonts/DanaFaNum-Medium.ttf') format('truetype');
+  src: url("../fonts/DanaFaNum-Medium.ttf") format("truetype");
 }
 @font-face {
   font-display: swap;
-  font-family: 'DanaFaNum';
+  font-family: "DanaFaNum";
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/DanaFaNum-Bold.ttf') format('truetype');
+  src: url("../fonts/DanaFaNum-Bold.ttf") format("truetype");
 }
 
-.mask-shape {
-  width: 100vw;
-  height: 100vh;
-
-  background: #F4F4F5;
-
-  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 272 187'><path d='M0 129.626C0 123.437 3.56966 117.803 9.16597 115.159L249.166 1.78647C259.78 -3.22734 272 4.51508 272 16.2535V187H0V129.626Z' fill='white'/></svg>");
+/* .mask-shape {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0) 15.72%,
+    #fff4ea 100%
+  );
+  -webkit-mask-image: url(../images/mask-svg.svg);
+  mask-image: url(../images/mask-svg.svg);
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-
-  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 272 187'><path d='M0 129.626C0 123.437 3.56966 117.803 9.16597 115.159L249.166 1.78647C259.78 -3.22734 272 4.51508 272 16.2535V187H0V129.626Z' fill='white'/></svg>");
   mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
+  width: 100%;
+  display: block;
+} */
+.mask-image {
+  background-color: #F4F4F5;
+  -webkit-mask-image: url(../images/mask-svg.svg);
+  mask-image: url(../images/mask-svg.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  width: 100%;
+  display: block;
+}
+
+/* .mask-gray-shape {
+  background: linear-gradient(180deg, #f6f6f6 15.52%, #ffffff 100%);
+  -webkit-mask-image: url(../images/mask-svg.svg);
+  mask-image: url(../images/mask-svg.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  width: 100%;
+  display: block;
+} */
+
+.shadow-inner-custom {
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.7);
 }
