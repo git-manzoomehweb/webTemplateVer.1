@@ -152,3 +152,61 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.querySelectorAll(".highlight-rest").forEach(el => {
+  let words = el.textContent.trim().split(" ");
+  if (words.length > 1) {
+    let first = words[0];  
+    let rest = words.slice(1).join(" ");  
+    el.innerHTML = `${first} <span class="text-primary-600 font-bold">${rest}</span>`;
+  }
+});
+
+const tabsContainer = document.getElementById('tabs-container');
+const tabs = tabsContainer ? tabsContainer.querySelectorAll('button[data-index]') : [];
+const line = document.getElementById('active-line');
+const contents = document.querySelectorAll('.tab-content');
+
+function setActiveTab(index) {
+  if (!tabs[index]) return;
+
+  tabs.forEach((tab, i) => {
+    if (i === index) {
+      tab.classList.add('text-primary-600', 'font-bold');
+      tab.classList.remove('text-gray-500');
+    } else {
+      tab.classList.remove('text-primary-600', 'font-bold');
+      tab.classList.add('text-gray-500');
+    }
+  });
+
+  // موقعیت خط نسبت به scroll container
+  const tab = tabs[index];
+  const tabLeft = tab.offsetLeft - tabsContainer.scrollLeft;
+  const width = tab.offsetWidth;
+
+  line.style.width = width + 'px';
+  line.style.left = tabLeft + 'px';
+
+  // نمایش محتوا
+  contents.forEach((content, i) => {
+    content.classList.toggle('hidden', i !== index);
+  });
+}
+
+// هنگام load و resize
+window.addEventListener('load', () => setActiveTab(0));
+window.addEventListener('resize', () => {
+  const activeIndex = [...tabs].findIndex(tab => tab.classList.contains('text-primary-600'));
+  setActiveTab(activeIndex >= 0 ? activeIndex : 0);
+});
+
+// کلیک روی تب‌ها
+tabs.forEach((tab, i) => {
+  tab.addEventListener('click', () => setActiveTab(i));
+});
+
+// هماهنگ کردن خط با scroll container
+tabsContainer.addEventListener('scroll', () => {
+  const activeIndex = [...tabs].findIndex(tab => tab.classList.contains('text-primary-600'));
+  if (activeIndex >= 0) setActiveTab(activeIndex);
+});

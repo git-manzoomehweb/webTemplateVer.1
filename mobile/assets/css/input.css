@@ -34,8 +34,8 @@
   --secondary-900: #fd7523;
   --secondary-950: #f46007;
 
-  --special-1: #ff5050cc;
-  --special-2: #db934b33;
+  --special-1: #FFFFFF05;
+  --special-2: #ffffff00;
 
   ---bg: url("");
   --default-bg: url("../images/default-back.jpg");
@@ -69,21 +69,6 @@
   src: url("../fonts/DanaFaNum-Bold.ttf") format("truetype");
 }
 
-/* .mask-shape {
-  background: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0) 15.72%,
-    #fff4ea 100%
-  );
-  -webkit-mask-image: url(../images/mask-svg.svg);
-  mask-image: url(../images/mask-svg.svg);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  width: 100%;
-  display: block;
-} */
 .mask-image {
   background-color: #F4F4F5;
   -webkit-mask-image: url(../images/mask-svg.svg);
@@ -96,19 +81,45 @@
   display: block;
 }
 
-/* .mask-gray-shape {
-  background: linear-gradient(180deg, #f6f6f6 15.52%, #ffffff 100%);
-  -webkit-mask-image: url(../images/mask-svg.svg);
-  mask-image: url(../images/mask-svg.svg);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  width: 100%;
-  display: block;
-} */
-
 .shadow-inner-custom {
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
     inset -2px -2px 5px rgba(255, 255, 255, 0.7);
 }
+
+.gradient-border-thick::before {
+  padding: 2px; 
+}
+
+.swiper .swiper-pagination-bullet {
+  background-color: #D4D4D8;
+  width: 12px;
+  height: 7px;
+  border-radius: 9999px;
+  opacity: 1; 
+}
+
+/* دایره فعال */
+.swiper .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: var(--primary-600);
+  width: 32px;
+  height: 11px;
+  border-radius: 9999px; 
+}
+
+ #tabs-container::-webkit-scrollbar {
+  height: 2px; 
+} 
+
+/* #tabs-container::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 2px;
+}
+
+#tabs-container::-webkit-scrollbar-thumb {
+  background: var(--primary-600); 
+  border-radius: 2px;
+}
+
+#tabs-container::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-600); 
+}    */

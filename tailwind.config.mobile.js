@@ -5,15 +5,14 @@ module.exports = {
       backgroundImage: {
         "border-gradient-red":
           "linear-gradient(248.18deg, #EA2124 1.36%, #FFFFFF 98.64%)",
+        "zinc-gradient":
+          "linear-gradient(180deg, #F6F6F6 0%, #FFFFFF 100%)",
+        "gradient-black-bottom":
+          "linear-gradient(180deg, rgba(0, 0, 0, 0) 45.53%, rgba(0, 0, 0, 0.86) 100%)",
         defaultBg: "var(--default-bg)",
-        tourListBg: "var(--tourlist-bg)",
-        articleListBg: "var(--articlelist-bg)",
-        hotelListBg: "var(--hotellist-bg)",
-        articleBg: "var(--article-bg)",
-        footerBg: "var(--footer-bg)",
-        contactBg: "var(--contact-bg)",
       },
       boxShadow: {
+        'search-engine': 'box-shadow: 0px 4px 50px 0px #0000001C',
         'custom': '0px 80.6px 104.9px 0px #3333331A',
       },
       colors: {
@@ -55,28 +54,31 @@ module.exports = {
     },
   },
   plugins: [
-    function ({ addComponents }) {
+    function ({ addComponents, theme }) {
       addComponents({
         '.gradient-border': {
           position: 'relative',
-          borderRadius: '0.5rem',
           zIndex: '0',
+          borderRadius: theme('borderRadius.md'),
+          overflow: 'hidden', 
         },
         '.gradient-border::before': {
           content: '""',
           position: 'absolute',
-          inset: '0',
-          padding: '1px', 
+          inset: 0,               
+          padding: '1px',       
           borderRadius: 'inherit',
-          background: 'linear-gradient(248.18deg, var(--tw-gradient-from, #000) 1.36%, #ffffff 98.64%)',
-          WebkitMask:
-            'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+          background: 'linear-gradient(248.18deg, var(--tw-gradient-from) 1.36%, var(--tw-gradient-to) 98.64%)',
+          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
           WebkitMaskComposite: 'xor',
           maskComposite: 'exclude',
           zIndex: '-1',
+          pointerEvents: 'none', 
         },
-      })
+      });
     },
   ],
+  
+  
 };
 
