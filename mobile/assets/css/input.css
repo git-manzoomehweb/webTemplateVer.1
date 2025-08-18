@@ -68,6 +68,13 @@
   font-weight: 700;
   src: url("../fonts/DanaFaNum-Bold.ttf") format("truetype");
 }
+@font-face {
+  font-display: swap;
+  font-family: "DanaFaNum";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/DanaFaNum-Black.woff2") format("woff2");
+}
 
 .mask-image {
   background-color: #F4F4F5;
@@ -80,6 +87,31 @@
   width: 100%;
   display: block;
 }
+
+.mask-image-about {
+  background-color: #F4F4F5;
+  -webkit-mask-image: url(../images/mask-svg-about.svg);
+  mask-image: url(../images/mask-svg-about.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  width: 100%;
+  display: block;
+}
+
+.mask-cover-about {
+  -webkit-mask-image: url('../images/mask-image.svg');
+  mask-image: url('../images/mask-image.svg');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
 
 .gradient-border-thick::before {
   padding: 2px; 
@@ -120,16 +152,16 @@
 
 
   -webkit-mask: repeating-linear-gradient(
-      90deg,
-      #000 0 4px,
-      transparent 4px 7px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      #000 0 4px,
-      transparent 4px 7px
-    ),
-    linear-gradient(#000 0 0);
+    90deg,
+    #000 0 4px,
+    transparent 4px 8px
+  ),
+  repeating-linear-gradient(
+    0deg,
+    #000 0 4px,
+    transparent 4px 8px
+  ),
+  linear-gradient(#000 0 0);
 
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
@@ -146,4 +178,29 @@
   inset: 0.75px;
   border-radius: inherit;
   background-color: white;
+}
+
+.faq-border::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100%;
+  background: #D4D4D8;
+  border-radius: 12px;
+}
+
+.faq-border.active::after {
+  background: var(--primary-600); 
+}
+
+
+.image-text {
+  color: transparent;  
+  background-image: url('../images/pyramid.jpg'); 
+  background-size: cover;   
+  background-position: center;
+  -webkit-background-clip: text; 
+  background-clip: text;      
 }

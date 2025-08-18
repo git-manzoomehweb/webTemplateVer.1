@@ -160,50 +160,92 @@ document.querySelectorAll(".highlight-rest").forEach(el => {
 });
 
 
-document.querySelectorAll('.tabs').forEach(tabsWrapper => {
-  const tabsContainer = tabsWrapper.querySelector('.tabs-container');
-  const tabs = tabsContainer.querySelectorAll('button[data-index]');
-  const line = tabsWrapper.querySelector('.active-line');
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.tabs').forEach(tabsWrapper => {
+    const tabsContainer = tabsWrapper.querySelector('.tabs-container');
+    const tabs = tabsContainer.querySelectorAll('button[data-index]');
+    const line = tabsWrapper.querySelector('.active-line');
 
-  function setActiveTab(index) {
-    if (!tabs[index]) return;
+    function setActiveTab(index) {
+      if (!tabs[index]) return;
+
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle('text-primary-600', i === index);
+        tab.classList.toggle('font-bold', i === index);
+        tab.classList.toggle('text-gray-500', i !== index);
+      });
+
+      const tab = tabs[index];
+      const tabRect = tab.getBoundingClientRect();
+      const containerRect = tabsContainer.getBoundingClientRect();
+
+      const tabLeft = tabRect.left - containerRect.left;
+      const width = tab.offsetWidth;
+
+      line.style.width = width + 'px';
+      line.style.left = tabLeft + 'px';
+    }
+
+    setActiveTab(0);
 
     tabs.forEach((tab, i) => {
-      tab.classList.toggle('text-primary-600', i === index);
-      tab.classList.toggle('font-bold', i === index);
-      tab.classList.toggle('text-gray-500', i !== index);
+      tab.addEventListener('click', () => setActiveTab(i));
     });
 
-    const tab = tabs[index];
-    const tabRect = tab.getBoundingClientRect();
-    const containerRect = tabsContainer.getBoundingClientRect();
+    tabsContainer.addEventListener('scroll', () => {
+      const activeIndex = [...tabs].findIndex(tab =>
+        tab.classList.contains('text-primary-600')
+      );
+      if (activeIndex >= 0) setActiveTab(activeIndex);
+    });
 
-    const tabLeft = tabRect.left - containerRect.left;
-    const width = tab.offsetWidth;
+    window.addEventListener('resize', () => {
+      const activeIndex = [...tabs].findIndex(tab =>
+        tab.classList.contains('text-primary-600')
+      );
+      setActiveTab(activeIndex >= 0 ? activeIndex : 0);
+    });
+  });
+});
 
-    line.style.width = width + 'px';
-    line.style.left = tabLeft + 'px';
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  const faqs = document.querySelectorAll(".faq-border");
 
-  // init
-  setActiveTab(0);
+  faqs.forEach(faq => {
+    const question = faq.querySelector(".faq-question");
+    const content  = faq.querySelector(".faq-answer");
+    const wrapper  = faq.querySelector(".faq-content");
 
-  // events
-  tabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => setActiveTab(i));
+    question.addEventListener("click", e => {
+      e.stopPropagation(); 
+
+      const isOpen = faq.classList.contains("active");
+
+      faqs.forEach(f => {
+        f.classList.remove("active");
+        f.querySelector(".faq-answer").style.maxHeight = "0";
+        f.querySelector(".faq-answer").style.transition = "all 0.3s ease";
+        f.querySelector(".faq-content").style.backgroundColor = "rgb(244,244,245)";
+        f.querySelector(".faq-question").classList.remove("mb-3"); 
+      });
+
+      if (!isOpen) {
+        faq.classList.add("active");
+        content.style.maxHeight = content.scrollHeight + "px"; 
+        content.style.transition = "all 0.3s ease";
+        wrapper.style.backgroundColor = "var(--primary-50)";
+        question.classList.add("mb-3");
+      }
+    });
   });
 
-  tabsContainer.addEventListener('scroll', () => {
-    const activeIndex = [...tabs].findIndex(tab =>
-      tab.classList.contains('text-primary-600')
-    );
-    if (activeIndex >= 0) setActiveTab(activeIndex);
-  });
 
-  window.addEventListener('resize', () => {
-    const activeIndex = [...tabs].findIndex(tab =>
-      tab.classList.contains('text-primary-600')
-    );
-    setActiveTab(activeIndex >= 0 ? activeIndex : 0);
+  document.addEventListener("click", () => {
+    faqs.forEach(f => {
+      f.classList.remove("active");
+      f.querySelector(".faq-answer").style.maxHeight = "0";
+      f.querySelector(".faq-content").style.backgroundColor = "rgb(244,244,245)";
+      f.querySelector(".faq-question").classList.remove("mb-3"); 
+    });
   });
 });

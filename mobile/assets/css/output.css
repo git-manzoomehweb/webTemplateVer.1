@@ -705,6 +705,10 @@ body {
   z-index: 10;
 }
 
+.z-20 {
+  z-index: 20;
+}
+
 .z-30 {
   z-index: 30;
 }
@@ -717,10 +721,6 @@ body {
   z-index: 50;
 }
 
-.z-20 {
-  z-index: 20;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -728,6 +728,10 @@ body {
 
 .-mt-10 {
   margin-top: -2.5rem;
+}
+
+.-mt-24 {
+  margin-top: -6rem;
 }
 
 .-mt-44 {
@@ -750,6 +754,10 @@ body {
   margin-bottom: 1rem;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -764,6 +772,10 @@ body {
 
 .mt-14 {
   margin-top: 3.5rem;
+}
+
+.mt-16 {
+  margin-top: 4rem;
 }
 
 .mt-2 {
@@ -794,8 +806,19 @@ body {
   margin-top: 2.25rem;
 }
 
+.line-clamp-4 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
 .block {
   display: block;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .inline {
@@ -858,6 +881,14 @@ body {
   height: 2rem;
 }
 
+.h-80 {
+  height: 20rem;
+}
+
+.h-\[346px\] {
+  height: 346px;
+}
+
 .h-\[60px\] {
   height: 60px;
 }
@@ -870,28 +901,24 @@ body {
   height: 100%;
 }
 
-.h-80 {
-  height: 20rem;
-}
-
-.h-1\/2 {
-  height: 50%;
-}
-
 .max-h-0 {
   max-height: 0px;
 }
 
-.min-h-\[80\] {
-  min-height: 80;
+.min-h-60 {
+  min-height: 15rem;
 }
 
 .min-h-80 {
   min-height: 20rem;
 }
 
-.min-h-20 {
-  min-height: 5rem;
+.min-h-\[355px\] {
+  min-height: 355px;
+}
+
+.min-h-\[389px\] {
+  min-height: 389px;
 }
 
 .w-0 {
@@ -1312,10 +1339,6 @@ body {
   padding: 2rem;
 }
 
-.p-px {
-  padding: 1px;
-}
-
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1409,6 +1432,10 @@ body {
   padding-top: 5rem;
 }
 
+.pt-24 {
+  padding-top: 6rem;
+}
+
 .pt-3 {
   padding-top: 0.75rem;
 }
@@ -1429,6 +1456,11 @@ body {
   text-align: justify;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -1437,6 +1469,10 @@ body {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.font-black {
+  font-weight: 900;
 }
 
 .font-bold {
@@ -1647,6 +1683,18 @@ body {
   src: url("../fonts/DanaFaNum-Bold.ttf") format("truetype");
 }
 
+@font-face {
+  font-display: swap;
+
+  font-family: "DanaFaNum";
+
+  font-style: normal;
+
+  font-weight: 900;
+
+  src: url("../fonts/DanaFaNum-Black.woff2") format("woff2");
+}
+
 .mask-image {
   background-color: #F4F4F5;
   -webkit-mask-image: url(../images/mask-svg.svg);
@@ -1657,6 +1705,30 @@ body {
   mask-size: 100% 100%;
   width: 100%;
   display: block;
+}
+
+.mask-image-about {
+  background-color: #F4F4F5;
+  -webkit-mask-image: url(../images/mask-svg-about.svg);
+  mask-image: url(../images/mask-svg-about.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  width: 100%;
+  display: block;
+}
+
+.mask-cover-about {
+  -webkit-mask-image: url('../images/mask-image.svg');
+  mask-image: url('../images/mask-image.svg');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  width: 100%;
+  display: block;
+  overflow: hidden;
 }
 
 .gradient-border-thick::before {
@@ -1696,16 +1768,16 @@ body {
   padding: 2px;
   background: linear-gradient(90deg, #FFFFFF 0%, #E1E1E1 100%);
   -webkit-mask: repeating-linear-gradient(
-      90deg,
-      #000 0 4px,
-      transparent 4px 7px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      #000 0 4px,
-      transparent 4px 7px
-    ),
-    linear-gradient(#000 0 0);
+    90deg,
+    #000 0 4px,
+    transparent 4px 8px
+  ),
+  repeating-linear-gradient(
+    0deg,
+    #000 0 4px,
+    transparent 4px 8px
+  ),
+  linear-gradient(#000 0 0);
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
   background-clip: padding-box;
@@ -1720,6 +1792,30 @@ body {
   inset: 0.75px;
   border-radius: inherit;
   background-color: white;
+}
+
+.faq-border::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100%;
+  background: #D4D4D8;
+  border-radius: 12px;
+}
+
+.faq-border.active::after {
+  background: var(--primary-600);
+}
+
+.image-text {
+  color: transparent;
+  background-image: url('../images/pyramid.jpg');
+  background-size: cover;
+  background-position: center;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .hover\:scale-105:hover {
