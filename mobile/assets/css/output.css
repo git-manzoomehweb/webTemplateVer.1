@@ -637,16 +637,16 @@ body {
   inset: 0px;
 }
 
-.-bottom-0\.5 {
-  bottom: -0.125rem;
-}
-
 .-left-px {
   left: -1px;
 }
 
 .bottom-0 {
   bottom: 0px;
+}
+
+.bottom-3 {
+  bottom: 0.75rem;
 }
 
 .bottom-4 {
@@ -717,6 +717,10 @@ body {
   z-index: 50;
 }
 
+.z-20 {
+  z-index: 20;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -740,6 +744,10 @@ body {
 
 .mb-3 {
   margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
 }
 
 .mt-1 {
@@ -802,10 +810,6 @@ body {
   display: grid;
 }
 
-.contents {
-  display: contents;
-}
-
 .hidden {
   display: none;
 }
@@ -846,6 +850,10 @@ body {
   height: 15rem;
 }
 
+.h-64 {
+  height: 16rem;
+}
+
 .h-8 {
   height: 2rem;
 }
@@ -862,8 +870,28 @@ body {
   height: 100%;
 }
 
+.h-80 {
+  height: 20rem;
+}
+
+.h-1\/2 {
+  height: 50%;
+}
+
 .max-h-0 {
   max-height: 0px;
+}
+
+.min-h-\[80\] {
+  min-height: 80;
+}
+
+.min-h-80 {
+  min-height: 20rem;
+}
+
+.min-h-20 {
+  min-height: 5rem;
 }
 
 .w-0 {
@@ -1284,6 +1312,10 @@ body {
   padding: 2rem;
 }
 
+.p-px {
+  padding: 1px;
+}
+
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1627,11 +1659,6 @@ body {
   display: block;
 }
 
-.shadow-inner-custom {
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.7);
-}
-
 .gradient-border-thick::before {
   padding: 2px;
 }
@@ -1644,8 +1671,6 @@ body {
   opacity: 1;
 }
 
-/* دایره فعال */
-
 .swiper .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background-color: var(--primary-600);
   width: 32px;
@@ -1653,23 +1678,49 @@ body {
   border-radius: 9999px;
 }
 
-#tabs-container::-webkit-scrollbar {
+.tabs-container::-webkit-scrollbar {
   height: 2px;
 }
 
-/* #tabs-container::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-  border-radius: 2px;
+.border-dashed-zinc {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-#tabs-container::-webkit-scrollbar-thumb {
-  background: var(--primary-600); 
-  border-radius: 2px;
+.border-dashed-zinc::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(90deg, #FFFFFF 0%, #E1E1E1 100%);
+  -webkit-mask: repeating-linear-gradient(
+      90deg,
+      #000 0 4px,
+      transparent 4px 7px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      #000 0 4px,
+      transparent 4px 7px
+    ),
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  pointer-events: none;
+  z-index: -1;
 }
 
-#tabs-container::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary-600); 
-}    */
+.border-dashed-zinc::after {
+  content: "";
+  position: absolute;
+  inset: 0.75px;
+  border-radius: inherit;
+  background-color: white;
+}
 
 .hover\:scale-105:hover {
   --tw-scale-x: 1.05;

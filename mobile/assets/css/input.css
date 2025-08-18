@@ -81,11 +81,6 @@
   display: block;
 }
 
-.shadow-inner-custom {
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.7);
-}
-
 .gradient-border-thick::before {
   padding: 2px; 
 }
@@ -98,7 +93,6 @@
   opacity: 1; 
 }
 
-/* دایره فعال */
 .swiper .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background-color: var(--primary-600);
   width: 32px;
@@ -106,20 +100,50 @@
   border-radius: 9999px; 
 }
 
- #tabs-container::-webkit-scrollbar {
+ .tabs-container::-webkit-scrollbar {
   height: 2px; 
 } 
 
-/* #tabs-container::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-  border-radius: 2px;
+.border-dashed-zinc {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-#tabs-container::-webkit-scrollbar-thumb {
-  background: var(--primary-600); 
-  border-radius: 2px;
+.border-dashed-zinc::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px; 
+  background: linear-gradient(90deg, #FFFFFF 0%, #E1E1E1 100%);
+
+
+  -webkit-mask: repeating-linear-gradient(
+      90deg,
+      #000 0 4px,
+      transparent 4px 7px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      #000 0 4px,
+      transparent 4px 7px
+    ),
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  pointer-events: none;
+  z-index: -1;
 }
 
-#tabs-container::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary-600); 
-}    */
+.border-dashed-zinc::after {
+  content: "";
+  position: absolute;
+  inset: 0.75px;
+  border-radius: inherit;
+  background-color: white;
+}

@@ -1,509 +1,803 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.basiscore.net/basisfly.com/css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="../assets/css/output.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <header class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
-      <section class="relative z-30">
-        <div class="flex items-center justify-between border-b border-solid border-zinc-300">
-          <div class="flex items-center gap-2 h-16">
-            <div class="flex items-center gap-3">
-              <svg width="48" height="48" class="flex-shrink-0 cursor-pointer bars3">
-                <use href="../assets/images/sprite-icons.svg#icon-menu-mobile"></use>
-              </svg>
-              <div class="Login_Information relative group z-40 flex items-center text-sm text-center transition-all cursor-pointer duration-300 hover:bg-primary-600">
-                <!-- <basis core="call" file="authentication/modal" lid="1"></basis> -->
-                <div class="w-8 h-8 flex items-center justify-center border-2 rounded-full border-solid border-primary-600">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12.4009 14.5156C7.42189 14.5156 5.19189 17.2696 5.19189 19.9996C5.19189 20.1986 5.27089 20.3896 5.41189 20.5306C5.55189 20.6706 5.74289 20.7496 5.94189 20.7496L18.8599 20.7316C19.2739 20.7306 19.6089 20.3946 19.6089 19.9816C19.6089 17.2606 17.3799 14.5156 12.4009 14.5156Z"
-                      fill="white"
-                      stroke="var(--primary-600)"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12.4009 13.001C15.0889 13.001 17.2759 10.813 17.2759 8.125C17.2759 5.437 15.0889 3.25 12.4009 3.25C9.71288 3.25 7.52588 5.437 7.52588 8.125C7.52588 10.813 9.71288 13.001 12.4009 13.001Z"
-                      fill="white"
-                      stroke="var(--primary-600)"
-                    />
-                  </svg>
+        <section class="relative z-30">
+            <div class="flex items-center justify-between border-b border-solid border-zinc-300">
+                <div class="flex items-center gap-2 h-16">
+                    <div class="flex items-center gap-3">
+                        <svg width="48" height="48" class="flex-shrink-0 cursor-pointer bars3">
+                            <use href="../assets/images/sprite-icons.svg#icon-menu-mobile"></use>
+                        </svg>
+                        <div
+                            class="Login_Information relative group z-40 flex items-center text-sm text-center transition-all cursor-pointer duration-300 hover:bg-primary-600">
+                            <!-- <basis core="call" file="authentication/modal" lid="1"></basis> -->
+                            <div
+                                class="w-8 h-8 flex items-center justify-center border-2 rounded-full border-solid border-primary-600">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12.4009 14.5156C7.42189 14.5156 5.19189 17.2696 5.19189 19.9996C5.19189 20.1986 5.27089 20.3896 5.41189 20.5306C5.55189 20.6706 5.74289 20.7496 5.94189 20.7496L18.8599 20.7316C19.2739 20.7306 19.6089 20.3946 19.6089 19.9816C19.6089 17.2606 17.3799 14.5156 12.4009 14.5156Z"
+                                        fill="white" stroke="var(--primary-600)" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12.4009 13.001C15.0889 13.001 17.2759 10.813 17.2759 8.125C17.2759 5.437 15.0889 3.25 12.4009 3.25C9.71288 3.25 7.52588 5.437 7.52588 8.125C7.52588 10.813 9.71288 13.001 12.4009 13.001Z"
+                                        fill="white" stroke="var(--primary-600)" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <a href="/">
-            <img src="../assets/images/logo.png" alt="logo-header" width="80" height="48" loading="lazy" class="transition-all duration-300 hover:scale-90 w-20 h-12" />
-          </a>
-        </div>
-        <!-- header menu -->
-        <div class="header-menu bg-white fixed z-50 translate-x-[1024px] inset-0 w-full transition-all duration-300 overflow-scroll">
-          <div class="mx-auto w-[90%]">
-            <section>
-              <div class="flex items-center justify-between pt-3">
                 <a href="/">
-                  <img src="../assets/images/logo.png" alt="logo-header" width="80" height="44" loading="lazy" class="w-20 h-auto transition-all duration-300 hover:scale-105" />
+                    <img src="../assets/images/logo.png" alt="logo-header" width="80" height="48" loading="lazy"
+                        class="transition-all duration-300 hover:scale-90 w-20 h-12" />
                 </a>
-                <svg width="48" height="48" class="cursor-pointer header-menu-close">
-                  <use href="../assets/images/sprite-icons.svg#icon-close-menu-mobile"></use>
-                </svg>
-              </div>
-            </section>
-            <section class="relative mt-2">
-              <input
-                class="header-input w-full h-14 pr-12 bg-zinc-100 rounded-xl text-zinc-900 placeholder-zinc-700 outline-none"
-                type="text"
-                autocomplete="on"
-                placeholder="جستجو"
-                required
-                name="search-content-name"
-              />
-              <svg width="48" height="48" class="search-header absolute right-1 top-1">
-                <use href="../assets/images/sprite-icons.svg#icon-search-header"></use>
-              </svg>
-            </section>
-            <section>
-              <nav class="mt-6">
-                <ul class="text-sm divide-y divide-zinc-100">
-                  <li class="pt-4 pb-5"><a href="/" class="font-medium text-sm text-zinc-900" data-activepage="home">صفحه اصلی</a></li>
-                  <li class="">
-                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
-                      <a href="" class="ttext-zinc-900 font-medium text-sm" data-activepage="hotel">هتل</a>
-                      <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
-                        <use href="../assets/images/sprite-icons.svg#icon-chevron-down-zinc"></use>
-                      </svg>
-                    </div>
-                    <!-- submenu -->
-                    <ul class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
-                      <li class="px-6 py-2"><a href="" class="text-zinc-900">ویزای شینگن</a></li>
-                      <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
-                      <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
-                    </ul>
-                    <!-- submenu end -->
-                  </li>
-                  <li class="">
-                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
-                      <a href="" class="ttext-zinc-900 font-medium text-sm" data-activepage="blog">بلاگ</a>
-                      <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
-                        <use href="../assets/images/sprite-icons.svg#icon-chevron-down-zinc"></use>
-                      </svg>
-                    </div>
-                    <!-- submenu -->
-                    <ul class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
-                      <li class="px-6 py-2"><a href="" class="text-zinc-900">ویزای شینگن</a></li>
-                      <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
-                      <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
-                    </ul>
-                    <!-- submenu end -->
-                  </li>
-                  <li class="">
-                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
-                      <a href="" class="ttext-zinc-900 font-medium text-sm" data-activepage="services">سرویس ها</a>
-                      <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
-                        <use href="../assets/images/sprite-icons.svg#icon-chevron-down-zinc"></use>
-                      </svg>
-                    </div>
-                    <!-- submenu -->
-                    <ul class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
-                      <li class="px-6 py-2"><a href="" class="text-zinc-900">ویزای شینگن</a></li>
-                      <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
-                      <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
-                    </ul>
-                    <!-- submenu end -->
-                  </li>
-                  <li class="flex items-center py-4">
-                    <a href="" class="w-full font-medium text-sm text-zinc-900" data-activepage="contact-us">ارتباط با ما</a>
-                  </li>
-                  <li class="flex items-center py-4">
-                    <a href="" class="w-full font-medium text-sm text-zinc-900" data-activepage="about-us">درباره ما</a>
-                  </li>
-                </ul>
-              </nav>
-            </section>
-            <section class="flex items-center justify-center mt-8 border border-solid border-primary-600 text-primary-600 rounded-xl h-12">
-              <a href="tel:" class="flex items-center justify-center w-full h-full text-sm font-medium">تماس با کارشناسان</a>
-            </section>
-          </div>
-        </div>
-        <!-- header menu -->
-      </section>
+            </div>
+            <!-- header menu -->
+            <div
+                class="header-menu bg-white fixed z-50 translate-x-[1024px] inset-0 w-full transition-all duration-300 overflow-scroll">
+                <div class="mx-auto w-[90%]">
+                    <section>
+                        <div class="flex items-center justify-between pt-3">
+                            <a href="/">
+                                <img src="../assets/images/logo.png" alt="logo-header" width="80" height="44"
+                                    loading="lazy" class="w-20 h-auto transition-all duration-300 hover:scale-105" />
+                            </a>
+                            <svg width="48" height="48" class="cursor-pointer header-menu-close">
+                                <use href="../assets/images/sprite-icons.svg#icon-close-menu-mobile"></use>
+                            </svg>
+                        </div>
+                    </section>
+                    <section class="relative mt-2">
+                        <input
+                            class="header-input w-full h-14 pr-12 bg-zinc-100 rounded-xl text-zinc-900 placeholder-zinc-700 outline-none"
+                            type="text" autocomplete="on" placeholder="جستجو" required name="search-content-name" />
+                        <svg width="48" height="48" class="search-header absolute right-1 top-1">
+                            <use href="../assets/images/sprite-icons.svg#icon-search-header"></use>
+                        </svg>
+                    </section>
+                    <section>
+                        <nav class="mt-6">
+                            <ul class="text-sm divide-y divide-zinc-100">
+                                <li class="pt-4 pb-5"><a href="/" class="font-medium text-sm text-zinc-900"
+                                        data-activepage="home">صفحه اصلی</a></li>
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="" class="ttext-zinc-900 font-medium text-sm"
+                                            data-activepage="hotel">هتل</a>
+                                        <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
+                                            <use href="../assets/images/sprite-icons.svg#icon-chevron-down-zinc"></use>
+                                        </svg>
+                                    </div>
+                                    <!-- submenu -->
+                                    <ul
+                                        class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
+                                        <li class="px-6 py-2"><a href="" class="text-zinc-900">ویزای شینگن</a></li>
+                                        <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
+                                        <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
+                                    </ul>
+                                    <!-- submenu end -->
+                                </li>
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="" class="ttext-zinc-900 font-medium text-sm"
+                                            data-activepage="blog">بلاگ</a>
+                                        <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
+                                            <use href="../assets/images/sprite-icons.svg#icon-chevron-down-zinc"></use>
+                                        </svg>
+                                    </div>
+                                    <!-- submenu -->
+                                    <ul
+                                        class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
+                                        <li class="px-6 py-2"><a href="" class="text-zinc-900">ویزای شینگن</a></li>
+                                        <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
+                                        <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
+                                    </ul>
+                                    <!-- submenu end -->
+                                </li>
+                                <li class="">
+                                    <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+                                        <a href="" class="ttext-zinc-900 font-medium text-sm"
+                                            data-activepage="services">سرویس ها</a>
+                                        <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
+                                            <use href="../assets/images/sprite-icons.svg#icon-chevron-down-zinc"></use>
+                                        </svg>
+                                    </div>
+                                    <!-- submenu -->
+                                    <ul
+                                        class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
+                                        <li class="px-6 py-2"><a href="" class="text-zinc-900">ویزای شینگن</a></li>
+                                        <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
+                                        <li class="px-6 py-2"><a href="">ویزای شینگن</a></li>
+                                    </ul>
+                                    <!-- submenu end -->
+                                </li>
+                                <li class="flex items-center py-4">
+                                    <a href="" class="w-full font-medium text-sm text-zinc-900"
+                                        data-activepage="contact-us">ارتباط با ما</a>
+                                </li>
+                                <li class="flex items-center py-4">
+                                    <a href="" class="w-full font-medium text-sm text-zinc-900"
+                                        data-activepage="about-us">درباره ما</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </section>
+                    <section
+                        class="flex items-center justify-center mt-8 border border-solid border-primary-600 text-primary-600 rounded-xl h-12">
+                        <a href="tel:" class="flex items-center justify-center w-full h-full text-sm font-medium">تماس
+                            با کارشناسان</a>
+                    </section>
+                </div>
+            </div>
+            <!-- header menu -->
+        </section>
     </header>
     <main>
-      <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
-        <img src="../assets/images/search-enigne-img.jpg" class="w-full h-48 object-cover rounded-3xl" alt="" width="288" height="192" loading="lazy" />
-        <div class="gradient-border from-primary-600 rounded-3xl h-52 bg-zinc-200 shadow-search-engine -mt-10"></div>
-      </section>
+        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
+            <img src="../assets/images/search-enigne-img.jpg" class="w-full h-48 object-cover rounded-3xl" alt=""
+                width="288" height="192" loading="lazy" />
+            <div class="gradient-border from-primary-600 rounded-3xl h-52 bg-zinc-200 shadow-search-engine -mt-10">
+            </div>
+        </section>
 
-      <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
-        <h2 class="highlight-rest text-zinc-900 mb-3">مقاصد پر تردد</h2>
-        <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده</div>
-        <div class="flex flex-col gap-2 mt-3">
-          <!-- items -->
-          <div class="flex items-center justify-between border border-solid border-zinc-300 bg-zinc-gradient rounded-xl p-3">
-            <div class="flex items-center gap-4">
-              <div>
-                <h3 class="font-bold text-sm mb-2">تهران</h3>
-                <span class="flex items-center gap-1 text-zinc-500 text-xs">
-                  <svg width="12" height="12">
-                    <use href="../assets/images/sprite-icons.svg#icon-pin"></use>
-                  </svg>
-                  tehran (AKM)
-                </span>
-              </div>
-              <div>
-                <h3 class="font-bold text-sm mb-2">دبی</h3>
-                <span class="flex items-center gap-1 text-zinc-500 text-xs">
-                  <svg width="12" height="12">
-                    <use href="../assets/images/sprite-icons.svg#icon-location-zinc"></use>
-                  </svg>
-                  Dubai (AKM)
-                </span>
-              </div>
+        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
+            <h2 class="highlight-rest text-zinc-900 mb-3">مقاصد پر تردد</h2>
+            <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">لورم ایپسوم متن ساختگی با تولید سادگی
+                نامفهوم از صنعت چاپ، و با استفاده</div>
+            <div class="flex flex-col gap-2 mt-3">
+                <!-- items -->
+                <div
+                    class="flex items-center justify-between border border-solid border-zinc-300 bg-zinc-gradient rounded-xl p-3">
+                    <div class="flex items-center gap-4">
+                        <div>
+                            <h3 class="font-bold text-sm mb-2">تهران</h3>
+                            <span class="flex items-center gap-1 text-zinc-500 text-xs">
+                                <svg width="12" height="12">
+                                    <use href="../assets/images/sprite-icons.svg#icon-pin"></use>
+                                </svg>
+                                tehran (AKM)
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm mb-2">دبی</h3>
+                            <span class="flex items-center gap-1 text-zinc-500 text-xs">
+                                <svg width="12" height="12">
+                                    <use href="../assets/images/sprite-icons.svg#icon-location-zinc"></use>
+                                </svg>
+                                Dubai (AKM)
+                            </span>
+                        </div>
+                    </div>
+                    <span>
+                        <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                                fill="var(--primary-600)" />
+                        </svg>
+                    </span>
+                </div>
+                <div
+                    class="flex items-center justify-between border border-solid border-zinc-300 bg-zinc-gradient rounded-xl p-3">
+                    <div class="flex items-center gap-4">
+                        <div>
+                            <h3 class="font-bold text-sm mb-2">تهران</h3>
+                            <span class="flex items-center gap-1 text-zinc-500 text-xs">
+                                <svg width="12" height="12">
+                                    <use href="../assets/images/sprite-icons.svg#icon-pin"></use>
+                                </svg>
+                                tehran (AKM)
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm mb-2">دبی</h3>
+                            <span class="flex items-center gap-1 text-zinc-500 text-xs">
+                                <svg width="12" height="12">
+                                    <use href="../assets/images/sprite-icons.svg#icon-location-zinc"></use>
+                                </svg>
+                                Dubai (AKM)
+                            </span>
+                        </div>
+                    </div>
+                    <span>
+                        <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                                fill="var(--primary-600)" />
+                        </svg>
+                    </span>
+                </div>
             </div>
-            <span>
-              <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                  fill="var(--primary-600)"
-                />
-              </svg>
-            </span>
-          </div>
-          <div class="flex items-center justify-between border border-solid border-zinc-300 bg-zinc-gradient rounded-xl p-3">
-            <div class="flex items-center gap-4">
-              <div>
-                <h3 class="font-bold text-sm mb-2">تهران</h3>
-                <span class="flex items-center gap-1 text-zinc-500 text-xs">
-                  <svg width="12" height="12">
-                    <use href="../assets/images/sprite-icons.svg#icon-pin"></use>
-                  </svg>
-                  tehran (AKM)
-                </span>
-              </div>
-              <div>
-                <h3 class="font-bold text-sm mb-2">دبی</h3>
-                <span class="flex items-center gap-1 text-zinc-500 text-xs">
-                  <svg width="12" height="12">
-                    <use href="../assets/images/sprite-icons.svg#icon-location-zinc"></use>
-                  </svg>
-                  Dubai (AKM)
-                </span>
-              </div>
-            </div>
-            <span>
-              <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                  fill="var(--primary-600)"
-                />
-              </svg>
-            </span>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10">
-        <h2 class="highlight-rest text-zinc-900 mb-3">خدمات گشت آسمان</h2>
-        <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده</div>
-        <div class="flex flex-col gap-2 mt-3">
-          <!-- items -->
-          <div class="flex flex-col items-center gap-3 gradient-border from-primary-600 rounded-2xl p-4">
-            <span class="bg-primary-600 rounded-full p-4">
-              <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M34.8968 24.1658C34.8827 24.2217 34.867 24.2773 34.8498 24.3328C34.2615 26.2278 33.2715 28.2295 31.9082 30.2845C31.3398 31.2462 30.4348 31.9345 29.3532 32.2228C29.2312 32.2558 29.1082 32.2833 28.9848 32.3052C26.649 36.2887 24.1175 36.7498 21.4508 36.7498C21.0525 36.7498 20.6508 36.7398 20.2458 36.7282L20.1145 36.725C19.7328 36.7158 19.3408 36.7065 18.9358 36.7065C18.2458 36.7065 17.6858 36.1465 17.6858 35.4565C17.6858 34.7665 18.2458 34.2065 18.9358 34.2065C19.4092 34.2065 19.8675 34.2182 20.3092 34.2298C22.9558 34.3003 24.581 34.341 26.2943 31.8857C26.2407 31.8577 26.1875 31.8283 26.1348 31.7978C24.1148 30.6295 23.4198 28.0345 24.5848 26.0112L27.0965 21.6595C28.2615 19.6378 30.8582 18.9395 32.8832 20.1045L33.0227 20.1855C33.0268 20.0485 33.029 19.911 33.029 19.7733C33.029 12.5917 27.1823 6.75 19.994 6.75C12.8124 6.75 6.9707 12.5917 6.9707 19.7733C6.9707 19.9127 6.97285 20.0517 6.97717 20.1902L7.11824 20.109C9.14657 18.9423 11.7399 19.6407 12.9082 21.6623L15.4182 26.0123C16.5866 28.0357 15.8916 30.6323 13.8699 31.8007C13.2166 32.179 12.4899 32.3707 11.7549 32.3707C11.3866 32.3707 11.0166 32.3223 10.6516 32.2257C9.57157 31.9357 8.66657 31.2473 8.09824 30.2857C6.9134 28.5012 6.01042 26.7593 5.40992 25.0947C4.78674 23.3978 4.4707 21.6087 4.4707 19.7733C4.4707 11.2133 11.434 4.25 19.994 4.25C28.5607 4.25 35.529 11.2133 35.529 19.7733C35.529 21.2747 35.317 22.7453 34.8968 24.1658Z"
-                  fill="white"
-                />
-              </svg>
-            </span>
-            <h3 class="text-zinc-900 font-bold text-sm">پشتیبانی</h3>
-            <div class="text-zinc-500 text-xs text-center leading-5">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها</div>
-          </div>
-          <div class="flex flex-col items-center gap-3 gradient-border from-primary-600 rounded-2xl p-4">
-            <span class="bg-primary-600 rounded-full p-4">
-              <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M34.8968 24.1658C34.8827 24.2217 34.867 24.2773 34.8498 24.3328C34.2615 26.2278 33.2715 28.2295 31.9082 30.2845C31.3398 31.2462 30.4348 31.9345 29.3532 32.2228C29.2312 32.2558 29.1082 32.2833 28.9848 32.3052C26.649 36.2887 24.1175 36.7498 21.4508 36.7498C21.0525 36.7498 20.6508 36.7398 20.2458 36.7282L20.1145 36.725C19.7328 36.7158 19.3408 36.7065 18.9358 36.7065C18.2458 36.7065 17.6858 36.1465 17.6858 35.4565C17.6858 34.7665 18.2458 34.2065 18.9358 34.2065C19.4092 34.2065 19.8675 34.2182 20.3092 34.2298C22.9558 34.3003 24.581 34.341 26.2943 31.8857C26.2407 31.8577 26.1875 31.8283 26.1348 31.7978C24.1148 30.6295 23.4198 28.0345 24.5848 26.0112L27.0965 21.6595C28.2615 19.6378 30.8582 18.9395 32.8832 20.1045L33.0227 20.1855C33.0268 20.0485 33.029 19.911 33.029 19.7733C33.029 12.5917 27.1823 6.75 19.994 6.75C12.8124 6.75 6.9707 12.5917 6.9707 19.7733C6.9707 19.9127 6.97285 20.0517 6.97717 20.1902L7.11824 20.109C9.14657 18.9423 11.7399 19.6407 12.9082 21.6623L15.4182 26.0123C16.5866 28.0357 15.8916 30.6323 13.8699 31.8007C13.2166 32.179 12.4899 32.3707 11.7549 32.3707C11.3866 32.3707 11.0166 32.3223 10.6516 32.2257C9.57157 31.9357 8.66657 31.2473 8.09824 30.2857C6.9134 28.5012 6.01042 26.7593 5.40992 25.0947C4.78674 23.3978 4.4707 21.6087 4.4707 19.7733C4.4707 11.2133 11.434 4.25 19.994 4.25C28.5607 4.25 35.529 11.2133 35.529 19.7733C35.529 21.2747 35.317 22.7453 34.8968 24.1658Z"
-                  fill="white"
-                />
-              </svg>
-            </span>
-            <h3 class="text-zinc-900 font-bold text-sm">پشتیبانی</h3>
-            <div class="text-zinc-500 text-xs text-center leading-5">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها</div>
-          </div>
-        </div>
-      </section>
+        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10">
+            <h2 class="highlight-rest text-zinc-900 mb-3">خدمات گشت آسمان</h2>
+            <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">لورم ایپسوم متن ساختگی با تولید سادگی
+                نامفهوم از صنعت چاپ، و با استفاده</div>
+            <div class="flex flex-col gap-2 mt-3">
+                <!-- items -->
+                <div class="flex flex-col items-center gap-3 gradient-border from-primary-600 rounded-2xl p-4">
+                    <span class="bg-primary-600 rounded-full p-4">
+                        <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M34.8968 24.1658C34.8827 24.2217 34.867 24.2773 34.8498 24.3328C34.2615 26.2278 33.2715 28.2295 31.9082 30.2845C31.3398 31.2462 30.4348 31.9345 29.3532 32.2228C29.2312 32.2558 29.1082 32.2833 28.9848 32.3052C26.649 36.2887 24.1175 36.7498 21.4508 36.7498C21.0525 36.7498 20.6508 36.7398 20.2458 36.7282L20.1145 36.725C19.7328 36.7158 19.3408 36.7065 18.9358 36.7065C18.2458 36.7065 17.6858 36.1465 17.6858 35.4565C17.6858 34.7665 18.2458 34.2065 18.9358 34.2065C19.4092 34.2065 19.8675 34.2182 20.3092 34.2298C22.9558 34.3003 24.581 34.341 26.2943 31.8857C26.2407 31.8577 26.1875 31.8283 26.1348 31.7978C24.1148 30.6295 23.4198 28.0345 24.5848 26.0112L27.0965 21.6595C28.2615 19.6378 30.8582 18.9395 32.8832 20.1045L33.0227 20.1855C33.0268 20.0485 33.029 19.911 33.029 19.7733C33.029 12.5917 27.1823 6.75 19.994 6.75C12.8124 6.75 6.9707 12.5917 6.9707 19.7733C6.9707 19.9127 6.97285 20.0517 6.97717 20.1902L7.11824 20.109C9.14657 18.9423 11.7399 19.6407 12.9082 21.6623L15.4182 26.0123C16.5866 28.0357 15.8916 30.6323 13.8699 31.8007C13.2166 32.179 12.4899 32.3707 11.7549 32.3707C11.3866 32.3707 11.0166 32.3223 10.6516 32.2257C9.57157 31.9357 8.66657 31.2473 8.09824 30.2857C6.9134 28.5012 6.01042 26.7593 5.40992 25.0947C4.78674 23.3978 4.4707 21.6087 4.4707 19.7733C4.4707 11.2133 11.434 4.25 19.994 4.25C28.5607 4.25 35.529 11.2133 35.529 19.7733C35.529 21.2747 35.317 22.7453 34.8968 24.1658Z"
+                                fill="white" />
+                        </svg>
+                    </span>
+                    <h3 class="text-zinc-900 font-bold text-sm">پشتیبانی</h3>
+                    <div class="text-zinc-500 text-xs text-center leading-5">لورم ایپسوم متن ساختگی با تولید سادگی
+                        نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها</div>
+                </div>
+                <div class="flex flex-col items-center gap-3 gradient-border from-primary-600 rounded-2xl p-4">
+                    <span class="bg-primary-600 rounded-full p-4">
+                        <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M34.8968 24.1658C34.8827 24.2217 34.867 24.2773 34.8498 24.3328C34.2615 26.2278 33.2715 28.2295 31.9082 30.2845C31.3398 31.2462 30.4348 31.9345 29.3532 32.2228C29.2312 32.2558 29.1082 32.2833 28.9848 32.3052C26.649 36.2887 24.1175 36.7498 21.4508 36.7498C21.0525 36.7498 20.6508 36.7398 20.2458 36.7282L20.1145 36.725C19.7328 36.7158 19.3408 36.7065 18.9358 36.7065C18.2458 36.7065 17.6858 36.1465 17.6858 35.4565C17.6858 34.7665 18.2458 34.2065 18.9358 34.2065C19.4092 34.2065 19.8675 34.2182 20.3092 34.2298C22.9558 34.3003 24.581 34.341 26.2943 31.8857C26.2407 31.8577 26.1875 31.8283 26.1348 31.7978C24.1148 30.6295 23.4198 28.0345 24.5848 26.0112L27.0965 21.6595C28.2615 19.6378 30.8582 18.9395 32.8832 20.1045L33.0227 20.1855C33.0268 20.0485 33.029 19.911 33.029 19.7733C33.029 12.5917 27.1823 6.75 19.994 6.75C12.8124 6.75 6.9707 12.5917 6.9707 19.7733C6.9707 19.9127 6.97285 20.0517 6.97717 20.1902L7.11824 20.109C9.14657 18.9423 11.7399 19.6407 12.9082 21.6623L15.4182 26.0123C16.5866 28.0357 15.8916 30.6323 13.8699 31.8007C13.2166 32.179 12.4899 32.3707 11.7549 32.3707C11.3866 32.3707 11.0166 32.3223 10.6516 32.2257C9.57157 31.9357 8.66657 31.2473 8.09824 30.2857C6.9134 28.5012 6.01042 26.7593 5.40992 25.0947C4.78674 23.3978 4.4707 21.6087 4.4707 19.7733C4.4707 11.2133 11.434 4.25 19.994 4.25C28.5607 4.25 35.529 11.2133 35.529 19.7733C35.529 21.2747 35.317 22.7453 34.8968 24.1658Z"
+                                fill="white" />
+                        </svg>
+                    </span>
+                    <h3 class="text-zinc-900 font-bold text-sm">پشتیبانی</h3>
+                    <div class="text-zinc-500 text-xs text-center leading-5">لورم ایپسوم متن ساختگی با تولید سادگی
+                        نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها</div>
+                </div>
+            </div>
+        </section>
 
-      <section class="mt-10">
-        <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
-          <h2 class="highlight-rest text-zinc-900 mb-3">مقاصد محبوب</h2>
-          <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده</div>
-        </div>
-        <!-- Slider main container -->
-        <div class="swiper swiper-popular-destination pb-12 mt-3">
-          <!-- Additional required wrapper -->
-          <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide">
-              <div class="relative rounded-2xl overflow-hidden">
-                <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
-                <img src="../assets/images/cat-img.jpg" class="w-full h-60 object-cover" alt="" width="246" height="240" loading="lazy" />
-                <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
-                  <div class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
-                    <h3 class="text-sm font-bold text-white">ایتالیا</h3>
-                    <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
-                        fill="white"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
+        <section class="mt-10">
+            <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
+                <h2 class="highlight-rest text-zinc-900 mb-3">مقاصد محبوب</h2>
+                <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">لورم ایپسوم متن ساختگی با تولید
+                    سادگی نامفهوم از صنعت چاپ، و با استفاده</div>
             </div>
-            <div class="swiper-slide">
-              <div class="relative rounded-2xl overflow-hidden">
-                <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
-                <img src="../assets/images/cat-img.jpg" class="w-full h-60 object-cover" alt="" width="246" height="240" loading="lazy" />
-                <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
-                  <div class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
-                    <h3 class="text-sm font-bold text-white">ایتالیا</h3>
-                    <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
-                        fill="white"
-                      />
-                    </svg>
-                  </div>
+            <!-- Slider main container -->
+            <div class="swiper swiper-popular-destination pb-12 mt-3">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="relative rounded-2xl overflow-hidden">
+                            <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
+                            <img src="../assets/images/cat-img.jpg" class="w-full h-60 object-cover" alt="" width="246"
+                                height="240" loading="lazy" />
+                            <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
+                                <div
+                                    class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
+                                    <h3 class="text-sm font-bold text-white">ایتالیا</h3>
+                                    <svg width="49" height="48" viewBox="0 0 49 48" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
+                                            fill="white" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="relative rounded-2xl overflow-hidden">
+                            <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
+                            <img src="../assets/images/cat-img.jpg" class="w-full h-60 object-cover" alt="" width="246"
+                                height="240" loading="lazy" />
+                            <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
+                                <div
+                                    class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
+                                    <h3 class="text-sm font-bold text-white">ایتالیا</h3>
+                                    <svg width="49" height="48" viewBox="0 0 49 48" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
+                                            fill="white" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="relative rounded-2xl overflow-hidden">
+                            <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
+                            <img src="../assets/images/cat-img.jpg" class="w-full h-60 object-cover" alt="" width="246"
+                                height="240" loading="lazy" />
+                            <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
+                                <div
+                                    class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
+                                    <h3 class="text-sm font-bold text-white">ایتالیا</h3>
+                                    <svg width="49" height="48" viewBox="0 0 49 48" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
+                                            fill="white" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination flex items-center justify-center gap-1"></div>
             </div>
-            <div class="swiper-slide">
-              <div class="relative rounded-2xl overflow-hidden">
-                <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
-                <img src="../assets/images/cat-img.jpg" class="w-full h-60 object-cover" alt="" width="246" height="240" loading="lazy" />
-                <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
-                  <div class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
-                    <h3 class="text-sm font-bold text-white">ایتالیا</h3>
-                    <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
-                        fill="white"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- If we need pagination -->
-          <div class="swiper-pagination flex items-center justify-center gap-1"></div>
-        </div>
-      </section>
+        </section>
 
-      <section class="mt-10">
-        <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
-          <h2 class="highlight-rest text-zinc-900 mb-3">تورهای پرطرفدار</h2>
-          <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده</div>
-          <div class="w-full mt-6">
-            <!-- <div class="relative flex items-center gap-8 border-b-2 border-solid border-zinc-200 pb-4 overflow-x-auto whitespace-nowrap scrollbar-thin" id="tabs-container">
-              <button class="flex-1 text-primary-600 text-sm font-medium" data-index="0">دسته بندی ۱</button>
-              <button class="flex-1 text-primary-600 text-sm font-medium" data-index="1">دسته بندی ۱</button>
-              <button class="flex-1 text-primary-600 text-sm font-medium" data-index="2">دسته بندی ۱</button>
-              <button class="flex-1 text-primary-600 text-sm font-medium" data-index="2">دسته بندی ۱</button>
-              <div id="active-line" class="absolute -bottom-0.5 left-0 h-0.5 bg-red-500 transition-all duration-300"></div>
-            </div> -->
-            <div class="relative">
-              <div class="flex items-center gap-8 overflow-x-auto scrollbar-thin whitespace-nowrap border-b-2 border-solid border-zinc-200 pb-4" id="tabs-container">
-                <button class="flex-1 text-primary-600 text-sm font-medium" data-index="0">دسته بندی ۱</button>
-                <button class="flex-1 text-primary-600 text-sm font-medium" data-index="1">دسته بندی ۲</button>
-                <button class="flex-1 text-primary-600 text-sm font-medium" data-index="2">دسته بندی ۳</button>
-                <button class="flex-1 text-primary-600 text-sm font-medium" data-index="3">دسته بندی ۳</button>
-              </div>
-              <div id="active-line" class="absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300"></div>
+        <section class="mt-10">
+            <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
+                <h2 class="highlight-rest text-zinc-900 mb-3">تورهای پرطرفدار</h2>
+                <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">لورم ایپسوم متن ساختگی با تولید
+                    سادگی نامفهوم از صنعت چاپ، و با استفاده</div>
+                <div class="w-full mt-6">
+                    <div class="tabs relative overflow-hidden">
+                        <div
+                            class="tabs-container flex items-center gap-8 overflow-x-auto scrollbar-thin whitespace-nowrap border-b-2 border-solid border-zinc-200 pb-4">
+                            <button class="flex-1 text-primary-600 text-sm font-medium" data-index="0">دسته بندی
+                                ۱</button>
+                            <button class="flex-1 text-primary-600 text-sm font-medium" data-index="1">دسته بندی
+                                ۲</button>
+                            <button class="flex-1 text-primary-600 text-sm font-medium" data-index="2">دسته بندی
+                                ۳</button>
+                            <button class="flex-1 text-primary-600 text-sm font-medium" data-index="3">دسته بندی
+                                ۳</button>
+                        </div>
+                        <div class="active-line absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300">
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div id="tabs-content" class="mt-4">
-          <div class="swiper swiper-popular-tours pb-12 mt-3">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-              <!-- Slides -->
-              <div class="swiper-slide">
-                <div class="gradient-border from-primary-600 rounded-2xl p-2">
-                  <img src="../assets/images/popular-tour-img.jpg" class="w-full h-40 object-cover rounded-2xl" alt="" width="256" height="160" loading="lazy" />
-                  <div class="flex flex-col gap-2 mt-3">
-                    <h3 class="font-bold text-zinc-900 text-center">تور استانبول</h3>
-                    <div class="flex flex-col gap-1">
-                      <div class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
-                        <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                          <svg width="17" height="17" class="flex-shrink-0">
-                            <use href="../assets/images/sprite-icons.svg#icon-clock"></use>
-                          </svg>
-                        </span>
-                        <span class="text-xs text-zinc-700">3 روز 4 شب</span>
-                      </div>
-                      <div class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
-                        <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                          <svg width="17" height="17" class="flex-shrink-0">
-                            <use href="../assets/images/sprite-icons.svg#icon-calender"></use>
-                          </svg>
-                        </span>
-                        <span class="text-xs text-zinc-700">1404/02/02</span>
-                      </div>
-                      <div class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
-                        <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                          <svg width="17" height="17" class="flex-shrink-0">
-                            <use href="../assets/images/sprite-icons.svg#icon-airplane"></use>
-                          </svg>
-                        </span>
-                        <span class="text-xs text-zinc-700">ماهان ایر</span>
-                      </div>
+            <div class="mt-4 tabs-content">
+                <div class="swiper swiper-popular-tours pb-12 mt-3">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <div class="gradient-border from-primary-600 rounded-2xl p-2">
+                                <img src="../assets/images/popular-tour-img.jpg"
+                                    class="w-full h-40 object-cover rounded-2xl" alt="" width="256" height="160"
+                                    loading="lazy" />
+                                <div class="flex flex-col gap-2 mt-3">
+                                    <h3 class="font-bold text-zinc-900 text-center">تور استانبول</h3>
+                                    <div class="flex flex-col gap-1">
+                                        <div
+                                            class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
+                                            <span
+                                                class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                <svg width="17" height="17" class="flex-shrink-0">
+                                                    <use href="../assets/images/sprite-icons.svg#icon-clock"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="text-xs text-zinc-700">3 روز 4 شب</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
+                                            <span
+                                                class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                <svg width="17" height="17" class="flex-shrink-0">
+                                                    <use href="../assets/images/sprite-icons.svg#icon-calender"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="text-xs text-zinc-700">1404/02/02</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
+                                            <span
+                                                class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                <svg width="17" height="17" class="flex-shrink-0">
+                                                    <use href="../assets/images/sprite-icons.svg#icon-airplane"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="text-xs text-zinc-700">ماهان ایر</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex items-center gap-2 justify-between gradient-border from-gray-300 to-white rounded-xl py-1 pr-2">
+                                        <div>
+                                            <span class="text-zinc-500 text-xs">قیمت از:</span>
+                                            <div class="text-zinc-900 text-sm font-medium mt-1">12/000/000 تومان + 2000
+                                                دلار</div>
+                                        </div>
+                                        <button
+                                            class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gradient-border from-primary-600 rounded-2xl p-2">
+                                <img src="../assets/images/popular-tour-img.jpg"
+                                    class="w-full h-40 object-cover rounded-2xl" alt="" width="256" height="160"
+                                    loading="lazy" />
+                                <div class="flex flex-col gap-2 mt-3">
+                                    <h3 class="font-bold text-zinc-900 text-center">تور استانبول</h3>
+                                    <div class="flex flex-col gap-1">
+                                        <div
+                                            class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
+                                            <span
+                                                class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                <svg width="17" height="17" class="flex-shrink-0">
+                                                    <use href="../assets/images/sprite-icons.svg#icon-clock"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="text-xs text-zinc-700">3 روز 4 شب</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
+                                            <span
+                                                class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                <svg width="17" height="17" class="flex-shrink-0">
+                                                    <use href="../assets/images/sprite-icons.svg#icon-calender"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="text-xs text-zinc-700">1404/02/02</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
+                                            <span
+                                                class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                <svg width="17" height="17" class="flex-shrink-0">
+                                                    <use href="../assets/images/sprite-icons.svg#icon-airplane"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="text-xs text-zinc-700">ماهان ایر</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex items-center gap-2 justify-between gradient-border from-gray-300 to-white rounded-xl py-1 pr-2">
+                                        <div>
+                                            <span class="text-zinc-500 text-xs">قیمت از:</span>
+                                            <div class="text-zinc-900 text-sm font-medium mt-1">12/000/000 تومان + 2000
+                                                دلار</div>
+                                        </div>
+                                        <button
+                                            class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="gradient-border from-primary-600 rounded-2xl p-2">
+                                <img src="../assets/images/popular-tour-img.jpg"
+                                    class="w-full h-40 object-cover rounded-2xl" alt="" width="256" height="160"
+                                    loading="lazy" />
+                                <div class="flex flex-col gap-2 mt-3">
+                                    <h3 class="font-bold text-zinc-900 text-center">تور استانبول</h3>
+                                    <div class="flex flex-col gap-1">
+                                        <div
+                                            class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
+                                            <span
+                                                class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                <svg width="17" height="17" class="flex-shrink-0">
+                                                    <use href="../assets/images/sprite-icons.svg#icon-clock"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="text-xs text-zinc-700">3 روز 4 شب</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
+                                            <span
+                                                class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                <svg width="17" height="17" class="flex-shrink-0">
+                                                    <use href="../assets/images/sprite-icons.svg#icon-calender"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="text-xs text-zinc-700">1404/02/02</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
+                                            <span
+                                                class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                <svg width="17" height="17" class="flex-shrink-0">
+                                                    <use href="../assets/images/sprite-icons.svg#icon-airplane"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="text-xs text-zinc-700">ماهان ایر</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex items-center gap-2 justify-between gradient-border from-gray-300 to-white rounded-xl py-1 pr-2">
+                                        <div>
+                                            <span class="text-zinc-500 text-xs">قیمت از:</span>
+                                            <div class="text-zinc-900 text-sm font-medium mt-1">12/000/000 تومان + 2000
+                                                دلار</div>
+                                        </div>
+                                        <button
+                                            class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2 justify-between gradient-border from-gray-300 to-white rounded-xl py-1 pr-2">
-                      <div>
-                        <span class="text-zinc-500 text-xs">قیمت از:</span>
-                        <div class="text-zinc-900 text-sm font-medium mt-1">12/000/000 تومان + 2000 دلار</div>
-                      </div>
-                      <button class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
-                    </div>
-                  </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination flex items-center justify-center gap-1"></div>
                 </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="gradient-border from-primary-600 rounded-2xl p-2">
-                  <img src="../assets/images/popular-tour-img.jpg" class="w-full h-40 object-cover rounded-2xl" alt="" width="256" height="160" loading="lazy" />
-                  <div class="flex flex-col gap-2 mt-3">
-                    <h3 class="font-bold text-zinc-900 text-center">تور استانبول</h3>
-                    <div class="flex flex-col gap-1">
-                      <div class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
-                        <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                          <svg width="17" height="17" class="flex-shrink-0">
-                            <use href="../assets/images/sprite-icons.svg#icon-clock"></use>
-                          </svg>
-                        </span>
-                        <span class="text-xs text-zinc-700">3 روز 4 شب</span>
-                      </div>
-                      <div class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
-                        <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                          <svg width="17" height="17" class="flex-shrink-0">
-                            <use href="../assets/images/sprite-icons.svg#icon-calender"></use>
-                          </svg>
-                        </span>
-                        <span class="text-xs text-zinc-700">1404/02/02</span>
-                      </div>
-                      <div class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
-                        <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                          <svg width="17" height="17" class="flex-shrink-0">
-                            <use href="../assets/images/sprite-icons.svg#icon-airplane"></use>
-                          </svg>
-                        </span>
-                        <span class="text-xs text-zinc-700">ماهان ایر</span>
-                      </div>
-                    </div>
-                    <div class="flex items-center gap-2 justify-between gradient-border from-gray-300 to-white rounded-xl py-1 pr-2">
-                      <div>
-                        <span class="text-zinc-500 text-xs">قیمت از:</span>
-                        <div class="text-zinc-900 text-sm font-medium mt-1">12/000/000 تومان + 2000 دلار</div>
-                      </div>
-                      <button class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="gradient-border from-primary-600 rounded-2xl p-2">
-                  <img src="../assets/images/popular-tour-img.jpg" class="w-full h-40 object-cover rounded-2xl" alt="" width="256" height="160" loading="lazy" />
-                  <div class="flex flex-col gap-2 mt-3">
-                    <h3 class="font-bold text-zinc-900 text-center">تور استانبول</h3>
-                    <div class="flex flex-col gap-1">
-                      <div class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
-                        <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                          <svg width="17" height="17" class="flex-shrink-0">
-                            <use href="../assets/images/sprite-icons.svg#icon-clock"></use>
-                          </svg>
-                        </span>
-                        <span class="text-xs text-zinc-700">3 روز 4 شب</span>
-                      </div>
-                      <div class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
-                        <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                          <svg width="17" height="17" class="flex-shrink-0">
-                            <use href="../assets/images/sprite-icons.svg#icon-calender"></use>
-                          </svg>
-                        </span>
-                        <span class="text-xs text-zinc-700">1404/02/02</span>
-                      </div>
-                      <div class="flex items-center gap-3 gradient-border from-gray-300 to-white rounded-full p-1">
-                        <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                          <svg width="17" height="17" class="flex-shrink-0">
-                            <use href="../assets/images/sprite-icons.svg#icon-airplane"></use>
-                          </svg>
-                        </span>
-                        <span class="text-xs text-zinc-700">ماهان ایر</span>
-                      </div>
-                    </div>
-                    <div class="flex items-center gap-2 justify-between gradient-border from-gray-300 to-white rounded-xl py-1 pr-2">
-                      <div>
-                        <span class="text-zinc-500 text-xs">قیمت از:</span>
-                        <div class="text-zinc-900 text-sm font-medium mt-1">12/000/000 تومان + 2000 دلار</div>
-                      </div>
-                      <button class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-            <!-- If we need pagination -->
-            <div class="swiper-pagination flex items-center justify-center gap-1"></div>
-          </div>
-        </div>
-      </section>
+        </section>
+        <section class="relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10">
+            <a href="" class="flex flex-col rounded-2xl overflow-hidden">
+                <img src="../assets/images/first-banner.jpg" class="w-full h-64 object-cover" alt="first-banner"
+                    width="288" height="256" loading="lazy">
+                <div class="absolute bottom-3 px-3">
+                    <h2 class="text-sm font-medium text-zinc-900 mb-4">بهترین تجربه های سفر با تور های آسیا سیر</h2>
+                    <div class="text-xs text-zinc-900 text-justify hyphens-auto leading-5 mb-3">لورم ایپسوم متن ساختگی
+                        با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
+                        چاپگرها و متون بلکه روزنامه و مجله در ستون</div>
+                    <div class="flex justify-center"><button
+                            class="bg-primary-600 rounded-xl px-4 py-3 font-medium text-white">مشاهده</button></div>
+                </div>
+            </a>
+        </section>
+        <section class="mt-10">
+            <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
+                <h2 class="highlight-rest text-zinc-900 mb-3">هتل‌های پرطرفدار</h2>
+                <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">لورم ایپسوم متن ساختگی با تولید
+                    سادگی نامفهوم از صنعت چاپ، و با استفاده</div>
+                <div class="w-full mt-6">
+                    <div class="tabs relative overflow-hidden">
+                        <div
+                            class="tabs-container flex items-center gap-8 overflow-x-auto scrollbar-thin whitespace-nowrap border-b-2 border-solid border-zinc-200 pb-4">
+                            <button class="flex-1 text-primary-600 text-sm font-medium" data-index="0">دسته بندی
+                                ۱</button>
+                            <button class="flex-1 text-primary-600 text-sm font-medium" data-index="1">دسته بندی
+                                ۲</button>
+                            <button class="flex-1 text-primary-600 text-sm font-medium" data-index="2">دسته بندی
+                                ۳</button>
+                            <button class="flex-1 text-primary-600 text-sm font-medium" data-index="3">دسته بندی
+                                ۳</button>
+                        </div>
+                        <div class="active-line absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 tabs-content">
+                <div class="swiper swiper-popular-hotels pb-12 mt-3">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <a href="" class="flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80">
+                                <img src="../assets/images/popular-tour-img.jpg"
+                                    class="w-full h-40 object-cover rounded-2xl" alt="" width="256" height="160"
+                                    loading="lazy" />
+                                <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
+                                    <h3 class="font-bold text-zinc-900">هتل پارسیان</h3>
+                                    <div class="grid grid-cols-2 gap-1 flex-1">
+                                        <div class="border-dashed-zinc rounded-full p-1">
+                                            <div class="relative z-20 flex items-center gap-3">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use href="../assets/images/sprite-icons.svg#icon-star"></use>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-xs text-zinc-700">4 ستاره</span>
+                                            </div>
+                                        </div>
+                                        <div class="border-dashed-zinc rounded-full p-1">
+                                            <div class="relative z-20 flex items-center gap-3">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use href="../assets/images/sprite-icons.svg#icon-map"></use>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-xs text-zinc-700">تکسیم</span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="flex items-center gap-2 justify-between py-1 pr-2">
+                                        <div>
+                                            <span class="text-zinc-500 text-xs">شروع قیمت:</span>
+                                            <div class="text-zinc-900 text-sm font-medium mt-1">12/000/000 تومان + 2000
+                                                دلار</div>
+                                        </div>
+                                        <button
+                                            class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- <div class="swiper-slide">
+                            <div class="gradient-border from-primary-600 rounded-2xl p-2">
+                                <img src="../assets/images/popular-tour-img.jpg"
+                                    class="w-full h-40 object-cover rounded-2xl" alt="" width="256" height="160"
+                                    loading="lazy" />
+                                <div class="flex flex-col gap-2 mt-3">
+                                    <h3 class="font-bold text-zinc-900">هتل پارسیان</h3>
+                                    <div class="grid grid-cols-2 gap-1">
+                                        <div class="border-dashed-zinc rounded-full p-1">
+                                            <div class="relative z-20 flex items-center gap-3">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use href="../assets/images/sprite-icons.svg#icon-star"></use>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-xs text-zinc-700">4 ستاره</span>
+                                            </div>
+                                        </div>
+                                        <div class="border-dashed-zinc rounded-full p-1">
+                                            <div class="relative z-20 flex items-center gap-3">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use href="../assets/images/sprite-icons.svg#icon-map"></use>
+                                                    </svg>
+                                                </span>
+                                                <span class="text-xs text-zinc-700">تکسیم</span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="flex items-center gap-2 justify-between py-1 pr-2">
+                                        <div>
+                                            <span class="text-zinc-500 text-xs">شروع قیمت:</span>
+                                            <div class="text-zinc-900 text-sm font-medium mt-1">12/000/000 تومان + 2000
+                                                دلار</div>
+                                        </div>
+                                        <button
+                                            class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination flex items-center justify-center gap-1"></div>
+                </div>
+            </div>
+        </section>
+        <section class="relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10">
+            <a href="" class="flex flex-col rounded-2xl overflow-hidden">
+                <img src="../assets/images/second-banner-mobile.jpg" class="w-full h-80 object-cover" alt="first-banner"
+                    width="288" height="320" loading="lazy">
+                <div class="absolute bottom-3 px-3">
+                    <h2 class="font-bold text-white mb-3">سریعتر از همیشه میرسی به مقصد </h2>
+                    <div class="text-xs text-zinc-900 text-justify hyphens-auto leading-5 mb-4">لورم ایپسوم متن ساختگی
+                        با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
+                        چاپگرها و متون بلکه روزنامه و مجله در ستون</div>
+                    <button
+                        class="flex items-center justify-center w-full h-12 bg-white rounded-xl text-xs text-zinc-900">مشاهده</button>
+                </div>
+            </a>
+        </section>
+
+        <section class="mt-10">
+            <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
+                <h2 class="highlight-rest text-zinc-900 mb-3">جدیدترین اخبار</h2>
+                <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">لورم ایپسوم متن ساختگی با تولید
+                    سادگی نامفهوم از صنعت چاپ، و با استفاده</div>
+                <div class="w-full mt-6">
+                    <div class="tabs relative overflow-hidden">
+                        <div
+                            class="tabs-container flex items-center gap-8 overflow-x-auto scrollbar-thin whitespace-nowrap border-b-2 border-solid border-zinc-200 pb-4">
+                            <button class="flex-1 text-primary-600 text-sm font-medium" data-index="0">دسته بندی
+                                ۱</button>
+                            <button class="flex-1 text-primary-600 text-sm font-medium" data-index="1">دسته بندی
+                                ۲</button>
+                            <button class="flex-1 text-primary-600 text-sm font-medium" data-index="2">دسته بندی
+                                ۳</button>
+                            <button class="flex-1 text-primary-600 text-sm font-medium" data-index="3">دسته بندی
+                                ۳</button>
+                        </div>
+                        <div class="active-line absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 tabs-content">
+                <div class="swiper swiper-news pb-12 mt-3">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <a href="" class="flex flex-col gradient-border from-gray-200 rounded-2xl p-2 min-h-80">
+                                <img src="../assets/images/popular-tour-img.jpg"
+                                    class="w-full h-40 object-cover rounded-2xl" alt="" width="256" height="160"
+                                    loading="lazy" />
+                                <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
+                                    <h3 class="font-medium text-zinc-900">مزیت های زندگی در دبی</h3>
+                                    <div class="text-xs line-clamp-4 text-justify hyphens-auto leading-5">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
+                                        طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                                        لازم است
+                                    </div>
+                                    <div class="flex items-center gap-2 justify-between py-1 pr-2">
+                                        <div>
+                                            <span class="text-zinc-500 text-xs">شروع قیمت:</span>
+                                            <div class="text-zinc-900 text-sm font-medium mt-1">12/000/000 تومان + 2000
+                                                دلار</div>
+                                        </div>
+                                        <button
+                                            class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination flex items-center justify-center gap-1"></div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script src="https://cdn.basiscore.net/basisfly.com/js/swiper-bundle.min.js"></script>
     <script src="../assets/js/template-core.js"></script>
     <script>
-      var swiperPopularDestination = new Swiper('.swiper-popular-destination', {
-        slidesPerView: 1.3,
-        speed: 400,
-        slidesOffsetBefore: 16,
-        centeredSlides: false,
-        spaceBetween: 12,
-        grabCursor: true,
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
-        },
-        loop: true,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-      });
-      var swiperPopularTours = new Swiper('.swiper-popular-tours', {
-        slidesPerView: 1.17,
-        speed: 400,
-        slidesOffsetBefore: 16,
-        centeredSlides: false,
-        spaceBetween: 4,
-        grabCursor: true,
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
-        },
-        loop: true,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-      });
+        var swiperPopularDestination = new Swiper('.swiper-popular-destination', {
+            slidesPerView: 1.3,
+            speed: 400,
+            slidesOffsetBefore: 16,
+            centeredSlides: false,
+            spaceBetween: 12,
+            grabCursor: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+        var swiperPopularTours = new Swiper('.swiper-popular-tours', {
+            slidesPerView: 1.17,
+            speed: 400,
+            spaceBetween: 4,
+            slidesOffsetBefore: 16,
+            grabCursor: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+        var swiperPopularHotels = new Swiper('.swiper-popular-hotels', {
+            slidesPerView: 1.17,
+            speed: 400,
+            spaceBetween: 4,
+            slidesOffsetBefore: 16,
+            grabCursor: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+        var swiperNews = new Swiper('.swiper-news', {
+            slidesPerView: 1.17,
+            speed: 400,
+            spaceBetween: 4,
+            slidesOffsetBefore: 16,
+            grabCursor: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
     </script>
-  </body>
+</body>
+
 </html>
