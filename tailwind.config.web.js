@@ -1,5 +1,5 @@
 module.exports = {
-    content: ["./web/**/*.html", "./mobile/assets/js/**/*.js"],
+    content: ["./web/**/*.html", "./web/assets/js/**/*.js"],
     theme: {
       extend: {
         backgroundImage: {

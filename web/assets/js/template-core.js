@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// ---------active header items------------
 document.addEventListener("DOMContentLoaded", () => {
   const main = document.querySelector("main");
   if (!main) return;
@@ -65,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (link.dataset.activepage === currentPage) {
       link.classList.remove("text-zinc-900");
       link.classList.add("text-primary-600");
-      link.classList.add("border-b-2","border-solid", "border-primary-600", "pb-2");
+      link.classList.add("border-b-2","border-solid", "border-primary-600", "pb-3");
 
       const icon = link.closest("li")?.querySelector("use");
       if (icon) {
@@ -78,8 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// form header
-
+// -----------form header--------------
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector(".search-form");
   if (!form) return;
@@ -167,7 +167,7 @@ document.querySelectorAll(".highlight-rest").forEach(el => {
   }
 });
 
-
+// ---------active line-------------
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.tabs').forEach(tabsWrapper => {
     const tabsContainer = tabsWrapper.querySelector('.tabs-container');
@@ -216,25 +216,33 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// --------faq---------
 document.addEventListener("DOMContentLoaded", () => {
   const faqs = document.querySelectorAll(".faq-border");
+  const firstFaq = faqs[0];
+  let firstFaqFirstOpen = true; 
 
-  faqs.forEach(faq => {
+  faqs.forEach((faq, index) => {
+    const trigger = faq.querySelector(".faq-content"); 
+    const content = faq.querySelector(".faq-answer");
+    const wrapper = faq.querySelector(".faq-content");
     const question = faq.querySelector(".faq-question");
-    const content  = faq.querySelector(".faq-answer");
-    const wrapper  = faq.querySelector(".faq-content");
 
-    question.addEventListener("click", e => {
+    trigger.addEventListener("click", e => {
       e.stopPropagation(); 
-
       const isOpen = faq.classList.contains("active");
 
       faqs.forEach(f => {
-        f.classList.remove("active");
-        f.querySelector(".faq-answer").style.maxHeight = "0";
-        f.querySelector(".faq-answer").style.transition = "all 0.3s ease";
-        f.querySelector(".faq-content").style.backgroundColor = "rgb(244,244,245)";
-        f.querySelector(".faq-question").classList.remove("mb-3"); 
+        const w = f.querySelector(".faq-content");
+
+        if (f !== faq) {
+          f.classList.remove("active");
+          w.classList.remove("gradient-border", "from-primary-600");
+          f.querySelector(".faq-answer").style.maxHeight = "0";
+          f.querySelector(".faq-answer").style.transition = "all 0.3s ease";
+          w.style.backgroundColor = "rgb(244,244,245)";
+          f.querySelector(".faq-question").classList.remove("mb-3");
+        }
       });
 
       if (!isOpen) {
@@ -242,22 +250,46 @@ document.addEventListener("DOMContentLoaded", () => {
         content.style.maxHeight = content.scrollHeight + "px"; 
         content.style.transition = "all 0.3s ease";
         wrapper.style.backgroundColor = "var(--primary-50)";
+        wrapper.classList.add("gradient-border", "from-primary-600");
         question.classList.add("mb-3");
+
+        if (faq === firstFaq && firstFaqFirstOpen) firstFaqFirstOpen = false;
+
+      } else {
+        faq.classList.remove("active");
+        content.style.maxHeight = "0";
+        wrapper.classList.remove("gradient-border", "from-primary-600");
+        wrapper.style.backgroundColor = "rgb(244,244,245)";
+        question.classList.remove("mb-3");
+
+        if (faq === firstFaq && firstFaqFirstOpen) firstFaqFirstOpen = false;
       }
     });
-  });
 
+    if (index === 0) {
+      faq.classList.add("active");
+      content.style.maxHeight = content.scrollHeight + "px";
+      wrapper.style.backgroundColor = "var(--primary-50)";
+      wrapper.classList.add("gradient-border", "from-primary-600");
+      question.classList.add("mb-3");
+    }
+  });
 
   document.addEventListener("click", () => {
     faqs.forEach(f => {
+      if (f === firstFaq && firstFaqFirstOpen) return;
+
       f.classList.remove("active");
+      const w = f.querySelector(".faq-content");
+      w.classList.remove("gradient-border", "from-primary-600");
       f.querySelector(".faq-answer").style.maxHeight = "0";
-      f.querySelector(".faq-content").style.backgroundColor = "rgb(244,244,245)";
+      w.style.backgroundColor = "rgb(244,244,245)";
       f.querySelector(".faq-question").classList.remove("mb-3"); 
     });
   });
 });
 
+// ---------- check contrast -----------
 function getBrightness(hexColor) {
   const r = parseInt(hexColor.substr(1, 2), 16);
   const g = parseInt(hexColor.substr(3, 2), 16);
@@ -287,81 +319,77 @@ function adjustTextColor(element, bgColor = null) {
 }
 
 function getHoverBackgroundColor(element) {
-  // بررسی کلاس‌ها مثل hover:bg-secondary-50
+
   const hoverClass = Array.from(element.classList).find(className => className.startsWith("hover:bg-"));
   if (hoverClass) {
-    // بررسی رنگ مربوطه از CSS متغیرهای ریشه
+
     const rootStyles = getComputedStyle(document.documentElement);
     const bgColor = rootStyles.getPropertyValue(`--${hoverClass.replace("hover:bg-", "")}`).trim();
 
-    // اگر رنگ پیدا شد، آن را برمی‌گردانیم
+  
     if (bgColor) return bgColor;
   }
-  return null; // اگر رنگی پیدا نشد
+  return null;
 }
 
 function getTextColorFromClass(element) {
-  // بررسی وجود کلاس‌های text-primary-600 یا text-secondary
   const primaryTextClass = Array.from(element.classList).find(className => className.startsWith("text-primary"));
   const secondaryTextClass = Array.from(element.classList).find(className => className.startsWith("text-secondary"));
 
   if (primaryTextClass) {
-    return window.getComputedStyle(element).color; // برمی‌گرداند رنگ متن در صورت وجود کلاس text-primary
+    return window.getComputedStyle(element).color; 
   }
 
   if (secondaryTextClass) {
-    return window.getComputedStyle(element).color; // برمی‌گرداند رنگ متن در صورت وجود کلاس text-secondary
+    return window.getComputedStyle(element).color; 
   }
 
-  return null; // اگر هیچ کدام از این کلاس‌ها وجود نداشت
+  return null; 
 }
 
 const boxes = document.querySelectorAll('.check-contrast');
 
 boxes.forEach(box => {
-  // ذخیره رنگ پس‌زمینه اصلی
   const originalBgColor = window.getComputedStyle(box).backgroundColor;
-  const originalTextColor = getTextColorFromClass(box); // ذخیره رنگ متن اصلی (اگر وجود داشته باشد)
+  const originalTextColor = getTextColorFromClass(box); 
 
-  adjustTextColor(box, originalBgColor); // بررسی رنگ متن اولیه
+  adjustTextColor(box, originalBgColor);
 
-  // بررسی رنگ پس‌زمینه هنگام هاور
+
   box.addEventListener('mouseover', () => {
-    const hoverColor = getHoverBackgroundColor(box); // گرفتن رنگ پس‌زمینه هاور
+    const hoverColor = getHoverBackgroundColor(box);
     if (hoverColor) {
       const brightness = getBrightness(hoverColor);
-      box.style.color = brightness < 0.5 ? 'white' : 'black'; // تنظیم رنگ متن
+      box.style.color = brightness < 0.5 ? 'white' : 'black';
     } else {
-      adjustTextColor(box, originalBgColor); // اگر رنگ هاور پیدا نشد، رنگ متن رو طبق رنگ اصلی تنظیم می‌کنیم
+      adjustTextColor(box, originalBgColor); 
     }
 
-    // بررسی تگ‌های span داخل box و تغییر رنگ آن‌ها
     const spans = box.querySelectorAll('span');
     spans.forEach(span => {
       if (hoverColor) {
         const brightness = getBrightness(hoverColor);
-        span.style.color = brightness < 0.5 ? 'white' : 'black'; // تنظیم رنگ متن span
+        span.style.color = brightness < 0.5 ? 'white' : 'black';
       } else {
-        adjustTextColor(span, originalBgColor); // اگر رنگ هاور پیدا نشد، رنگ متن span رو طبق رنگ اصلی تنظیم می‌کنیم
+        adjustTextColor(span, originalBgColor); 
       }
     });
   });
 
-  // برگشت به حالت اولیه بعد از هاور
   box.addEventListener('mouseout', () => {
     if (originalTextColor) {
-      box.style.color = originalTextColor; // برگرداندن رنگ متن به رنگ اصلی که با کلاس text-primary یا text-secondary تنظیم شده
+      box.style.color = originalTextColor; 
     } else {
-      adjustTextColor(box, originalBgColor); // اگر کلاس رنگ متن وجود نداشت، رنگ متن را دوباره بر اساس رنگ پس‌زمینه اصلی تنظیم می‌کنیم
+      adjustTextColor(box, originalBgColor);
     }
 
-    // برگشت به رنگ اصلی برای تگ‌های span
+   
     const spans = box.querySelectorAll('span');
     spans.forEach(span => {
       if (originalTextColor) {
-        span.style.color = originalTextColor; // برگرداندن رنگ متن span به رنگ اصلی
+        span.style.color = originalTextColor;
       } else {
-        adjustTextColor(span, originalBgColor); // اگر رنگ متن span مشخص نشده بود، رنگ متن آن را طبق رنگ اصلی تنظیم می‌کنیم
+        adjustTextColor(span, originalBgColor); 
       }
     });
   });
