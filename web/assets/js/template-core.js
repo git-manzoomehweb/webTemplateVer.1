@@ -220,48 +220,45 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const faqs = document.querySelectorAll(".faq-border");
   const firstFaq = faqs[0];
-  let firstFaqFirstOpen = true; 
+  let firstFaqFirstOpen = true;
 
   faqs.forEach((faq, index) => {
-    const trigger = faq.querySelector(".faq-content"); 
+    const trigger = faq.querySelector(".faq-content");
     const content = faq.querySelector(".faq-answer");
     const wrapper = faq.querySelector(".faq-content");
     const question = faq.querySelector(".faq-question");
 
-    trigger.addEventListener("click", e => {
-      e.stopPropagation(); 
+    content.style.transition = "max-height 0.3s ease";
+
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
       const isOpen = faq.classList.contains("active");
 
-      faqs.forEach(f => {
+      faqs.forEach((f) => {
         const w = f.querySelector(".faq-content");
-
         if (f !== faq) {
           f.classList.remove("active");
-          w.classList.remove("gradient-border", "from-primary-600");
-          f.querySelector(".faq-answer").style.maxHeight = "0";
-          f.querySelector(".faq-answer").style.transition = "all 0.3s ease";
-          w.style.backgroundColor = "rgb(244,244,245)";
+          w.classList.remove("gradient-border", "from-primary-600", "bg-primary-50");
+          w.classList.add("bg-zinc-100");
+          const ans = f.querySelector(".faq-answer");
+          ans.style.maxHeight = "0";
           f.querySelector(".faq-question").classList.remove("mb-3");
         }
       });
 
       if (!isOpen) {
         faq.classList.add("active");
-        content.style.maxHeight = content.scrollHeight + "px"; 
-        content.style.transition = "all 0.3s ease";
-        wrapper.style.backgroundColor = "var(--primary-50)";
-        wrapper.classList.add("gradient-border", "from-primary-600");
+        content.style.maxHeight = content.scrollHeight + "px";
+        wrapper.classList.remove("bg-zinc-100");
+        wrapper.classList.add("bg-primary-50", "gradient-border", "from-primary-600");
         question.classList.add("mb-3");
-
         if (faq === firstFaq && firstFaqFirstOpen) firstFaqFirstOpen = false;
-
       } else {
         faq.classList.remove("active");
         content.style.maxHeight = "0";
-        wrapper.classList.remove("gradient-border", "from-primary-600");
-        wrapper.style.backgroundColor = "rgb(244,244,245)";
+        wrapper.classList.remove("gradient-border", "from-primary-600", "bg-primary-50");
+        wrapper.classList.add("bg-zinc-100");
         question.classList.remove("mb-3");
-
         if (faq === firstFaq && firstFaqFirstOpen) firstFaqFirstOpen = false;
       }
     });
@@ -269,25 +266,29 @@ document.addEventListener("DOMContentLoaded", () => {
     if (index === 0) {
       faq.classList.add("active");
       content.style.maxHeight = content.scrollHeight + "px";
-      wrapper.style.backgroundColor = "var(--primary-50)";
-      wrapper.classList.add("gradient-border", "from-primary-600");
+      wrapper.classList.remove("bg-zinc-100");
+      wrapper.classList.add("bg-primary-50", "gradient-border", "from-primary-600");
       question.classList.add("mb-3");
     }
   });
 
-  document.addEventListener("click", () => {
-    faqs.forEach(f => {
+
+  document.addEventListener("click", (e) => {
+    if (e.target.closest(".faq-border")) return; 
+
+    faqs.forEach((f) => {
       if (f === firstFaq && firstFaqFirstOpen) return;
 
       f.classList.remove("active");
       const w = f.querySelector(".faq-content");
-      w.classList.remove("gradient-border", "from-primary-600");
+      w.classList.remove("gradient-border", "from-primary-600", "bg-primary-50");
+      w.classList.add("bg-zinc-100");
       f.querySelector(".faq-answer").style.maxHeight = "0";
-      w.style.backgroundColor = "rgb(244,244,245)";
-      f.querySelector(".faq-question").classList.remove("mb-3"); 
+      f.querySelector(".faq-question").classList.remove("mb-3");
     });
   });
 });
+
 
 // ---------- check contrast -----------
 function getBrightness(hexColor) {

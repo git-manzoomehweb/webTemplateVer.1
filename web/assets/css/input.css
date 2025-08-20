@@ -84,7 +84,6 @@
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
-  display: block;
 }
 
 .mask-image-about {
@@ -203,12 +202,19 @@
   background-clip: text;      
 }
 
-.submenu-scroll {
-  direction: ltr;   
+.submenu-scroll{
+  direction: ltr;       
+}
+
+.submenu-scroll > li,
+.submenu-scroll > *{
+  direction: rtl;
+  unicode-bidi: isolate; 
+  text-align: right;    
 }
 
 .submenu-scroll::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 .submenu-scroll::-webkit-scrollbar-track {
@@ -225,4 +231,26 @@
   background: linear-gradient(180deg, var(--secondary-100), var(--secondary-900));
 }
 
+.shine-effect::before {
+  content: "";
+  position: absolute;
+  width: 33rem;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  top: -220px;
+  right: -356px;
+  transform: rotate(45deg);
+  transition: all 0.5s ease-in-out;
+}
+.group:hover .shine-effect::before {
+  top: 100%;
+  right: 100%;
+}
 
+
+.phone-number div:not(:last-child)::after {
+  content: '-';
+  margin-left: 4px; 
+  margin-right: 4px; 
+}
