@@ -55,18 +55,23 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// ---------active header items------------
 document.addEventListener("DOMContentLoaded", () => {
   const main = document.querySelector("main");
   if (!main) return;
 
-  const currentPage = main.dataset.page;
+  const currentPage = main.dataset.activepage;
 
-  document.querySelectorAll("nav a").forEach((link) => {
-    if (link.dataset.page === currentPage) {
+  document.querySelectorAll("nav a, .toggle-dropdown a, li a").forEach((link) => {
+    if (link.dataset.activepage === currentPage) {
       link.classList.remove("text-zinc-900");
       link.classList.add("text-primary-600");
 
-      const icon = link.closest("li")?.querySelector("use");
+      if (window.innerWidth >= 1024) {
+        link.classList.add("border-b-2", "border-solid", "border-primary-600", "pb-3");
+      }
+
+      const icon = link.closest("li, .toggle-dropdown")?.querySelector("use");
       if (icon) {
         const href = icon.getAttribute("href");
         if (href.includes("-zinc")) {
@@ -77,8 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// form header
 
+// -----------form header--------------
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector(".search-form");
   if (!form) return;
@@ -86,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const input = form.querySelector(".search-input");
   const button = form.querySelector(".search-toggle");
   const phoneSpan = document.querySelector(".phone-number-header");
+  const phoneSvg = document.querySelector(".phone-svg-header");
   const nav = document.querySelector(".header-nav");
   if (!input || !button || !phoneSpan || !nav) return;
 
@@ -102,7 +108,12 @@ document.addEventListener("DOMContentLoaded", function () {
     input.focus();
 
     setTimeout(() => {
-      if (nav.scrollWidth > 700) {
+      const screenWidth = window.innerWidth;
+
+      if (screenWidth >= 1024 && screenWidth < 1280 && nav.scrollWidth > 400) {
+        phoneSpan.style.display = "none";
+        if (phoneSvg) phoneSvg.style.display = "none";
+      } else if (screenWidth >= 1280 && nav.scrollWidth > 700) {
         phoneSpan.style.display = "none";
       }
     }, 10);
@@ -120,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("transitionend", function handler(e) {
       if (e.propertyName === "width") {
         phoneSpan.style.display = "inline";
+        if (phoneSvg) phoneSvg.style.display = "inline";
         form.removeEventListener("transitionend", handler);
       }
     });
@@ -159,7 +171,42 @@ document.querySelectorAll(".highlight-rest").forEach(el => {
   }
 });
 
+// ---------scrollTopBtn----------
+document.addEventListener("DOMContentLoaded", function () {
+  if (document.querySelector(".scrollTopBtn")) {
+    const scrollTopBtn = document.querySelector(".scrollTopBtn");
 
+    function checkScreenSize() {
+      if (window.innerWidth > 1024) {
+        scrollTopBtn.style.display = "none";
+      } else {
+        updateButtonVisibility();
+      }
+    }
+
+    function updateButtonVisibility() {
+      if (
+        window.innerWidth <= 1024 &&
+        (document.body.scrollTop > 100 ||
+          document.documentElement.scrollTop > 100)
+      ) {
+        scrollTopBtn.style.display = "flex";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    }
+
+    window.addEventListener("scroll", updateButtonVisibility);
+    window.addEventListener("resize", checkScreenSize);
+    scrollTopBtn.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    );
+
+    checkScreenSize();
+  }
+});
+
+// ---------active line-------------
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.tabs').forEach(tabsWrapper => {
     const tabsContainer = tabsWrapper.querySelector('.tabs-container');
@@ -168,11 +215,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function setActiveTab(index) {
       if (!tabs[index]) return;
-
+      
       tabs.forEach((tab, i) => {
         tab.classList.toggle('text-primary-600', i === index);
         tab.classList.toggle('font-bold', i === index);
-        tab.classList.toggle('text-gray-500', i !== index);
+        tab.classList.toggle('text-zinc-900', i !== index);
       });
 
       const tab = tabs[index];
@@ -208,44 +255,182 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// --------faq---------
 document.addEventListener("DOMContentLoaded", () => {
   const faqs = document.querySelectorAll(".faq-border");
+  const firstFaq = faqs[0];
+  let firstFaqFirstOpen = true;
 
-  faqs.forEach(faq => {
+  faqs.forEach((faq, index) => {
+    const trigger = faq.querySelector(".faq-content");
+    const content = faq.querySelector(".faq-answer");
+    const wrapper = faq.querySelector(".faq-content");
     const question = faq.querySelector(".faq-question");
-    const content  = faq.querySelector(".faq-answer");
-    const wrapper  = faq.querySelector(".faq-content");
 
-    question.addEventListener("click", e => {
-      e.stopPropagation(); 
+    content.style.transition = "max-height 0.3s ease";
 
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
       const isOpen = faq.classList.contains("active");
 
-      faqs.forEach(f => {
-        f.classList.remove("active");
-        f.querySelector(".faq-answer").style.maxHeight = "0";
-        f.querySelector(".faq-answer").style.transition = "all 0.3s ease";
-        f.querySelector(".faq-content").style.backgroundColor = "rgb(244,244,245)";
-        f.querySelector(".faq-question").classList.remove("mb-3"); 
+      faqs.forEach((f) => {
+        const w = f.querySelector(".faq-content");
+        if (f !== faq) {
+          f.classList.remove("active");
+          w.classList.remove("gradient-border", "from-primary-600", "bg-primary-50");
+          w.classList.add("bg-zinc-100");
+          const ans = f.querySelector(".faq-answer");
+          ans.style.maxHeight = "0";
+          f.querySelector(".faq-question").classList.remove("mb-3");
+        }
       });
 
       if (!isOpen) {
         faq.classList.add("active");
-        content.style.maxHeight = content.scrollHeight + "px"; 
-        content.style.transition = "all 0.3s ease";
-        wrapper.style.backgroundColor = "var(--primary-50)";
+        content.style.maxHeight = content.scrollHeight + "px";
+        wrapper.classList.remove("bg-zinc-100");
+        wrapper.classList.add("bg-primary-50", "gradient-border", "from-primary-600");
         question.classList.add("mb-3");
+        if (faq === firstFaq && firstFaqFirstOpen) firstFaqFirstOpen = false;
+      } else {
+        faq.classList.remove("active");
+        content.style.maxHeight = "0";
+        wrapper.classList.remove("gradient-border", "from-primary-600", "bg-primary-50");
+        wrapper.classList.add("bg-zinc-100");
+        question.classList.remove("mb-3");
+        if (faq === firstFaq && firstFaqFirstOpen) firstFaqFirstOpen = false;
+      }
+    });
+
+    if (index === 0) {
+      faq.classList.add("active");
+      content.style.maxHeight = content.scrollHeight + "px";
+      wrapper.classList.remove("bg-zinc-100");
+      wrapper.classList.add("bg-primary-50", "gradient-border", "from-primary-600");
+      question.classList.add("mb-3");
+    }
+  });
+
+
+  document.addEventListener("click", (e) => {
+    if (e.target.closest(".faq-border")) return; 
+
+    faqs.forEach((f) => {
+      if (f === firstFaq && firstFaqFirstOpen) return;
+
+      f.classList.remove("active");
+      const w = f.querySelector(".faq-content");
+      w.classList.remove("gradient-border", "from-primary-600", "bg-primary-50");
+      w.classList.add("bg-zinc-100");
+      f.querySelector(".faq-answer").style.maxHeight = "0";
+      f.querySelector(".faq-question").classList.remove("mb-3");
+    });
+  });
+});
+
+
+// ---------- check contrast -----------
+function getBrightness(hexColor) {
+  const r = parseInt(hexColor.substr(1, 2), 16);
+  const g = parseInt(hexColor.substr(3, 2), 16);
+  const b = parseInt(hexColor.substr(5, 2), 16);
+
+  return (r * 0.299 + g * 0.587 + b * 0.114) / 255;
+}
+
+function adjustTextColor(element, bgColor = null) {
+  let colorToUse = bgColor || window.getComputedStyle(element).backgroundColor;
+  let hexColor;
+
+  if (colorToUse.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)) {
+    hexColor = colorToUse.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/).slice(1).map(n => {
+      return parseInt(n).toString(16).padStart(2, '0');
+    }).join('');
+    hexColor = `#${hexColor}`;
+  } else if (colorToUse.match(/^#([0-9a-f]{3}){1,2}$/i)) {
+    hexColor = colorToUse;
+  }
+
+  if (hexColor) {
+    const brightness = getBrightness(hexColor);
+
+    element.style.color = brightness < 0.5 ? 'white' : 'black';
+  }
+}
+
+function getHoverBackgroundColor(element) {
+
+  const hoverClass = Array.from(element.classList).find(className => className.startsWith("hover:bg-"));
+  if (hoverClass) {
+
+    const rootStyles = getComputedStyle(document.documentElement);
+    const bgColor = rootStyles.getPropertyValue(`--${hoverClass.replace("hover:bg-", "")}`).trim();
+
+  
+    if (bgColor) return bgColor;
+  }
+  return null;
+}
+
+function getTextColorFromClass(element) {
+  const primaryTextClass = Array.from(element.classList).find(className => className.startsWith("text-primary"));
+  const secondaryTextClass = Array.from(element.classList).find(className => className.startsWith("text-secondary"));
+
+  if (primaryTextClass) {
+    return window.getComputedStyle(element).color; 
+  }
+
+  if (secondaryTextClass) {
+    return window.getComputedStyle(element).color; 
+  }
+
+  return null; 
+}
+
+const boxes = document.querySelectorAll('.check-contrast');
+
+boxes.forEach(box => {
+  const originalBgColor = window.getComputedStyle(box).backgroundColor;
+  const originalTextColor = getTextColorFromClass(box); 
+
+  adjustTextColor(box, originalBgColor);
+
+
+  box.addEventListener('mouseover', () => {
+    const hoverColor = getHoverBackgroundColor(box);
+    if (hoverColor) {
+      const brightness = getBrightness(hoverColor);
+      box.style.color = brightness < 0.5 ? 'white' : 'black';
+    } else {
+      adjustTextColor(box, originalBgColor); 
+    }
+
+    const spans = box.querySelectorAll('span');
+    spans.forEach(span => {
+      if (hoverColor) {
+        const brightness = getBrightness(hoverColor);
+        span.style.color = brightness < 0.5 ? 'white' : 'black';
+      } else {
+        adjustTextColor(span, originalBgColor); 
       }
     });
   });
 
+  box.addEventListener('mouseout', () => {
+    if (originalTextColor) {
+      box.style.color = originalTextColor; 
+    } else {
+      adjustTextColor(box, originalBgColor);
+    }
 
-  document.addEventListener("click", () => {
-    faqs.forEach(f => {
-      f.classList.remove("active");
-      f.querySelector(".faq-answer").style.maxHeight = "0";
-      f.querySelector(".faq-content").style.backgroundColor = "rgb(244,244,245)";
-      f.querySelector(".faq-question").classList.remove("mb-3"); 
+   
+    const spans = box.querySelectorAll('span');
+    spans.forEach(span => {
+      if (originalTextColor) {
+        span.style.color = originalTextColor;
+      } else {
+        adjustTextColor(span, originalBgColor); 
+      }
     });
   });
 });

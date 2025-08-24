@@ -59,14 +59,14 @@ module.exports = {
           '.gradient-border': {
             position: 'relative',
             zIndex: '0',
-            borderRadius: theme('borderRadius.md'),
+            borderRadius: theme('borderRadius.md') || '16px',
             overflow: 'hidden', 
           },
           '.gradient-border::before': {
             content: '""',
             position: 'absolute',
             inset: 0,               
-            padding: '1px',       
+            padding: '0.75px',       
             borderRadius: 'inherit',
             background: 'linear-gradient(248.18deg, var(--tw-gradient-from) 1.36%, var(--tw-gradient-to) 98.64%)',
             WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',

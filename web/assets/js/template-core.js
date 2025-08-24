@@ -62,13 +62,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const currentPage = main.dataset.activepage;
 
-  document.querySelectorAll("nav a").forEach((link) => {
+  document.querySelectorAll("nav a, .toggle-dropdown a, li a").forEach((link) => {
     if (link.dataset.activepage === currentPage) {
       link.classList.remove("text-zinc-900");
       link.classList.add("text-primary-600");
-      link.classList.add("border-b-2","border-solid", "border-primary-600", "pb-3");
 
-      const icon = link.closest("li")?.querySelector("use");
+      if (window.innerWidth >= 1024) {
+        link.classList.add("border-b-2", "border-solid", "border-primary-600", "pb-3");
+      }
+
+      const icon = link.closest("li, .toggle-dropdown")?.querySelector("use");
       if (icon) {
         const href = icon.getAttribute("href");
         if (href.includes("-zinc")) {
@@ -176,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function setActiveTab(index) {
       if (!tabs[index]) return;
-
+      
       tabs.forEach((tab, i) => {
         tab.classList.toggle('text-primary-600', i === index);
         tab.classList.toggle('font-bold', i === index);

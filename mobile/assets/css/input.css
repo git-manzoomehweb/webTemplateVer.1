@@ -21,7 +21,7 @@
   --primary-900: #bf000b;
   --primary-950: #9b0009;
 
-  --secondary: #ffb52a;
+  --secondary: #fce7f3 ;
   --secondary-50: #fff8e3;
   --secondary-100: #ffecb7;
   --secondary-200: #ffe189;
@@ -84,8 +84,6 @@
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
-  width: 100%;
-  display: block;
 }
 
 .mask-image-about {
@@ -107,7 +105,6 @@
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
-  width: 100%;
   display: block;
   overflow: hidden;
 }
@@ -188,7 +185,7 @@
   width: 3px;
   height: 100%;
   background: #D4D4D8;
-  border-radius: 12px;
+  border-radius: 9999px;
 }
 
 .faq-border.active::after {
@@ -203,4 +200,57 @@
   background-position: center;
   -webkit-background-clip: text; 
   background-clip: text;      
+}
+
+.submenu-scroll{
+  direction: ltr;       
+}
+
+.submenu-scroll > li,
+.submenu-scroll > *{
+  direction: rtl;
+  unicode-bidi: isolate; 
+  text-align: right;    
+}
+
+.submenu-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.submenu-scroll::-webkit-scrollbar-track {
+  background: #ffffff00;
+  border-radius: 3px;
+}
+
+.submenu-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-100), var(--primary-900));
+  border-radius: 3px;
+}
+
+.submenu-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--secondary-100), var(--secondary-900));
+}
+
+.shine-effect::before {
+  content: "";
+  position: absolute;
+  width: 33rem;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  top: -220px;
+  right: -356px;
+  transform: rotate(45deg);
+  transition: all 0.5s ease-in-out;
+}
+.group:hover .shine-effect::before {
+  top: 100%;
+  right: 100%;
+}
+
+
+.phone-number div:not(:last-child)::after {
+  content: '-';
+  margin-left: 4px; 
+  margin-right: 4px; 
 }
