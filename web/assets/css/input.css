@@ -42,6 +42,8 @@
   ---bg: url("");
   --visaList-bg: url("../images/visa-background.jpg");
   --contact-bg: url("../images/contact-background.jpg");
+  --articleList-bg: url("../images/article-list-background.jpg");
+  --tourList-bg: url("../images/tour-list-background.jpg");
 }
 
 @font-face {
@@ -250,4 +252,49 @@
   content: '-';
   margin-left: 4px; 
   margin-right: 4px; 
+}
+
+.slider-wrapper input[type="range"]::-webkit-slider-thumb {
+  background: #ffffff;
+  pointer-events: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 17px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><circle cx='10' cy='10' r='10' fill='var(--primary-700)'/><circle cx='10' cy='10' r='7' fill='white'/></svg>")
+    no-repeat center;
+  background-size: cover;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  z-index: 30;
+  margin-top: 8px;
+}
+
+/* .slider-wrapper input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff; 
+  box-shadow: 0 0 0 3px var(--primary-700); 
+  cursor: pointer;
+  margin-top: 8px;
+  border: none;
+  position: relative;
+  z-index: 30;
+} */
+
+.slider-wrapper input[type="range"]::-moz-range-thumb {
+  pointer-events: auto;
+  width: 16px;
+  height: 17px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 20;
 }

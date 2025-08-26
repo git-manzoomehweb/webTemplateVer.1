@@ -12,6 +12,8 @@ module.exports = {
           "linear-gradient(180deg, rgba(0, 0, 0, 0) 41.56%, rgba(31, 0, 0, 0.82) 100%)",
         visaList: "var(--visaList-bg)",
         contact: "var(--contact-bg)",
+        articleList: "var(--articleList-bg)",
+        tourList: "var(--tourList-bg)",
       },
       boxShadow: {
         "search-engine": "box-shadow: 0px 4px 50px 0px #0000001C",

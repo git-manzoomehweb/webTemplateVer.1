@@ -484,3 +484,186 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.tourL-tour-card');
+  const airlineFilterContainer = document.querySelector('.airline-filter');
+  const daysFilterContainer = document.querySelector('.days-filter');
+
+  const minInput = document.getElementById('minRange');
+  const maxInput = document.getElementById('maxRange');
+  const rangeTrack = document.getElementById('rangeTrack');
+  const minValText = document.getElementById('minValue');
+  const maxValText = document.getElementById('maxValue');
+
+  const filterBtn = document.getElementById('filterOpenBtn');
+  const closeBtn = document.getElementById('filterCloseBtn');
+  const removeFiltersBtn = document.getElementById('clearFiltersBtn');
+
+  const filterPanel = document.querySelector('.filters-panel');
+
+  const normalizeText = (text) => text.replace(/\s/g, '').toLowerCase();
+
+  const uniqueAirlines = new Map();
+  const uniqueDays = new Set();
+
+  cards.forEach((card) => {
+    const airlineName = card.dataset.airlineName?.trim();
+    const airlineImg = card.dataset.airline?.trim();
+    const days = card.dataset.days?.trim();
+
+    if (airlineName && airlineImg && !uniqueAirlines.has(airlineName)) {
+      uniqueAirlines.set(airlineName, airlineImg);
+    }
+    if (days) {
+      uniqueDays.add(days);
+    }
+  });
+
+  if (airlineFilterContainer) {
+    uniqueAirlines.forEach((img, name) => {
+      const id = `airline-${normalizeText(name)}`;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flex items-center gap-5';
+      wrapper.innerHTML = `
+        <input type="radio" name="airline" id="${id}" value="${normalizeText(name)}" class="airline-input w-5 h-5" />
+        <label for="${id}" class="flex items-center gap-1 cursor-pointer">
+          <img src="../assets/images/${img}" alt="${name}" width="60" height="30" loading="lazy" />
+          <span class="text-zinc-500 text-xs">${name}</span>
+        </label>
+      `;
+      airlineFilterContainer.appendChild(wrapper);
+    });
+  }
+
+  if (daysFilterContainer) {
+    uniqueDays.forEach((days) => {
+      const id = `days-${normalizeText(days)}`;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flex items-center gap-5';
+      wrapper.innerHTML = `
+        <input type="radio" name="days" id="${id}" value="${normalizeText(days)}" class="days-input w-5 h-5" />
+        <label for="${id}" class="text-zinc-500 text-sm cursor-pointer">${days}</label>
+      `;
+      daysFilterContainer.appendChild(wrapper);
+    });
+  }
+
+  const parsePrice = (priceStr) => {
+    let clean = priceStr.replace(/[^\d]/g, '');
+    return parseInt(clean, 10);
+  };
+  const formatPrice = (val) => val.toLocaleString('en-US');
+
+  let REAL_MIN = 0;
+  let REAL_MAX = 0;
+  let realMin = 0;
+  let realMax = 0;
+
+  const prices = Array.from(cards)
+    .map((card) => parsePrice(card.dataset.price || '0'))
+    .filter((p) => p > 0);
+
+  if (prices.length) {
+    REAL_MIN = Math.min(...prices);
+    REAL_MAX = Math.max(...prices);
+    realMin = REAL_MIN;
+    realMax = REAL_MAX;
+  }
+
+  let selectedAirline = null;
+  let selectedDay = null;
+
+  function filterCards() {
+    cards.forEach((card) => {
+      const price = parsePrice(card.dataset.price || '0');
+      const airline = normalizeText(card.dataset.airlineName || '');
+      const days = normalizeText(card.dataset.days || '');
+
+      const matchPrice = price >= realMin && price <= realMax;
+      const matchAirline = !selectedAirline || airline === selectedAirline;
+      const matchDays = !selectedDay || days === selectedDay;
+
+      card.style.display = matchPrice && matchAirline && matchDays ? 'block' : 'none';
+    });
+  }
+
+  function updatePriceRange() {
+    if (!minInput || !maxInput || !rangeTrack || !minValText || !maxValText) return;
+
+    let min = parseInt(minInput.value);
+    let max = parseInt(maxInput.value);
+    if (min > max) [min, max] = [max, min];
+
+    const right = min;
+    const width = max - min;
+    rangeTrack.style.right = `${right}%`;
+    rangeTrack.style.width = `${width}%`;
+
+    realMin = Math.floor(REAL_MIN + ((REAL_MAX - REAL_MIN) * min) / 100);
+    realMax = Math.floor(REAL_MIN + ((REAL_MAX - REAL_MIN) * max) / 100);
+
+    minValText.textContent = formatPrice(realMin);
+    maxValText.textContent = formatPrice(realMax);
+
+    filterCards();
+  }
+
+  if (minInput && maxInput) {
+    minInput.addEventListener('input', updatePriceRange);
+    maxInput.addEventListener('input', updatePriceRange);
+    updatePriceRange();
+  }
+
+  if (airlineFilterContainer) {
+    airlineFilterContainer.addEventListener('change', (e) => {
+      if (e.target.classList.contains('airline-input')) {
+        selectedAirline = e.target.checked ? e.target.value : null;
+        filterCards();
+      }
+    });
+  }
+
+  if (daysFilterContainer) {
+    daysFilterContainer.addEventListener('change', (e) => {
+      if (e.target.classList.contains('days-input')) {
+        selectedDay = e.target.checked ? e.target.value : null;
+        filterCards();
+      }
+    });
+  }
+
+  if (filterBtn && filterPanel) {
+    filterBtn.addEventListener('click', () => {
+      filterPanel.classList.remove('translate-y-full');
+    });
+  }
+
+  if (closeBtn && filterPanel) {
+    closeBtn.addEventListener('click', () => {
+      filterPanel.classList.add('translate-y-full');
+    });
+  }
+
+  if (removeFiltersBtn) {
+    removeFiltersBtn.addEventListener('click', () => {
+      selectedAirline = null;
+      selectedDay = null;
+
+      if (airlineFilterContainer) {
+        airlineFilterContainer.querySelectorAll('input.airline-input').forEach((input) => (input.checked = false));
+      }
+      if (daysFilterContainer) {
+        daysFilterContainer.querySelectorAll('input.days-input').forEach((input) => (input.checked = false));
+      }
+
+      if (minInput && maxInput) {
+        minInput.value = 0;
+        maxInput.value = 100;
+        updatePriceRange();
+      }
+
+      filterCards();
+    });
+  }
+});
