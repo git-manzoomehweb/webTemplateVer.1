@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const currentPage = main.dataset.activepage;
 
-  document.querySelectorAll("nav a, .toggle-dropdown a, li a").forEach((link) => {
+  document.querySelectorAll("header nav a, header .toggle-dropdown a, header nav li a").forEach((link) => {
     if (link.dataset.activepage === currentPage) {
       link.classList.remove("text-zinc-900");
       link.classList.add("text-primary-600");
@@ -167,6 +167,41 @@ document.querySelectorAll(".highlight-rest").forEach(el => {
     let first = words[0];  
     let rest = words.slice(1).join(" ");  
     el.innerHTML = `${first} <span class="text-primary-600 font-bold">${rest}</span>`;
+  }
+});
+
+// ---------scrollTopBtn----------
+document.addEventListener("DOMContentLoaded", function () {
+  if (document.querySelector(".scrollTopBtn")) {
+    const scrollTopBtn = document.querySelector(".scrollTopBtn");
+
+    function checkScreenSize() {
+      if (window.innerWidth > 1024) {
+        scrollTopBtn.style.display = "none";
+      } else {
+        updateButtonVisibility();
+      }
+    }
+
+    function updateButtonVisibility() {
+      if (
+        window.innerWidth <= 1024 &&
+        (document.body.scrollTop > 100 ||
+          document.documentElement.scrollTop > 100)
+      ) {
+        scrollTopBtn.style.display = "flex";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    }
+
+    window.addEventListener("scroll", updateButtonVisibility);
+    window.addEventListener("resize", checkScreenSize);
+    scrollTopBtn.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    );
+
+    checkScreenSize();
   }
 });
 
@@ -396,5 +431,56 @@ boxes.forEach(box => {
         adjustTextColor(span, originalBgColor); 
       }
     });
+  });
+});
+
+// see-more contact
+document.addEventListener('DOMContentLoaded', function () {
+  const content = document.querySelector('.content-inner');
+  const button = document.querySelector('.see-more');
+  const MAX = 320;
+  let expanded = false;
+
+  if (!content || !button) return;
+
+  content.style.overflow = 'hidden';
+  content.style.transition = 'height 0.5s ease';
+
+  if (content.scrollHeight > MAX) {
+    content.style.height = MAX + 'px';
+    button.style.display = '';
+    button.textContent = 'مشاهده بیشتر';
+  } else {
+    content.style.height = 'auto';
+    button.style.display = 'none';
+    expanded = true;
+  }
+
+  const forceReflow = () => content.getBoundingClientRect().height;
+
+  button.addEventListener('click', function () {
+    if (!expanded) {
+      content.style.height = MAX + 'px';
+      forceReflow();
+      content.style.height = content.scrollHeight + 'px'; 
+      button.textContent = 'نمایش کمتر';
+      expanded = true;
+
+      const onEnd = (e) => {
+        if (e.propertyName === 'height') {
+          content.style.height = 'auto';
+          content.removeEventListener('transitionend', onEnd);
+        }
+      };
+      content.addEventListener('transitionend', onEnd);
+
+    } else {
+      const start = content.scrollHeight;
+      content.style.height = start + 'px'; 
+      forceReflow();
+      content.style.height = MAX + 'px';  
+      button.textContent = 'مشاهده بیشتر';
+      expanded = false;
+    }
   });
 });

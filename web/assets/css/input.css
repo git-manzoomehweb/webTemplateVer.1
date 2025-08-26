@@ -32,19 +32,16 @@
   --secondary-700: #ffa328;
   --secondary-800: #ff9326;
   --secondary-900: #fd7523;
-  --secondary-950: #f46007;
 
   --special-1: #FFFFFF05;
   --special-2: #ffffff00;
+  --special-3: #0000009C;
+
+  --client-color: #466def;
 
   ---bg: url("");
-  --default-bg: url("../images/default-back.jpg");
-  --tourlist-bg: url("../images/tour-list-back.jpg");
-  --articlelist-bg: url("../images/article-list-back.png");
-  --hotellist-bg: url("../images/hotel-list-back.jpg");
-  --article-bg: url("../images/article-back.jpg");
-  --footer-bg: url("../images/footer-back.jpg");
-  --contact-bg: url("../images/contact-back.jpg");
+  --visaList-bg: url("../images/visa-background.jpg");
+  --contact-bg: url("../images/contact-background.jpg");
 }
 
 @font-face {

@@ -9,7 +9,12 @@ module.exports = {
           "linear-gradient(180deg, #F6F6F6 0%, #FFFFFF 100%)",
         "gradient-black-bottom":
           "linear-gradient(180deg, rgba(0, 0, 0, 0) 45.53%, rgba(0, 0, 0, 0.86) 100%)",
-        defaultBg: "var(--default-bg)",
+        "gradient-brown-bottom":
+          "linear-gradient(180deg, rgba(0, 0, 0, 0) 41.56%, rgba(31, 0, 0, 0.82) 100%)",
+        visaList: "var(--visaList-bg)",
+        contact: "var(--contact-bg)",
+        articleList: "var(--articleList-bg)",
+        tourList: "var(--tourList-bg)",
       },
       boxShadow: {
         'search-engine': 'box-shadow: 0px 4px 50px 0px #0000001C',
@@ -50,6 +55,7 @@ module.exports = {
           3: "var(--special-3)",
           4: "var(--special-4)",
         },
+        client: "var(--client-color)",
       },
     },
   },
