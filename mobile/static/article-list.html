@@ -31,7 +31,39 @@
             </div>
         </section>
         <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
-            <div class="flex flex-col gap-2">
+            <button id="filterOpenBtn"
+            class="flex items-center justify-center gap-2 py-3 px-7 bg-zinc-200 rounded-full text-sm font-medium text-zinc-900">
+            <svg width="24" height="24" class="flex-shrink-0">
+                <use href="../assets/images/sprite-icons.svg#icon-filter"></use>
+            </svg>
+            فیلتر
+        </button>
+        <aside class="filters-panel fixed z-30 bottom-0 left-0 h-full w-full bg-zinc-50 px-4 py-6 overflow-y-auto transform transition-transform duration-300 ease-in-out translate-y-full">
+            <button id="filterCloseBtn" class="block bg-primary-800 p-3 rounded-lg mb-4 mr-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="#fff">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+              <div class="">
+                <div class="accordion-toggle flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
+                  <h3 class="relative z-10 text-zinc-700 font-bold">دسته بندی</h3>
+                </div>
+                <div class="flex flex-col gap-7 pr-3 mt-5 overflow-hidden transition-all duration-300 ease-in-out">
+                  <label class="flex items-center gap-3 cursor-pointer select-none transition-all duration-300">
+                    <input type="radio" name="city" value="" class="w-5 h-5 bg-transparent cursor-pointer" />
+  
+                    <span class="transition-colors text-zinc-900 text-sm">استانبول</span>
+                  </label>
+                  <label class="flex items-center gap-3 cursor-pointer select-none transition-all duration-300">
+                    <input type="radio" name="city" value="" class="w-5 h-5 bg-transparent cursor-pointer" />
+  
+                    <span class="transition-colors text-zinc-900 text-sm">استانبول</span>
+                  </label>
+                </div>
+              </div>
+          </aside>
+            <div class="flex flex-col gap-2 mt-6">
                 <a href="" class="flex flex-col gradient-border from-gray-300 rounded-2xl p-2 min-h-[355px]">
                     <img src="../assets/images/popular-tour-img.jpg" class="w-full h-40 object-cover rounded-2xl" alt=""
                         width="256" height="160" loading="lazy" />
@@ -92,6 +124,47 @@
                 </li>
             </ul>
         </section>
+        
+        <section class="relative rounded-3xl overflow-hidden mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-14">
+            <img src="../assets/images/contact-tour-list.jpg" class="w-full h-80 object-cover" alt="" width="295"
+                height="320" loading="lazy">
+            <div class="absolute z-10 top-6 left-5 right-5">
+                <div class="flex flex-col items-center">
+                    <span class="bg-primary-700 rounded-full p-4">
+                        <svg width="37" height="37" class="flex-shrink-0">
+                            <use href="../assets/images/sprite-icons.svg#icon-headphone-white"></use>
+                        </svg>
+                    </span>
+                    <h2 class="font-bold text-zinc-900 mt-2">پشتیبانی مشتریان</h2>
+                    <h3 class="text-xs text-zinc-900 mt-1">همیشه در کنار شما هستیم</h3>
+                </div>
+                <div class="flex flex-col gap-2 mt-4 direction-ltr">
+                    <div class="flex items-center gap-3 bg-white rounded-xl p-2">
+                        <span class="bg-primary-50 rounded-full p-3">
+                            <svg width="24" height="24" class="flex-shrink-0">
+                                <use href="../assets/images/sprite-icons.svg#icon-phone"></use>
+                            </svg>
+                        </span>
+                        <div class="flex flex-col gap-1">
+                            <span class="text-zinc-500 text-xs">تماس تلفنی</span>
+                            <span class="text-zinc-900 font-medium">۰۲۱-۸۸۲۳۴۳۵۶</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white rounded-xl p-2">
+                        <span class="bg-primary-50 rounded-full p-3">
+                            <svg width="24" height="24" class="flex-shrink-0">
+                                <use href="../assets/images/sprite-icons.svg#icon-chat"></use>
+                            </svg>
+                        </span>
+                        <div class="flex flex-col gap-1">
+                            <span class="text-zinc-500 text-xs">چت آنلاین</span>
+                            <span class="text-zinc-900 font-medium">پاسخ سریع و فوری</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl my-14">
             <h2 class="font-bold text-zinc-900 mb-3">فرم درخواست ویزا چست؟</h2>
             <div class="text-zinc-900 text-xs text-justify hyphens-auto leading-5 mb-6">

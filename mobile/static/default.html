@@ -58,7 +58,7 @@
           <section class="relative mt-2">
             <input
               class="header-input w-full h-14 pr-12 bg-zinc-100 rounded-xl text-zinc-900 placeholder-zinc-700 outline-none"
-              type="text" autocomplete="on" placeholder="جستجو" required name="search-content-name" />
+              type="text" aria-label="جستجو" autocomplete="on" placeholder="جستجو" required name="search-content-name" />
             <svg width="48" height="48" class="search-header absolute right-1 top-1">
               <use href="../assets/images/sprite-icons.svg#icon-search-header"></use>
             </svg>
@@ -136,7 +136,8 @@
       <!-- header menu -->
     </section>
   </header>
-  <main data-activepage="home">
+  <main data-activepage="home"> 
+    <h1 class="h1-tag">gdgdfggg</h1>
     <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
       <img src="../assets/images/search-enigne-img.jpg" class="w-full h-48 object-cover rounded-3xl" alt="" width="288"
         height="192" loading="lazy" />
@@ -714,9 +715,9 @@
       <div class="relative z-10 mask-cover-about">
         <img src="../assets/images/about-us-img.jpg" alt="" />
       </div>
-      <div class="mask-image-about pt-24 px-3 pb-6 -mt-24">
+      <div class="content-box mask-image-about pt-24 px-3 pb-6 -mt-24">
         <h2 class="inline-block image-text text-3xl font-black mb-6">درباره ما</h2>
-        <div class="text-zinc-900 text-xs text-justify hyphens-auto leading-5">
+        <div class="content-inner text-zinc-900 text-xs text-justify hyphens-auto leading-5 line-clamp-23">
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون
           بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
           نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
@@ -729,12 +730,16 @@
           مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و
           سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای
           طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد،
+          مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و
+          سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای
+          طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد،
         </div>
+        <a href="" class="read-more-link w-full text-center text-xs text-blue-500 mt-4" data-max="480">مشاهده بیشتر</a>
       </div>
     </section>
   </main>
   <footer class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-20">
-    <button
+    <button aria-label="scrolltotop"
       class="fixed bottom-0.5 right-2 bg-primary-600 text-white rounded-full z-20 w-12 h-12 items-center justify-center scrollTopBtn">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         width="24" height="24">
@@ -744,7 +749,7 @@
     <section class="px-3">
       <div class="gradient-border from-primary-600 bg-white rounded-xl px-3 py-6">
         <h2 class="font-bold text-zinc-900 mb-2">درباره ما</h2>
-        <div class="text-xs text-zinc-900 text-justify">
+        <div class="text-xs text-zinc-900 text-justify hyphens-auto leading-5">
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون
           بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
           نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و

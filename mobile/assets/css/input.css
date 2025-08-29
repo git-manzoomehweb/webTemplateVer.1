@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    font-family: "DanaFaNum";
+    font-family: 'DanaFaNum';
   }
 }
 :root {
@@ -21,7 +21,7 @@
   --primary-900: #bf000b;
   --primary-950: #9b0009;
 
-  --secondary: #fce7f3 ;
+  --secondary: #fce7f3;
   --secondary-50: #fff8e3;
   --secondary-100: #ffecb7;
   --secondary-200: #ffe189;
@@ -39,45 +39,64 @@
 
   --client-color: #466def;
 
-  ---bg: url("");
-  --visaList-bg: url("../images/visa-background.jpg");
-  --contact-bg: url("../images/contact-background.jpg");
-  --articleList-bg: url("../images/article-list-background.jpg");
-  --tourList-bg: url("../images/tour-list-background.jpg");
+  ---bg: url('');
+  --visaList-bg: url('../images/visa-background.jpg');
+  --contact-bg: url('../images/contact-background.jpg');
+  --articleList-bg: url('../images/article-list-background.jpg');
+  --tourList-bg: url('../images/tour-list-background.jpg');
 }
 
 @font-face {
   font-display: swap;
-  font-family: "DanaFaNum";
+  font-family: 'DanaFaNum';
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/DanaFaNum-Regular.ttf") format("truetype");
+  src: url('../fonts/DanaFaNum-Regular.ttf') format('truetype');
 }
 @font-face {
   font-display: swap;
-  font-family: "DanaFaNum";
+  font-family: 'DanaFaNum';
   font-style: normal;
   font-weight: 500;
-  src: url("../fonts/DanaFaNum-Medium.ttf") format("truetype");
+  src: url('../fonts/DanaFaNum-Medium.ttf') format('truetype');
 }
 @font-face {
   font-display: swap;
-  font-family: "DanaFaNum";
+  font-family: 'DanaFaNum';
   font-style: normal;
   font-weight: 700;
-  src: url("../fonts/DanaFaNum-Bold.ttf") format("truetype");
+  src: url('../fonts/DanaFaNum-Bold.ttf') format('truetype');
 }
 @font-face {
   font-display: swap;
-  font-family: "DanaFaNum";
+  font-family: 'DanaFaNum';
   font-style: normal;
   font-weight: 900;
-  src: url("../fonts/DanaFaNum-Black.woff2") format("woff2");
+  src: url('../fonts/DanaFaNum-Black.woff2') format('woff2');
 }
 
-.direction-ltr{
+.h1-tag{
+  position: absolute;
+  width: 1px;
+  padding: 0;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-width: 0;
+  clip: rect(0, 0, 0, 0);
+}
+
+.direction-ltr {
   direction: ltr;
   unicode-bidi: embed;
+}
+
+.line-clamp-23 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 23;
 }
 
 .line-clamp-15 {
@@ -88,7 +107,7 @@
 }
 
 .mask-image {
-  background-color: #F4F4F5;
+  background-color: #f4f4f5;
   -webkit-mask-image: url(../images/mask-svg.svg);
   mask-image: url(../images/mask-svg.svg);
   -webkit-mask-repeat: no-repeat;
@@ -98,7 +117,7 @@
 }
 
 .mask-image-about {
-  background-color: #F4F4F5;
+  background-color: #f4f4f5;
   -webkit-mask-image: url(../images/mask-svg-about.svg);
   mask-image: url(../images/mask-svg-about.svg);
   -webkit-mask-repeat: no-repeat;
@@ -120,29 +139,28 @@
   overflow: hidden;
 }
 
-
 .gradient-border-thick::before {
-  padding: 2px; 
+  padding: 2px;
 }
 
 .swiper .swiper-pagination-bullet {
-  background-color: #D4D4D8;
+  background-color: #d4d4d8;
   width: 12px;
   height: 7px;
   border-radius: 9999px;
-  opacity: 1; 
+  opacity: 1;
 }
 
 .swiper .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background-color: var(--primary-600);
   width: 32px;
   height: 11px;
-  border-radius: 9999px; 
+  border-radius: 9999px;
 }
 
- .tabs-container::-webkit-scrollbar {
-  height: 2px; 
-} 
+.tabs-container::-webkit-scrollbar {
+  height: 2px;
+}
 
 .border-dashed-zinc {
   position: relative;
@@ -151,25 +169,14 @@
 }
 
 .border-dashed-zinc::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  padding: 2px; 
-  background: linear-gradient(90deg, #FFFFFF 0%, #E1E1E1 100%);
+  padding: 2px;
+  background: linear-gradient(90deg, #ffffff 0%, #e1e1e1 100%);
 
-
-  -webkit-mask: repeating-linear-gradient(
-    90deg,
-    #000 0 4px,
-    transparent 4px 8px
-  ),
-  repeating-linear-gradient(
-    0deg,
-    #000 0 4px,
-    transparent 4px 8px
-  ),
-  linear-gradient(#000 0 0);
+  -webkit-mask: repeating-linear-gradient(90deg, #000 0 4px, transparent 4px 8px), repeating-linear-gradient(0deg, #000 0 4px, transparent 4px 8px), linear-gradient(#000 0 0);
 
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
@@ -181,7 +188,7 @@
 }
 
 .border-dashed-zinc::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0.75px;
   border-radius: inherit;
@@ -189,39 +196,38 @@
 }
 
 .faq-border::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   right: 0;
   width: 3px;
   height: 100%;
-  background: #D4D4D8;
+  background: #d4d4d8;
   border-radius: 9999px;
 }
 
 .faq-border.active::after {
-  background: var(--primary-600); 
+  background: var(--primary-600);
 }
 
-
 .image-text {
-  color: transparent;  
-  background-image: url('../images/pyramid.jpg'); 
-  background-size: cover;   
+  color: transparent;
+  background-image: url('../images/pyramid.jpg');
+  background-size: cover;
   background-position: center;
-  -webkit-background-clip: text; 
-  background-clip: text;      
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .submenu-scroll{
-  direction: ltr;       
+  direction: ltr;
 }
 
 .submenu-scroll > li,
-.submenu-scroll > *{
+.submenu-scroll > * {
   direction: rtl;
-  unicode-bidi: isolate; 
-  text-align: right;    
+  unicode-bidi: isolate;
+  text-align: right;
 }
 
 .submenu-scroll::-webkit-scrollbar {
@@ -243,7 +249,7 @@
 }
 
 .shine-effect::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 33rem;
   height: 100%;
@@ -259,14 +265,13 @@
   right: 100%;
 }
 
-
-.phone-number div:not(:last-child)::after {
+.phone-number a:not(:last-child)::after {
   content: '-';
-  margin-left: 4px; 
-  margin-right: 4px; 
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
-.slider-wrapper input[type="range"]::-webkit-slider-thumb {
+.slider-wrapper input[type='range']::-webkit-slider-thumb {
   pointer-events: auto;
   -webkit-appearance: none;
   appearance: none;
@@ -281,7 +286,7 @@
   background: radial-gradient(circle, #fff 50%, var(--primary-700) 41%);
 }
 
-.slider-wrapper input[type="range"]::-moz-range-thumb {
+.slider-wrapper input[type='range']::-moz-range-thumb {
   pointer-events: auto;
   width: 16px;
   height: 17px;

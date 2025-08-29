@@ -436,53 +436,76 @@ boxes.forEach(box => {
 
 // see-more contact
 document.addEventListener('DOMContentLoaded', function () {
-  const content = document.querySelector('.content-inner');
-  const button = document.querySelector('.see-more');
-  const MAX = 320;
-  let expanded = false;
 
-  if (!content || !button) return;
+  function setupSeeMore(content, button) {
+    let expanded = false;
+    const MAX = parseInt(button.dataset.max) || 320;
 
-  content.style.overflow = 'hidden';
-  content.style.transition = 'height 0.5s ease';
+    content.style.overflow = 'hidden';
+    content.style.transition = 'height 0.5s ease';
 
-  if (content.scrollHeight > MAX) {
-    content.style.height = MAX + 'px';
-    button.style.display = '';
-    button.textContent = 'مشاهده بیشتر';
-  } else {
-    content.style.height = 'auto';
-    button.style.display = 'none';
-    expanded = true;
+    if (content.scrollHeight > MAX) {
+      content.style.height = MAX + 'px';
+      button.style.display = '';
+      button.textContent = 'مشاهده بیشتر';
+    } else {
+      content.style.height = 'auto';
+      button.style.display = 'none';
+      expanded = true;
+    }
+
+    const forceReflow = () => content.getBoundingClientRect().height;
+
+    button.addEventListener('click', function () {
+      if (!expanded) {
+        content.style.height = MAX + 'px';
+        forceReflow();
+        content.style.height = content.scrollHeight + 'px'; 
+        button.textContent = 'نمایش کمتر';
+        expanded = true;
+
+        const onEnd = (e) => {
+          if (e.propertyName === 'height') {
+            content.style.height = 'auto';
+            content.removeEventListener('transitionend', onEnd);
+          }
+        };
+        content.addEventListener('transitionend', onEnd);
+
+      } else {
+        const start = content.scrollHeight;
+        content.style.height = start + 'px'; 
+        forceReflow();
+        content.style.height = MAX + 'px';  
+        button.textContent = 'مشاهده بیشتر';
+        expanded = false;
+      }
+    });
   }
 
-  const forceReflow = () => content.getBoundingClientRect().height;
+  function setupReadMoreLink(content, link) {
+    const MAX = parseInt(link.dataset.max) || 240;
 
-  button.addEventListener('click', function () {
-    if (!expanded) {
-      content.style.height = MAX + 'px';
-      forceReflow();
-      content.style.height = content.scrollHeight + 'px'; 
-      button.textContent = 'نمایش کمتر';
-      expanded = true;
-
-      const onEnd = (e) => {
-        if (e.propertyName === 'height') {
-          content.style.height = 'auto';
-          content.removeEventListener('transitionend', onEnd);
-        }
-      };
-      content.addEventListener('transitionend', onEnd);
-
+    if (content.scrollHeight >= MAX) {
+      link.style.display = 'inline-block';
     } else {
-      const start = content.scrollHeight;
-      content.style.height = start + 'px'; 
-      forceReflow();
-      content.style.height = MAX + 'px';  
-      button.textContent = 'مشاهده بیشتر';
-      expanded = false;
+      link.style.display = 'none';
+    }
+  }
+
+  document.querySelectorAll('.content-box').forEach(box => {
+    const content = box.querySelector('.content-inner');
+    const seeMoreBtn = box.querySelector('.see-more');      
+    const linkBtn   = box.querySelector('.read-more-link');  
+
+    if (content && seeMoreBtn) {
+      setupSeeMore(content, seeMoreBtn);
+    }
+    if (content && linkBtn) {
+      setupReadMoreLink(content, linkBtn);
     }
   });
+
 });
 
 // ----filter tourList card------

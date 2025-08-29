@@ -72,17 +72,24 @@
                         <svg width="24" height="24" class="flex-shrink-0">
                             <use href="../assets/images/sprite-icons.svg#icon-phone"></use>
                         </svg>
-                        <div class="flex items-center flex-wrap phone-number">
-                            <div class="text-zinc-900">09202400580</div>
-                            <div class="text-zinc-900">09202400580</div>
+                        <div class="phone-number flex items-center">
+                            <a href="tel:" class="relative group text-zinc-900 transition-all duration-300 hover:text-primary-600">09202400580
+                                <span class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
+                            </a>
+                            <a href="tel:" class="relative group text-zinc-900 transition-all duration-300 hover:text-primary-600">09202400580
+                                <span class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
+                            </a>
                         </div>
                     </div>
-                    <div class="flex items-center gap-3">
+                    <a href="mailto:" class="group flex items-center gap-3">
                         <svg width="24" height="24" class="flex-shrink-0">
                             <use href="../assets/images/sprite-icons.svg#icon-mail"></use>
                         </svg>
-                        <div class="text-zinc-900">support@travila.com</div>
-                    </div>
+                        <div class="relative text-zinc-900 transition-all duration-300 group-hover:text-primary-600">support@travila.com
+                            <span class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
+                        </div>
+                        
+                    </a>
                 </div>
                 <ul class="flex items-center gap-2 mt-7">
                     <li class="justify-self-start">
@@ -227,7 +234,7 @@
                             class="font-medium px-2 transition-all duration-300 hover:text-primary-600"
                             data-index="1">هتل</button>
                         <button
-                            class="font-medium px-2 transition-all duration-300"
+                            class="font-medium px-2 transition-all duration-300 hover:text-primary-600"
                             data-index="2">هتل + پرواز</button>
                         <button
                             class="font-medium px-2 transition-all duration-300 hover:text-primary-600"
