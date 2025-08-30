@@ -5,96 +5,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.basiscore.net/basisfly.com/css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="../assets/css/output.css">
 </head>
 
 <body>
     <main>
-        <section class="relative bg-articleList bg-center bg-cover py-20">
+        <section class="relative bg-hotelList bg-center bg-cover py-24">
             <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
-            <div
-                class="relative z-10 flex flex-col items-center gap-2 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
+            <div class="relative z-10 flex flex-col items-center gap-2">
                 <div class="bg-specialcolor-3 rounded-xl py-4 px-10">
-                    <h1 class="font-bold text-white">جدید ترین اخبار</h1>
+                    <h1 class="font-bold text-white">هتل استانبول</h1>
                 </div>
-                <div class="relative w-full">
-                    <input
-                        class="header-input w-full h-14 pr-12 bg-zinc-100 rounded-xl text-zinc-900 placeholder-zinc-500 outline-none"
-                        type="text" autocomplete="on" placeholder="جستجوی مقاله" required name="search-content-name" />
-                    <svg width="48" height="48" class="search-header absolute right-1 top-1">
-                        <use href="../assets/images/sprite-icons-mobile.svg#icon-search-header"></use>
-                    </svg>
-                </div>
-                <button
-                    class="check-contrast w-full h-14 flex items-center justify-center rounded-xl bg-primary-600 font-medium">جستجو</button>
                 <div class="text-white text-xs">صفحه اصلی / درباره ما</div>
             </div>
         </section>
+
+        <section class="relative rounded-2xl overflow-hidden mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
+            <div class="bg-specialcolor-3 absolute inset-0 w-full h-full"></div>
+            <a href="" class="flex flex-col">
+                <img src="../assets/images/banner-list-pages.jpg" class="w-full h-96 object-cover" alt="first-banner"
+                    width="288" height="384" loading="lazy" />
+                <div class="absolute z-10 top-4 px-4">
+                    <h2 class="text-sm font-bold text-white mb-3">بهترین تجربه های سفر با تور های آسیا سیر</h2>
+                    <div class="text-xs text-white text-justify hyphens-auto leading-5 mb-3 line-clamp-15">
+                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
+                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی
+                        مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
+                        درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری
+                        را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
+                        صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و
+                        زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
+                        اساسا مورد استفاده قرار گیرد.
+                    </div>
+                </div>
+            </a>
+        </section>
+
         <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
             <button id="filterOpenBtn"
-            class="flex items-center justify-center gap-2 py-3 px-7 bg-zinc-200 rounded-full text-sm font-medium text-zinc-900">
-            <svg width="24" height="24" class="flex-shrink-0">
-                <use href="../assets/images/sprite-icons-mobile.svg#icon-filter"></use>
-            </svg>
-            فیلتر
-        </button>
-        <aside class="filters-panel fixed z-30 bottom-0 left-0 h-full w-full bg-zinc-50 px-4 py-6 overflow-y-auto transform transition-transform duration-300 ease-in-out translate-y-full">
-            <button id="filterCloseBtn" class="block bg-primary-800 p-3 rounded-lg mb-4 mr-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"
-                    stroke-width="1.5" stroke="#fff">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+                class="flex items-center justify-center gap-2 py-3 px-7 bg-zinc-200 rounded-full text-sm font-medium text-zinc-900">
+                <svg width="24" height="24" class="flex-shrink-0">
+                    <use href="../assets/images/sprite-icons-mobile.svg#icon-filter"></use>
                 </svg>
+                فیلتر
             </button>
-              <div class="">
-                <div class="accordion-toggle flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
-                  <h3 class="relative z-10 text-zinc-700 font-bold">دسته بندی</h3>
+            <aside
+                class="filters-panel fixed z-30 bottom-0 left-0 h-full w-full bg-white overflow-y-auto transform transition-transform duration-300 ease-in-out translate-y-full px-4 py-6">
+                <button id="filterCloseBtn" class="block bg-primary-800 p-3 rounded-lg mb-4 mr-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="#fff">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <div class="">
+                    <div
+                        class="accordion-toggle flex items-center justify-between gradient-border from-primary-600 rounded-full py-2 pr-3">
+                        <h3 class="relative z-10 text-zinc-700 font-bold">ایرلاین ها</h3>
+                    </div>
+                    <div
+                        class="airline-filter accordion-content flex flex-col gap-9 pr-3 mt-5 overflow-hidden transition-all duration-300 ease-in-out">
+                        <!-- airline -->
+                    </div>
                 </div>
-                <div class="flex flex-col gap-7 pr-3 mt-5 overflow-hidden transition-all duration-300 ease-in-out">
-                  <label class="flex items-center gap-3 cursor-pointer select-none transition-all duration-300">
-                    <input type="radio" name="city" value="" class="w-5 h-5 bg-transparent cursor-pointer" />
-  
-                    <span class="transition-colors text-zinc-900 text-sm">استانبول</span>
-                  </label>
-                  <label class="flex items-center gap-3 cursor-pointer select-none transition-all duration-300">
-                    <input type="radio" name="city" value="" class="w-5 h-5 bg-transparent cursor-pointer" />
-  
-                    <span class="transition-colors text-zinc-900 text-sm">استانبول</span>
-                  </label>
+                <div class="mt-6">
+                    <div
+                        class="accordion-toggle flex items-center justify-between gradient-border from-primary-600 rounded-full py-2 pr-3">
+                        <h3 class="relative z-10 text-zinc-700 font-bold">تعداد روز ها</h3>
+                    </div>
+                    <div
+                        class="days-filter accordion-content flex flex-col gap-6 pr-3 mt-5 overflow-hidden transition-all duration-300 ease-in-out">
+                        <!-- days-filter -->
+                    </div>
                 </div>
-              </div>
-          </aside>
-            <div class="flex flex-col gap-2 mt-6">
-                <a href="" class="flex flex-col gradient-border from-gray-300 rounded-2xl p-2 min-h-[355px]">
-                    <img src="../assets/images/popular-tour-img.jpg" class="w-full h-40 object-cover rounded-2xl" alt=""
-                        width="256" height="160" loading="lazy" />
-                    <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
-                        <h3 class="font-medium text-zinc-900 line-clamp-1">مزیت های زندگی در دبی</h3>
-                        <div class="text-xs text-zinc-700 line-clamp-4 text-justify hyphens-auto leading-5">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-                            است،
-                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="flex items-center gap-1 text-xs text-zinc-900">
-                                <svg width="17" height="17" class="flex-shrink-0">
-                                    <use href="../assets/images/sprite-icons-mobile.svg#icon-person"></use>
-                                </svg>
-                                محسن حیدری
-                            </span>
-                            <button class="flex items-center">
-                                <span class="text-primary-600 text-xs">مطالعه بیشتر</span>
-                                <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                                        fill="var(--primary-600)"></path>
-                                </svg>
-                            </button>
+                <div class="mt-6">
+                    <div
+                        class="accordion-toggle flex items-center justify-between gradient-border from-primary-600 rounded-full py-2 pr-3">
+                        <h3 class="relative z-10 text-zinc-700 font-bold">بازه قیمت</h3>
+                    </div>
+                    <div class="mt-5 accordion-content overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="range-container">
+                            <div class="range-values flex justify-between mb-1">
+                                <span class="text-xs font-light">
+                                    <span id="minValue">0</span>
+                                    تومان
+                                </span>
+                                <span class="text-xs font-light">
+                                    <span id="maxValue">0</span>
+                                    تومان
+                                </span>
+                            </div>
+
+                            <div class="slider-wrapper relative h-8">
+                                <div class="absolute top-4 left-0 right-0 h-1 bg-zinc-200 rounded-full z-0"></div>
+                                <input type="range" id="minRange" min="0" max="100" value="0"
+                                    class="absolute w-full top-0 pointer-events-none appearance-none bg-transparent" />
+                                <input type="range" id="maxRange" min="0" max="100" value="100"
+                                    class="absolute w-full top-0 pointer-events-none appearance-none bg-transparent" />
+                                <div id="rangeTrack" class="absolute h-1 rounded-full top-4 z-10 bg-primary-700">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </a>
+                </div>
+            </aside>
+            <div class="flex flex-col gap-3 mt-6">
+                <a href="" class="flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80">
+                    <img src="../assets/images/popular-tour-img.jpg" class="w-full h-40 object-cover rounded-2xl" alt=""
+                      width="256" height="160" loading="lazy" />
+                    <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
+                      <h3 class="font-bold text-zinc-900 line-clamp-1">هتل پارسیان</h3>
+                      <div class="grid grid-cols-2 gap-1 flex-1">
+                        <div class="border-dashed-zinc rounded-full p-1">
+                          <div class="relative z-20 flex items-center gap-3">
+                            <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                              <svg width="17" height="17" class="flex-shrink-0">
+                                <use href="../assets/images/sprite-icons-mobile.svg#icon-star"></use>
+                              </svg>
+                            </span>
+                            <span class="text-xs text-zinc-700">4 ستاره</span>
+                          </div>
+                        </div>
+                        <div class="border-dashed-zinc rounded-full p-1">
+                          <div class="relative z-20 flex items-center gap-3">
+                            <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                              <svg width="17" height="17" class="flex-shrink-0">
+                                <use href="../assets/images/sprite-icons-mobile.svg#icon-map"></use>
+                              </svg>
+                            </span>
+                            <span class="text-xs text-zinc-700">تکسیم</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex items-center gap-2 justify-between py-1 pr-2">
+                        <div>
+                          <span class="text-zinc-500 text-xs">شروع قیمت:</span>
+                          <div class="text-zinc-900 text-sm font-medium mt-1">12/000/000 تومان + 2000 دلار</div>
+                        </div>
+                        <button
+                          class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
+                      </div>
+                    </div>
+                  </a>
             </div>
-            <ul class="flex items-center justify-center gap-1 mt-14">
+            <ul class="flex items-center justify-center gap-1 mt-12">
                 <li class="flex items-center justify-center w-12 h-12 rounded-lg bg-zinc-100 ml-2">
                     <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -124,7 +178,7 @@
                 </li>
             </ul>
         </section>
-        
+
         <section class="relative rounded-3xl overflow-hidden mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-14">
             <img src="../assets/images/contact-tour-list.jpg" class="w-full h-80 object-cover" alt="" width="295"
                 height="320" loading="lazy">
@@ -267,6 +321,7 @@
         </section>
     </main>
 
+    <script src="https://cdn.basiscore.net/basisfly.com/js/swiper-bundle.min.js"></script>
     <script src="../assets/js/template-core.js"></script>
 </body>
 

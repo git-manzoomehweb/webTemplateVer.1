@@ -12,9 +12,12 @@ module.exports = {
         "gradient-brown-bottom":
           "linear-gradient(180deg, rgba(0, 0, 0, 0) 41.56%, rgba(31, 0, 0, 0.82) 100%)",
         visaList: "var(--visaList-bg)",
+        visa: "var(--visa-bg)",
         contact: "var(--contact-bg)",
         articleList: "var(--articleList-bg)",
+        article: "var(--article-bg)",
         tourList: "var(--tourList-bg)",
+        hotelList: "var(--hotelList-bg)",
       },
       boxShadow: {
         'search-engine': 'box-shadow: 0px 4px 50px 0px #0000001C',

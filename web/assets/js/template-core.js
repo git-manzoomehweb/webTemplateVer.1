@@ -782,3 +782,306 @@ function filterCards() {
   }
 });
 
+// ----filter hotelList card------
+document.addEventListener("DOMContentLoaded", function () {
+  const cityMenu = document.getElementById("cityDropdownMenu");
+  const ratingMenu = document.getElementById("ratingDropdownMenu");
+  const priceMenu = document.getElementById("priceDropdownMenu");
+  const priceButton = document.getElementById("priceFilter");
+  const priceOptions = priceMenu
+    ? priceMenu.querySelectorAll(".price-option")
+    : [];
+  const hotelCards = Array.from(document.querySelectorAll(".hotel-card"));
+  const hotelWrapper = document.querySelector(".hotel-card-wrapper");
+  const cityFilter =
+    document.querySelector('.filter-option[data-filter="city"]') ||
+    document.getElementById("cityFilter");
+  const ratingFilter =
+    document.querySelector('.filter-option[data-filter="rating"]') ||
+    document.getElementById("ratingFilter");
+
+  const activeCityFilters = new Set();
+  const activeRatingFilters = new Set();
+  let activePriceFilter = null;
+
+  function extractPriceNumber(priceString) {
+    if (!priceString) return 0;
+    const numericValue = priceString.replace(/[^0-9.]/g, "");
+    return parseFloat(numericValue) || 0;
+  }
+
+  function generateCityFilterOptions() {
+    if (!cityMenu) return;
+    const citySet = new Set();
+    const cityDisplayMap = new Map();
+
+    hotelCards.forEach((card) => {
+      let city = card.dataset.hotel;
+      if (city) {
+        const normalizedCity = city.trim().toLowerCase();
+        if (!citySet.has(normalizedCity)) {
+          citySet.add(normalizedCity);
+          cityDisplayMap.set(normalizedCity, city.trim());
+        }
+      }
+    });
+
+    function capitalizeFirstLetter(str) {
+      if (!str) return "";
+      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
+
+    cityMenu.innerHTML = "";
+    citySet.forEach((normalizedCity) => {
+      const displayCity = capitalizeFirstLetter(
+        cityDisplayMap.get(normalizedCity) || normalizedCity
+      );
+      const option = document.createElement("div");
+      option.className =
+        "group city-option cursor-pointer p-1 border-b border-gray-100";
+      option.dataset.city = normalizedCity;
+      option.innerHTML = `
+        <span class="flex items-center gap-3 text-sm font-bold transition-all duration-300 group-hover:text-primary-500">
+          <span class="city-check-icon flex items-center justify-center w-4 h-4 border border-primary-100 rounded">
+            <svg width="17" height="16" viewBox="0 0 17 16" fill="none">
+              <path d="M3.48177 9.33333L5.38153 10.7582C5.81022 11.0797 6.41615 11.0061 6.75548 10.5914L12.1484 4"
+                stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+          ${displayCity}
+        </span>
+      `;
+      cityMenu.appendChild(option);
+    });
+  }
+
+  function generateRatingFilterOptions() {
+    if (!ratingMenu) return;
+    ratingMenu.innerHTML = "";
+    for (let i = 1; i <= 5; i++) {
+      const option = document.createElement("div");
+      option.className =
+        "group rating-option cursor-pointer p-1 border-b border-gray-100";
+      option.dataset.rating = i;
+
+      let starsHTML = "";
+      for (let j = 0; j < i; j++) {
+        starsHTML += `
+          <svg width="24" height="24" class="flex-shrink-0">
+            <use href="/images/sprite-icons.svg#icon-golden-star"></use>
+          </svg>
+        `;
+      }
+
+      option.innerHTML = `
+        <span class="flex items-center gap-3 text-sm font-bold transition-all duration-300 group-hover:text-primary-500">
+          <span class="rating-check-icon flex items-center justify-center w-4 h-4 border border-primary-100 rounded">
+            <svg width="17" height="16" viewBox="0 0 17 16" fill="none">
+              <path d="M3.48177 9.33333L5.38153 10.7582C5.81022 11.0797 6.41615 11.0061 6.75548 10.5914L12.1484 4"
+                stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+          ${i} star
+          <div class="flex items-center">${starsHTML}</div>
+        </span>
+      `;
+      ratingMenu.appendChild(option);
+    }
+  }
+
+  function applyFilters() {
+    if (!hotelWrapper) return;
+
+    let filteredCards = hotelCards.filter((card) => {
+      const city = (card.dataset.hotel || "").toLowerCase();
+      const rating = parseInt(card.dataset.rating) || 0;
+      const price = extractPriceNumber(card.dataset.price);
+
+      const cityMatch =
+        activeCityFilters.size === 0 || activeCityFilters.has(city);
+      const ratingMatch =
+        activeRatingFilters.size === 0 || activeRatingFilters.has(rating);
+
+      let priceMatch = true;
+      if (activePriceFilter === "best-price") {
+        priceMatch = card.dataset.bestprice === "true";
+      }
+
+      return cityMatch && ratingMatch && priceMatch;
+    });
+
+    if (activePriceFilter === "high-to-low") {
+      filteredCards.sort(
+        (a, b) =>
+          extractPriceNumber(b.dataset.price) -
+          extractPriceNumber(a.dataset.price)
+      );
+    } else if (activePriceFilter === "low-to-high") {
+      filteredCards.sort(
+        (a, b) =>
+          extractPriceNumber(a.dataset.price) -
+          extractPriceNumber(b.dataset.price)
+      );
+    }
+
+    hotelCards.forEach((card) => {
+      card.style.display = "none";
+    });
+
+    filteredCards.forEach((card) => {
+      card.style.display = "flex";
+      hotelWrapper.appendChild(card);
+    });
+  }
+
+  if (cityMenu) {
+    cityMenu.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const option = e.target.closest(".city-option");
+      if (!option) return;
+
+      const selectedCity = option.dataset.city.toLowerCase();
+      const icon = option.querySelector(".city-check-icon");
+
+      if (activeCityFilters.has(selectedCity)) {
+        activeCityFilters.delete(selectedCity);
+        if (icon) icon.classList.remove("bg-primary-500", "text-white");
+      } else {
+        activeCityFilters.add(selectedCity);
+        if (icon) icon.classList.add("bg-primary-500", "text-white");
+      }
+
+      applyFilters();
+    });
+  }
+
+  if (ratingMenu) {
+    ratingMenu.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const option = e.target.closest(".rating-option");
+      if (!option) return;
+
+      const selectedRating = parseInt(option.dataset.rating);
+      const icon = option.querySelector(".rating-check-icon");
+
+      if (activeRatingFilters.has(selectedRating)) {
+        activeRatingFilters.delete(selectedRating);
+        if (icon) icon.classList.remove("bg-primary-500", "text-white");
+      } else {
+        activeRatingFilters.add(selectedRating);
+        if (icon) icon.classList.add("bg-primary-500", "text-white");
+      }
+
+      applyFilters();
+    });
+  }
+
+  if (cityFilter) {
+    cityFilter.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (cityMenu) {
+        cityMenu.classList.toggle("hidden");
+        if (!cityMenu.classList.contains("hidden")) {
+          if (ratingMenu) ratingMenu.classList.add("hidden");
+          if (priceMenu) priceMenu.classList.add("hidden");
+          priceMenuOpen = false;
+        }
+      }
+    });
+  }
+
+  if (ratingFilter) {
+    ratingFilter.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (ratingMenu) {
+        ratingMenu.classList.toggle("hidden");
+        if (!ratingMenu.classList.contains("hidden")) {
+          if (cityMenu) cityMenu.classList.add("hidden");
+          if (priceMenu) priceMenu.classList.add("hidden");
+          priceMenuOpen = false;
+        }
+      }
+    });
+  }
+
+  let priceMenuOpen = false;
+  if (priceButton) {
+    priceButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (priceMenu) {
+        priceMenuOpen = !priceMenuOpen;
+        priceMenu.classList.toggle("hidden", !priceMenuOpen);
+        if (priceMenuOpen) {
+          if (cityMenu) cityMenu.classList.add("hidden");
+          if (ratingMenu) ratingMenu.classList.add("hidden");
+        }
+      }
+    });
+  }
+
+  if (priceOptions) {
+    priceOptions.forEach((option) => {
+      option.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (priceMenu) {
+          priceMenu.querySelectorAll(".price-check-icon").forEach((icon) => {
+            icon.classList.remove("bg-primary-500", "text-white");
+          });
+        }
+
+        const icon = option.querySelector(".price-check-icon");
+        if (icon) icon.classList.add("bg-primary-500", "text-white");
+
+        activePriceFilter = option.dataset.price;
+
+        applyFilters();
+      });
+    });
+  }
+
+  document.addEventListener("click", (e) => {
+    if (
+      cityMenu &&
+      cityFilter &&
+      !cityMenu.contains(e.target) &&
+      !cityFilter.contains(e.target)
+    ) {
+      cityMenu.classList.add("hidden");
+    }
+
+    if (
+      ratingMenu &&
+      ratingFilter &&
+      !ratingMenu.contains(e.target) &&
+      !ratingFilter.contains(e.target)
+    ) {
+      ratingMenu.classList.add("hidden");
+    }
+
+    if (
+      priceMenu &&
+      priceButton &&
+      !priceMenu.contains(e.target) &&
+      !priceButton.contains(e.target)
+    ) {
+      priceMenu.classList.add("hidden");
+      priceMenuOpen = false;
+    }
+  });
+
+  generateCityFilterOptions();
+  generateRatingFilterOptions();
+
+  if (priceMenu) {
+    const defaultOption = priceMenu.querySelector(
+      '.price-option[data-price="high-to-low"]'
+    );
+    if (defaultOption) {
+      const icon = defaultOption.querySelector(".price-check-icon");
+      if (icon) icon.classList.add("bg-primary-500", "text-white");
+    }
+  }
+
+  activePriceFilter = "high-to-low";
+  applyFilters();
+});
