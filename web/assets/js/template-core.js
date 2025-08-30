@@ -784,104 +784,68 @@ function filterCards() {
 
 // ----filter hotelList card------
 document.addEventListener("DOMContentLoaded", function () {
-  const cityMenu = document.getElementById("cityDropdownMenu");
-  const ratingMenu = document.getElementById("ratingDropdownMenu");
-  const priceMenu = document.getElementById("priceDropdownMenu");
-  const priceButton = document.getElementById("priceFilter");
-  const priceOptions = priceMenu
-    ? priceMenu.querySelectorAll(".price-option")
-    : [];
-  const hotelCards = Array.from(document.querySelectorAll(".hotel-card"));
-  const hotelWrapper = document.querySelector(".hotel-card-wrapper");
-  const cityFilter =
-    document.querySelector('.filter-option[data-filter="city"]') ||
-    document.getElementById("cityFilter");
-  const ratingFilter =
-    document.querySelector('.filter-option[data-filter="rating"]') ||
-    document.getElementById("ratingFilter");
+  const hotelCards = document.querySelectorAll(".hotel-card");
 
-  const activeCityFilters = new Set();
-  const activeRatingFilters = new Set();
-  let activePriceFilter = null;
-
-  function extractPriceNumber(priceString) {
-    if (!priceString) return 0;
-    const numericValue = priceString.replace(/[^0-9.]/g, "");
-    return parseFloat(numericValue) || 0;
-  }
+  let activeCityFilters = new Set();
+  let activeRatingFilters = new Set();
+  let searchQuery = "";
 
   function generateCityFilterOptions() {
+    const cityMenu = document.getElementById("cityFilterMenu");
     if (!cityMenu) return;
-    const citySet = new Set();
-    const cityDisplayMap = new Map();
+    cityMenu.innerHTML = "";
 
-    hotelCards.forEach((card) => {
-      let city = card.dataset.hotel;
-      if (city) {
-        const normalizedCity = city.trim().toLowerCase();
-        if (!citySet.has(normalizedCity)) {
-          citySet.add(normalizedCity);
-          cityDisplayMap.set(normalizedCity, city.trim());
-        }
-      }
+    const citySet = new Set();
+    hotelCards.forEach(card => {
+      const city = (card.dataset.city || "").trim();
+      if (city) citySet.add(city);
     });
 
-    function capitalizeFirstLetter(str) {
-      if (!str) return "";
-      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-    }
-
-    cityMenu.innerHTML = "";
-    citySet.forEach((normalizedCity) => {
-      const displayCity = capitalizeFirstLetter(
-        cityDisplayMap.get(normalizedCity) || normalizedCity
-      );
-      const option = document.createElement("div");
+    citySet.forEach(city => {
+      const option = document.createElement("label");
       option.className =
-        "group city-option cursor-pointer p-1 border-b border-gray-100";
-      option.dataset.city = normalizedCity;
+        "city-item group flex items-center gap-3 text-sm cursor-pointer select-none transition-all duration-300";
       option.innerHTML = `
-        <span class="flex items-center gap-3 text-sm font-bold transition-all duration-300 group-hover:text-primary-500">
-          <span class="city-check-icon flex items-center justify-center w-4 h-4 border border-primary-100 rounded">
-            <svg width="17" height="16" viewBox="0 0 17 16" fill="none">
-              <path d="M3.48177 9.33333L5.38153 10.7582C5.81022 11.0797 6.41615 11.0061 6.75548 10.5914L12.1484 4"
-                stroke="white" stroke-width="2" stroke-linecap="round" />
-            </svg>
-          </span>
-          ${displayCity}
+        <input type="checkbox" value="${city.toLowerCase()}" class="hidden city-input peer" />
+        <span class="flex items-center justify-center w-6 h-6 border-2 border-zinc-400 rounded-lg transition-colors peer-checked:bg-primary-600 peer-checked:border-primary-600">
+          <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.48 9.33L5.38 10.75C5.81 11.08 6.41 11.00 6.75 10.59L12.15 4"
+              stroke="white" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
         </span>
+        <span class="transition-all duration-300 group-hover:text-primary-600">${city}</span>
       `;
       cityMenu.appendChild(option);
     });
   }
 
   function generateRatingFilterOptions() {
+    const ratingMenu = document.getElementById("ratingFilterMenu");
     if (!ratingMenu) return;
     ratingMenu.innerHTML = "";
+
     for (let i = 1; i <= 5; i++) {
       const option = document.createElement("div");
-      option.className =
-        "group rating-option cursor-pointer p-1 border-b border-gray-100";
+      option.className = "group rating-option cursor-pointer p-1 border-b border-gray-100";
       option.dataset.rating = i;
 
       let starsHTML = "";
       for (let j = 0; j < i; j++) {
-        starsHTML += `
-          <svg width="24" height="24" class="flex-shrink-0">
-            <use href="/images/sprite-icons.svg#icon-golden-star"></use>
-          </svg>
-        `;
+        starsHTML += `<svg width="24" height="24" class="flex-shrink-0"><use href="../assets/images/sprite-icons.svg#icon-golden-star"></use></svg>`;
       }
 
       option.innerHTML = `
         <span class="flex items-center gap-3 text-sm font-bold transition-all duration-300 group-hover:text-primary-500">
-          <span class="rating-check-icon flex items-center justify-center w-4 h-4 border border-primary-100 rounded">
-            <svg width="17" height="16" viewBox="0 0 17 16" fill="none">
-              <path d="M3.48177 9.33333L5.38153 10.7582C5.81022 11.0797 6.41615 11.0061 6.75548 10.5914L12.1484 4"
-                stroke="white" stroke-width="2" stroke-linecap="round" />
-            </svg>
-          </span>
-          ${i} star
+          <label class="rating-item group flex items-center gap-3 text-sm cursor-pointer select-none transition-all duration-300">
+            <input type="checkbox" value="${i} ستاره" class="hidden rating-input peer" />
+            <span class="flex items-center justify-center w-6 h-6 border-2 border-zinc-400 rounded-lg transition-colors peer-checked:bg-primary-600 peer-checked:border-primary-600">
+              <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.48 9.33L5.38 10.75C5.81 11.08 6.41 11.00 6.75 10.59L12.15 4"
+                  stroke="white" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            </span>
+            <span class="transition-all duration-300 group-hover:text-primary-600">${i} ستاره</span>
+          </label>
           <div class="flex items-center">${starsHTML}</div>
         </span>
       `;
@@ -889,199 +853,121 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // -------------------- فیلتر قیمت با تبدیل ریال --------------------
+  const minRangeHotel = document.getElementById("minRange-hotel");
+  const maxRangeHotel = document.getElementById("maxRange-hotel");
+  const minValTextHotel = document.getElementById("minValue-hotel");
+  const maxValTextHotel = document.getElementById("maxValue-hotel");
+  const rangeTrackHotel = document.getElementById("rangeTrack-hotel");
+
+  const RIAL_TO_TOMAN = 0.1;
+
+  const toEnglishDigits = (str) => {
+    if (!str) return '';
+    const fa = '۰۱۲۳۴۵۶۷۸۹', ar = '٠١٢٣٤٥٦٧٨٩';
+    return String(str).replace(/[۰-۹٠-٩]/g, d => {
+      const i1 = fa.indexOf(d); if (i1 > -1) return String(i1);
+      const i2 = ar.indexOf(d); if (i2 > -1) return String(i2);
+      return d;
+    });
+  };
+
+  const digitsOnly = (s) => toEnglishDigits(s).replace(/\D+/g, '');
+
+  const parsePriceHotel = (priceStr, priceTomanAttr) => {
+    if (priceTomanAttr != null && priceTomanAttr !== '' && !isNaN(Number(priceTomanAttr))) {
+      return Math.floor(Number(priceTomanAttr));
+    }
+    if (!priceStr) return 0;
+    const text = String(priceStr).toLowerCase();
+    const re = /(?:([\d\s.,\/\\\u066B\u066C\u200c\u060C\u00A0]+)\s*(تومان|تومن|tmn|ریال|rial)|(تومان|تومن|tmn|ریال|rial)\s*([\d\s.,\/\\\u066B\u066C\u200c\u060C\u00A0]+))/gi;
+    let m, total = 0, found = false;
+    while ((m = re.exec(text)) !== null) {
+      const numStr = m[1] || m[4];
+      const curStr = (m[2] || m[3] || '').trim();
+      const n = parseInt(digitsOnly(numStr), 10);
+      if (!n || isNaN(n)) continue;
+      if (curStr === 'ریال' || curStr === 'rial') total += n * RIAL_TO_TOMAN;
+      else if (curStr === 'تومان' || curStr === 'تومن' || curStr === 'tmn') total += n;
+      found = true;
+    }
+    return found ? Math.floor(total) : 0;
+  };
+
+  const pricesHotel = Array.from(hotelCards).map(card => parsePriceHotel(card.dataset.price, card.dataset.priceToman));
+  const REAL_MIN = pricesHotel.length ? Math.min(...pricesHotel) : 0;
+  const REAL_MAX = pricesHotel.length ? Math.max(...pricesHotel) : 100000000;
+
+  let realMin = REAL_MIN;
+  let realMax = REAL_MAX;
+
+  function updatePriceRangeHotel() {
+    if (!minRangeHotel || !maxRangeHotel || !rangeTrackHotel) return;
+
+    let min = parseInt(minRangeHotel.value, 10);
+    let max = parseInt(maxRangeHotel.value, 10);
+    if (isNaN(min)) min = 0;
+    if (isNaN(max)) max = 100;
+    if (min > max) [min, max] = [max, min];
+
+    realMin = Math.floor(REAL_MIN + ((REAL_MAX - REAL_MIN) * min) / 100);
+    realMax = Math.floor(REAL_MIN + ((REAL_MAX - REAL_MIN) * max) / 100);
+
+    if (minValTextHotel) minValTextHotel.textContent = realMin.toLocaleString();
+    if (maxValTextHotel) maxValTextHotel.textContent = realMax.toLocaleString();
+
+    rangeTrackHotel.style.right = `${min}%`;
+    rangeTrackHotel.style.width = `${max - min}%`;
+
+    applyFilters();
+  }
+
+  if (minRangeHotel && maxRangeHotel) {
+    minRangeHotel.addEventListener("input", updatePriceRangeHotel);
+    maxRangeHotel.addEventListener("input", updatePriceRangeHotel);
+    updatePriceRangeHotel();
+  }
+
   function applyFilters() {
-    if (!hotelWrapper) return;
-
-    let filteredCards = hotelCards.filter((card) => {
-      const city = (card.dataset.hotel || "").toLowerCase();
-      const rating = parseInt(card.dataset.rating) || 0;
-      const price = extractPriceNumber(card.dataset.price);
-
-      const cityMatch =
-        activeCityFilters.size === 0 || activeCityFilters.has(city);
-      const ratingMatch =
-        activeRatingFilters.size === 0 || activeRatingFilters.has(rating);
-
-      let priceMatch = true;
-      if (activePriceFilter === "best-price") {
-        priceMatch = card.dataset.bestprice === "true";
-      }
-
-      return cityMatch && ratingMatch && priceMatch;
-    });
-
-    if (activePriceFilter === "high-to-low") {
-      filteredCards.sort(
-        (a, b) =>
-          extractPriceNumber(b.dataset.price) -
-          extractPriceNumber(a.dataset.price)
-      );
-    } else if (activePriceFilter === "low-to-high") {
-      filteredCards.sort(
-        (a, b) =>
-          extractPriceNumber(a.dataset.price) -
-          extractPriceNumber(b.dataset.price)
-      );
-    }
-
     hotelCards.forEach((card) => {
-      card.style.display = "none";
-    });
+      const name = (card.dataset.name || "").toLowerCase();
+      const city = (card.dataset.city || "").toLowerCase();
+      const rate = (card.dataset.rate || "").toLowerCase();
+      const price = parsePriceHotel(card.dataset.price, card.dataset.priceToman);
 
-    filteredCards.forEach((card) => {
-      card.style.display = "flex";
-      hotelWrapper.appendChild(card);
+      let match = true;
+      if (searchQuery && !name.includes(searchQuery)) match = false;
+      if (activeCityFilters.size > 0 && !activeCityFilters.has(city)) match = false;
+      if (activeRatingFilters.size > 0 && !activeRatingFilters.has(rate)) match = false;
+      if (price < realMin || price > realMax) match = false;
+
+      card.style.display = match ? "flex" : "none";
     });
   }
 
-  if (cityMenu) {
-    cityMenu.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const option = e.target.closest(".city-option");
-      if (!option) return;
-
-      const selectedCity = option.dataset.city.toLowerCase();
-      const icon = option.querySelector(".city-check-icon");
-
-      if (activeCityFilters.has(selectedCity)) {
-        activeCityFilters.delete(selectedCity);
-        if (icon) icon.classList.remove("bg-primary-500", "text-white");
-      } else {
-        activeCityFilters.add(selectedCity);
-        if (icon) icon.classList.add("bg-primary-500", "text-white");
-      }
-
+  const nameInput = document.getElementById("hotelNameFilter");
+  if (nameInput) {
+    nameInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value.trim().toLowerCase();
       applyFilters();
     });
   }
 
-  if (ratingMenu) {
-    ratingMenu.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const option = e.target.closest(".rating-option");
-      if (!option) return;
-
-      const selectedRating = parseInt(option.dataset.rating);
-      const icon = option.querySelector(".rating-check-icon");
-
-      if (activeRatingFilters.has(selectedRating)) {
-        activeRatingFilters.delete(selectedRating);
-        if (icon) icon.classList.remove("bg-primary-500", "text-white");
-      } else {
-        activeRatingFilters.add(selectedRating);
-        if (icon) icon.classList.add("bg-primary-500", "text-white");
-      }
-
+  document.addEventListener("change", (e) => {
+    if (e.target.classList.contains("city-input")) {
+      const selectedCity = e.target.value;
+      if (e.target.checked) activeCityFilters.add(selectedCity);
+      else activeCityFilters.delete(selectedCity);
       applyFilters();
-    });
-  }
-
-  if (cityFilter) {
-    cityFilter.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (cityMenu) {
-        cityMenu.classList.toggle("hidden");
-        if (!cityMenu.classList.contains("hidden")) {
-          if (ratingMenu) ratingMenu.classList.add("hidden");
-          if (priceMenu) priceMenu.classList.add("hidden");
-          priceMenuOpen = false;
-        }
-      }
-    });
-  }
-
-  if (ratingFilter) {
-    ratingFilter.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (ratingMenu) {
-        ratingMenu.classList.toggle("hidden");
-        if (!ratingMenu.classList.contains("hidden")) {
-          if (cityMenu) cityMenu.classList.add("hidden");
-          if (priceMenu) priceMenu.classList.add("hidden");
-          priceMenuOpen = false;
-        }
-      }
-    });
-  }
-
-  let priceMenuOpen = false;
-  if (priceButton) {
-    priceButton.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (priceMenu) {
-        priceMenuOpen = !priceMenuOpen;
-        priceMenu.classList.toggle("hidden", !priceMenuOpen);
-        if (priceMenuOpen) {
-          if (cityMenu) cityMenu.classList.add("hidden");
-          if (ratingMenu) ratingMenu.classList.add("hidden");
-        }
-      }
-    });
-  }
-
-  if (priceOptions) {
-    priceOptions.forEach((option) => {
-      option.addEventListener("click", (e) => {
-        e.stopPropagation();
-        if (priceMenu) {
-          priceMenu.querySelectorAll(".price-check-icon").forEach((icon) => {
-            icon.classList.remove("bg-primary-500", "text-white");
-          });
-        }
-
-        const icon = option.querySelector(".price-check-icon");
-        if (icon) icon.classList.add("bg-primary-500", "text-white");
-
-        activePriceFilter = option.dataset.price;
-
-        applyFilters();
-      });
-    });
-  }
-
-  document.addEventListener("click", (e) => {
-    if (
-      cityMenu &&
-      cityFilter &&
-      !cityMenu.contains(e.target) &&
-      !cityFilter.contains(e.target)
-    ) {
-      cityMenu.classList.add("hidden");
     }
-
-    if (
-      ratingMenu &&
-      ratingFilter &&
-      !ratingMenu.contains(e.target) &&
-      !ratingFilter.contains(e.target)
-    ) {
-      ratingMenu.classList.add("hidden");
-    }
-
-    if (
-      priceMenu &&
-      priceButton &&
-      !priceMenu.contains(e.target) &&
-      !priceButton.contains(e.target)
-    ) {
-      priceMenu.classList.add("hidden");
-      priceMenuOpen = false;
+    if (e.target.classList.contains("rating-input")) {
+      const selectedRate = e.target.value.toLowerCase();
+      if (e.target.checked) activeRatingFilters.add(selectedRate);
+      else activeRatingFilters.delete(selectedRate);
+      applyFilters();
     }
   });
 
   generateCityFilterOptions();
   generateRatingFilterOptions();
-
-  if (priceMenu) {
-    const defaultOption = priceMenu.querySelector(
-      '.price-option[data-price="high-to-low"]'
-    );
-    if (defaultOption) {
-      const icon = defaultOption.querySelector(".price-check-icon");
-      if (icon) icon.classList.add("bg-primary-500", "text-white");
-    }
-  }
-
-  activePriceFilter = "high-to-low";
-  applyFilters();
 });

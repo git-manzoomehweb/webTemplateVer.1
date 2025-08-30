@@ -283,11 +283,11 @@
   height: 16px;
   border-radius: 50%;
   cursor: pointer;
-  margin-top: 9px;
+  margin-top: 10px;
   border: none;
   position: relative;
   z-index: 30;
-  background: radial-gradient(circle, #fff 50%, var(--primary-700) 41%);
+  background: radial-gradient(circle, #fff 45%, var(--primary-700) 55%);
 }
 
 .slider-wrapper input[type='range']::-moz-range-thumb {
