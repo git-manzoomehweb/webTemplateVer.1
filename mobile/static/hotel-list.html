@@ -58,95 +58,110 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
                     </svg>
                 </button>
-                <div class="">
+                <div>
                     <div
-                        class="accordion-toggle flex items-center justify-between gradient-border from-primary-600 rounded-full py-2 pr-3">
-                        <h3 class="relative z-10 text-zinc-700 font-bold">ایرلاین ها</h3>
+                        class="flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
+                        <h3 class="relative z-10 text-zinc-700 font-bold">جستجو بر اساس نام هتل</h3>
                     </div>
-                    <div
-                        class="airline-filter accordion-content flex flex-col gap-9 pr-3 mt-5 overflow-hidden transition-all duration-300 ease-in-out">
-                        <!-- airline -->
-                    </div>
-                </div>
-                <div class="mt-6">
-                    <div
-                        class="accordion-toggle flex items-center justify-between gradient-border from-primary-600 rounded-full py-2 pr-3">
-                        <h3 class="relative z-10 text-zinc-700 font-bold">تعداد روز ها</h3>
-                    </div>
-                    <div
-                        class="days-filter accordion-content flex flex-col gap-6 pr-3 mt-5 overflow-hidden transition-all duration-300 ease-in-out">
-                        <!-- days-filter -->
+                    <div class="mt-5">
+                        <input type="text" id="hotelNameFilter"
+                            class="w-full py-4 px-5 border border-solid border-zinc-400 rounded-xl text-zinc-900 placeholder-zinc-400 outline-none"
+                            aria-label="سرچ هتل" placeholder="نام هتل" />
                     </div>
                 </div>
                 <div class="mt-6">
                     <div
-                        class="accordion-toggle flex items-center justify-between gradient-border from-primary-600 rounded-full py-2 pr-3">
+                        class="flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
+                        <h3 class="relative z-10 text-zinc-700 font-bold">جستجو بر اساس نام شهر</h3>
+                    </div>
+                    <div id="cityFilterMenu" class="flex flex-col gap-3 mt-5 pr-3">
+                        <!-- city -->
+                    </div>
+                </div>
+            
+                <div class="mt-6">
+                    <div
+                        class="accordion-toggle flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
+                        <h3 class="relative z-10 text-zinc-700 font-bold">درجه ی هتل</h3>
+                    </div>
+                    <div
+                        class="rate-filter accordion-content flex flex-col gap-6 pr-3 mt-5 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div id="ratingFilterMenu" class="flex-col gap-3">
+                            <!-- rating -->
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <div
+                        class="accordion-toggle flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
                         <h3 class="relative z-10 text-zinc-700 font-bold">بازه قیمت</h3>
                     </div>
                     <div class="mt-5 accordion-content overflow-hidden transition-all duration-300 ease-in-out">
                         <div class="range-container">
                             <div class="range-values flex justify-between mb-1">
                                 <span class="text-xs font-light">
-                                    <span id="minValue">0</span>
+                                    <span id="minValue-hotel">0</span>
                                     تومان
                                 </span>
                                 <span class="text-xs font-light">
-                                    <span id="maxValue">0</span>
+                                    <span id="maxValue-hotel">0</span>
                                     تومان
                                 </span>
                             </div>
 
                             <div class="slider-wrapper relative h-8">
-                                <div class="absolute top-4 left-0 right-0 h-1 bg-zinc-200 rounded-full z-0"></div>
-                                <input type="range" id="minRange" min="0" max="100" value="0"
+                                <div class="absolute top-4 left-0 right-0 h-1 bg-primary-100 rounded-full z-0"></div>
+                                <input type="range" aria-label="range" id="minRange-hotel" min="0" max="100" value="0"
                                     class="absolute w-full top-0 pointer-events-none appearance-none bg-transparent" />
-                                <input type="range" id="maxRange" min="0" max="100" value="100"
+                                <input type="range" aria-label="range" id="maxRange-hotel" min="0" max="100" value="100"
                                     class="absolute w-full top-0 pointer-events-none appearance-none bg-transparent" />
-                                <div id="rangeTrack" class="absolute h-1 rounded-full top-4 z-10 bg-primary-700">
+                                <div id="rangeTrack-hotel" class="absolute h-1 rounded-full top-4 z-10 bg-primary-700">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </aside>
-            <div class="flex flex-col gap-3 mt-6">
-                <a href="" class="flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80">
+            <div class="hotel-card-container flex flex-col gap-3 mt-6">
+                <a href="" class="hotel-card flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80"
+                    data-rate="4 ستاره" data-city="تکسیم" data-name="هتل پارسیان"
+                    data-price="12/000/000 تومان + 2000 دلار">
                     <img src="../assets/images/popular-tour-img.jpg" class="w-full h-40 object-cover rounded-2xl" alt=""
-                      width="256" height="160" loading="lazy" />
+                        width="256" height="160" loading="lazy" />
                     <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
-                      <h3 class="font-bold text-zinc-900 line-clamp-1">هتل پارسیان</h3>
-                      <div class="grid grid-cols-2 gap-1 flex-1">
-                        <div class="border-dashed-zinc rounded-full p-1">
-                          <div class="relative z-20 flex items-center gap-3">
-                            <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                              <svg width="17" height="17" class="flex-shrink-0">
-                                <use href="../assets/images/sprite-icons-mobile.svg#icon-star"></use>
-                              </svg>
-                            </span>
-                            <span class="text-xs text-zinc-700">4 ستاره</span>
-                          </div>
+                        <h3 class="font-bold text-zinc-900 line-clamp-1">هتل پارسیان</h3>
+                        <div class="grid grid-cols-2 gap-1 flex-1">
+                            <div class="border-dashed-zinc rounded-full p-1">
+                                <div class="relative z-20 flex items-center gap-3">
+                                    <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                        <svg width="17" height="17" class="flex-shrink-0">
+                                            <use href="../assets/images/sprite-icons-mobile.svg#icon-star"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="text-xs text-zinc-700">4 ستاره</span>
+                                </div>
+                            </div>
+                            <div class="border-dashed-zinc rounded-full p-1">
+                                <div class="relative z-20 flex items-center gap-3">
+                                    <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                        <svg width="17" height="17" class="flex-shrink-0">
+                                            <use href="../assets/images/sprite-icons-mobile.svg#icon-map"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="text-xs text-zinc-700">تکسیم</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="border-dashed-zinc rounded-full p-1">
-                          <div class="relative z-20 flex items-center gap-3">
-                            <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                              <svg width="17" height="17" class="flex-shrink-0">
-                                <use href="../assets/images/sprite-icons-mobile.svg#icon-map"></use>
-                              </svg>
-                            </span>
-                            <span class="text-xs text-zinc-700">تکسیم</span>
-                          </div>
+                        <div class="flex items-center gap-2 justify-between py-1 pr-2">
+                            <div>
+                                <span class="text-zinc-500 text-xs">شروع قیمت:</span>
+                                <div class="text-zinc-900 text-sm font-medium mt-1">12/000/000 تومان + 2000 دلار</div>
+                            </div>
+                            <button
+                                class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
                         </div>
-                      </div>
-                      <div class="flex items-center gap-2 justify-between py-1 pr-2">
-                        <div>
-                          <span class="text-zinc-500 text-xs">شروع قیمت:</span>
-                          <div class="text-zinc-900 text-sm font-medium mt-1">12/000/000 تومان + 2000 دلار</div>
-                        </div>
-                        <button
-                          class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
-                      </div>
                     </div>
-                  </a>
+                </a>
             </div>
             <ul class="flex items-center justify-center gap-1 mt-12">
                 <li class="flex items-center justify-center w-12 h-12 rounded-lg bg-zinc-100 ml-2">

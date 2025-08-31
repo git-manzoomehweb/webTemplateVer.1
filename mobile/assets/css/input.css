@@ -48,6 +48,7 @@
   --article-bg: url('../images/article-background.jpg');
   --tourList-bg: url('../images/tour-list-background.jpg');
   --hotelList-bg: url('../images/hotel-list-background.jpg');
+  --hotel-bg: url('../images/hotel-background.jpg');
 }
 
 @font-face {
@@ -287,7 +288,7 @@
   border: none;
   position: relative;
   z-index: 30;
-  background: radial-gradient(circle, #fff 50%, var(--primary-700) 41%);
+  background: radial-gradient(circle, #fff 45%, var(--primary-700) 55%);
 }
 
 .slider-wrapper input[type='range']::-moz-range-thumb {

@@ -48,6 +48,7 @@
   --article-bg: url('../images/article-background.jpg');
   --tourList-bg: url('../images/tour-list-background.jpg');
   --hotelList-bg: url('../images/hotel-list-background.jpg');
+  --hotel-bg: url('../images/hotel-background.jpg');
 }
 
 @font-face {

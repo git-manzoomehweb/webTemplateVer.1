@@ -17,6 +17,7 @@ module.exports = {
           article: "var(--article-bg)",
           tourList: "var(--tourList-bg)",
           hotelList: "var(--hotelList-bg)",
+          hotel: "var(--hotel-bg)",
       },
       boxShadow: {
         "search-engine": "box-shadow: 0px 4px 50px 0px #0000001C",
