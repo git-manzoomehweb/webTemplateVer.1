@@ -539,6 +539,50 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// ---------------shareBtn-----------------
+document.addEventListener("DOMContentLoaded", () => {
+  const shareBtn = document.getElementById("shareBtn");
+  const shareMenu = document.getElementById("shareMenu");
+  const items = shareMenu.querySelectorAll(".share-item");
+
+  shareBtn.addEventListener("click", (e) => {
+    e.stopPropagation()
+    const isActive = shareMenu.classList.contains("opacity-100");
+
+    if (isActive) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  shareMenu.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  document.addEventListener("click", () => {
+    closeMenu();
+  });
+
+  function openMenu() {
+    shareMenu.classList.remove("opacity-0", "pointer-events-none");
+    shareMenu.classList.add("opacity-100", "pointer-events-auto");
+    items.forEach((item, i) => {
+      setTimeout(() => {
+        item.classList.remove("scale-0");
+        item.classList.add("scale-100");
+      }, i * 100);
+    });
+  }
+
+  function closeMenu() {
+    shareMenu.classList.remove("opacity-100", "pointer-events-auto");
+    shareMenu.classList.add("opacity-0", "pointer-events-none");
+    items.forEach(item => item.classList.remove("scale-100"));
+    items.forEach(item => item.classList.add("scale-0"));
+  }
+});
+
 // ----filter tourList card------
 document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".tourL-tour-card");

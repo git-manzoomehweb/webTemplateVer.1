@@ -116,20 +116,10 @@
             </div>
           </div>
         </section>
-        <section class="relative rounded-3xl overflow-hidden mt-3">
-          <img src="../assets/images/contact-tour-list.jpg" class="w-full h-80 object-cover" alt="" width="295"
-            height="320" loading="lazy" />
-          <div class="absolute z-10 top-6 left-5 right-5">
-            <div class="flex flex-col items-center">
-              <span class="bg-primary-700 rounded-full p-4">
-                <svg width="37" height="37" class="flex-shrink-0">
-                  <use href="../assets/images/sprite-icons.svg#icon-headphone-white"></use>
-                </svg>
-              </span>
-              <h2 class="font-bold text-zinc-900 mt-2">پشتیبانی مشتریان</h2>
-              <h3 class="text-xs text-zinc-900 mt-1">همیشه در کنار شما هستیم</h3>
-            </div>
-            <div class="flex flex-col gap-2 mt-4 direction-ltr">
+        <section class="relative rounded-3xl overflow-hidden">
+          <img src="../assets/images/contact-tour-list.jpg" class="w-full h-[425px] object-cover" alt="" width="295" height="425" loading="lazy" />
+          <div class="absolute z-10 bottom-7 left-5 right-5">
+            <div class="flex flex-col gap-2 direction-ltr">
               <a href="" class="group flex items-center gap-3 bg-white rounded-xl p-2">
                 <span class="bg-primary-50 rounded-full p-3 group-hover:animate-phoneRing">
                   <svg width="24" height="24" class="flex-shrink-0">
@@ -138,21 +128,60 @@
                 </span>
                 <div class="flex flex-col gap-1">
                   <span class="text-zinc-500 text-xs">تماس تلفنی</span>
-                  <span
-                    class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">۰۲۱-۸۸۲۳۴۳۵۶</span>
+                  <span class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">۰۲۱-۸۸۲۳۴۳۵۶</span>
                 </div>
               </a>
-              <div class="flex items-center gap-3 bg-white rounded-xl p-2">
-                <span class="bg-primary-50 rounded-full p-3">
-                  <svg width="24" height="24" class="flex-shrink-0">
-                    <use href="../assets/images/sprite-icons.svg#icon-chat"></use>
-                  </svg>
-                </span>
-                <div class="flex flex-col gap-1">
-                  <span class="text-zinc-500 text-xs">چت آنلاین</span>
-                  <span class="text-zinc-900 font-medium">پاسخ سریع و فوری</span>
+              <div class="relative">
+                  <div id="shareBtn" class="group flex items-center gap-3 bg-white rounded-xl p-2 cursor-pointer">
+                    <span class="bg-primary-50 rounded-full p-3 transition-all duration-300 group-hover:animate-bounce">
+                      <svg width="24" height="24" class="flex-shrink-0">
+                        <use href="../assets/images/sprite-icons.svg#icon-share"></use>
+                      </svg>
+                    </span>
+                    <div class="flex flex-col gap-1">
+                      <span class="text-zinc-500 text-xs">اشتراک‌گذاری</span>
+                      <span class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">ارسال لینک و محتوا</span>
+                    </div>
+                  </div>
+                
+                  <ul id="shareMenu" class="absolute inset-0 flex items-center justify-center gap-px bg-white rounded-xl pointer-events-none opacity-0 transition-opacity duration-300">
+                    <li>
+                      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+                         class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
+                        <svg width="16" height="12"><use href="../assets/images/sprite-icons.svg#icon-twitter"></use></svg>
+                        <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                         class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
+                        <svg width="14" height="14"><use href="../assets/images/sprite-icons.svg#icon-instagram"></use></svg>
+                        <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                         class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
+                        <svg width="10" height="16"><use href="../assets/images/sprite-icons.svg#icon-facebook"></use></svg>
+                        <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://t.me" target="_blank" rel="noopener noreferrer" aria-label="Telegram"
+                         class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
+                        <svg width="32" height="32"><use href="../assets/images/sprite-icons.svg#icon-telegram"></use></svg>
+                        <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://wa.me" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+                         class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
+                        <svg width="40" height="40"><use href="../assets/images/sprite-icons.svg#icon-whatsapp"></use></svg>
+                        <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
-              </div>
             </div>
           </div>
         </section>
