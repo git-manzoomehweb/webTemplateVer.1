@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/output.css">
-    <title>Document</title>
-</head>
-
-<body>
+<basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
+    <member name="info" type="view" />
+</basis>
+<basis core="group" if="'[##cms.cms.page_index##]' = 'نمایه پیش فرض'">
     <header>
         <section class="relative z-30 bg-white mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl pt-6">
             <div class="flex items-center justify-between">
@@ -17,7 +10,7 @@
                         class="flex items-stretch w-full h-full justify-between border-b border-solid pb-4 border-zinc-300">
                         <div class="flex items-center gap-6">
                             <a href="/">
-                                <img src="../assets/images/logo.png" alt="logo-header" width="80" height="50"
+                                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/logo.png" alt="logo-header" width="80" height="50"
                                     loading="lazy" class="w-20 h-auto transition-all duration-300 hover:scale-90" />
                             </a>
 
@@ -274,10 +267,11 @@
                             <a href="tel:" class="group flex items-center">
                                 <span
                                     class="phone-number-header relative text-sm font-medium text-zinc-900 transition-all duration-300 group-hover:text-primary-600">021-22889966
-                                    <span class="absolute -bottom-2 right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
+                                    <span
+                                        class="absolute -bottom-2 right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
                                 </span>
                                 <svg width="48" height="48" class="phone-svg-header">
-                                    <use href="../assets/images/sprite-icons.svg#icon-headphone"></use>
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-headphone"></use>
                                 </svg>
                             </a>
                             <div class="flex items-center gap-4 pr-2">
@@ -285,9 +279,9 @@
                                     class="search-form relative flex items-center border border-primary-100 bg-white rounded-lg overflow-hidden transition-all duration-300 hover:border-secondary-600 w-12 h-12 group">
                                     <input
                                         class="search-input placeholder-gray-400 pl-10 text-sm pr-0 outline-none text-gray-400 font-semibold h-full w-0 transition-all duration-300"
-                                        placeholder="جستجو کنید" type="text" autocomplete="on"
+                                        placeholder="جستجو کنید" aria-label="جستجو کنید" type="text" autocomplete="on"
                                         name="search-content-name" required />
-                                    <button type="button"
+                                    <button type="button" aria-label="سرچ"
                                         class="search-toggle absolute -left-px flex items-center justify-center">
                                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -310,7 +304,9 @@
             </div>
         </section>
     </header>
-    <script src="../assets/js/template-core.js"></script>
-</body>
 
-</html>
+</basis>
+
+<basis core="group" if="'[##cms.cms.page_index##]' = 'موبایل'">
+    <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindex##]"></basis>
+</basis>
