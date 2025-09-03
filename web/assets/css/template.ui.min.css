@@ -1,7 +1,7 @@
 @import url(./customized.ui.min.css);
 
 body {
-  font-family: 'DanaFaNum';
+  font-family: "DanaFaNum";
 }
 
 .container {
@@ -46,12 +46,16 @@ body {
 }
 
 .gradient-border::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   padding: 0.75px;
   border-radius: inherit;
-  background: linear-gradient(248.18deg, var(--tw-gradient-from) 1.36%, var(--tw-gradient-to) 98.64%);
+  background: linear-gradient(
+    248.18deg,
+    var(--tw-gradient-from) 1.36%,
+    var(--tw-gradient-to) 98.64%
+  );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -566,38 +570,52 @@ body {
 
 .-translate-y-1\/2 {
   --tw-translate-y: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .translate-y-5 {
   --tw-translate-y: 1.25rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .translate-y-full {
   --tw-translate-y: 100%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .rotate-180 {
   --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .scale-0 {
   --tw-scale-x: 0;
   --tw-scale-y: 0;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .scale-100 {
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .transform {
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .cursor-pointer {
@@ -723,6 +741,10 @@ body {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-visible {
+  overflow: visible;
 }
 
 .hyphens-auto {
@@ -872,11 +894,19 @@ body {
 }
 
 .bg-gradient-black-bottom {
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 45.53%, rgba(0, 0, 0, 0.86) 100%);
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 45.53%,
+    rgba(0, 0, 0, 0.86) 100%
+  );
 }
 
 .bg-gradient-brown-bottom {
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 41.56%, rgba(31, 0, 0, 0.82) 100%);
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 41.56%,
+    rgba(31, 0, 0, 0.82) 100%
+  );
 }
 
 .bg-gradient-to-t {
@@ -929,7 +959,8 @@ body {
 
 .via-black\/50 {
   --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), rgb(0 0 0 / 0.5) var(--tw-gradient-via-position), var(--tw-gradient-to);
+  --tw-gradient-stops: var(--tw-gradient-from),
+    rgb(0 0 0 / 0.5) var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 
 .to-black\/90 {
@@ -1255,9 +1286,12 @@ body {
 }
 
 .shadow-lg {
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
+    0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .outline-none {
@@ -1266,13 +1300,21 @@ body {
 }
 
 .filter {
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+    var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
+    var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .transition {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
+    -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
+    backdrop-filter;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
+    backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1284,7 +1326,8 @@ body {
 }
 
 .transition-colors {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1371,8 +1414,8 @@ body {
 }
 
 .mask-cover-about {
-  -webkit-mask-image: url('../images/mask-image.svg');
-  mask-image: url('../images/mask-image.svg');
+  -webkit-mask-image: url("../images/mask-image.svg");
+  mask-image: url("../images/mask-image.svg");
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
@@ -1411,13 +1454,19 @@ body {
 }
 
 .border-dashed-zinc::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   padding: 2px;
   background: linear-gradient(90deg, #ffffff 0%, #e1e1e1 100%);
-  -webkit-mask: repeating-linear-gradient(90deg, #000 0 4px, transparent 4px 8px), repeating-linear-gradient(0deg, #000 0 4px, transparent 4px 8px), linear-gradient(#000 0 0);
+  -webkit-mask: repeating-linear-gradient(
+      90deg,
+      #000 0 4px,
+      transparent 4px 8px
+    ),
+    repeating-linear-gradient(0deg, #000 0 4px, transparent 4px 8px),
+    linear-gradient(#000 0 0);
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
   background-clip: padding-box;
@@ -1427,7 +1476,7 @@ body {
 }
 
 .border-dashed-zinc::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0.75px;
   border-radius: inherit;
@@ -1435,7 +1484,7 @@ body {
 }
 
 .faq-border::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -1451,7 +1500,7 @@ body {
 
 .image-text {
   color: transparent;
-  background-image: url('../images/pyramid.jpg');
+  background-image: url("../images/pyramid.jpg");
   background-size: cover;
   background-position: center;
   -webkit-background-clip: text;
@@ -1484,11 +1533,15 @@ body {
 }
 
 .submenu-scroll::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--secondary-100), var(--secondary-900));
+  background: linear-gradient(
+    180deg,
+    var(--secondary-100),
+    var(--secondary-900)
+  );
 }
 
 .shine-effect::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 33rem;
   height: 100%;
@@ -1506,12 +1559,12 @@ body {
 }
 
 .phone-number a:not(:last-child)::after {
-  content: '-';
+  content: "-";
   margin-left: 4px;
   margin-right: 4px;
 }
 
-.slider-wrapper input[type='range']::-webkit-slider-thumb {
+.slider-wrapper input[type="range"]::-webkit-slider-thumb {
   pointer-events: auto;
   -webkit-appearance: none;
   appearance: none;
@@ -1526,7 +1579,7 @@ body {
   background: radial-gradient(circle, #fff 45%, var(--primary-700) 55%);
 }
 
-.slider-wrapper input[type='range']::-moz-range-thumb {
+.slider-wrapper input[type="range"]::-moz-range-thumb {
   pointer-events: auto;
   width: 16px;
   height: 17px;
@@ -1546,12 +1599,16 @@ body {
 }
 
 .hover\:gradient-border:hover::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   padding: 0.75px;
   border-radius: inherit;
-  background: linear-gradient(248.18deg, var(--tw-gradient-from) 1.36%, var(--tw-gradient-to) 98.64%);
+  background: linear-gradient(
+    248.18deg,
+    var(--tw-gradient-from) 1.36%,
+    var(--tw-gradient-to) 98.64%
+  );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -1561,13 +1618,17 @@ body {
 
 .hover\:-translate-y-1:hover {
   --tw-translate-y: -0.25rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .hover\:scale-\[1\.01\]:hover {
   --tw-scale-x: 1.01;
   --tw-scale-y: 1.01;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .hover\:rounded-xl:hover {
@@ -1616,19 +1677,26 @@ body {
 .hover\:shadow-2xl:hover {
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .hover\:shadow-lg:hover {
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
+    0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .hover\:shadow-xl:hover {
-  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color),
+    0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .hover\:shadow-primary-100:hover {
@@ -1654,7 +1722,9 @@ body {
 
 .group:hover .group-hover\:translate-y-0 {
   --tw-translate-y: 0px;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 @keyframes bounce {
@@ -1766,7 +1836,7 @@ body {
 }
 
 .Basis_Calendar {
-  font-family: 'DanaFaNum' !important;
+  font-family: "DanaFaNum" !important;
 }
 
 .Basis_Calendar .selected_date {
@@ -1802,7 +1872,10 @@ body {
 .Basis_Calendar .current_day::after {
   border-color: var(--primary) transparent transparent;
 }
-.Basis_Calendar .month_day_list table td:not(.disable_day, .empty_day, .expire_day):hover {
+.Basis_Calendar
+  .month_day_list
+  table
+  td:not(.disable_day, .empty_day, .expire_day):hover {
   border-color: var(--primary);
 }
 .Basis_Calendar .current_day {
@@ -1810,28 +1883,29 @@ body {
   color: #fff !important;
 }
 .Basis_Calendar_Box {
-  font-family: 'DanaFaNum' !important;
+  font-family: "DanaFaNum" !important;
   margin-top: -3.25rem;
 }
 .calendar-apply-date,
 .calendar-switch,
 .calendar-today,
 .calendar-footer input::placeholder {
-  font-family: 'DanaFaNum' !important;
+  font-family: "DanaFaNum" !important;
 }
 .calendar-footer input,
 .calendar-footer ::placeholder {
-  font-family: 'DanaFaNum';
+  font-family: "DanaFaNum";
 }
 
 .search-box-container input,
 .search-box-container select,
 .search-box-container button {
-  font-family: 'DanaFaNum' !important;
+  font-family: "DanaFaNum" !important;
 }
 
 #search-box {
   padding: 24px 16px;
+  max-width: 809px;
 }
 
 .search-nav {
@@ -1848,9 +1922,10 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #f4f4f5;
-  width: 81px !important;
+  width: 75px !important;
   height: 68px !important;
   margin: 0 !important;
+  padding: 0 !important;
   border-radius: 12px;
   transition: all 300ms ease;
 }
@@ -1870,10 +1945,26 @@ body {
   color: white;
 }
 
+.reserve-btn:hover {
+  background-color: var(--primary-600);
+  box-shadow: 0px 4px 7.7px 0px #00000040;
+}
+
+.reserve-btn:hover .module-name {
+  color: #ffffff;
+}
+
+.reserve-btn .module-name:hover {
+  color: #ffffff !important;
+}
+
 .reserve-field.departure-date,
 .click-content,
 .reserve-field.passengers-field,
-.reserve-field.return-date {
+.reserve-field.return-date,
+.reserve-field.traveltype-field,
+.reserve-field.flighttype-field,
+.reserve-field.Compartment-field {
   background-color: #f4f4f5 !important;
   height: 56px !important;
   border-radius: 12px;
@@ -1893,6 +1984,12 @@ body {
 .label-dates .label-text,
 .label-passengers .down-icon,
 .label-passengers .label-text,
+.label-flighttype-cip .down-icon,
+.label-flighttype-cip .label-text,
+.label-traveltype-cip .down-icon,
+.label-traveltype-cip .label-text,
+.label-compartment-train .down-icon,
+.label-compartment-train .label-text,
 .reserve-field.departure-route p,
 .reserve-field.destination-route p,
 .reserve-field.departure-date p,
@@ -1911,9 +2008,9 @@ body {
 .reserve-field.flightclass-field {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   height: 48px !important;
-  width: fit-content !important;
   padding: 0 12px 0 8px;
   cursor: pointer;
   border: 1px solid #71717a;
@@ -1921,8 +2018,15 @@ body {
   background-color: #fff;
 }
 
+.reserve-field.flightclass-field {
+  width: 128px !important;
+  height: 48px !important;
+}
+
 .flighttype-field.flighttype-dropDown {
   margin-bottom: 24px;
+  width: 163px !important;
+  height: 48px !important;
 }
 
 .flighttype-field.flighttype-dropDown .flighttype-field-icon {
@@ -1944,6 +2048,11 @@ body {
   height: 48px !important;
 }
 
+.exchangeRoute svg {
+  width: 25px !important;
+  height: 25px !important;
+}
+
 .flighttype-field.flighttype-dropDown .flighttype-dropDown-text {
   margin-bottom: 0 !important;
   height: auto !important;
@@ -1953,7 +2062,7 @@ body {
 .reserve-field.flightclass-field {
   position: absolute !important;
   top: 0;
-  right: 9rem;
+  right: 10.75rem;
 }
 
 .reserve-field.flightclass-field > div:first-of-type {
@@ -1973,32 +2082,77 @@ body {
   display: none;
 }
 
-#flightSearch {
+.form-search,
+#flightHotelSearch > div:first-of-type,
+#trainSearch > div:first-of-type {
   flex-wrap: wrap;
 }
 
-.flight-routes {
+.flight-routes,
+.train-routes,
+.bus-routes {
   flex-direction: column;
   flex-basis: 100%;
 }
 
-.reserve-field.departure-route.departure-route-flight,
-.reserve-field.destination-route.destination-route-flight {
-  width: 100%;
-  height: 56px;
+.reserve-field.departure-route,
+.reserve-field.destination-route {
+  width: 100% !important;
+  height: 56px !important;
+  flex-basis: 100%;
+}
+
+#cipSearch .Basis_Date_Box,
+#trainSearch .Basis_Date_Box{
+  flex-basis: 100%;
+}
+
+.reserve-field.traveltype-field,
+.reserve-field.flighttype-field{
+  flex: 1;
+  height: 56px !important;
+}
+
+.reserve-field.Compartment-field{
+  flex: 1;
 }
 
 .Basis_Date_Box {
   flex: 2;
 }
 
+#hotelSearch .Basis_Date_Box,
+#tourSearch .Basis_Date_Box,
+#insuranceSearch .Basis_Date_Box,
+#serviceSearch .Basis_Date_Box,
+#busSearch .Basis_Date_Box{
+  flex-basis: 100%;
+}
+
+.Flightclass-Passenger {
+  flex: 1;
+}
+
+.Basis_Date.start_date,
+.Basis_Date.end_date {
+  position: unset !important;
+  padding: 0 !important;
+}
+
 .reserve-field.passengers-field {
   flex: 1;
 }
 
+.reserve-field.passengers-field > div:first-of-type {
+  display: flex;
+  align-items: center;
+}
+
 .exchangeRoute {
+  top: 35px !important;
+  left: 20px !important;
   background-color: var(--primary-600) !important;
-  border-radius: 12px;
+  border-radius: 100%;
   width: 48px !important;
   height: 48px !important;
   display: flex;
@@ -2010,6 +2164,7 @@ body {
 .reserve-search {
   flex-basis: 100%;
   margin-top: 16px;
+  height: auto !important;
 }
 
 .reserve-search button {
@@ -2033,7 +2188,7 @@ body {
 }
 
 .reserve-search button::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;

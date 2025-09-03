@@ -23,7 +23,29 @@ document.addEventListener("DOMContentLoaded", function () {
         xhrobj.onreadystatechange = function () {
           if (this.readyState == 4 && this.status == 200) {
             const container = document.getElementById("search-box");
-            container.innerHTML = xhrobj.responseText;
+
+            const tpl = document.createElement("template");
+            tpl.innerHTML = xhrobj.responseText;
+
+            tpl.content.querySelectorAll("use").forEach((u) => {
+              ["href", "xlink:href"].forEach((attr) => {
+                const val = u.getAttribute(attr);
+                if (!val) return;
+
+                if (val.includes("images/sprite-icons.svg")) {
+                  u.setAttribute(
+                    attr,
+                    val.replace(
+                      "images/sprite-icons.svg",
+                      "PrimeTemplate_A/images/sprite-icons.svg"
+                    )
+                  );
+                }
+              });
+            });
+
+            container.innerHTML = "";
+            container.appendChild(tpl.content);
 
             [".Basis_Date.end_date", ".Basis_Date.start_date"].forEach(
               (selector) => {
@@ -33,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
               }
             );
+
             let r = document.querySelector(".flighttype-field");
             r.classList.add("flighttype-dropDown");
             const scripts = container.getElementsByTagName("script");
