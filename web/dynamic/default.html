@@ -10,14 +10,14 @@
 </head>
 
 <body>
-    <basis core="call" file="header.inc" />
+    <basis core="call" file="template-header.inc" />
     <main data-activepage="home">
         <h1 class="h1-tag">gdgdfggg</h1>
-        <section class="relative flex items-center mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
+        <section class="relative z-10 flex items-center mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
             <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/search-enigne-img.jpg"
-                class="top-0 absolute w-[700px] h-[569px] object-cover rounded-3xl" alt="" width="700" height="569"
+                class="top-0 absolute w-[700px] h-full object-cover rounded-3xl" alt="" width="700" height="569"
                 loading="lazy" />
-            <div class="flex justify-end w-full pt-14">
+            <div class="flex justify-end w-full pt-14 pb-14">
                     <div class="search-banner gradient-border from-primary-600 overflow-visible rounded-3xl shadow-search-engine">
                         <div class="search-box-container">
                             <div id="search-box" class="dir-rtl" data-view="pc">
@@ -1004,8 +1004,39 @@
     </main>
 
 
+<script>
+    document.addEventListener("click", function (e) {
+  const dateBox = e.target.closest(".Basis_Date_Box");
+  if (!dateBox) return;
+
+  setTimeout(() => {
+    const popup = document.querySelector(".Basis_Calendar_Box.Selected_Basis_Calendar_Box");
+    if (!popup) return;
+
+    const rect = dateBox.getBoundingClientRect();
+    const parent = popup.offsetParent.getBoundingClientRect();
+
+    // محاسبه top نسبت به offsetParent
+    popup.style.top = rect.top - parent.top + dateBox.offsetHeight + 50 + "px";
+
+    if (document.documentElement.getAttribute("lang") === "fa" ||
+        document.documentElement.getAttribute("lang") === "ar") {
+      // محاسبه right دقیق
+      popup.style.right = parent.right - rect.right + "px"; // 20px فاصله دلخواه
+      popup.style.left = "unset";
+    } else {
+      // محاسبه left دقیق
+      popup.style.left = rect.left - parent.left + "px";
+      popup.style.right = "unset";
+    }
+
+    console.log("✅ موقعیت پاپ‌آپ دقیق اعمال شد", popup.style.top, popup.style.right || popup.style.left);
+  }, 50);
+});
+
+</script>
     <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
-    <basis core="call" file="footer.inc" />
+    <basis core="call" file="template-footer.inc" />
 </body>
 
 </html>
