@@ -146,6 +146,22 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// ---------Section-order------------
+document.addEventListener("DOMContentLoaded", function () {
+  const orderArray = document.querySelector('main').getAttribute('data-hostorder').split(',');
+
+  const sections = document.querySelectorAll('.section-order');
+  const parentContainer = document.querySelector('.parent-container');
+
+  orderArray.forEach(order => {
+    const section = [...sections].find(section => section.getAttribute('data-order') === order);
+    if (section) {
+      parentContainer.insertBefore(section, parentContainer.firstChild); 
+    }
+  });
+});
+
+
 // ---------active header items------------
 document.addEventListener("DOMContentLoaded", () => {
   const main = document.querySelector("main");
