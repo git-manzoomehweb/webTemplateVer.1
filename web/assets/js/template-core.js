@@ -148,15 +148,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ---------Section-order------------
 document.addEventListener("DOMContentLoaded", function () {
-  const orderArray = document.querySelector('main').getAttribute('data-hostorder').split(',');
+  const main = document.querySelector("main");
+  if (!main) return;
 
-  const sections = document.querySelectorAll('.section-order');
-  const parentContainer = document.querySelector('.parent-container');
+  const hostOrder = main.getAttribute("data-hostorder");
+  if (!hostOrder) return;
+
+  const orderArray = hostOrder.split(",").map(o => o.trim()).filter(Boolean);
+
+  const parentContainer = document.querySelector(".parent-container");
+  if (!parentContainer) return;
+
+  const sections = Array.from(parentContainer.querySelectorAll(".section-order"));
+  if (!sections.length) return;
 
   orderArray.forEach(order => {
-    const section = [...sections].find(section => section.getAttribute('data-order') === order);
+    const section = sections.find(sec => sec.getAttribute("data-order") === order);
     if (section) {
-      parentContainer.insertBefore(section, parentContainer.firstChild); 
+      parentContainer.appendChild(section);
     }
   });
 });

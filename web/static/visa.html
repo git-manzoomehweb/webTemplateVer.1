@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.basiscore.net/basisfly.com/css/swiper-bundle.min.css" />
+
     <link rel="stylesheet" href="../assets/css/output.css" />
   </head>
 
@@ -29,7 +31,7 @@
       </section>
 
       <div class="flex gap-6 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
-        <div class="flex-1">
+        <div class="flex-1 min-w-0">
           <section>
             <div class="bg-zinc-100 rounded-xl px-2 py-6">
               <ul class="grid grid-cols-2 gap-3">
@@ -72,7 +74,7 @@
                     <span class="text-zinc-700 text-sm" itemprop="name">مدارک ویزای توریستی ژاپن</span>
                   </div>
                 </li>
-g
+
                 <li class="content-box">
                   <h2 class="text-zinc-700 font-bold mb-3">توضیحات:</h2>
                   <div class="bg-white rounded-xl px-6 py-4">
@@ -101,11 +103,58 @@ g
             </div>
           </section>
 
-          <section class="mt-8">
+          <section class="mt-8 relative">
             <div class="bg-zinc-100 p-6 rounded-xl">
-              <div class="flex items-center gap-10 border-b border-solid border-zinc-300 pb-3">
-                <h2 class="text-primary-900 font-bold">ثبت نظر</h2>
-                <h2 class="text-zinc-900 font-bold transition-all duration-300 hover:text-primary-900">نظر کاربران</h2>
+              <div class="flex items-center gap-10 border-b border-solid border-zinc-300 pb-3 relative z-10">
+                <button class="tab-btn text-primary-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900" data-tab="comment-form">ثبت نظر</button>
+                <button class="tab-btn text-zinc-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900" data-tab="user-comments">نظر کاربران</button>
+              </div>
+
+              <div class="relative min-h-56">
+                <div id="comment-form" class="tab-content active opacity-100 scale-100 transition duration-500">
+                  <form class="flex flex-col gap-4 mt-3">
+                    <input type="text" placeholder="نام شما" class="p-3 rounded-lg border border-zinc-300 focus:border-primary-500 outline-none" />
+                    <textarea placeholder="متن نظر..." class="p-3 rounded-lg border border-zinc-300 focus:border-primary-500 outline-none"></textarea>
+                    <button type="submit" class="bg-primary-900 text-white py-2 px-6 rounded-lg hover:bg-primary-700 transition">ارسال</button>
+                  </form>
+                </div>
+
+                <div id="user-comments" class="tab-content opacity-0 scale-95 pointer-events-none absolute top-0 left-0 w-full transition duration-500">
+                  <div class="swiper swiper-comments mt-3">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <div class="flex flex-col gap-2 bg-white rounded-xl p-6">
+                          <h3 class="font-bold text-sm text-zinc-900">محسن حیدری</h3>
+                          <div class="text-xs text-zinc-600 line-clamp-6 leading-5">
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+                          </div>
+                          <span class="text-xs text-zinc-400 self-end">۱۴۰۴/۴/۴</span>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="flex flex-col gap-2 bg-white rounded-xl p-6">
+                          <h3 class="font-bold text-sm text-zinc-900">محسن حیدری</h3>
+                          <div class="text-xs text-zinc-600 line-clamp-6">
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+                          </div>
+                          <span class="text-xs text-zinc-400 self-end">۱۴۰۴/۴/۴</span>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="flex flex-col gap-2 bg-white rounded-xl p-6">
+                          <h3 class="font-bold text-sm text-zinc-900">محسن حیدری</h3>
+                          <div class="text-xs text-zinc-600 line-clamp-6">
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+                          </div>
+                          <span class="text-xs text-zinc-400 self-end">۱۴۰۴/۴/۴</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -127,62 +176,148 @@ g
                   </div>
                 </a>
                 <div class="relative">
-                    <div id="shareBtn" class="group flex items-center gap-3 bg-white rounded-xl p-2 cursor-pointer">
-                      <span class="bg-primary-50 rounded-full p-3 transition-all duration-300 group-hover:animate-bounce">
-                        <svg width="24" height="24" class="flex-shrink-0">
-                          <use href="../assets/images/sprite-icons.svg#icon-share"></use>
-                        </svg>
-                      </span>
-                      <div class="flex flex-col gap-1">
-                        <span class="text-zinc-500 text-xs">اشتراک‌گذاری</span>
-                        <span class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">ارسال لینک و محتوا</span>
-                      </div>
+                  <div id="shareBtn" class="group flex items-center gap-3 bg-white rounded-xl p-2 cursor-pointer">
+                    <span class="bg-primary-50 rounded-full p-3 transition-all duration-300 group-hover:animate-bounce">
+                      <svg width="24" height="24" class="flex-shrink-0">
+                        <use href="../assets/images/sprite-icons.svg#icon-share"></use>
+                      </svg>
+                    </span>
+                    <div class="flex flex-col gap-1">
+                      <span class="text-zinc-500 text-xs">اشتراک‌گذاری</span>
+                      <span class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">ارسال لینک و محتوا</span>
                     </div>
-                  
-                    <ul id="shareMenu" class="absolute inset-0 flex items-center justify-center gap-1 bg-white rounded-xl pointer-events-none opacity-0 transition-opacity duration-300">
-                      <li>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
-                           class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
-                          <svg width="16" height="12"><use href="../assets/images/sprite-icons.svg#icon-twitter"></use></svg>
-                          <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-                           class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
-                          <svg width="14" height="14"><use href="../assets/images/sprite-icons.svg#icon-instagram"></use></svg>
-                          <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-                           class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
-                          <svg width="10" height="16"><use href="../assets/images/sprite-icons.svg#icon-facebook"></use></svg>
-                          <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://t.me" target="_blank" rel="noopener noreferrer" aria-label="Telegram"
-                           class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
-                          <svg width="32" height="32"><use href="../assets/images/sprite-icons.svg#icon-telegram"></use></svg>
-                          <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://wa.me" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
-                           class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
-                          <svg width="40" height="40"><use href="../assets/images/sprite-icons.svg#icon-whatsapp"></use></svg>
-                          <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
-                      </li>
-                    </ul>
                   </div>
+
+                  <ul id="shareMenu" class="absolute inset-0 flex items-center justify-center gap-1 bg-white rounded-xl pointer-events-none opacity-0 transition-opacity duration-300">
+                    <li>
+                      <a
+                        href="https://twitter.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Twitter"
+                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300"
+                      >
+                        <svg width="16" height="12"><use href="../assets/images/sprite-icons.svg#icon-twitter"></use></svg>
+                        <span
+                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
+                        ></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://instagram.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300"
+                      >
+                        <svg width="14" height="14"><use href="../assets/images/sprite-icons.svg#icon-instagram"></use></svg>
+                        <span
+                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
+                        ></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://facebook.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Facebook"
+                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300"
+                      >
+                        <svg width="10" height="16"><use href="../assets/images/sprite-icons.svg#icon-facebook"></use></svg>
+                        <span
+                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
+                        ></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://t.me"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Telegram"
+                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300"
+                      >
+                        <svg width="32" height="32"><use href="../assets/images/sprite-icons.svg#icon-telegram"></use></svg>
+                        <span
+                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
+                        ></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://wa.me"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="WhatsApp"
+                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300"
+                      >
+                        <svg width="40" height="40"><use href="../assets/images/sprite-icons.svg#icon-whatsapp"></use></svg>
+                        <span
+                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
+                        ></span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </section>
         </aside>
       </div>
     </main>
+
+    <script src="https://cdn.basiscore.net/basisfly.com/js/swiper-bundle.min.js"></script>
+    <script>
+      var swiperComments = new Swiper('.swiper-comments', {
+        slidesPerView: 3,
+        speed: 400,
+        spaceBetween: 12,
+        grabCursor: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        if (!tabButtons.length || !tabContents.length) return;
+
+        tabButtons.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            // غیر فعال کردن دکمه‌ها
+            tabButtons.forEach((b) => {
+              b.classList.remove('text-primary-900');
+              b.classList.add('text-zinc-900');
+            });
+            btn.classList.remove('text-zinc-900');
+            btn.classList.add('text-primary-900');
+
+            // تغییر محتوا با افکت
+            const targetId = btn.dataset.tab;
+            tabContents.forEach((content) => {
+              if (content.id === targetId) {
+                content.classList.add('active', 'opacity-100', 'scale-100');
+                content.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+              } else {
+                content.classList.remove('active', 'opacity-100', 'scale-100');
+                content.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+              }
+            });
+          });
+        });
+      });
+    </script>
 
     <script src="../assets/js/template-core.js"></script>
   </body>
