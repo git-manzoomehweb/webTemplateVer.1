@@ -1,3 +1,14 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="landing_to_search_engine">
+    <member name="cat" type="tree" request="cat" parentid="[##cms.host.landing_to_search_engine##]" order="ord">
+    </member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="landing_to_search_engine"
+    catid="[##cms.host.landing_to_search_engine##]">
+    <member name="list" type="list" link="article.bc"
+        propertyid="[##cms.host.all_prp_landing##]"
+        perpage="8" order="ord" size="" />
+</basis>
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -31,153 +42,69 @@
             </div>
         </section>
         <div class="parent-container">
-            <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-28" data-order="1">
-                <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">مقاصد پر تردد</h2>
-                <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">لورم ایپسوم متن ساختگی با تولید
-                    سادگی
-                    نامفهوم از صنعت چاپ، و با استفاده</div>
-                <div class="swiper swiper-busy-destination mt-7 pb-14 pt-1">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide max-w-[314px]">
-                            <div
-                                class="flex items-center justify-between border border-solid border-zinc-300 bg-zinc-gradient rounded-xl p-3 cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary-600">
-                                <div class="flex items-center gap-4">
-                                    <div>
-                                        <h3 class="font-bold text-sm mb-2">تهران</h3>
-                                        <span class="flex items-center gap-1 text-zinc-500 text-xs">
-                                            <svg width="12" height="12">
-                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-pin"></use>
-                                            </svg>
-                                            tehran (AKM)
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-bold text-sm mb-2">دبی</h3>
-                                        <span class="flex items-center gap-1 text-zinc-500 text-xs">
-                                            <svg width="12" height="12">
-                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-location-zinc">
-                                                </use>
-                                            </svg>
-                                            Dubai (AKM)
-                                        </span>
-                                    </div>
+            <basis core="group" if="'[##cms.host.landing_to_search_engine##]' <> ''">
+                <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-28" data-order="1">
+                    <basis core="list" datamembername="landing_to_search_engine.cat">
+                        <face>
+                            <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">@title</h2>
+                        </face>
+                        <face>
+                            <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
+                        </face>
+                    </basis>
+                    <basis core="list" datamembername="landing_to_search_engine.list">
+                        <layout>
+                            <div class="swiper swiper-busy-destination mt-7 pb-14 pt-1">
+                                <div class="swiper-wrapper">
+                                    @child
                                 </div>
-                                <span>
-                                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                                            fill="var(--primary-600)" />
-                                    </svg>
-                                </span>
+                                <div class="swiper-pagination flex items-center justify-center gap-1"></div>
                             </div>
-                        </div>
-                        <div class="swiper-slide max-w-[314px]">
-                            <div
-                                class="flex items-center justify-between border border-solid border-zinc-300 bg-zinc-gradient rounded-xl p-3 cursor-pointer transition-all duration-300 hover:shadow-lg hover:border-primary-600">
-                                <div class="flex items-center gap-4">
-                                    <div>
-                                        <h3 class="font-bold text-sm mb-2">تهران</h3>
-                                        <span class="flex items-center gap-1 text-zinc-500 text-xs">
-                                            <svg width="12" height="12">
-                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-pin"></use>
-                                            </svg>
-                                            tehran (AKM)
-                                        </span>
+                        </layout>
+                        <face>
+                            <div class="swiper-slide max-w-[314px]">
+                                <div
+                                    class="flex items-center justify-between border border-solid border-zinc-300 bg-zinc-gradient rounded-xl p-3 cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary-600">
+                                    <div class="flex items-center gap-4">
+                                        <div>
+                                            <h3 class="font-bold text-sm mb-2">@prp_[##cms.host.origin_city_landing##]</h3>
+                                            <span class="hidden">@prp_[##cms.host.origin_airport_code_landing##]</span>
+                                            <span class="empty-face-fields flex items-center gap-1 text-zinc-500 text-xs">
+                                                <svg width="12" height="12">
+                                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-pin"></use>
+                                                </svg>
+                                                <span class="empty-face-text">@prp_[##cms.host.origin_airport_landing##]</span>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-bold text-sm mb-2">@prp_[##cms.host.destination_city_landing##]</h3>
+                                            <span class="hidden">@prp_[##cms.host.destination_airport_code_landing##]</span>
+                                            <span class="empty-face-fields flex items-center gap-1 text-zinc-500 text-xs">
+                                                <svg width="12" height="12">
+                                                    <use
+                                                        href="/PrimeTemplate_A/images/sprite-icons.svg#icon-location-zinc">
+                                                    </use>
+                                                </svg>
+                                                <span class="empty-face-text">@prp_[##cms.host.destination_airport_landing##]</span>
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h3 class="font-bold text-sm mb-2">دبی</h3>
-                                        <span class="flex items-center gap-1 text-zinc-500 text-xs">
-                                            <svg width="12" height="12">
-                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-location-zinc">
-                                                </use>
-                                            </svg>
-                                            Dubai (AKM)
-                                        </span>
-                                    </div>
+                                    <span>
+                                        <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                                                fill="var(--primary-600)" />
+                                        </svg>
+                                    </span>
                                 </div>
-                                <span>
-                                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                                            fill="var(--primary-600)" />
-                                    </svg>
-                                </span>
                             </div>
-                        </div>
-                        <div class="swiper-slide max-w-[314px]">
-                            <div
-                                class="flex items-center justify-between border border-solid border-zinc-300 bg-zinc-gradient rounded-xl p-3 cursor-pointer transition-all duration-300 hover:shadow-lg hover:border-primary-600">
-                                <div class="flex items-center gap-4">
-                                    <div>
-                                        <h3 class="font-bold text-sm mb-2">تهران</h3>
-                                        <span class="flex items-center gap-1 text-zinc-500 text-xs">
-                                            <svg width="12" height="12">
-                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-pin"></use>
-                                            </svg>
-                                            tehran (AKM)
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-bold text-sm mb-2">دبی</h3>
-                                        <span class="flex items-center gap-1 text-zinc-500 text-xs">
-                                            <svg width="12" height="12">
-                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-location-zinc">
-                                                </use>
-                                            </svg>
-                                            Dubai (AKM)
-                                        </span>
-                                    </div>
-                                </div>
-                                <span>
-                                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                                            fill="var(--primary-600)" />
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="swiper-slide max-w-[314px]">
-                            <div
-                                class="flex items-center justify-between border border-solid border-zinc-300 bg-zinc-gradient rounded-xl p-3 cursor-pointer transition-all duration-300 hover:shadow-lg hover:border-primary-600">
-                                <div class="flex items-center gap-4">
-                                    <div>
-                                        <h3 class="font-bold text-sm mb-2">تهران</h3>
-                                        <span class="flex items-center gap-1 text-zinc-500 text-xs">
-                                            <svg width="12" height="12">
-                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-pin"></use>
-                                            </svg>
-                                            tehran (AKM)
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-bold text-sm mb-2">دبی</h3>
-                                        <span class="flex items-center gap-1 text-zinc-500 text-xs">
-                                            <svg width="12" height="12">
-                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-location-zinc">
-                                                </use>
-                                            </svg>
-                                            Dubai (AKM)
-                                        </span>
-                                    </div>
-                                </div>
-                                <span>
-                                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                                            fill="var(--primary-600)" />
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination flex items-center justify-center gap-1"></div>
-                </div>
-            </section>
+                        </face>
+                    </basis>
+
+                </section>
+            </basis>
+
 
             <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="2">
                 <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">خدمات گشت آسمان</h2>
