@@ -334,7 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".tabs").forEach((tabsWrapper) => {
     const tabsContainer = tabsWrapper.querySelector(".tabs-container");
-    const tabs = tabsContainer.querySelectorAll("button[data-index]");
+    const tabs = tabsContainer.querySelectorAll("button");
     const line = tabsWrapper.querySelector(".active-line");
 
     function setActiveTab(index) {
@@ -740,7 +740,7 @@ if (document.querySelector(".swiper-popular-tours")) {
   var swiperPopularTours = new Swiper(".swiper-popular-tours", {
     slidesPerView: "auto",
     speed: 400,
-    spaceBetween: 4,
+    spaceBetween: 12,
     grabCursor: true,
     autoplay: {
       delay: 2500,

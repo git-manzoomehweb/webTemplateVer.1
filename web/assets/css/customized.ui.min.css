@@ -1546,7 +1546,7 @@ body {
 
   font-weight: 400;
 
-  src: url("../_fonts/DanaFaNum-Regular.woff2") format("woff2");
+  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Regular.ttf") format("truetype");
 }
 
 @font-face {
@@ -1558,7 +1558,7 @@ body {
 
   font-weight: 500;
 
-  src: url("../_fonts/DanaFaNum-Medium.woff2") format("woff2");
+  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Medium.ttf") format("truetype");
 }
 
 @font-face {
@@ -1570,7 +1570,7 @@ body {
 
   font-weight: 700;
 
-  src: url("../_fonts/DanaFaNum-Bold.woff2") format("woff2");
+  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Bold.ttf") format("truetype");
 }
 
 @font-face {
@@ -1582,7 +1582,7 @@ body {
 
   font-weight: 900;
 
-  src: url("../_fonts/DanaFaNum-Black.woff2") format("woff2");
+  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Black.ttf") format("truetype");
 }
 
 .h1-tag {
