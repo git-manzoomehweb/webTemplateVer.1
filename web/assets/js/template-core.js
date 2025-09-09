@@ -154,22 +154,28 @@ document.addEventListener("DOMContentLoaded", function () {
   const hostOrder = main.getAttribute("data-hostorder");
   if (!hostOrder) return;
 
-  const orderArray = hostOrder.split(",").map(o => o.trim()).filter(Boolean);
+  const orderArray = hostOrder
+    .split(",")
+    .map((o) => o.trim())
+    .filter(Boolean);
 
   const parentContainer = document.querySelector(".parent-container");
   if (!parentContainer) return;
 
-  const sections = Array.from(parentContainer.querySelectorAll(".section-order"));
+  const sections = Array.from(
+    parentContainer.querySelectorAll(".section-order")
+  );
   if (!sections.length) return;
 
-  orderArray.forEach(order => {
-    const section = sections.find(sec => sec.getAttribute("data-order") === order);
+  orderArray.forEach((order) => {
+    const section = sections.find(
+      (sec) => sec.getAttribute("data-order") === order
+    );
     if (section) {
       parentContainer.appendChild(section);
     }
   });
 });
-
 
 // ---------active header items------------
 document.addEventListener("DOMContentLoaded", () => {
@@ -472,116 +478,122 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ---------- check contrast -----------
-function getBrightness(hexColor) {
-  const r = parseInt(hexColor.substr(1, 2), 16);
-  const g = parseInt(hexColor.substr(3, 2), 16);
-  const b = parseInt(hexColor.substr(5, 2), 16);
+function applyContrastCheck() {
+  function getBrightness(hexColor) {
+    const r = parseInt(hexColor.substr(1, 2), 16);
+    const g = parseInt(hexColor.substr(3, 2), 16);
+    const b = parseInt(hexColor.substr(5, 2), 16);
 
-  return (r * 0.299 + g * 0.587 + b * 0.114) / 255;
-}
-
-function adjustTextColor(element, bgColor = null) {
-  let colorToUse = bgColor || window.getComputedStyle(element).backgroundColor;
-  let hexColor;
-
-  if (colorToUse.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)) {
-    hexColor = colorToUse
-      .match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)
-      .slice(1)
-      .map((n) => {
-        return parseInt(n).toString(16).padStart(2, "0");
-      })
-      .join("");
-    hexColor = `#${hexColor}`;
-  } else if (colorToUse.match(/^#([0-9a-f]{3}){1,2}$/i)) {
-    hexColor = colorToUse;
+    return (r * 0.299 + g * 0.587 + b * 0.114) / 255;
   }
 
-  if (hexColor) {
-    const brightness = getBrightness(hexColor);
+  function adjustTextColor(element, bgColor = null) {
+    let colorToUse =
+      bgColor || window.getComputedStyle(element).backgroundColor;
+    let hexColor;
 
-    element.style.color = brightness < 0.5 ? "white" : "black";
-  }
-}
-
-function getHoverBackgroundColor(element) {
-  const hoverClass = Array.from(element.classList).find((className) =>
-    className.startsWith("hover:bg-")
-  );
-  if (hoverClass) {
-    const rootStyles = getComputedStyle(document.documentElement);
-    const bgColor = rootStyles
-      .getPropertyValue(`--${hoverClass.replace("hover:bg-", "")}`)
-      .trim();
-
-    if (bgColor) return bgColor;
-  }
-  return null;
-}
-
-function getTextColorFromClass(element) {
-  const primaryTextClass = Array.from(element.classList).find((className) =>
-    className.startsWith("text-primary")
-  );
-  const secondaryTextClass = Array.from(element.classList).find((className) =>
-    className.startsWith("text-secondary")
-  );
-
-  if (primaryTextClass) {
-    return window.getComputedStyle(element).color;
-  }
-
-  if (secondaryTextClass) {
-    return window.getComputedStyle(element).color;
-  }
-
-  return null;
-}
-
-const boxes = document.querySelectorAll(".check-contrast");
-
-boxes.forEach((box) => {
-  const originalBgColor = window.getComputedStyle(box).backgroundColor;
-  const originalTextColor = getTextColorFromClass(box);
-
-  adjustTextColor(box, originalBgColor);
-
-  box.addEventListener("mouseover", () => {
-    const hoverColor = getHoverBackgroundColor(box);
-    if (hoverColor) {
-      const brightness = getBrightness(hoverColor);
-      box.style.color = brightness < 0.5 ? "white" : "black";
-    } else {
-      adjustTextColor(box, originalBgColor);
+    if (colorToUse.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)) {
+      hexColor = colorToUse
+        .match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)
+        .slice(1)
+        .map((n) => {
+          return parseInt(n).toString(16).padStart(2, "0");
+        })
+        .join("");
+      hexColor = `#${hexColor}`;
+    } else if (colorToUse.match(/^#([0-9a-f]{3}){1,2}$/i)) {
+      hexColor = colorToUse;
     }
 
-    const spans = box.querySelectorAll("span");
-    spans.forEach((span) => {
+    if (hexColor) {
+      const brightness = getBrightness(hexColor);
+
+      element.style.color = brightness < 0.5 ? "white" : "black";
+    }
+  }
+
+  function getHoverBackgroundColor(element) {
+    const hoverClass = Array.from(element.classList).find((className) =>
+      className.startsWith("hover:bg-")
+    );
+    if (hoverClass) {
+      const rootStyles = getComputedStyle(document.documentElement);
+      const bgColor = rootStyles
+        .getPropertyValue(`--${hoverClass.replace("hover:bg-", "")}`)
+        .trim();
+
+      if (bgColor) return bgColor;
+    }
+    return null;
+  }
+
+  function getTextColorFromClass(element) {
+    const primaryTextClass = Array.from(element.classList).find((className) =>
+      className.startsWith("text-primary")
+    );
+    const secondaryTextClass = Array.from(element.classList).find((className) =>
+      className.startsWith("text-secondary")
+    );
+
+    if (primaryTextClass) {
+      return window.getComputedStyle(element).color;
+    }
+
+    if (secondaryTextClass) {
+      return window.getComputedStyle(element).color;
+    }
+
+    return null;
+  }
+
+  const boxes = document.querySelectorAll(".check-contrast");
+
+  boxes.forEach((box) => {
+    const originalBgColor = window.getComputedStyle(box).backgroundColor;
+    const originalTextColor = getTextColorFromClass(box);
+
+    adjustTextColor(box, originalBgColor);
+
+    box.addEventListener("mouseover", () => {
+      const hoverColor = getHoverBackgroundColor(box);
       if (hoverColor) {
         const brightness = getBrightness(hoverColor);
-        span.style.color = brightness < 0.5 ? "white" : "black";
+        box.style.color = brightness < 0.5 ? "white" : "black";
       } else {
-        adjustTextColor(span, originalBgColor);
+        adjustTextColor(box, originalBgColor);
       }
+
+      const spans = box.querySelectorAll("span");
+      spans.forEach((span) => {
+        if (hoverColor) {
+          const brightness = getBrightness(hoverColor);
+          span.style.color = brightness < 0.5 ? "white" : "black";
+        } else {
+          adjustTextColor(span, originalBgColor);
+        }
+      });
     });
-  });
 
-  box.addEventListener("mouseout", () => {
-    if (originalTextColor) {
-      box.style.color = originalTextColor;
-    } else {
-      adjustTextColor(box, originalBgColor);
-    }
-
-    const spans = box.querySelectorAll("span");
-    spans.forEach((span) => {
+    box.addEventListener("mouseout", () => {
       if (originalTextColor) {
-        span.style.color = originalTextColor;
+        box.style.color = originalTextColor;
       } else {
-        adjustTextColor(span, originalBgColor);
+        adjustTextColor(box, originalBgColor);
       }
+
+      const spans = box.querySelectorAll("span");
+      spans.forEach((span) => {
+        if (originalTextColor) {
+          span.style.color = originalTextColor;
+        } else {
+          adjustTextColor(span, originalBgColor);
+        }
+      });
     });
   });
+}
+document.addEventListener("DOMContentLoaded", () => {
+  applyContrastCheck(); 
 });
 
 // see-more contact
@@ -659,44 +671,138 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", () => {
   const shareBtn = document.getElementById("shareBtn");
   const shareMenu = document.getElementById("shareMenu");
+
+  if (!shareBtn || !shareMenu) return;
+
   const items = shareMenu.querySelectorAll(".share-item");
+
+  const openMenu = () => {
+    shareMenu.classList.add("opacity-100", "pointer-events-auto");
+    shareMenu.classList.remove("opacity-0", "pointer-events-none");
+
+    items.forEach((item, i) => {
+      setTimeout(() => {
+        item.classList.add("scale-100");
+        item.classList.remove("scale-0");
+      }, i * 100);
+    });
+  };
+
+  const closeMenu = () => {
+    shareMenu.classList.remove("opacity-100", "pointer-events-auto");
+    shareMenu.classList.add("opacity-0", "pointer-events-none");
+
+    items.forEach((item) => {
+      item.classList.remove("scale-100");
+      item.classList.add("scale-0");
+    });
+  };
 
   shareBtn.addEventListener("click", (e) => {
     e.stopPropagation();
-    const isActive = shareMenu.classList.contains("opacity-100");
-
-    if (isActive) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+    shareMenu.classList.contains("opacity-100") ? closeMenu() : openMenu();
   });
 
-  shareMenu.addEventListener("click", (e) => {
-    e.stopPropagation();
-  });
+  shareMenu.addEventListener("click", (e) => e.stopPropagation());
 
-  document.addEventListener("click", () => {
-    closeMenu();
-  });
+  document.addEventListener("click", closeMenu);
+});
 
-  function openMenu() {
-    shareMenu.classList.remove("opacity-0", "pointer-events-none");
-    shareMenu.classList.add("opacity-100", "pointer-events-auto");
-    items.forEach((item, i) => {
-      setTimeout(() => {
-        item.classList.remove("scale-0");
-        item.classList.add("scale-100");
-      }, i * 100);
+// ---------------fetch-content-----------------
+document.addEventListener("DOMContentLoaded", () => {
+  const tabGroups = [
+    {
+      btnClass: "hotel-fetch-btn",
+      containerClass: "fetch-content-hotel_group",
+      type: "hotel_group",
+      swiperSelector: ".swiper-popular-hotels",
+      swiperVar: "swiperPopularHotels",
+    },
+    {
+      btnClass: "tour-fetch-btn",
+      containerClass: "fetch-content-tour_group",
+      type: "tour_group",
+      swiperSelector: ".swiper-popular-tours",
+      swiperVar: "swiperPopularTours",
+    },
+    {
+      btnClass: "faq-fetch-btn",
+      containerClass: "fetch-content-faq_default",
+      type: "faq_default",
+      swiperSelector: null,
+      swiperVar: null,
+    },
+  ];
+
+  function initSwiper(selector, globalVarName) {
+    if (!selector) return;
+    window[globalVarName] = new Swiper(selector, {
+      slidesPerView: "auto",
+      speed: 400,
+      spaceBetween: 12,
+      grabCursor: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
     });
   }
 
-  function closeMenu() {
-    shareMenu.classList.remove("opacity-100", "pointer-events-auto");
-    shareMenu.classList.add("opacity-0", "pointer-events-none");
-    items.forEach((item) => item.classList.remove("scale-100"));
-    items.forEach((item) => item.classList.add("scale-0"));
-  }
+  tabGroups.forEach(
+    ({ btnClass, containerClass, type, swiperSelector, swiperVar }) => {
+      const buttons = document.querySelectorAll(`.${btnClass}`);
+      const container = document.querySelector(`.${containerClass}`);
+      if (!container || buttons.length === 0) return;
+
+      async function loadContent(btn) {
+        buttons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        container.innerHTML =
+          '<div class="flex justify-center mt-20"><span class="fetch-loader"></span></div>';
+
+        const dataId = btn.getAttribute("data-id");
+        const paramKey = btnClass === "faq-fetch-btn" ? "id" : "catid";
+
+        try {
+          const res = await fetch(
+            `/template-load-items.bc?fetch=${type}&${paramKey}=${dataId}`
+          );
+          if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+          const html = await res.text();
+          container.innerHTML = html;
+
+          if (btnClass === "faq-fetch-btn") {
+            const imgSrc = btn.getAttribute("data-src");
+            const imgEl = container.querySelector(".faq_default-img"); 
+            if (imgEl && imgSrc) imgEl.src = imgSrc;
+          }
+
+          if (swiperSelector && swiperVar) {
+            initSwiper(swiperSelector, swiperVar);
+          }
+
+          if (typeof applyContrastCheck === "function") {
+            applyContrastCheck();
+          }
+        } catch (err) {
+          console.error(err);
+          container.innerHTML = `<p>Error loading data: ${err.message}</p>`;
+        }
+      }
+
+      buttons.forEach((btn) =>
+        btn.addEventListener("click", () => loadContent(btn))
+      );
+
+      if (buttons.length > 0) loadContent(buttons[0]);
+    }
+  );
 });
 
 //-----------swiper--------------
