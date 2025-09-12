@@ -457,7 +457,7 @@ document.addEventListener("DOMContentLoaded", function () {
     hotelCards.forEach((card) => {
       const name = (card.dataset.name || "").toLowerCase();
       const city = (card.dataset.city || "").toLowerCase();
-      const rate = (card.dataset.rate || "").toLowerCase();
+      const rate = (card.dataset.rate || "").trim();
       const price = parsePriceHotel(
         card.dataset.price,
         card.dataset.priceToman
@@ -491,7 +491,7 @@ document.addEventListener("DOMContentLoaded", function () {
       applyFilters();
     }
     if (e.target.classList.contains("rating-input")) {
-      const selectedRate = e.target.value.toLowerCase();
+      const selectedRate = e.target.value.replace(" ستاره", "");
       if (e.target.checked) activeRatingFilters.add(selectedRate);
       else activeRatingFilters.delete(selectedRate);
       applyFilters();

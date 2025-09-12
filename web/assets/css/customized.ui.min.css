@@ -841,6 +841,10 @@ body {
   max-height: 18rem;
 }
 
+.max-h-96 {
+  max-height: 24rem;
+}
+
 .w-0 {
   width: 0px;
 }
@@ -1527,14 +1531,14 @@ body {
   --special-4: #00000033;
   --client-color: #466def;
   ---bg: url("");
-  --visaList-bg: url("../PrimeTemplate_A/images/visa-list-background.jpg");
-  --visa-bg: url("../PrimeTemplate_A/images/visa-background.jpg");
-  --contact-bg: url("../PrimeTemplate_A/images/contact-background.jpg");
-  --articleList-bg: url("../PrimeTemplate_A/images/article-list-background.jpg");
-  --article-bg: url("../PrimeTemplate_A/images/article-background.jpg");
-  --tourList-bg: url("../PrimeTemplate_A/images/tour-list-background.jpg");
-  --hotelList-bg: url("../PrimeTemplate_A/images/hotel-list-background.jpg");
-  --hotel-bg: url("../PrimeTemplate_A/images/hotel-background.jpg");
+  --visaList-bg: url("../images/visa-list-background.jpg");
+  --visa-bg: url("../images/visa-background.jpg");
+  --contact-bg: url("../images/contact-background.jpg");
+  --articleList-bg: url("../images/article-list-background.jpg");
+  --article-bg: url("../images/article-background.jpg");
+  --tourList-bg: url("../images/tour-list-background.jpg");
+  --hotelList-bg: url("../images/hotel-list-background.jpg");
+  --hotel-bg: url("../images/hotel-background.jpg");
 }
 
 @font-face {

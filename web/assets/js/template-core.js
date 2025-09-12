@@ -9,82 +9,98 @@ document.addEventListener("DOMContentLoaded", function () {
     const loadedFiles = resources
       .map((res) => res.name.split("/").pop())
       .filter((name) => requiredFiles.includes(name));
-
     return requiredFiles.every((file) => loadedFiles.includes(file));
   }
 
-  if (document.getElementById("search-box")) {
-    function fetchEngine() {
-      try {
-        const xhrobj = new XMLHttpRequest();
-        xhrobj.open("GET", "search-engine.bc");
-        xhrobj.send();
+  function fixUsePaths(container) {
+    container.querySelectorAll("use").forEach((u) => {
+      ["href", "xlink:href"].forEach((attr) => {
+        const val = u.getAttribute(attr);
+        if (!val) return;
+  
+        if (val.includes("images/sprite-icons.svg") && !val.includes("PrimeTemplate_A/images/sprite-icons.svg")) {
+          u.setAttribute(
+            attr,
+            val.replace(
+              "images/sprite-icons.svg",
+              "PrimeTemplate_A/images/sprite-icons.svg"
+            )
+          );
+        }
+      });
+    });
+  }
 
-        xhrobj.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-            const container = document.getElementById("search-box");
+  function fetchEngine() {
+    try {
+      const xhrobj = new XMLHttpRequest();
+      xhrobj.open("GET", "search-engine.bc");
+      xhrobj.send();
 
-            const tpl = document.createElement("template");
-            tpl.innerHTML = xhrobj.responseText;
+      xhrobj.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          const container = document.getElementById("search-box");
+          const tpl = document.createElement("template");
+          tpl.innerHTML = xhrobj.responseText;
 
-            tpl.content.querySelectorAll("use").forEach((u) => {
-              ["href", "xlink:href"].forEach((attr) => {
-                const val = u.getAttribute(attr);
-                if (!val) return;
+          fixUsePaths(tpl.content);
 
-                if (val.includes("images/sprite-icons.svg")) {
-                  u.setAttribute(
-                    attr,
-                    val.replace(
-                      "images/sprite-icons.svg",
-                      "PrimeTemplate_A/images/sprite-icons.svg"
-                    )
-                  );
+          container.innerHTML = "";
+          container.appendChild(tpl.content);
+
+          [".Basis_Date.end_date", ".Basis_Date.start_date"].forEach(
+            (selector) => {
+              const dateInputs = document.querySelectorAll(selector);
+              dateInputs.forEach((input) => {
+                input.placeholder = "";
+              });
+            }
+          );
+
+          const r = document.querySelector(".flighttype-field");
+          r.classList.add("flighttype-dropDown");
+
+          const scripts = container.getElementsByTagName("script");
+          for (let i = 0; i < scripts.length; i++) {
+            const scriptTag = document.createElement("script");
+            if (scripts[i].src) {
+              scriptTag.src = scripts[i].src;
+              scriptTag.async = false;
+            } else {
+              scriptTag.text = scripts[i].textContent;
+            }
+            document.head
+              .appendChild(scriptTag)
+              .parentNode.removeChild(scriptTag);
+          }
+
+          const observer = new MutationObserver((mutationsList) => {
+            mutationsList.forEach((mutation) => {
+              mutation.addedNodes.forEach((node) => {
+                if (node.nodeType === 1) {
+                  fixUsePaths(node);
                 }
               });
             });
+          });
 
-            container.innerHTML = "";
-            container.appendChild(tpl.content);
-
-            [".Basis_Date.end_date", ".Basis_Date.start_date"].forEach(
-              (selector) => {
-                const dateInputs = document.querySelectorAll(selector);
-                dateInputs.forEach((input) => {
-                  input.placeholder = "";
-                });
-              }
-            );
-
-            let r = document.querySelector(".flighttype-field");
-            r.classList.add("flighttype-dropDown");
-            const scripts = container.getElementsByTagName("script");
-            for (let i = 0; i < scripts.length; i++) {
-              const scriptTag = document.createElement("script");
-              if (scripts[i].src) {
-                scriptTag.src = scripts[i].src;
-                scriptTag.async = false;
-              } else {
-                scriptTag.text = scripts[i].textContent;
-              }
-              document.head
-                .appendChild(scriptTag)
-                .parentNode.removeChild(scriptTag);
-            }
-          }
-        };
-      } catch (error) {
-        console.error("مشکلی پیش آمده است. لطفا صبور باشید", error);
-      }
+          observer.observe(container, { childList: true, subtree: true });
+        }
+      };
+    } catch (error) {
+      console.error("مشکلی پیش آمده است. لطفا صبور باشید", error);
     }
+  }
 
-    function waitForFiles() {
-      if (checkAllResourcesLoaded()) {
-        fetchEngine();
-      } else {
-        setTimeout(waitForFiles, 500);
-      }
+  function waitForFiles() {
+    if (checkAllResourcesLoaded()) {
+      fetchEngine();
+    } else {
+      setTimeout(waitForFiles, 500);
     }
+  }
+
+  if (document.getElementById("search-box")) {
     waitForFiles();
   }
 });
@@ -182,7 +198,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const main = document.querySelector("main");
   if (!main) return;
 
-  const currentPage = main.dataset.activepage;
+  const currentPage = main.dataset.activepage?.trim();
+  if (!currentPage) return;
 
   document
     .querySelectorAll(
@@ -193,12 +210,11 @@ document.addEventListener("DOMContentLoaded", () => {
         link.classList.remove("text-zinc-900");
         link.classList.add("text-primary-600");
 
-        if (window.innerWidth >= 1024) {
-          link.classList.add(
-            "border-b-2",
-            "border-solid",
-            "border-primary-600",
-            "pb-3"
+        if (!link.querySelector(".active-underline")) {
+          link.style.position = "relative"; 
+          link.insertAdjacentHTML(
+            "beforeend",
+            `<span class="active-underline absolute -bottom-px right-0 w-full transition-all duration-300 h-0.5 bg-primary-600"></span>`
           );
         }
 
@@ -386,8 +402,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // --------faq---------
-document.addEventListener("DOMContentLoaded", () => {
-  const faqs = document.querySelectorAll(".faq-border");
+function initFaqAccordion(container = document) {
+  const faqs = container.querySelectorAll(".faq-border");
+  if (faqs.length === 0) return;
+
   const firstFaq = faqs[0];
   let firstFaqFirstOpen = true;
 
@@ -407,11 +425,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const w = f.querySelector(".faq-content");
         if (f !== faq) {
           f.classList.remove("active");
-          w.classList.remove(
-            "gradient-border",
-            "from-primary-600",
-            "bg-primary-50"
-          );
+          w.classList.remove("gradient-border", "from-primary-600", "bg-primary-50");
           w.classList.add("bg-zinc-100");
           const ans = f.querySelector(".faq-answer");
           ans.style.maxHeight = "0";
@@ -423,21 +437,13 @@ document.addEventListener("DOMContentLoaded", () => {
         faq.classList.add("active");
         content.style.maxHeight = content.scrollHeight + "px";
         wrapper.classList.remove("bg-zinc-100");
-        wrapper.classList.add(
-          "bg-primary-50",
-          "gradient-border",
-          "from-primary-600"
-        );
+        wrapper.classList.add("bg-primary-50", "gradient-border", "from-primary-600");
         question.classList.add("mb-3");
         if (faq === firstFaq && firstFaqFirstOpen) firstFaqFirstOpen = false;
       } else {
         faq.classList.remove("active");
         content.style.maxHeight = "0";
-        wrapper.classList.remove(
-          "gradient-border",
-          "from-primary-600",
-          "bg-primary-50"
-        );
+        wrapper.classList.remove("gradient-border", "from-primary-600", "bg-primary-50");
         wrapper.classList.add("bg-zinc-100");
         question.classList.remove("mb-3");
         if (faq === firstFaq && firstFaqFirstOpen) firstFaqFirstOpen = false;
@@ -448,11 +454,7 @@ document.addEventListener("DOMContentLoaded", () => {
       faq.classList.add("active");
       content.style.maxHeight = content.scrollHeight + "px";
       wrapper.classList.remove("bg-zinc-100");
-      wrapper.classList.add(
-        "bg-primary-50",
-        "gradient-border",
-        "from-primary-600"
-      );
+      wrapper.classList.add("bg-primary-50", "gradient-border", "from-primary-600");
       question.classList.add("mb-3");
     }
   });
@@ -465,17 +467,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       f.classList.remove("active");
       const w = f.querySelector(".faq-content");
-      w.classList.remove(
-        "gradient-border",
-        "from-primary-600",
-        "bg-primary-50"
-      );
+      w.classList.remove("gradient-border", "from-primary-600", "bg-primary-50");
       w.classList.add("bg-zinc-100");
       f.querySelector(".faq-answer").style.maxHeight = "0";
       f.querySelector(".faq-question").classList.remove("mb-3");
     });
   });
-});
+}
 
 // ---------- check contrast -----------
 function applyContrastCheck() {
@@ -654,16 +652,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   document.querySelectorAll(".content-box").forEach((box) => {
-    const content = box.querySelector(".content-inner");
-    const seeMoreBtn = box.querySelector(".see-more");
-    const linkBtn = box.querySelector(".read-more-link");
+    const contents = box.querySelectorAll(".content-inner");
+    contents.forEach((content) => {
+      const seeMoreBtn = content.parentElement.querySelector(".see-more");
+      const linkBtn = content.parentElement.querySelector(".read-more-link");
 
-    if (content && seeMoreBtn) {
-      setupSeeMore(content, seeMoreBtn);
-    }
-    if (content && linkBtn) {
-      setupReadMoreLink(content, linkBtn);
-    }
+      if (seeMoreBtn) setupSeeMore(content, seeMoreBtn);
+      if (linkBtn) setupReadMoreLink(content, linkBtn);
+    });
   });
 });
 
@@ -717,6 +713,7 @@ document.addEventListener("DOMContentLoaded", () => {
       type: "hotel_group",
       swiperSelector: ".swiper-popular-hotels",
       swiperVar: "swiperPopularHotels",
+      initialLoad: true
     },
     {
       btnClass: "tour-fetch-btn",
@@ -724,6 +721,7 @@ document.addEventListener("DOMContentLoaded", () => {
       type: "tour_group",
       swiperSelector: ".swiper-popular-tours",
       swiperVar: "swiperPopularTours",
+      initialLoad: true
     },
     {
       btnClass: "faq-fetch-btn",
@@ -731,7 +729,16 @@ document.addEventListener("DOMContentLoaded", () => {
       type: "faq_default",
       swiperSelector: null,
       swiperVar: null,
+      initialLoad: true
     },
+    {
+      btnClass: "article-fetch-btn",
+      containerClass: "fetch-content-article-list_group",
+      type: "article-list_group",
+      swiperSelector: null,
+      swiperVar: null,
+      initialLoad: false
+    }
   ];
 
   function initSwiper(selector, globalVarName) {
@@ -754,33 +761,52 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   tabGroups.forEach(
-    ({ btnClass, containerClass, type, swiperSelector, swiperVar }) => {
+    ({ btnClass, containerClass, type, swiperSelector, swiperVar, initialLoad }) => {
       const buttons = document.querySelectorAll(`.${btnClass}`);
       const container = document.querySelector(`.${containerClass}`);
       if (!container || buttons.length === 0) return;
 
       async function loadContent(btn) {
         buttons.forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
+        if (btn.classList) btn.classList.add("active");
 
         container.innerHTML =
-          '<div class="flex justify-center mt-20"><span class="fetch-loader"></span></div>';
+          '<div class="h-full flex items-center justify-center"><span class="fetch-loader"></span></div>';
 
         const dataId = btn.getAttribute("data-id");
+
         const paramKey = btnClass === "faq-fetch-btn" ? "id" : "catid";
+
+        const minLoaderTime = new Promise((resolve) => setTimeout(resolve, 1000));
 
         try {
           const res = await fetch(
-            `/template-load-items.bc?fetch=${type}&${paramKey}=${dataId}`
+            `/template-load-items.bc?fetch=${type}&${paramKey}=${encodeURIComponent(
+              dataId
+            )}`
           );
-          if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+          if (!res.ok)
+            throw new Error(`خطا در ارتباط با سرور (کد ${res.status})`);
+
           const html = await res.text();
+          await minLoaderTime;
           container.innerHTML = html;
 
           if (btnClass === "faq-fetch-btn") {
             const imgSrc = btn.getAttribute("data-src");
-            const imgEl = container.querySelector(".faq_default-img"); 
-            if (imgEl && imgSrc) imgEl.src = imgSrc;
+            const imgEl = container.querySelector(".faq_default-img");
+            if (imgEl) {
+              imgEl.style.display = imgSrc ? "block" : "none";
+              if (imgSrc) imgEl.src = imgSrc;
+            }
+
+            if (typeof initFaqAccordion === "function") {
+              initFaqAccordion(container);
+            }
+          }
+
+          if (btnClass === "article-fetch-btn") {
+            bindArticleFilter();
           }
 
           if (swiperSelector && swiperVar) {
@@ -792,18 +818,143 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         } catch (err) {
           console.error(err);
-          container.innerHTML = `<p>Error loading data: ${err.message}</p>`;
+          await minLoaderTime;
+          container.innerHTML = `
+            <div class="text-center text-red-500 py-6">
+              خطا در بارگذاری داده‌ها.<br>
+              لطفاً دوباره تلاش کنید.
+            </div>`;
         }
       }
 
-      buttons.forEach((btn) =>
-        btn.addEventListener("click", () => loadContent(btn))
-      );
+      buttons.forEach((btn) => btn.addEventListener("click", () => loadContent(btn)));
 
-      if (buttons.length > 0) loadContent(buttons[0]);
+      if (buttons.length > 0) {
+        if (initialLoad) {
+          loadContent(buttons[0]);
+        } else {
+          const allId = container.getAttribute("data-all_id");
+          if (allId) {
+            const tempBtn = {
+              getAttribute: () => allId,
+              classList: { remove: () => {}, add: () => {} }
+            };
+            loadContent(tempBtn);
+          }
+        }
+      }
     }
   );
 });
+
+
+
+//-------------paging--------------
+const getSelectedCatId = () => {
+  const selectedLabel = document.querySelector(".article-fetch-btn.active");
+  if (selectedLabel) {
+    return selectedLabel.getAttribute("data-id");
+  }
+  const fetchContentArticle = document.querySelector(".fetch-content-article-list_group");
+  return fetchContentArticle ? fetchContentArticle.getAttribute("data-all_id") : null;
+};
+
+const fetchArticlePage = async (dataPageNum) => {
+  const fetchContentArticle = document.querySelector(".fetch-content-article-list_group");
+  const cmsQuery = getSelectedCatId();
+  if (!cmsQuery) return;
+
+  const pagingResponse = await fetch(
+    `/template-load-items.bc?fetch=article-list_group&catid=${cmsQuery}&pagenum=${dataPageNum}`
+  );
+  const pagingData = await pagingResponse.text();
+  fetchContentArticle.innerHTML = pagingData;
+
+  bindArticleFilter();
+};
+
+
+//---------filter-article-title-----------
+function bindArticleFilter() {
+  const filterInput = document.getElementById("articleNameFilter");
+  const filterBtn = document.querySelector(".articleNameFilterBtn");
+  const articleWrapper = document.querySelector(".article-card-container");
+  const pagingEl = document.getElementById("paging");
+  if (!filterInput || !filterBtn || !articleWrapper) return;
+
+  const notFoundEl = document.createElement("div");
+  notFoundEl.className = "hidden flex flex-col items-center justify-center h-full";
+  notFoundEl.innerHTML = `
+    <div class="flex flex-col items-center justify-center h-full">
+      <h2 class="text-3xl font-bold mb-2">هیچ موردی پیدا نشد!</h2>
+      <p class="text-lg mb-6">چشم‌ها همه‌جا رو گشتن ولی چیزی پیدا نکردن</p>
+      <span class="not-found-loader"></span>
+    </div>
+  `;
+  articleWrapper.parentNode.insertBefore(notFoundEl, articleWrapper.nextSibling);
+
+  const doFilter = () => {
+    const searchTerm = filterInput.value.trim().toLowerCase();
+    const articles = articleWrapper.querySelectorAll(".article-card");
+    let found = false;
+
+    articles.forEach(article => {
+      const title = article.getAttribute("data-title") || "";
+      const match = title.toLowerCase().includes(searchTerm);
+      article.style.display = match ? "" : "none";
+      if (match) found = true;
+    });
+
+    if (!found) {
+      articleWrapper.style.display = "none";  
+      if (pagingEl) pagingEl.style.display = "none";
+      notFoundEl.classList.remove("hidden"); 
+    } else {
+      articleWrapper.style.display = "";     
+      if (pagingEl) pagingEl.style.display = "";
+      notFoundEl.classList.add("hidden"); 
+    }
+  };
+
+  filterBtn.addEventListener("click", doFilter);
+  filterInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      doFilter();
+    }
+  });
+}
+
+//--------swith-comment-btn---------
+document.addEventListener('DOMContentLoaded', () => {
+  const commentButtons = document.querySelectorAll('.comment-btn');
+  const commentContents = document.querySelectorAll('.comment-content');
+
+  if (!commentButtons.length || !commentContents.length) return;
+
+  commentButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      commentButtons.forEach((b) => {
+        b.classList.remove('text-primary-900');
+        b.classList.add('text-zinc-900');
+      });
+      btn.classList.remove('text-zinc-900');
+      btn.classList.add('text-primary-900');
+
+      const targetId = btn.dataset.comment;
+      commentContents.forEach((content) => {
+        if (content.id === targetId) {
+          content.classList.add('active', 'opacity-100', 'scale-100');
+          content.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+        } else {
+          content.classList.remove('active', 'opacity-100', 'scale-100');
+          content.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+        }
+      });
+    });
+  });
+});
+
 
 //-----------swiper--------------
 if (document.querySelector(".swiper-busy-destination")) {
@@ -1018,4 +1169,21 @@ if (document.querySelector(".swiper-popular-tours-mobile")) {
       clickable: true,
     },
   });
+}
+if (document.querySelector(".swiper-comments")) {
+var swiperComments = new Swiper('.swiper-comments', {
+  slidesPerView: 3,
+  speed: 400,
+  spaceBetween: 12,
+  grabCursor: true,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  loop: true,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+});
 }

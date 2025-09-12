@@ -1,0 +1,150 @@
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="[##cms.query.id##]">
+    <member request="json-ld" type="scalar" name="json" />
+  </basis>
+  <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
+    <member name="view" type="view" propertyid="7249" />
+  </basis>
+  <basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="[##cms.query.id##]">
+    <member name="navigation" type="tree" request="navigationcat" />
+  </basis>
+  <basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
+    <member name="comment" type="list" order="ord" request="listcomment" />
+  </basis>
+  <basis core="dbsource" name="captcha" source="trust_login">
+    <member name="code" type="scalar" request="captcha"></member>
+  </basis>
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <basis core="call" file="style.inc" />
+</head>
+
+<body>
+    <basis core="call" file="template-header.inc" />
+    <main>
+        <section class="relative bg-article bg-center bg-cover py-24">
+            <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
+            <div class="bg-specialcolor-4 absolute inset-0 w-full h-full"></div>
+            <div class="relative z-10 flex flex-col items-center gap-2">
+                <basis core="print" datamembername="db.view">
+                    <layout>
+                        <div class="bg-specialcolor-3 rounded-xl py-5 px-10">
+                          @child
+                        </div>
+                    </layout>
+                    <face filter="TypeID in(150)">
+                        <h1 class="font-bold text-xl text-white">@text</h1>
+                    </face>
+                </basis>
+
+                <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="flex items-center text-sm gap-1 mt-2">
+                    <li class="inline-block font-normal" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                      <a class="text-white text-xs transition-all duration-300 hover:text-primary-700" itemprop="item" href="/" aria-label="home">
+                        <span itemprop="name">صفحه اصلی</span>
+                        <meta itemprop="position" content="1" />
+                      </a>
+                    </li>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+                    </svg>
+                    <basis core="print" datamembername="db.navigation">
+                      <face filter="RowNumber=max(RowNumber) and parentcatid<>10732">
+                        <li class="inline-block font-normal text-primary-700" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                          <span itemprop="name">@title</span>
+                          <meta itemprop="position" content="@rownumber" />
+                        </li>
+                      </face>
+                      <face filter="link is null and parentcatid<>10732">
+                        <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                          <a class="text-white text-xs transition-all duration-300 hover:text-primary-700" itemprop="item" href="/article-list.bc?catid=@parentcatid" aria-label="@title">
+                            <span itemprop="name">@title</span>
+                            <meta itemprop="position" content="@rownumber" />
+                          </a>
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+                          </svg>
+                        </li>
+                      </face>
+                      <face filter="parentcatid<>10732">
+                        <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                          <a class="text-white text-xs transition-all duration-300 hover:text-primary-700" itemprop="item" href="/@link" aria-label="@title">
+                            <span class="text-white text-xs transition-all duration-300 hover:text-primary-700" itemprop="name">@title</span>
+                            <meta itemprop="position" content="@rownumber" />
+                          </a>
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+                          </svg>
+                        </li>
+                      </face>
+                    </basis>
+                  </ul>
+            </div>
+        </section>
+
+        <div class="flex gap-6 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
+            <div class="flex-1">
+
+
+                <basis core="print" datamembername="db.view">
+                    <layout>
+                        <section>
+                            @child
+                        </section>
+                    </layout>
+                    <face filter="TypeID in(129)">
+                        <h2 id="@valueID" class="text-2xl font-bold text-zinc-900 mb-3">@text</h2>
+                        <div class="text-sm text-justify text-zinc-900 leading-5 hyphens-auto mb-8">
+                            @largetext
+                        </div>
+                    </face>
+                    <face filter="TypeID in(250)">
+                        <h2 id="@valueID" class="text-2xl font-bold text-zinc-900 mb-3">@text</h2>
+                        <div class="text-sm text-justify text-zinc-900 leading-5 hyphens-auto mb-8">@largetext</div>
+                    </face>
+                </basis>
+
+
+                <section class="mt-8">
+                    <div class="bg-zinc-100 p-6 rounded-xl">
+                        <div class="flex items-center gap-10 border-b border-solid border-zinc-300 pb-3">
+                            <h2 class="text-primary-900 font-bold">ثبت نظر</h2>
+                            <h2 class="text-zinc-900 font-bold">نظر کاربران</h2>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <basis core="print" datamembername="db.view">
+                <layout>
+                    <aside class="sticky h-fit top-0 w-80">
+                        <div class="bg-zinc-100 p-3 rounded-xl">
+                            <div class="border-b border-solid border-zinc-300 pb-2">
+                                <h2 class="text-zinc-900 font-medium">فهرست عناوین</h2>
+                            </div>
+                            <div class="flex flex-col gap-1 mt-2">
+                                @child
+                            </div>
+                        </div>
+                    </aside>
+                </layout>
+                <face filter="TypeID in(150 , 250 , 129)">
+                    <a href="#@valueID" class="group flex items-center gap-1 transition-all duration-300 hover:text-primary-600">
+                        <svg width="48" height="48" class="flex-shrink-0">
+                            <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-black-star"></use>
+                        </svg>
+                        <h3 class="text-xs text-zinc-900 transition-all duration-300 group-hover:text-primary-600">@text</h3>
+                    </a>
+                </face>
+            </basis>
+
+        </div>
+
+    </main>
+    <basis core="call" file="template-footer.inc" />
+</body>
+
+</html>
