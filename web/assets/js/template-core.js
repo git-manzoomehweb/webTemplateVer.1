@@ -955,6 +955,35 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+//----empty-fields-check----------
+document.addEventListener("DOMContentLoaded", () => {
+  const checkEmptyFaceFields = (parent) => {
+    const emptyFaceText = parent.querySelector(".empty-face-text");
+
+    if (emptyFaceText && emptyFaceText.textContent.trim() === "") {
+      parent.style.display = "none"; 
+    }
+  };
+
+  const observer = new MutationObserver(() => {
+    const emptyFaceFields = document.querySelectorAll(".empty-face-fields");
+    
+    emptyFaceFields.forEach((parent) => {
+      checkEmptyFaceFields(parent);
+    });
+  });
+
+  const config = { childList: true, subtree: true }; 
+  const rootElement = document.body; 
+
+  observer.observe(rootElement, config);
+
+  const emptyFaceFields = document.querySelectorAll(".empty-face-fields");
+  emptyFaceFields.forEach((parent) => {
+    checkEmptyFaceFields(parent);
+  });
+});
+
 
 //-----------swiper--------------
 if (document.querySelector(".swiper-busy-destination")) {

@@ -296,7 +296,7 @@ table {
   /* 1 */
   border-color: inherit;
   /* 2 */
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
   /* 3 */
 }
 
