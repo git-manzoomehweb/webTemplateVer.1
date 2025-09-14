@@ -44,23 +44,27 @@
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <img src="../assets/images/banner-list-pages.jpg"
-                                            class="w-full h-72 object-cover rounded-xl" alt="" width="408" height="288">
+                                            class="w-full h-72 object-cover rounded-xl" alt="" width="408"
+                                            height="288" />
                                     </div>
                                     <div class="swiper-slide">
                                         <img src="../assets/images/banner-list-pages.jpg"
-                                            class="w-full h-72 object-cover rounded-xl" alt="" width="408" height="288">
+                                            class="w-full h-72 object-cover rounded-xl" alt="" width="408"
+                                            height="288" />
                                     </div>
                                     <div class="swiper-slide">
                                         <img src="../assets/images/banner-list-pages.jpg"
-                                            class="w-full h-72 object-cover rounded-xl" alt="" width="408" height="288">
+                                            class="w-full h-72 object-cover rounded-xl" alt="" width="408"
+                                            height="288" />
                                     </div>
                                 </div>
                                 <div class="swiper-button-next text-primary-600"></div>
                                 <div class="swiper-button-prev text-primary-600"></div>
                             </div>
-                            <div thumbsslider="" class="swiper small-img-gallery mt-4">
+
+                            <div class="swiper small-img-gallery mt-4">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
+                                    <div class="swiper-slide cursor-pointer">
                                         <img src="../assets/images/banner-list-pages.jpg" alt=""
                                             class="w-full h-16 object-cover rounded-xl" width="96" height="64"
                                             loading="lazy">
@@ -83,6 +87,32 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Popup Modal -->
+                        <div id="popupModal"
+                            class="popup-modal fixed inset-0 z-50 bg-black bg-opacity-70 flex justify-center items-center hidden">
+                            <div
+                                class="popup-content flex items-center bg-white pt-14 px-5 pb-5 rounded-lg relative xl:max-w-7xl max-lg:max-w-[90%] max-lg:h-[400px] h-[500px]">
+                                <div class="swiper big-img-gallery-popup select-none h-full">
+                                    <div class="swiper-wrapper">
+                                        <!-- Dynamically inserted image slides will go here -->
+                                    </div>
+                                    <div class="swiper-button-next text-primary-600"></div>
+                                    <div class="swiper-button-prev text-primary-600"></div>
+                                </div>
+                                <button id="closePopup" class="absolute right-0 top-2 text-white font-bold text-xl">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                                        fill="none">
+                                        <path
+                                            d="M6.53033 5.46967C6.23744 5.17678 5.76256 5.17678 5.46967 5.46967C5.17678 5.76256 5.17678 6.23744 5.46967 6.53033L10.9393 12L5.46967 17.4697C5.17678 17.7626 5.17678 18.2374 5.46967 18.5303C5.76256 18.8232 6.23744 18.8232 6.53033 18.5303L12 13.0607L17.4697 18.5303C17.7626 18.8232 18.2374 18.8232 18.5303 18.5303C18.8232 18.2374 18.8232 17.7626 18.5303 17.4697L13.0607 12L18.5303 6.53033C18.8232 6.23744 18.8232 5.76256 18.5303 5.46967C18.2374 5.17678 17.7626 5.17678 17.4697 5.46967L12 10.9393L6.53033 5.46967Z"
+                                            fill="#71717A" />
+
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+
                     </div>
                 </section>
                 <section>
@@ -121,7 +151,8 @@
                             <svg width="48" height="48" class="flex-shrink-0">
                                 <use href="../assets/images/sprite-icons.svg#icon-black-star"></use>
                             </svg>
-                            <h3 class="text-xs text-zinc-900 transition-all duration-300 group-hover:text-primary-600">گواهینامه بین المللی چیست و چه کاربردی دارد؟</h3>
+                            <h3 class="text-xs text-zinc-900 transition-all duration-300 group-hover:text-primary-600">
+                                گواهینامه بین المللی چیست و چه کاربردی دارد؟</h3>
                         </li>
                         <li class="flex items-center gap-1">
                             <svg width="48" height="48" class="flex-shrink-0">
@@ -468,6 +499,85 @@
 
     <script src="https://cdn.basiscore.net/basisfly.com/js/swiper-bundle.min.js"></script>
     <script src="../assets/js/template-core.js"></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const swiperSmall = new Swiper(".small-img-gallery", {
+                spaceBetween: 10,
+                slidesPerView: 4,
+                freeMode: true,
+                watchSlidesProgress: true,
+            });
+
+            const swiperBig = new Swiper(".big-img-gallery", {
+                spaceBetween: 10,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                thumbs: {
+                    swiper: swiperSmall,
+                },
+            });
+
+            const popupModal = document.getElementById('popupModal');
+            const popupContent = document.querySelector('.big-img-gallery-popup .swiper-wrapper');
+            const closePopup = document.getElementById('closePopup');
+            const images = document.querySelectorAll('.small-img-gallery .swiper-slide img');
+
+            images.forEach((image, index) => {
+                image.addEventListener('click', function () {
+                    popupContent.innerHTML = '';
+
+                    const newSlide = document.createElement('div');
+                    newSlide.classList.add('swiper-slide');
+                    const newImage = document.createElement('img');
+                    newImage.src = image.src;
+                    newImage.classList.add('w-full', 'h-full', 'object-cover', 'rounded-xl');
+                    newSlide.appendChild(newImage);
+                    popupContent.appendChild(newSlide);
+
+                    images.forEach((thumbImage) => {
+                        const slide = document.createElement('div');
+                        slide.classList.add('swiper-slide');
+                        const thumbImageElement = document.createElement('img');
+                        thumbImageElement.src = thumbImage.src;
+                        thumbImageElement.classList.add('w-full', 'h-full', 'object-cover', 'rounded-xl');
+                        slide.appendChild(thumbImageElement);
+                        popupContent.appendChild(slide);
+                    });
+
+                    const swiperPopup = new Swiper('.big-img-gallery-popup', {
+                        loop: true,
+                        initialSlide: index,
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    });
+
+                    popupModal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            closePopup.addEventListener('click', function () {
+                popupModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            });
+
+
+            popupModal.addEventListener('click', function (e) {
+                if (e.target === popupModal) {
+                    popupModal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    </script>
 
 </body>
 
