@@ -14,7 +14,7 @@
         postsql="select * from [slogans.cat] where catid in([##cms.host.slogans##])"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="slogans" catid="[##cms.host.slogans##]">
-    <member name="list" type="list" link="article.bc" propertyid="7244" perpage="8" order="ord" size="48x48" />
+    <member name="list" type="list" link="article.bc" propertyid="7244" perpage="8" order="ord" size="40x40" />
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour_category">
@@ -82,10 +82,10 @@
 
 <body>
     <basis core="call" file="template-header.inc" />
-    <main data-activepage="home" data-hostorder="">
+    <main data-activepage="home" data-sectionorder="">
         <h1 class="h1-tag">gdgdfggg</h1>
         <section class="relative z-10 flex items-center mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
-            <div class="module-banner-image">
+            <div class="module-banner-image" data-img-path="PrimeTemplate_A">
                 <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/flight-search-bg.jpg"
                     class="top-0 absolute w-[700px] h-full object-cover rounded-3xl" alt="flight-search-bg" width="700"
                     height="569" loading="lazy" />
@@ -123,7 +123,7 @@
                             <div class="swiper-slide max-w-[314px]">
                                 <div
                                     class="flex items-center justify-between border border-solid border-zinc-300 bg-zinc-gradient rounded-xl p-3 cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary-600">
-                                    <div class="flex items-center gap-4">
+                                    <div class="flex gap-4">
                                         <div>
                                             <h3 class="font-bold text-sm mb-2">@prp_[##cms.host.origin_city_landing##]
                                             </h3>
@@ -187,7 +187,7 @@
                                 @child
                             </div>
                         </layout>
-                        <face filter="[00048X00048prp] is null">
+                        <face filter="[00040X00040prp] is null">
                             <div
                                 class="flex flex-col items-center justify-between gap-3 gradient-border from-primary-600 bg-zinc-50 rounded-2xl p-4">
                                 <span class="bg-primary-600 rounded-full p-4">
@@ -698,7 +698,8 @@
                     </basis>
 
 
-                    <div class="flex items-center justify-center gap-6 mt-16 tabs-content fetch-content-faq_default min-h-60">
+                    <div
+                        class="flex items-center justify-center gap-6 mt-16 tabs-content fetch-content-faq_default min-h-60">
 
                     </div>
                 </section>

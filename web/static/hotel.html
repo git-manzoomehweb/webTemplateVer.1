@@ -92,24 +92,40 @@
                         <div id="popupModal"
                             class="popup-modal fixed inset-0 z-50 bg-black bg-opacity-70 flex justify-center items-center hidden">
                             <div
-                                class="popup-content flex items-center bg-white pt-14 px-5 pb-5 rounded-lg relative xl:max-w-7xl max-lg:max-w-[90%] max-lg:h-[400px] h-[500px]">
-                                <div class="swiper big-img-gallery-popup select-none h-full">
-                                    <div class="swiper-wrapper">
-                                        <!-- Dynamically inserted image slides will go here -->
-                                    </div>
-                                    <div class="swiper-button-next text-primary-600"></div>
-                                    <div class="swiper-button-prev text-primary-600"></div>
-                                </div>
-                                <button id="closePopup" class="absolute right-0 top-2 text-white font-bold text-xl">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
-                                        fill="none">
-                                        <path
-                                            d="M6.53033 5.46967C6.23744 5.17678 5.76256 5.17678 5.46967 5.46967C5.17678 5.76256 5.17678 6.23744 5.46967 6.53033L10.9393 12L5.46967 17.4697C5.17678 17.7626 5.17678 18.2374 5.46967 18.5303C5.76256 18.8232 6.23744 18.8232 6.53033 18.5303L12 13.0607L17.4697 18.5303C17.7626 18.8232 18.2374 18.8232 18.5303 18.5303C18.8232 18.2374 18.8232 17.7626 18.5303 17.4697L13.0607 12L18.5303 6.53033C18.8232 6.23744 18.8232 5.76256 18.5303 5.46967C18.2374 5.17678 17.7626 5.17678 17.4697 5.46967L12 10.9393L6.53033 5.46967Z"
-                                            fill="#71717A" />
+                                class="popup-content relative flex items-center justify-center border-4 border-solid border-white rounded-3xl h-[520px] max-w-7xl overflow-hidden">
 
-                                    </svg>
-                                </button>
+                                <div
+                                    class="absolute top-0 left-0 right-0 flex items-center justify-between px-6 py-3 z-20">
+                                    <h2 class="text-lg font-semibold text-zinc-800 dark:text-zinc-100">گالری تصاویر</h2>
+                                    <button id="closePopupGallery"
+                                        class="flex items-center justify-center w-12 h-12 bg-white/30 backdrop-blur-md rounded-full text-white transition-all duration-300 hover:bg-secondary-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                            viewBox="0 0 24 24" fill="none" class="stroke-current">
+                                            <path d="M6 6l12 12M18 6L6 18" stroke-width="2" stroke-linecap="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div
+                                    class="swiper big-img-gallery-popup select-none h-full w-full">
+                                    <div class="swiper-wrapper">
+
+                                    </div>
+
+                                    <div
+                                        class="swiper-button-next w-12 h-12 after:text-2xl bg-white/30 backdrop-blur-md rounded-full text-white shadow-lg">
+                                    </div>
+                                    <div
+                                        class="swiper-button-prev w-12 h-12 after:text-2xl bg-white/30 backdrop-blur-md rounded-full text-white shadow-lg">
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="absolute bottom-0 left-0 right-0 px-6 py-3 rounded-3xl bg-gradient-to-t from-black/80 to-transparent flex items-center justify-between text-sm text-white z-20">
+                                    <span class="gallery-img-count text-3xl">1 / 5</span>
+                                </div>
                             </div>
+
                         </div>
 
 
@@ -499,85 +515,6 @@
 
     <script src="https://cdn.basiscore.net/basisfly.com/js/swiper-bundle.min.js"></script>
     <script src="../assets/js/template-core.js"></script>
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const swiperSmall = new Swiper(".small-img-gallery", {
-                spaceBetween: 10,
-                slidesPerView: 4,
-                freeMode: true,
-                watchSlidesProgress: true,
-            });
-
-            const swiperBig = new Swiper(".big-img-gallery", {
-                spaceBetween: 10,
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                thumbs: {
-                    swiper: swiperSmall,
-                },
-            });
-
-            const popupModal = document.getElementById('popupModal');
-            const popupContent = document.querySelector('.big-img-gallery-popup .swiper-wrapper');
-            const closePopup = document.getElementById('closePopup');
-            const images = document.querySelectorAll('.small-img-gallery .swiper-slide img');
-
-            images.forEach((image, index) => {
-                image.addEventListener('click', function () {
-                    popupContent.innerHTML = '';
-
-                    const newSlide = document.createElement('div');
-                    newSlide.classList.add('swiper-slide');
-                    const newImage = document.createElement('img');
-                    newImage.src = image.src;
-                    newImage.classList.add('w-full', 'h-full', 'object-cover', 'rounded-xl');
-                    newSlide.appendChild(newImage);
-                    popupContent.appendChild(newSlide);
-
-                    images.forEach((thumbImage) => {
-                        const slide = document.createElement('div');
-                        slide.classList.add('swiper-slide');
-                        const thumbImageElement = document.createElement('img');
-                        thumbImageElement.src = thumbImage.src;
-                        thumbImageElement.classList.add('w-full', 'h-full', 'object-cover', 'rounded-xl');
-                        slide.appendChild(thumbImageElement);
-                        popupContent.appendChild(slide);
-                    });
-
-                    const swiperPopup = new Swiper('.big-img-gallery-popup', {
-                        loop: true,
-                        initialSlide: index,
-                        navigation: {
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev',
-                        },
-                        slidesPerView: 1,
-                        spaceBetween: 10,
-                    });
-
-                    popupModal.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-
-            closePopup.addEventListener('click', function () {
-                popupModal.classList.add('hidden');
-                document.body.style.overflow = '';
-            });
-
-
-            popupModal.addEventListener('click', function (e) {
-                if (e.target === popupModal) {
-                    popupModal.classList.add('hidden');
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-    </script>
 
 </body>
 

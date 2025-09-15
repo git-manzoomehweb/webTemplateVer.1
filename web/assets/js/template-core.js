@@ -12,24 +12,35 @@ document.addEventListener("DOMContentLoaded", function () {
     return requiredFiles.every((file) => loadedFiles.includes(file));
   }
 
-  function fixUsePaths(container) {
-    container.querySelectorAll("use").forEach((u) => {
-      ["href", "xlink:href"].forEach((attr) => {
+  function fixUsePaths(root) {
+    const mainEl = document.querySelector('main');
+    const view = mainEl ? mainEl.getAttribute('data-view') : null;
+    const spritePath = view === 'mobile'
+      ? '/PrimeTemplate_A/images/sprite-icons-mobile.svg'
+      : '/PrimeTemplate_A/images/sprite-icons.svg';
+  
+    const isUseNode = root && root.tagName && root.tagName.toLowerCase() === 'use';
+    const uses = isUseNode
+      ? [root]
+      : (root && root.querySelectorAll ? root.querySelectorAll('use') : []);
+  
+    uses.forEach(u => {
+      ['href', 'xlink:href'].forEach(attr => {
         const val = u.getAttribute(attr);
         if (!val) return;
   
-        if (val.includes("images/sprite-icons.svg") && !val.includes("PrimeTemplate_A/images/sprite-icons.svg")) {
-          u.setAttribute(
-            attr,
-            val.replace(
-              "images/sprite-icons.svg",
-              "PrimeTemplate_A/images/sprite-icons.svg"
-            )
-          );
+        if (val.startsWith('#')) return;
+  
+        const [path, frag] = val.split('#');
+  
+        if (/sprite-icons/i.test(path) && path !== spritePath) {
+          const nextVal = spritePath + (frag ? `#${frag}` : '');
+          u.setAttribute(attr, nextVal);
         }
       });
     });
   }
+  
 
   function fetchEngine() {
     try {
@@ -167,10 +178,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const main = document.querySelector("main");
   if (!main) return;
 
-  const hostOrder = main.getAttribute("data-hostorder");
-  if (!hostOrder) return;
+  const sectionOrder = main.getAttribute("data-sectionorder");
+  if (!sectionOrder) return;
 
-  const orderArray = hostOrder
+  const orderArray = sectionOrder
     .split(",")
     .map((o) => o.trim())
     .filter(Boolean);
@@ -984,6 +995,107 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+
+  const smallGalleryEl = document.querySelector(".small-img-gallery");
+  const bigGalleryEl = document.querySelector(".big-img-gallery");
+  if (!smallGalleryEl || !bigGalleryEl) {
+      console.warn("⚠️ گالری پیدا نشد، Swiper ساخته نشد.");
+      return;
+  }
+
+  const smallImgGallery = new Swiper(".small-img-gallery", {
+      spaceBetween: 10,
+      slidesPerView: 4,
+      freeMode: true,
+      watchSlidesProgress: true,
+  });
+
+  const bigImgGallery = new Swiper(".big-img-gallery", {
+      spaceBetween: 10,
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+      thumbs: { swiper: smallImgGallery },
+  });
+
+  const popupModalGallery = document.getElementById('popupModalGallery');
+  const popupContentGallery = document.querySelector('.big-img-gallery-popup .swiper-wrapper');
+  const closePopupGallery = document.getElementById('closePopupGallery');
+  const images = document.querySelectorAll('.small-img-gallery .swiper-slide img');
+  const galleryCount = document.querySelector('.gallery-img-count');
+
+  if (!popupModalGallery || !popupContentGallery || !closePopupGallery) {
+      console.warn("⚠️ عناصر مربوط به پاپ‌آپ گالری پیدا نشدن.");
+      return;
+  }
+
+  const totalImages = images.length;
+  if (totalImages === 0) {
+      console.warn("⚠️ هیچ تصویری برای گالری وجود ندارد.");
+      return;
+  }
+
+  let swiperPopup = null;
+
+  images.forEach((image, index) => {
+      image.addEventListener('click', function () {
+          popupContentGallery.innerHTML = '';
+
+          images.forEach((thumbImage) => {
+              const slide = document.createElement('div');
+              slide.classList.add('swiper-slide');
+              const thumbImageElement = document.createElement('img');
+              thumbImageElement.src = thumbImage.src;
+              thumbImageElement.classList.add('w-full', 'h-full', 'object-cover', 'rounded-xl');
+              slide.appendChild(thumbImageElement);
+              popupContentGallery.appendChild(slide);
+          });
+
+          if (swiperPopup) swiperPopup.destroy(true, true);
+
+          swiperPopup = new Swiper('.big-img-gallery-popup', {
+              loop: true,
+              initialSlide: index,
+              navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+              slidesPerView: 1,
+              spaceBetween: 10,
+              on: {
+                  init: function () {
+                      if (galleryCount) {
+                          galleryCount.textContent = `${this.realIndex + 1} از ${totalImages}`;
+                      }
+                  },
+                  slideChange: function () {
+                      if (galleryCount) {
+                          galleryCount.textContent = `${this.realIndex + 1} از ${totalImages}`;
+                      }
+                  }
+              }
+          });
+
+          popupModalGallery.classList.remove('hidden');
+          popupModalGallery.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+      });
+  });
+
+  closePopupGallery.addEventListener('click', function () {
+      popupModalGallery.classList.add('hidden');
+      popupModalGallery.classList.remove('flex');
+      document.body.style.overflow = '';
+  });
+
+  popupModalGallery.addEventListener('click', function (e) {
+      if (e.target === popupModalGallery) {
+          popupModalGallery.classList.add('hidden');
+          popupModalGallery.classList.remove('flex');
+          document.body.style.overflow = '';
+      }
+  });
+
+});
+
+
+
 
 //-----------swiper--------------
 if (document.querySelector(".swiper-busy-destination")) {
@@ -1073,26 +1185,18 @@ if (document.querySelector(".swiper-news")) {
     },
   });
 }
-if (document.querySelector(".small-img-gallery")) {
-  var smallImgGallery = new Swiper(".small-img-gallery", {
-    spaceBetween: 10,
-    slidesPerView: 4,
-    freeMode: true,
-    watchSlidesProgress: true,
-  });
-}
-if (document.querySelector(".big-img-gallery")) {
-  var bigImgGallery = new Swiper(".big-img-gallery", {
-    spaceBetween: 10,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    thumbs: {
-      swiper: smallImgGallery,
-    },
-  });
-}
+// if (document.querySelector(".big-img-gallery")) {
+//   var bigImgGallery = new Swiper(".big-img-gallery", {
+//     spaceBetween: 10,
+//     navigation: {
+//       nextEl: ".swiper-button-next",
+//       prevEl: ".swiper-button-prev",
+//     },
+//     thumbs: {
+//       swiper: smallImgGallery,
+//     },
+//   });
+// }
 if (document.querySelector(".swiper-news")) {
   var swiperNews = new Swiper(".swiper-news", {
     slidesPerView: "auto",
