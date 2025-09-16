@@ -1126,7 +1126,7 @@ body {
 }
 
 .border-4 {
-  border-width: 4px;  
+  border-width: 4px;
 }
 
 .border-b {
@@ -1554,7 +1554,8 @@ body {
 
   font-weight: 400;
 
-  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Regular.ttf") format("truetype");
+  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Regular.ttf")
+    format("truetype");
 }
 
 @font-face {
@@ -1566,7 +1567,8 @@ body {
 
   font-weight: 500;
 
-  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Medium.ttf") format("truetype");
+  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Medium.ttf")
+    format("truetype");
 }
 
 @font-face {
@@ -1590,7 +1592,8 @@ body {
 
   font-weight: 900;
 
-  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Black.ttf") format("truetype");
+  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Black.ttf")
+    format("truetype");
 }
 
 .h1-tag {
@@ -1632,6 +1635,20 @@ body {
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
+}
+
+.mask-image-mobile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #f4f4f5;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask: url(../images/mask-svg-mobile.svg) no-repeat top center / 100%
+    100%;
+  mask: url(../images/mask-svg-mobile.svg) no-repeat top center / 100% 100%;
+  -webkit-mask-mode: luminance;
+  mask-mode: luminance;
 }
 
 .gradient-border-thick::before {

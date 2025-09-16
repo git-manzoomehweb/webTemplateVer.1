@@ -755,9 +755,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function initSwiper(selector, globalVarName) {
     if (!selector) return;
     window[globalVarName] = new Swiper(selector, {
-      slidesPerView: "auto",
+      slidesPerView: 1.17,
       speed: 400,
-      spaceBetween: 12,
+      spaceBetween: 4,
       grabCursor: true,
       autoplay: {
         delay: 2500,
@@ -768,6 +768,12 @@ document.addEventListener("DOMContentLoaded", () => {
         el: ".swiper-pagination",
         clickable: true,
       },
+      breakpoints: {
+        1024: {
+          slidesPerView: 'auto',
+          spaceBetween: 12,
+        }
+      }
     });
   }
 
@@ -1095,8 +1101,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
 //-----------swiper--------------
 if (document.querySelector(".swiper-busy-destination")) {
   var swiperBusyDestination = new Swiper(".swiper-busy-destination", {
@@ -1118,7 +1122,7 @@ if (document.querySelector(".swiper-busy-destination")) {
 }
 if (document.querySelector(".swiper-popular-destination")) {
   var swiperPopularDestination = new Swiper(".swiper-popular-destination", {
-    slidesPerView: "auto",
+    slidesPerView: 1.3,
     speed: 400,
     centeredSlides: false,
     spaceBetween: 12,
@@ -1132,13 +1136,19 @@ if (document.querySelector(".swiper-popular-destination")) {
       el: ".swiper-pagination",
       clickable: true,
     },
+    breakpoints: {
+      1024: {
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+      }
+    }
   });
 }
 if (document.querySelector(".swiper-popular-tours")) {
   var swiperPopularTours = new Swiper(".swiper-popular-tours", {
-    slidesPerView: "auto",
+    slidesPerView: 1.17,
     speed: 400,
-    spaceBetween: 12,
+    spaceBetween: 4,
     grabCursor: true,
     autoplay: {
       delay: 2500,
@@ -1149,13 +1159,19 @@ if (document.querySelector(".swiper-popular-tours")) {
       el: ".swiper-pagination",
       clickable: true,
     },
+    breakpoints: {
+      1024: {
+        slidesPerView: 'auto', 
+        spaceBetween: 12,
+      }
+    }
   });
 }
 if (document.querySelector(".swiper-popular-hotels")) {
   var swiperPopularHotels = new Swiper(".swiper-popular-hotels", {
-    slidesPerView: "auto",
+    slidesPerView: 1.17,
     speed: 400,
-    spaceBetween: 12,
+    spaceBetween: 4,
     grabCursor: true,
     autoplay: {
       delay: 2500,
@@ -1166,23 +1182,12 @@ if (document.querySelector(".swiper-popular-hotels")) {
       el: ".swiper-pagination",
       clickable: true,
     },
-  });
-}
-if (document.querySelector(".swiper-news")) {
-  var swiperNews = new Swiper(".swiper-news", {
-    slidesPerView: "auto",
-    speed: 400,
-    spaceBetween: 0,
-    grabCursor: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
+    breakpoints: {
+      1024: {
+        slidesPerView: 'auto',
+        spaceBetween: 24,
+      }
+    }
   });
 }
 // if (document.querySelector(".big-img-gallery")) {
@@ -1199,9 +1204,9 @@ if (document.querySelector(".swiper-news")) {
 // }
 if (document.querySelector(".swiper-news")) {
   var swiperNews = new Swiper(".swiper-news", {
-    slidesPerView: "auto",
+    slidesPerView: 1.17,
     speed: 400,
-    spaceBetween: 0,
+    spaceBetween: 4,
     grabCursor: true,
     autoplay: {
       delay: 2500,
@@ -1212,63 +1217,69 @@ if (document.querySelector(".swiper-news")) {
       el: ".swiper-pagination",
       clickable: true,
     },
-  });
-}
-if (document.querySelector(".swiper-popular-destination-mobile")) {
-  var swiperPopularDestinationMobile = new Swiper(
-    ".swiper-popular-destination-mobile",
-    {
-      slidesPerView: 1.3,
-      speed: 400,
-      centeredSlides: false,
-      spaceBetween: 12,
-      grabCursor: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-      loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
+    breakpoints: {
+      1024: {
+        slidesPerView: 'auto', 
+        spaceBetween: 0,
+      }
     }
-  );
-}
-if (document.querySelector(".swiper-popular-hotels-mobile")) {
-  var swiperPopularHotelsMobile = new Swiper(".swiper-popular-hotels-mobile", {
-    slidesPerView: 1.17,
-    speed: 400,
-    spaceBetween: 4,
-    grabCursor: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
   });
 }
-if (document.querySelector(".swiper-news-mobile")) {
-  var swiperNewsMobile = new Swiper(".swiper-news-mobile", {
-    slidesPerView: 1.17,
-    speed: 400,
-    spaceBetween: 4,
-    grabCursor: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-  });
-}
+// if (document.querySelector(".swiper-popular-destination-mobile")) {
+//   var swiperPopularDestinationMobile = new Swiper(
+//     ".swiper-popular-destination-mobile",
+//     {
+//       slidesPerView: 1.3,
+//       speed: 400,
+//       centeredSlides: false,
+//       spaceBetween: 12,
+//       grabCursor: true,
+//       autoplay: {
+//         delay: 2500,
+//         disableOnInteraction: false,
+//       },
+//       loop: true,
+//       pagination: {
+//         el: ".swiper-pagination",
+//         clickable: true,
+//       },
+//     }
+//   );
+// }
+// if (document.querySelector(".swiper-popular-hotels-mobile")) {
+//   var swiperPopularHotelsMobile = new Swiper(".swiper-popular-hotels-mobile", {
+//     slidesPerView: 1.17,
+//     speed: 400,
+//     spaceBetween: 4,
+//     grabCursor: true,
+//     autoplay: {
+//       delay: 2500,
+//       disableOnInteraction: false,
+//     },
+//     loop: true,
+//     pagination: {
+//       el: ".swiper-pagination",
+//       clickable: true,
+//     },
+//   });
+// }
+// if (document.querySelector(".swiper-news-mobile")) {
+//   var swiperNewsMobile = new Swiper(".swiper-news-mobile", {
+//     slidesPerView: 1.17,
+//     speed: 400,
+//     spaceBetween: 4,
+//     grabCursor: true,
+//     autoplay: {
+//       delay: 2500,
+//       disableOnInteraction: false,
+//     },
+//     loop: true,
+//     pagination: {
+//       el: ".swiper-pagination",
+//       clickable: true,
+//     },
+//   });
+// }
 if (document.querySelector(".swiper-visa-mobile")) {
   var swiperVisaMobile = new Swiper(".swiper-visa-mobile", {
     slidesPerView: 1.17,
@@ -1286,23 +1297,23 @@ if (document.querySelector(".swiper-visa-mobile")) {
     },
   });
 }
-if (document.querySelector(".swiper-popular-tours-mobile")) {
-  var swiperPopularToursMobile = new Swiper(".swiper-popular-tours-mobile", {
-    slidesPerView: 1.17,
-    speed: 400,
-    spaceBetween: 4,
-    grabCursor: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-  });
-}
+// if (document.querySelector(".swiper-popular-tours-mobile")) {
+//   var swiperPopularToursMobile = new Swiper(".swiper-popular-tours-mobile", {
+//     slidesPerView: 1.17,
+//     speed: 400,
+//     spaceBetween: 4,
+//     grabCursor: true,
+//     autoplay: {
+//       delay: 2500,
+//       disableOnInteraction: false,
+//     },
+//     loop: true,
+//     pagination: {
+//       el: ".swiper-pagination",
+//       clickable: true,
+//     },
+//   });
+// }
 if (document.querySelector(".swiper-comments")) {
 var swiperComments = new Swiper('.swiper-comments', {
   slidesPerView: 3,

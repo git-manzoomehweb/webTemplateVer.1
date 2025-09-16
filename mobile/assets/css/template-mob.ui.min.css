@@ -177,6 +177,10 @@ body {
   margin-top: -2.5rem;
 }
 
+.-mt-16 {
+  margin-top: -4rem;
+}
+
 .-mt-24 {
   margin-top: -6rem;
 }
@@ -421,8 +425,16 @@ body {
   min-height: 355px;
 }
 
+.min-h-96 {
+  min-height: 24rem /* 384px */;
+}
+
 .min-h-\[389px\] {
   min-height: 389px;
+}
+
+.min-h-\[445px\] {
+  min-height: 445px;
 }
 
 .w-0 {
@@ -995,6 +1007,10 @@ body {
   padding-right: 1rem;
 }
 
+.pt-16 {
+  padding-top: 4rem;
+}
+
 .pt-24 {
   padding-top: 6rem;
 }
@@ -1228,10 +1244,10 @@ body {
   mask-size: 100% 100%;
 }
 
-.mask-image-about {
+.about-mask-container-mobile {
   background-color: #f4f4f5;
-  -webkit-mask-image: url(../images/mask-svg-about.svg);
-  mask-image: url(../images/mask-svg-about.svg);
+  -webkit-mask-image: url(../images/about-mask-container-mobile.svg);
+  mask-image: url(../images/about-mask-container-mobile.svg);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
@@ -1240,9 +1256,9 @@ body {
   display: block;
 }
 
-.mask-cover-about {
-  -webkit-mask-image: url("../images/mask-image.svg");
-  mask-image: url("../images/mask-image.svg");
+.about-mask-img {
+  -webkit-mask-image: url("../images/about-mask-img.svg");
+  mask-image: url("../images/about-mask-img.svg");
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
@@ -1327,7 +1343,7 @@ body {
 
 .image-text {
   color: transparent;
-  background-image: url("../images/pyramid.jpg");
+  background-image: url("../images/about-image-text.jpg");
   background-size: cover;
   background-position: center;
   -webkit-background-clip: text;
