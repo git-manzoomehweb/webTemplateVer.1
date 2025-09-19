@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const minValText = document.getElementById("minValue");
   const maxValText = document.getElementById("maxValue");
 
-  const filterBtn = document.getElementById("filterOpenBtn");
-  const closeBtn = document.getElementById("filterCloseBtn");
   const removeFiltersBtn = document.getElementById("clearFiltersBtn");
 
   const filterPanel = document.querySelector(".filters-panel");
@@ -247,17 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
       else selectedDays.delete(val);
 
       filterCards();
-    });
-  }
-
-  if (filterBtn && filterPanel) {
-    filterBtn.addEventListener("click", () => {
-      filterPanel.classList.remove("translate-y-full");
-    });
-  }
-  if (closeBtn && filterPanel) {
-    closeBtn.addEventListener("click", () => {
-      filterPanel.classList.add("translate-y-full");
     });
   }
 

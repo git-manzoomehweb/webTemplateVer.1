@@ -263,11 +263,11 @@
 </basis>
 
 
-<basis core="group" if="'[##cms.query.fetch##]' = 'faq_default'">
+<basis core="group" if="'[##cms.query.fetch##]' = 'faq'">
     <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.id##]">
         <member name="faq-list" type="view" size="" propertyid="" />
     </basis>
-    <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/faq-img.jpg" class="faq_default-img w-80 self-stretch object-cover flex-shrink-0 rounded-3xl"
+    <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/faq-img.jpg" class="faq-img w-80 self-stretch object-cover flex-shrink-0 rounded-3xl"
         alt="faq-img" width="320" height="480" />
     <basis core="print" datamembername="db.faq-list">
         <layout>

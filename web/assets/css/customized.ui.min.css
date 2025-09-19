@@ -561,6 +561,7 @@ video {
 
 body {
   font-family: "DanaFaNum";
+  overflow-wrap: break-word
 }
 
 .gradient-border {
@@ -1175,6 +1176,14 @@ body {
 
 .bg-client {
   background-color: var(--client-color);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.bg-primary {
+  background-color: var(--primary);
 }
 
 .bg-primary-50 {
@@ -2039,4 +2048,12 @@ body {
     font-size: 1rem;
     line-height: 1.5rem;
   }
+}
+
+.hasNot-login-icon{
+  display: none;
+}
+
+.itemInput, .login-btn {
+  font-family: "DanaFaNum" !important;
 }

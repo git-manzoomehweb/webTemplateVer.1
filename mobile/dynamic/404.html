@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover"
+        />
+        <title>[##cms.seo.title|(صفحه مورد نظر یافت نشد)##]</title>
+        <meta name="description" content="[##cms.seo.description|(صفحه مورد نظر یافت نشد)##]">
+        <meta name="robots" content="noindex, nofollow">
+        <link rel="canonical" href="[##cms.request.:scheme##]://[##cms.request.full-url##]" />
+        <basis core="call" file="pwa.inc" pageindexid="2"/>
+        <basis core="call" file="style.inc" pageindexid="2"/>
+    </head>
+  <body>
+    <basis core="call" file="template-header.inc" pageindexid="2"/>
+    <main>
+      <section class="flex flex-col items-center my-40">
+        <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/404.jpg" class="w-36 h-auto object-cover" alt="404" width="144" height="89" loading="lazy" />
+        <h1 class="text-zinc-900 mt-20 mb-3 text-xs">متأسفیم! صفحه‌ای که به دنبال آن هستید پیدا نشد</h1>
+        <a href="/" class="flex items-center justify-center w-44 h-12 text-white font-medium rounded-xl bg-primary-600 transition-all duration-300 hover:bg-secondary-700">بازگشت به صفحه اصلی</a>
+      </section>
+    </main>
+    <basis core="call" file="template-footer.inc" pageindexid="2"/>
+  </body>
+</html>

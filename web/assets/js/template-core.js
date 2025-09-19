@@ -705,15 +705,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  shareBtn.addEventListener("click", (e) => {
+  shareBtn.addEventListener("click", async (e) => {
     e.stopPropagation();
-    shareMenu.classList.contains("opacity-100") ? closeMenu() : openMenu();
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: document.title,
+          text: "این صفحه رو ببین!",
+          url: window.location.href,
+        });
+        console.log("صفحه با موفقیت به اشتراک گذاشته شد!");
+      } catch (err) {
+        console.log("خطا یا لغو:", err);
+        openMenu();
+      }
+    } else {
+      openMenu();
+    }
   });
 
   shareMenu.addEventListener("click", (e) => e.stopPropagation());
-
   document.addEventListener("click", closeMenu);
 });
+
 
 // ---------------fetch-content-----------------
 document.addEventListener("DOMContentLoaded", () => {
@@ -736,8 +751,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       btnClass: "faq-fetch-btn",
-      containerClass: "fetch-content-faq_default",
-      type: "faq_default",
+      containerClass: "fetch-content-faq",
+      type: "faq",
       swiperSelector: null,
       swiperVar: null,
       initialLoad: true
@@ -811,7 +826,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (btnClass === "faq-fetch-btn") {
             const imgSrc = btn.getAttribute("data-src");
-            const imgEl = container.querySelector(".faq_default-img");
+            const imgEl = container.querySelector(".faq-img");
             if (imgEl) {
               imgEl.style.display = imgSrc ? "block" : "none";
               if (imgSrc) imgEl.src = imgSrc;
@@ -942,7 +957,7 @@ function bindArticleFilter() {
   });
 }
 
-//--------swith-comment-btn---------
+//--------switch-comment-btn---------
 document.addEventListener('DOMContentLoaded', () => {
   const commentButtons = document.querySelectorAll('.comment-btn');
   const commentContents = document.querySelectorAll('.comment-content');
@@ -961,11 +976,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetId = btn.dataset.comment;
       commentContents.forEach((content) => {
         if (content.id === targetId) {
-          content.classList.add('active', 'opacity-100', 'scale-100');
-          content.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+          content.classList.remove('hidden', 'opacity-0', 'scale-95');
+          content.classList.add('block', 'opacity-100', 'scale-100');
         } else {
-          content.classList.remove('active', 'opacity-100', 'scale-100');
-          content.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+          content.classList.remove('block', 'opacity-100', 'scale-100');
+          content.classList.add('hidden', 'opacity-0', 'scale-95');
         }
       });
     });
@@ -1099,6 +1114,131 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+
+//--------------open and close filter menu----------------
+document.addEventListener("DOMContentLoaded", () => {
+  const filterBtn = document.getElementById("filterOpenBtn");
+  const closeBtn = document.getElementById("filterCloseBtn");
+  const filterPanel = document.querySelector(".filters-panel");
+
+  if (filterBtn && filterPanel) {
+    filterBtn.addEventListener("click", () => {
+      filterPanel.classList.remove("translate-y-full");
+    });
+  }
+  if (closeBtn && filterPanel) {
+    closeBtn.addEventListener("click", () => {
+      filterPanel.classList.add("translate-y-full");
+    });
+  }
+});
+
+
+
+//--------------POV-form-------------//
+document.querySelectorAll('.pov-form').forEach(function (form) {
+form.addEventListener('submit', function (e) {
+e.preventDefault();
+const loading = form.closest('form').querySelector('.Loading_Form');
+const message = form.closest('form').querySelector('.Message-Form');
+loading.classList.remove('hidden');
+
+const formData = new FormData(form);
+fetch(form.getAttribute('action'), {
+method: form.getAttribute('method'),
+body: formData,
+})
+.then((response) => response.text())
+.then((data) => {
+  loading.classList.add('hidden');
+  message.innerHTML = data;
+
+  if (data.includes('موفق') || data.includes('Success')) {
+    message.style.color = 'green';
+  } else {
+    message.style.color = 'red';
+  }
+
+  form.querySelectorAll('textarea, input').forEach((el) => (el.value = ''));
+})
+.catch((err) => {
+  loading.classList.add('hidden');
+  message.innerHTML = 'خطایی رخ داد، دوباره تلاش کنید.';
+  message.style.color = 'red';
+});
+});
+});
+
+function refresh_captcha(element, event) {
+const form = element.closest('form');
+const captchaContainer = form.querySelector('.load-captcha');
+
+fetch('/Client_Captcha.bc')
+.then((response) => response.text())
+.then((data) => {
+captchaContainer.innerHTML = data;
+});
+}
+
+//--------------contact-form-------------
+function uploadDocumentContact(args) {
+  document.querySelector("#contact-form-resize .Loading_Form").style.display =
+    "block";
+  const captcha = document
+    .querySelector("#contact-form-resize")
+    .querySelector("#captchaContainer input[name='captcha']").value;
+  const captchaid = document
+    .querySelector("#contact-form-resize")
+    .querySelector("#captchaContainer input[name='captchaid']").value;
+  const stringJson = JSON.stringify(args.source?.rows[0]);
+  $bc.setSource("cms.uploadContact", {
+    value: stringJson,
+    captcha: captcha,
+    captchaid: captchaid,
+    run: true,
+  });
+}
+
+function refreshCaptchaContact(e) {
+  $bc.setSource("captcha.refreshContact", true);
+}
+
+async function OnProcessedEditObjectContact(args) {
+  var response = args.response;
+  var json = await response.json();
+  var errorid = json.errorid;
+  if (errorid == "6") {
+    document.querySelector("#contact-form-resize .Loading_Form").style.display =
+      "none";
+    document.querySelector("#contact-form-resize .message-api").innerHTML =
+      "درخواست شما با موفقیت ثبت شد.";
+      document.querySelector("#about-form .message-api").style.color =
+      "rgb(20 240 20)";
+  } else {
+    refreshCaptchaContact();
+    setTimeout(() => {
+      document.querySelector(
+        "#contact-form-resize .Loading_Form"
+      ).style.display = "none";
+      document.querySelector("#contact-form-resize .message-api").innerHTML =
+        "خطایی رخ داده, لطفا مجدد اقدام کنید.";
+        document.querySelector("#about-form .message-api").style.color =
+        "rgb(220 38 38)";
+    }, 2000);
+  }
+}
+
+async function RenderFormContact() {
+  var inputElementVisa7 = document.querySelector(
+    " .contact-form-username input[data-bc-text-input]"
+  );
+  inputElementVisa7.setAttribute("placeholder", "نام و نام خانوادگی");
+
+  var inputElementVisa7 = document.querySelector(
+    " .contact-form-email input[data-bc-text-input]"
+  );
+  inputElementVisa7.setAttribute("placeholder", "ایمیل");
+}
 
 
 //-----------swiper--------------

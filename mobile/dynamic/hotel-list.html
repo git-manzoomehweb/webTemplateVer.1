@@ -12,24 +12,25 @@
   <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
     <member name="p-under" type="view" size="" propertyid="" />
   </basis>
+  <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list">
+    <member name="cat" type="tree" request="cat" parentid="217452" order="ord"
+        postsql="select * from [faq_list.cat] where catid in(217452) or parentid in(217452)">
+    </member>
+  </basis>
+  <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="217452">
+    <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
+  </basis>
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
-    <basis core="call" file="style.inc" />
-</head>
+    <basis core="call" file="head-elements.inc" pageindexid="2"/>
 
 <body>
-    <basis core="call" file="template-header.inc" />
+    <basis core="call" file="template-header.inc" pageindexid="2"/>
     <main>
         <section class="relative bg-hotelList bg-center bg-cover py-24">
             <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
-            <div class="relative z-10 flex flex-col items-center gap-2">
+            <div class="relative z-10 flex flex-col items-center gap-2 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
                 <basis core="print" datamembername="db.scalar">
                     <layout>
                         <div class="bg-specialcolor-3 rounded-xl py-4 px-10">@child</div>
@@ -39,7 +40,7 @@
                     </face>
                 </basis>
 
-                <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="flex items-center text-sm gap-1 mt-2">
+                <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="flex flex-wrap items-center justify-center text-sm gap-1 mt-2">
                     <li class="inline-block font-normal" itemprop="itemListElement" itemscope
                         itemtype="https://schema.org/ListItem">
                         <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
@@ -403,96 +404,112 @@
         </section>
 
         <section class="relative rounded-3xl overflow-hidden mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-14">
-            <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/contact-tour-list.jpg"
-                class="w-full h-[425px] object-cover" alt="" width="295" height="425" loading="lazy" />
+            <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/contact-tour-list.jpg" class="w-full h-[425px] object-cover" alt="" width="295" height="425" loading="lazy" />
             <div class="absolute z-10 bottom-7 left-5 right-5">
-                <div class="flex flex-col gap-2 direction-ltr">
-                    <a href="" class="group flex items-center gap-3 bg-white rounded-xl p-2">
-                        <span class="bg-primary-50 rounded-full p-3 group-hover:animate-phoneRing">
-                            <svg width="24" height="24" class="flex-shrink-0">
-                                <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-phone"></use>
-                            </svg>
-                        </span>
-                        <div class="flex flex-col gap-1">
-                            <span class="text-zinc-500 text-xs">تماس تلفنی</span>
-                            <span
-                                class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">۰۲۱-۸۸۲۳۴۳۵۶</span>
-                        </div>
+              <div class="flex flex-col gap-2 direction-ltr">
+                <basis core="print" datamembername="db.info">
+                  <face filter="prpID in(8000)">
+                    <a href="tel:@text" class="group flex items-center gap-3 bg-white rounded-xl p-2">
+                      <span class="bg-primary-50 rounded-full p-3 group-hover:animate-phoneRing">
+                        <svg width="24" height="24" class="flex-shrink-0">
+                          <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-phone"></use>
+                        </svg>
+                      </span>
+                      <div class="flex flex-col gap-1">
+                        <span class="text-zinc-500 text-xs">تماس تلفنی</span>
+                        <span class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">@text</span>
+                      </div>
                     </a>
-                    <div class="relative">
-                        <div id="shareBtn" class="flex items-center gap-3 bg-white rounded-xl p-2 cursor-pointer">
-                            <span class="bg-primary-50 rounded-full p-3">
-                                <svg width="24" height="24" class="flex-shrink-0">
-                                    <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-share"></use>
-                                </svg>
-                            </span>
-                            <div class="flex flex-col gap-1">
-                                <span class="text-zinc-500 text-xs">اشتراک‌گذاری</span>
-                                <span class="text-zinc-900 font-medium">ارسال لینک و محتوا</span>
-                            </div>
-                        </div>
-
-                        <ul id="shareMenu"
-                            class="absolute inset-0 flex items-center justify-between px-1 bg-white rounded-xl pointer-events-none opacity-0 transition-opacity duration-300">
-                            <li>
-                                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                                    aria-label="Twitter"
-                                    class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
-                                    <svg width="16" height="12">
-                                        <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-twitter"></use>
-                                    </svg>
-                                    <span
-                                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
-                                    aria-label="Instagram"
-                                    class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
-                                    <svg width="14" height="14">
-                                        <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-instagram">
-                                        </use>
-                                    </svg>
-                                    <span
-                                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-                                    aria-label="Facebook"
-                                    class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
-                                    <svg width="10" height="16">
-                                        <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-facebook"></use>
-                                    </svg>
-                                    <span
-                                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://t.me" target="_blank" rel="noopener noreferrer" aria-label="Telegram"
-                                    class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
-                                    <svg width="32" height="32">
-                                        <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-telegram"></use>
-                                    </svg>
-                                    <span
-                                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://wa.me" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
-                                    class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600 text-white transform scale-0 transition-transform duration-300">
-                                    <svg width="40" height="40">
-                                        <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-whatsapp"></use>
-                                    </svg>
-                                    <span
-                                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
-                                </a>
-                            </li>
-                        </ul>
+                  </face>
+                </basis>
+    
+                <div class="relative">
+                  <div id="shareBtn" class="flex items-center gap-3 bg-white rounded-xl p-2 cursor-pointer">
+                    <span class="bg-primary-50 rounded-full p-3">
+                      <svg width="24" height="24" class="flex-shrink-0">
+                        <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-share"></use>
+                      </svg>
+                    </span>
+                    <div class="flex flex-col gap-1">
+                      <span class="text-zinc-500 text-xs">اشتراک‌گذاری</span>
+                      <span class="text-zinc-900 font-medium">ارسال لینک و محتوا</span>
                     </div>
+                  </div>
+    
+                  <ul id="shareMenu" class="absolute inset-0 flex items-center justify-between px-1 bg-white rounded-xl pointer-events-none opacity-0 transition-opacity duration-300">
+                    <li>
+                      <a
+                        href="https://twitter.com/intent/tweet?url=[##cms.request.full-url##]&text=[##cms.request.title##]"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Twitter"
+                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
+                      >
+                        <svg width="16" height="12"><use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-twitter"></use></svg>
+                        <span
+                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
+                        ></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="mailto:?subject=[##cms.request.title##]&body=[##cms.request.full-url##]"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Email"
+                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
+                      >
+                        <svg width="16" height="16"><use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-email"></use></svg>
+                        <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.facebook.com/sharer/sharer.php?u=[##cms.request.full-url##]"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Facebook"
+                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
+                      >
+                        <svg width="10" height="16"><use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-facebook"></use></svg>
+                        <span
+                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
+                        ></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://t.me/share/url?url=[##cms.request.full-url##]&text=[##cms.request.title##]"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Telegram"
+                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
+                      >
+                        <svg width="32" height="32"><use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-telegram"></use></svg>
+                        <span
+                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
+                        ></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://wa.me/?text=[##cms.request.full-url##]"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="WhatsApp"
+                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
+                      >
+                        <svg width="40" height="40"><use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-whatsapp"></use></svg>
+                        <span
+                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
+                        ></span>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
+              </div>
             </div>
-        </section>
+          </section>
 
 
         <basis core="print" datamembername="db.p-under">
@@ -514,84 +531,46 @@
             </face>
         </basis>
 
-        <section class="mt-14">
-            <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
-                <h2 class="highlight-rest text-zinc-900 mb-3">سوالات متداول</h2>
-                <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">لورم ایپسوم متن ساختگی با تولید
-                    سادگی نامفهوم از صنعت چاپ، و با استفاده</div>
-                <div class="w-full mt-3">
-                    <div class="tabs relative overflow-hidden">
+        <basis core="group" if="'[##cms.host.faq_default##]' <> ''">
+            <section class="mt-14">
+              <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
+                <basis core="list" datamembername="faq_list.cat">
+                  <face filter="catid in([##cms.host.faq_list##])">
+                    <h2 class="highlight-rest text-zinc-900 mb-3">@title</h2>
+                    <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
+                  </face>
+                </basis>
+      
+                <basis core="list" datamembername="faq_list.list">
+                  <layout>
+                    <div class="w-full mt-3">
+                      <div class="tabs relative overflow-hidden">
                         <div
-                            class="tabs-container flex items-center gap-8 overflow-x-auto scrollbar-thin whitespace-nowrap border-b-2 border-solid border-zinc-200 pb-4">
-                            <button class="flex-1 text-primary-600 text-sm font-medium px-2"
-                                data-index="0">پرواز</button>
-                            <button class="flex-1 text-primary-600 text-sm font-medium px-2" data-index="1">هتل</button>
-                            <button class="flex-1 text-primary-600 text-sm font-medium px-2" data-index="2">هتل +
-                                پرواز</button>
-                            <button class="flex-1 text-primary-600 text-sm font-medium px-2" data-index="3">تور</button>
+                          class="tabs-container flex items-center gap-8 overflow-x-auto scrollbar-thin whitespace-nowrap border-b-2 border-solid border-zinc-200 pb-4">
+                          @child
                         </div>
                         <div class="active-line absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300"></div>
+                      </div>
                     </div>
-                </div>
-            </div>
-            <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-16 tabs-content">
-                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/faq-img.jpg"
-                    class="w-full h-[346px] object-cover rounded-3xl" alt="" width="288" height="346" loading="lazy" />
-                <div class="flex flex-col gap-3 mt-6">
-                    <div class="relative faq-border pr-2">
-                        <div class="faq-content rounded-xl p-3 bg-zinc-100 transition-all duration-300">
-                            <h3 class="faq-question text-zinc-900 text-sm font-bold cursor-pointer">برای دریافت راهنمای
-                                سفر باید چه کاری انجام دهیم؟</h3>
-                            <div
-                                class="faq-answer text-justify text-zinc-900 text-xs hyphens-auto leading-5 max-h-0 overflow-hidden">
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-                                است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
-                                فعلی تکنولوژی
-                                مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت
-                                و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها
-                                شناخت بیشتری را
-                                برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در
-                                این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به
-                                پایان رسد و
-                                زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود
-                                طراحی اساسا مورد استفاده قرار گیرد. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                صنعت چاپ، و با
-                                استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                لازم است
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative faq-border pr-2">
-                        <div class="faq-content rounded-xl p-3 bg-zinc-100 transition-all duration-300">
-                            <h3 class="faq-question text-zinc-900 text-sm font-bold cursor-pointer">برای دریافت راهنمای
-                                سفر باید چه کاری انجام دهیم؟</h3>
-                            <div
-                                class="faq-answer text-justify text-zinc-900 text-xs hyphens-auto leading-5 max-h-0 overflow-hidden">
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-                                است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
-                                فعلی تکنولوژی
-                                مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت
-                                و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها
-                                شناخت بیشتری را
-                                برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در
-                                این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به
-                                پایان رسد و
-                                زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود
-                                طراحی اساسا مورد استفاده قرار گیرد. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                صنعت چاپ، و با
-                                استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                لازم است
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                  </layout>
+                  <face>
+                    <button class="faq-fetch-btn flex-1 text-primary-600 text-sm font-medium px-2" data-id="@id"
+                      data-src="@image">@title</button>
+                  </face>
+                </basis>
+      
+              </div>
+              <div class="fetch-content-faq tabs-content flex items-center justify-center min-h-80">
+      
+              </div>
+      
+            </section>
+          </basis>
     </main>
 
     <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
     <script src="[##cms.cms.cdn##]/PrimeTemplate_A/js/template-list.js"></script>
-    <basis core="call" file="template-footer.inc" />
+    <basis core="call" file="template-footer.inc" pageindexid="2"/>
 </body>
 
 </html>

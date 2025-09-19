@@ -173,6 +173,11 @@ body {
   margin-bottom: 3.5rem;
 }
 
+.my-40 {
+  margin-top: 10rem /* 160px */;
+  margin-bottom: 10rem /* 160px */;
+}
+
 .-mt-10 {
   margin-top: -2.5rem;
 }
@@ -443,6 +448,14 @@ body {
 
 .w-12 {
   width: 3rem;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
+.w-44 {
+  width: 11rem /* 176px */;
 }
 
 .w-48 {

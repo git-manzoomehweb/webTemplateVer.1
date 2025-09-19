@@ -1,0 +1,313 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="article-list_category">
+  <member
+    name="cat"
+    type="tree"
+    request="cat"
+    parentid="[##cms.host.article-list_category##]"
+    order="ord"
+    postsql="select * from [article-list_category.cat] where parentid in([##cms.host.article-list_category##])"
+  ></member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
+  <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid##]" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="18" name="db" usedforid="[##cms.query.catid##]">
+  <member name="scalar" type="scalar" typeid="150" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
+  <member name="p-under" type="view" size="" propertyid="" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list">
+  <member name="cat" type="tree" request="cat" parentid="217452" order="ord"
+      postsql="select * from [faq_list.cat] where catid in(217452) or parentid in(217452)">
+  </member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="217452">
+  <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
+</basis>
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <basis core="call" file="head-elements.inc" pageindexid="2"/>
+
+  <body>
+    <basis core="call" file="template-header.inc" pageindexid="2"/>
+    <main>
+      <section class="relative bg-articleList bg-center bg-cover py-20">
+        <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
+        <div class="relative z-10 flex flex-col items-center gap-2 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
+          <basis core="print" datamembername="db.scalar">
+            <layout>
+              <div class="bg-specialcolor-3 rounded-xl py-4 px-10">@child</div>
+            </layout>
+            <face>
+              <h1 class="font-bold text-white">@column1</h1>
+            </face>
+          </basis>
+          <div class="relative w-full">
+            <input
+            id="articleNameFilter"
+              class="w-full h-14 pr-12 bg-zinc-100 rounded-xl text-zinc-900 placeholder-zinc-500 outline-none"
+              type="text"
+              autocomplete="on"
+              placeholder="جستجوی مقاله"
+              required
+              name="search-content-name"
+              aria-label="جستجوی مقاله"
+            />
+            <svg width="48" height="48" class="search-header absolute right-1 top-1">
+              <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-search-header"></use>
+            </svg>
+          </div>
+          <button class="articleNameFilterBtn check-contrast w-full h-14 flex items-center justify-center rounded-xl bg-primary-600 font-medium">جستجو</button>
+          <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="flex flex-wrap items-center justify-center text-sm gap-1 mt-2">
+            <li class="inline-block font-normal" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700" itemprop="item" href="/" aria-label="home">
+                <span itemprop="name">صفحه اصلی</span>
+                <meta itemprop="position" content="1" />
+              </a>
+            </li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+            </svg>
+            <basis core="print" datamembername="db.navigation">
+              <face filter="RowNumber=max(RowNumber) and title <> 'ریشه'">
+                <li class="inline-block font-normal text-primary-600" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                  <span itemprop="name">@title</span>
+                  <meta itemprop="position" content="@rownumber" />
+                </li>
+              </face>
+              <face filter="link is null and title <> 'ریشه'">
+                <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                  <a class="flex items-center text-white text-xs" itemprop="item" href="/article-list.bc?catid=@parentcatid" aria-label="@title">
+                    <span itemprop="name">@title</span>
+                    <meta itemprop="position" content="@rownumber" />
+                  </a>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+                  </svg>
+                </li>
+              </face>
+              <face filter="title <> 'ریشه'">
+                <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                  <a class="flex items-center text-white text-xs" itemprop="item" href="/@link" aria-label="@title">
+                    <span class="flex items-center text-white text-xs" itemprop="name">@title</span>
+                    <meta itemprop="position" content="@rownumber" />
+                  </a>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+                  </svg>
+                </li>
+              </face>
+            </basis>
+          </ul>
+        </div>
+      </section>
+      <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
+        <button id="filterOpenBtn" class="flex items-center justify-center gap-2 py-3 px-7 bg-zinc-200 rounded-full text-sm font-medium text-zinc-900">
+          <svg width="24" height="24" class="flex-shrink-0">
+            <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-filter"></use>
+          </svg>
+          فیلتر
+        </button>
+        <basis core="group" if="'[##cms.host.article-list_category##]' <> ''">
+          <aside class="filters-panel fixed z-30 bottom-0 left-0 h-full w-full bg-zinc-50 px-4 py-6 overflow-y-auto transform transition-transform duration-300 ease-in-out translate-y-full">
+            <button id="filterCloseBtn" class="block bg-primary-800 p-3 rounded-lg mb-4 mr-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+            <div class="">
+              <div class="accordion-toggle flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
+                <h3 class="relative z-10 text-zinc-700 font-bold">دسته بندی</h3>
+              </div>
+              <basis core="list" datamembername="article-list_category.cat">
+                <layout>
+                  <div class="flex flex-col gap-7 pr-3 mt-5 overflow-hidden transition-all duration-300 ease-in-out">
+                    @child
+                  </div>
+                </layout>
+                <face>
+                    <label class="article-fetch-btn group flex items-center gap-3 cursor-pointer select-none" data-id="@catid">
+                        <input type="radio" name="city" value="@catid" class="w-5 h-5 bg-transparent cursor-pointer" />
+  
+                        <span class="transition-colors text-zinc-900 text-sm">@title</span>
+                      </label>
+                </face>
+              </basis>
+            </div>
+          </aside>
+        </basis>
+
+        <div class="fetch-content-article-list_group flex flex-col items-center justify-center min-h-60" data-all_id="[##cms.host.article-list_category##]"></div>
+
+      </section>
+
+      <section class="relative rounded-3xl overflow-hidden mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-14">
+        <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/contact-tour-list.jpg" class="w-full h-[425px] object-cover" alt="" width="295" height="425" loading="lazy" />
+        <div class="absolute z-10 bottom-7 left-5 right-5">
+          <div class="flex flex-col gap-2 direction-ltr">
+            <basis core="print" datamembername="db.info">
+              <face filter="prpID in(8000)">
+                <a href="tel:@text" class="group flex items-center gap-3 bg-white rounded-xl p-2">
+                  <span class="bg-primary-50 rounded-full p-3 group-hover:animate-phoneRing">
+                    <svg width="24" height="24" class="flex-shrink-0">
+                      <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-phone"></use>
+                    </svg>
+                  </span>
+                  <div class="flex flex-col gap-1">
+                    <span class="text-zinc-500 text-xs">تماس تلفنی</span>
+                    <span class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">@text</span>
+                  </div>
+                </a>
+              </face>
+            </basis>
+
+            <div class="relative">
+              <div id="shareBtn" class="flex items-center gap-3 bg-white rounded-xl p-2 cursor-pointer">
+                <span class="bg-primary-50 rounded-full p-3">
+                  <svg width="24" height="24" class="flex-shrink-0">
+                    <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-share"></use>
+                  </svg>
+                </span>
+                <div class="flex flex-col gap-1">
+                  <span class="text-zinc-500 text-xs">اشتراک‌گذاری</span>
+                  <span class="text-zinc-900 font-medium">ارسال لینک و محتوا</span>
+                </div>
+              </div>
+
+              <ul id="shareMenu" class="absolute inset-0 flex items-center justify-between px-1 bg-white rounded-xl pointer-events-none opacity-0 transition-opacity duration-300">
+                <li>
+                  <a
+                    href="https://twitter.com/intent/tweet?url=[##cms.request.full-url##]&text=[##cms.request.title##]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter"
+                    class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
+                  >
+                    <svg width="16" height="12"><use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-twitter"></use></svg>
+                    <span
+                      class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
+                    ></span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:?subject=[##cms.request.title##]&body=[##cms.request.full-url##]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Email"
+                    class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
+                  >
+                    <svg width="16" height="16"><use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-email"></use></svg>
+                    <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.facebook.com/sharer/sharer.php?u=[##cms.request.full-url##]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
+                  >
+                    <svg width="10" height="16"><use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-facebook"></use></svg>
+                    <span
+                      class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
+                    ></span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://t.me/share/url?url=[##cms.request.full-url##]&text=[##cms.request.title##]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Telegram"
+                    class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
+                  >
+                    <svg width="32" height="32"><use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-telegram"></use></svg>
+                    <span
+                      class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
+                    ></span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://wa.me/?text=[##cms.request.full-url##]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                    class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
+                  >
+                    <svg width="40" height="40"><use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-whatsapp"></use></svg>
+                    <span
+                      class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
+                    ></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <basis core="print" datamembername="db.p-under">
+        <layout>
+            <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl my-14">
+                @child
+            </section>
+        </layout>
+        <face filter="TypeID in (150)">
+            <h2 class="font-bold text-zinc-900 mb-3">@text</h2>
+        </face>
+        <face filter="TypeID in (129)">
+            <h2 class="font-bold text-zinc-900 mb-3">@text</h2>
+            <div class="text-zinc-900 text-xs text-justify hyphens-auto leading-5 mb-6">@largetext</div>
+        </face>
+        <face filter="TypeID in (250)">
+            <h2 class="font-bold text-zinc-900 mb-3">@text</h2>
+            <div class="text-zinc-900 text-xs text-justify hyphens-auto leading-5 mb-6">@largetext</div>
+        </face>
+    </basis>
+
+
+    <basis core="group" if="'[##cms.host.faq_default##]' <> ''">
+      <section class="mt-14">
+        <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
+          <basis core="list" datamembername="faq_list.cat">
+            <face filter="catid in([##cms.host.faq_list##])">
+              <h2 class="highlight-rest text-zinc-900 mb-3">@title</h2>
+              <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
+            </face>
+          </basis>
+
+          <basis core="list" datamembername="faq_list.list">
+            <layout>
+              <div class="w-full mt-3">
+                <div class="tabs relative overflow-hidden">
+                  <div
+                    class="tabs-container flex items-center gap-8 overflow-x-auto scrollbar-thin whitespace-nowrap border-b-2 border-solid border-zinc-200 pb-4">
+                    @child
+                  </div>
+                  <div class="active-line absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300"></div>
+                </div>
+              </div>
+            </layout>
+            <face>
+              <button class="faq-fetch-btn flex-1 text-primary-600 text-sm font-medium px-2" data-id="@id"
+                data-src="@image">@title</button>
+            </face>
+          </basis>
+
+        </div>
+        <div class="fetch-content-faq tabs-content flex items-center justify-center min-h-80">
+
+        </div>
+
+      </section>
+    </basis>
+    </main>
+
+    <basis core="call" file="template-footer.inc" pageindexid="2"/>
+  </body>
+</html>
