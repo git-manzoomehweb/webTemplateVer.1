@@ -1,14 +1,6 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="hotel_group" catid="[##cms.query.catid##]">
-  <member
-    name="list"
-    type="list"
-    link="hotel.bc"
-    propertyid="[##cms.host.all_prp_hotel##]"
-    perpage="12"
-    order="ord"
-    size="295x160"
-    pageno="[##cms.query.pagenum|(1)##]"
-  />
+  <member name="list" type="list" link="hotel.bc" propertyid="[##cms.host.all_prp_hotel##]" perpage="12" order="ord"
+    size="295x160" pageno="[##cms.query.pagenum|(1)##]" />
   <member name="paging" type="list" request="paging" count="3" parentname="list" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
@@ -27,14 +19,8 @@
   <member name="p-under" type="view" size="" propertyid="" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list">
-  <member
-    name="cat"
-    type="tree"
-    request="cat"
-    parentid="217452"
-    order="ord"
-    postsql="select * from [faq_list.cat] where catid in(217452) or parentid in(217452)"
-  ></member>
+  <member name="cat" type="tree" request="cat" parentid="217452" order="ord"
+    postsql="select * from [faq_list.cat] where catid in(217452) or parentid in(217452)"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="217452">
   <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
@@ -42,652 +28,536 @@
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-  <basis core="call" file="head-elements.inc" pageindexid="1" />
+<basis core="call" file="head-elements.inc" pageindexid="1" />
 
-  <body>
-    <basis core="call" file="template-header.inc" pageindexid="1" />
-    <main data-activepage="hotel-list">
-      <section class="relative bg-hotelList bg-center bg-cover py-24">
-        <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
-        <div class="relative z-10 flex flex-col items-center gap-2">
-          <basis core="print" datamembername="db.scalar">
-            <layout>
-              <div class="bg-specialcolor-3 rounded-xl py-5 px-10">@child</div>
-            </layout>
-            <face>
-              <h1 class="font-bold text-xl text-white">@column1</h1>
+<body>
+  <basis core="call" file="template-header.inc" pageindexid="1" />
+  <main data-activepage="hotel-list">
+    <section class="relative bg-hotelList bg-center bg-cover py-24">
+      <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
+      <div class="relative z-10 flex flex-col items-center gap-2">
+        <basis core="print" datamembername="db.scalar">
+          <layout>
+            <div class="bg-specialcolor-3 rounded-xl py-5 px-10">@child</div>
+          </layout>
+          <face>
+            <h1 class="font-bold text-xl text-white">@column1</h1>
+          </face>
+        </basis>
+
+        <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="flex items-center text-sm gap-1 mt-2">
+          <li class="inline-block font-normal" itemprop="itemListElement" itemscope
+            itemtype="https://schema.org/ListItem">
+            <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
+              itemprop="item" href="/" aria-label="home">
+              <span itemprop="name">صفحه اصلی</span>
+              <meta itemprop="position" content="1" />
+            </a>
+          </li>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+          </svg>
+          <basis core="print" datamembername="db.navigation">
+            <face filter="RowNumber=max(RowNumber) and title <> 'ریشه'">
+              <li class="inline-block font-normal text-primary-700" itemprop="itemListElement" itemscope
+                itemtype="https://schema.org/ListItem">
+                <span itemprop="name">@title</span>
+                <meta itemprop="position" content="@rownumber" />
+              </li>
             </face>
-          </basis>
-
-          <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="flex items-center text-sm gap-1 mt-2">
-            <li class="inline-block font-normal" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <a
-                class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
-                itemprop="item"
-                href="/"
-                aria-label="home"
-              >
-                <span itemprop="name">صفحه اصلی</span>
-                <meta itemprop="position" content="1" />
-              </a>
-            </li>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
-            </svg>
-            <basis core="print" datamembername="db.navigation">
-              <face filter="RowNumber=max(RowNumber) and title <> 'ریشه'">
-                <li
-                  class="inline-block font-normal text-primary-700"
-                  itemprop="itemListElement"
-                  itemscope
-                  itemtype="https://schema.org/ListItem"
-                >
+            <face filter="link is null and title <> 'ریشه'">
+              <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope
+                itemtype="https://schema.org/ListItem">
+                <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
+                  itemprop="item" href="/hotel-list.bc?catid=@parentcatid" aria-label="@title">
                   <span itemprop="name">@title</span>
                   <meta itemprop="position" content="@rownumber" />
-                </li>
-              </face>
-              <face filter="link is null and title <> 'ریشه'">
-                <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                  <a
-                    class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
-                    itemprop="item"
-                    href="/hotel-list.bc?catid=@parentcatid"
-                    aria-label="@title"
-                  >
-                    <span itemprop="name">@title</span>
-                    <meta itemprop="position" content="@rownumber" />
-                  </a>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
-                  </svg>
-                </li>
-              </face>
-              <face filter="title <> 'ریشه'">
-                <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                  <a
-                    class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
-                    itemprop="item"
-                    href="/@link"
-                    aria-label="@title"
-                  >
-                    <span class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700" itemprop="name">
-                      @title
+                </a>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+                </svg>
+              </li>
+            </face>
+            <face filter="title <> 'ریشه'">
+              <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope
+                itemtype="https://schema.org/ListItem">
+                <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
+                  itemprop="item" href="/@link" aria-label="@title">
+                  <span class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
+                    itemprop="name">
+                    @title
+                  </span>
+                  <meta itemprop="position" content="@rownumber" />
+                </a>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+                </svg>
+              </li>
+            </face>
+          </basis>
+        </ul>
+      </div>
+    </section>
+
+    <section
+      class="relative group rounded-2xl overflow-hidden mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-14">
+      <div class="bg-specialcolor-3 absolute inset-0 w-full h-full pointer-events-none"></div>
+      <a href="" class="flex flex-col">
+        <basis core="print" datamembername="feature_banner.gallery">
+          <face filter="ord in(1)">
+            <img src="\@largeIMG" class="w-full h-52 object-cover object-[center_70%]" alt="@name" width="208"
+              height="1280" loading="lazy" />
+          </face>
+        </basis>
+
+        <basis core="print" datamembername="feature_banner.view">
+          <face filter="TypeID in(150)">
+            <div
+              class="absolute z-10 -translate-y-1/2 top-1/2 px-9 group-hover:invisible group-hover:opacity-0 transition-all duration-300">
+              <h2 class="text-3xl text-white mb-3">@text</h2>
+            </div>
+          </face>
+        </basis>
+
+        <basis core="print" datamembername="feature_banner.view">
+          <layout>
+            <div
+              class="absolute z-10 -translate-y-1/2 top-1/2 px-9 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-500">
+              @child
+            </div>
+          </layout>
+          <face filter="TypeID in(150)">
+            <h2
+              class="text-3xl text-white mb-3 transition-all duration-300 opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0">
+              @text
+            </h2>
+          </face>
+          <face filter="TypeID in(129)">
+            <div
+              class="text-sm text-white text-justify hyphens-auto leading-5 mb-3 line-clamp-4 transition-all duration-300 opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0">
+              @largetext
+            </div>
+          </face>
+        </basis>
+      </a>
+    </section>
+
+    <section class="flex gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-12">
+      <aside class="sticky h-fit top-0 w-[295px]">
+        <section class="gradient-border from-primary-600 rounded-3xl px-4 py-6">
+          <div>
+            <div
+              class="flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
+              <h3 class="relative z-10 text-zinc-700 font-bold">جستجو بر اساس نام هتل</h3>
+            </div>
+            <div class="mt-5">
+              <input type="text" id="hotelNameFilter"
+                class="w-full py-4 px-5 border border-solid border-zinc-400 rounded-xl text-zinc-900 placeholder-zinc-400 outline-none"
+                aria-label="سرچ هتل" placeholder="نام هتل" />
+            </div>
+          </div>
+          <div class="mt-6">
+            <div
+              class="flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
+              <h3 class="relative z-10 text-zinc-700 font-bold">جستجو بر اساس نام شهر</h3>
+            </div>
+            <div id="cityFilterMenu" class="flex flex-col gap-3 mt-5 pr-3">
+              <!-- city -->
+            </div>
+          </div>
+          <div class="mt-6">
+            <div
+              class="accordion-toggle flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
+              <h3 class="relative z-10 text-zinc-700 font-bold">درجه ی هتل</h3>
+            </div>
+            <div
+              class="rate-filter accordion-content flex flex-col gap-6 pr-3 mt-5 overflow-hidden transition-all duration-300 ease-in-out">
+              <div id="ratingFilterMenu" class="flex-col gap-3">
+                <!-- rating -->
+              </div>
+            </div>
+          </div>
+          <div class="mt-6">
+            <div
+              class="accordion-toggle flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
+              <h3 class="relative z-10 text-zinc-700 font-bold">بازه قیمت</h3>
+            </div>
+            <div class="mt-5 accordion-content overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="range-container">
+                <div class="range-values flex justify-between mb-1">
+                  <span class="text-xs font-light">
+                    <span id="minValue-hotel">0</span>
+                    تومان
+                  </span>
+                  <span class="text-xs font-light">
+                    <span id="maxValue-hotel">0</span>
+                    تومان
+                  </span>
+                </div>
+
+                <div class="slider-wrapper relative h-8">
+                  <div class="absolute top-4 left-0 right-0 h-1 bg-primary-100 rounded-full z-0"></div>
+                  <input type="range" aria-label="range" id="minRange-hotel" min="0" max="100" value="0"
+                    class="absolute w-full top-0 pointer-events-none appearance-none bg-transparent" />
+                  <input type="range" aria-label="range" id="maxRange-hotel" min="0" max="100" value="100"
+                    class="absolute w-full top-0 pointer-events-none appearance-none bg-transparent" />
+                  <div id="rangeTrack-hotel" class="absolute h-1 rounded-full top-4 z-10 bg-primary-700"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="relative rounded-3xl overflow-hidden mt-3">
+          <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/contact-tour-list.jpg"
+            class="w-full h-[425px] object-cover" alt="" width="295" height="425" loading="lazy" />
+          <div class="absolute z-10 bottom-7 left-5 right-5">
+            <div class="flex flex-col gap-2 direction-ltr">
+              <basis core="print" datamembername="db.info">
+                <face filter="prpID in(8000)">
+                  <a href="tel:@text" class="group flex items-center gap-3 bg-white rounded-xl p-2">
+                    <span class="bg-primary-50 rounded-full p-3 group-hover:animate-phoneRing">
+                      <svg width="24" height="24" class="flex-shrink-0">
+                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-phone"></use>
+                      </svg>
                     </span>
-                    <meta itemprop="position" content="@rownumber" />
+                    <div class="flex flex-col gap-1">
+                      <span class="text-zinc-500 text-xs">تماس تلفنی</span>
+                      <span
+                        class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">@text</span>
+                    </div>
                   </a>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
-                  </svg>
+                </face>
+              </basis>
+
+              <div class="relative">
+                <div id="shareBtn" class="group flex items-center gap-3 bg-white rounded-xl p-2 cursor-pointer">
+                  <span class="bg-primary-50 rounded-full p-3 transition-all duration-300 group-hover:animate-bounce">
+                    <svg width="24" height="24" class="flex-shrink-0">
+                      <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-share"></use>
+                    </svg>
+                  </span>
+                  <div class="flex flex-col gap-1">
+                    <span class="text-zinc-500 text-xs">اشتراک‌گذاری</span>
+                    <span class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">
+                      ارسال لینک و محتوا
+                    </span>
+                  </div>
+                </div>
+
+                <ul id="shareMenu"
+                  class="absolute inset-0 flex items-center justify-center gap-px bg-white rounded-xl pointer-events-none opacity-0 transition-opacity duration-300">
+                  <li>
+                    <a href="https://twitter.com/intent/tweet?url=[##cms.request.full-url##]&text=[##cms.request.title##]"
+                      target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+                      class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300">
+                      <svg width="16" height="12">
+                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-twitter"></use>
+                      </svg>
+                      <span
+                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="mailto:?subject=[##cms.request.title##]&body=[##cms.request.full-url##]" target="_blank"
+                      rel="noopener noreferrer" aria-label="Email"
+                      class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300">
+                      <svg width="16" height="16">
+                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-email"></use>
+                      </svg>
+                      <span
+                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=[##cms.request.full-url##]" target="_blank"
+                      rel="noopener noreferrer" aria-label="Facebook"
+                      class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300">
+                      <svg width="10" height="16">
+                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-facebook"></use>
+                      </svg>
+                      <span
+                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://t.me/share/url?url=[##cms.request.full-url##]&text=[##cms.request.title##]"
+                      target="_blank" rel="noopener noreferrer" aria-label="Telegram"
+                      class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300">
+                      <svg width="32" height="32">
+                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-telegram"></use>
+                      </svg>
+                      <span
+                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://wa.me/?text=[##cms.request.full-url##]" target="_blank" rel="noopener noreferrer"
+                      aria-label="WhatsApp"
+                      class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300">
+                      <svg width="40" height="40">
+                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-whatsapp"></use>
+                      </svg>
+                      <span
+                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </aside>
+      <div class="flex-1">
+        <basis core="list" datamembername="hotel_group.list">
+          <layout>
+            <div class="hotel-card-container grid grid-cols-3 gap-3">@child</div>
+          </layout>
+          <face filter="[00295X00160prp] is null">
+            <a href="/@link" data-rate="@prp_[##cms.host.hotel_rate##]" data-city="@prp_[##cms.host.hotel_region##]"
+              data-name="@title" data-price="@prp_[##cms.host.hotel_price##]"
+              class="hotel-card group flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1">
+              <div class="shine-effect relative overflow-hidden rounded-2xl">
+                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
+                  class="w-full h-40 object-cover" alt="@title" width="295" height="160" loading="lazy" />
+              </div>
+              <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
+                <h3 class="font-bold text-zinc-900 line-clamp-1">@title</h3>
+                <div class="grid grid-cols-2 gap-1 flex-1">
+                  <div class="border-dashed-zinc rounded-full p-1">
+                    <div class="relative z-20 flex items-center gap-3">
+                      <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                        <svg width="17" height="17" class="flex-shrink-0">
+                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-star"></use>
+                        </svg>
+                      </span>
+                      <span class="text-xs text-zinc-700">@prp_[##cms.host.hotel_rate##]</span>
+                    </div>
+                  </div>
+                  <div class="border-dashed-zinc rounded-full p-1">
+                    <div class="relative z-20 flex items-center gap-3">
+                      <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                        <svg width="17" height="17" class="flex-shrink-0">
+                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-map"></use>
+                        </svg>
+                      </span>
+                      <span class="text-xs text-zinc-700">@prp_[##cms.host.hotel_region##]</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 justify-between py-1 pr-2">
+                  <div>
+                    <span class="text-zinc-500 text-xs">شروع قیمت:</span>
+                    <div class="text-zinc-900 text-sm font-medium mt-1">@prp_[##cms.host.hotel_price##]</div>
+                  </div>
+                  <button
+                    class="check-contrast flex items-center gap-3 justify-center h-12 px-4 text-xs bg-primary-600 rounded-xl transition-all duration-300 hover:bg-secondary-600">
+                    مشاهده
+                  </button>
+                </div>
+              </div>
+            </a>
+          </face>
+          <face>
+            <a href="/@link" data-rate="@prp_[##cms.host.hotel_rate##]" data-city="@prp_[##cms.host.hotel_region##]"
+              data-name="@title" data-price="@prp_[##cms.host.hotel_price##]"
+              class="hotel-card group flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1">
+              <div class="shine-effect relative overflow-hidden rounded-2xl">
+                <img src="\@00295X00160prp" class="w-full h-40 object-cover" alt="@title" width="295" height="160"
+                  loading="lazy" />
+              </div>
+              <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
+                <h3 class="font-bold text-zinc-900 line-clamp-1">@title</h3>
+                <div class="grid grid-cols-2 gap-1 flex-1">
+                  <div class="border-dashed-zinc rounded-full p-1">
+                    <div class="relative z-20 flex items-center gap-3">
+                      <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                        <svg width="17" height="17" class="flex-shrink-0">
+                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-star"></use>
+                        </svg>
+                      </span>
+                      <span class="text-xs text-zinc-700">@prp_[##cms.host.hotel_rate##]</span>
+                    </div>
+                  </div>
+                  <div class="border-dashed-zinc rounded-full p-1">
+                    <div class="relative z-20 flex items-center gap-3">
+                      <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                        <svg width="17" height="17" class="flex-shrink-0">
+                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-map"></use>
+                        </svg>
+                      </span>
+                      <span class="text-xs text-zinc-700">@prp_[##cms.host.hotel_region##]</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 justify-between py-1 pr-2">
+                  <div>
+                    <span class="text-zinc-500 text-xs">شروع قیمت:</span>
+                    <div class="text-zinc-900 text-sm font-medium mt-1">@prp_[##cms.host.hotel_price##]</div>
+                  </div>
+                  <button
+                    class="check-contrast flex items-center gap-3 justify-center h-12 px-4 text-xs bg-primary-600 rounded-xl transition-all duration-300 hover:bg-secondary-600">
+                    مشاهده
+                  </button>
+                </div>
+              </div>
+            </a>
+          </face>
+        </basis>
+
+        <div id="paging" class="flex justify-center mt-12">
+          <ul class="flex items-center gap-1 cd-pagination no-space direction-ltr" id="wibpaging">
+            <basis core="print" datamembername="hotel_group.paging">
+              <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
+                <li
+                  class="flex items-center justify-center w-12 h-12 rounded-lg bg-zinc-100 ml-2 transition-all duration-300 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no prev-page">
+                  <a class="flex items-center justify-center w-full cursor-pointer text-zinc-900"
+                    aria-label="angle-left" href="/[##cms.cms.link_page##]&pagenum=@page">
+                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M6.53068 15.5757C6.31228 15.3728 6.281 15.0438 6.44481 14.8052L6.49981 14.7366L11.4296 9.42993L6.12326 4.49984C5.90486 4.29693 5.87358 3.968 6.03739 3.72938L6.09239 3.66072C6.2953 3.44232 6.62423 3.41104 6.86285 3.57485L6.93152 3.62985L12.6731 8.96406C12.8915 9.16697 12.9228 9.4959 12.759 9.73452L12.704 9.80318L7.3698 15.5448C7.1466 15.7851 6.77092 15.7989 6.53068 15.5757Z"
+                        fill="var(--primary-600)" />
+                    </svg>
+                  </a>
+                </li>
+              </face>
+              <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')">
+                <li
+                  class="flex items-center justify-center w-12 h-12 rounded-lg bg-zinc-100 ml-2 transition-all duration-300 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no prev-page">
+                  <a class="flex items-center justify-center w-full cursor-pointer text-zinc-900"
+                    aria-label="angle-left" href="/[##cms.cms.pageurl##]?pagenum=@page">
+                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M6.53068 15.5757C6.31228 15.3728 6.281 15.0438 6.44481 14.8052L6.49981 14.7366L11.4296 9.42993L6.12326 4.49984C5.90486 4.29693 5.87358 3.968 6.03739 3.72938L6.09239 3.66072C6.2953 3.44232 6.62423 3.41104 6.86285 3.57485L6.93152 3.62985L12.6731 8.96406C12.8915 9.16697 12.9228 9.4959 12.759 9.73452L12.704 9.80318L7.3698 15.5448C7.1466 15.7851 6.77092 15.7989 6.53068 15.5757Z"
+                        fill="var(--primary-600)" />
+                    </svg>
+                  </a>
+                </li>
+              </face>
+            </basis>
+            <basis core="print" datamembername="hotel_group.paging">
+              <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
+                <li
+                  class="flex items-center justify-center w-12 h-12 text-primary-600 rounded-lg bg-primary-50 gradient-border from-primary-600 page-no">
+                  <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                    href="/[##cms.cms.link_page##]&pagenum=@page">
+                    @page
+                  </a>
+                </li>
+              </face>
+              <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
+                <li
+                  class="flex items-center justify-center w-12 h-12 text-primary-600 rounded-lg bg-primary-50 gradient-border from-primary-600 page-no">
+                  <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                    href="/[##cms.cms.pageurl##]?pagenum=@page">
+                    @page
+                  </a>
+                </li>
+              </face>
+              <face
+                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') ">
+                <li
+                  class="flex items-center justify-center w-12 h-12 text-zinc-900 rounded-lg bg-zinc-100 transition-all duration-300 hover:text-primary-600 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no">
+                  <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                    href="/[##cms.cms.link_page##]&pagenum=@page">
+                    @page
+                  </a>
+                </li>
+              </face>
+              <face
+                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
+                <li
+                  class="flex items-center justify-center w-12 h-12 text-zinc-900 rounded-lg bg-zinc-100 transition-all duration-300 hover:text-primary-600 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no">
+                  <a class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                    href="/[##cms.cms.pageurl##]?pagenum=@page">
+                    @page
+                  </a>
+                </li>
+              </face>
+            </basis>
+            <basis core="print" datamembername="hotel_group.paging">
+              <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'='')">
+                <li
+                  class="flex items-center justify-center w-12 h-12 rounded-lg bg-zinc-100 mr-2 transition-all duration-300 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no next-page">
+                  <a class="flex items-center justify-center w-full h-full cursor-pointer text-zinc-900"
+                    aria-label="angle-right" href="/[##cms.cms.link_page##]&pagenum=@page">
+                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M12.4693 3.42432C12.6877 3.62722 12.719 3.95616 12.5552 4.19478L12.5002 4.26344L7.57037 9.57007L12.8767 14.5002C13.0951 14.7031 13.1264 15.032 12.9626 15.2706L12.9076 15.3393C12.7047 15.5577 12.3758 15.589 12.1371 15.4252L12.0685 15.3702L6.32686 10.0359C6.10846 9.83304 6.07718 9.5041 6.24099 9.26548L6.29599 9.19682L11.6302 3.45519C11.8534 3.21495 12.2291 3.20113 12.4693 3.42432Z"
+                        fill="var(--primary-600)" />
+                    </svg>
+                  </a>
+                </li>
+              </face>
+              <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'<>'')">
+                <li
+                  class="flex items-center justify-center w-12 h-12 rounded-lg bg-zinc-100 mr-2 transition-all duration-300 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no next-page">
+                  <a class="flex items-center justify-center w-full h-full cursor-pointer text-zinc-900"
+                    aria-label="angle-right" href="/[##cms.cms.pageurl##]?pagenum=@page">
+                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M12.4693 3.42432C12.6877 3.62722 12.719 3.95616 12.5552 4.19478L12.5002 4.26344L7.57037 9.57007L12.8767 14.5002C13.0951 14.7031 13.1264 15.032 12.9626 15.2706L12.9076 15.3393C12.7047 15.5577 12.3758 15.589 12.1371 15.4252L12.0685 15.3702L6.32686 10.0359C6.10846 9.83304 6.07718 9.5041 6.24099 9.26548L6.29599 9.19682L11.6302 3.45519C11.8534 3.21495 12.2291 3.20113 12.4693 3.42432Z"
+                        fill="var(--primary-600)" />
+                    </svg>
+                  </a>
                 </li>
               </face>
             </basis>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <basis core="print" datamembername="db.p-under">
+      <layout>
+        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl my-20">@child</section>
+      </layout>
+      <face filter="TypeID in (150)">
+        <h2 class="font-bold text-2xl text-zinc-900 mb-3">@text</h2>
+      </face>
+      <face filter="TypeID in (129)">
+        <h2 class="font-bold text-2xl text-zinc-900 mb-3">@text</h2>
+        <div class="revert-text-styles text-zinc-900 text-sm text-justify hyphens-auto leading-5 mb-6">@largetext</div>
+      </face>
+      <face filter="TypeID in (250)">
+        <h2 class="font-bold text-2xl text-zinc-900 mb-3">@text</h2>
+        <div class="revert-text-styles text-zinc-900 text-sm text-justify hyphens-auto leading-5 mb-6">@largetext</div>
+      </face>
+    </basis>
+
+    <basis core="group" if="'[##cms.host.faq_default##]' <> ''">
+      <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-12">
+        <basis core="list" datamembername="faq_list.cat">
+          <face filter="catid in([##cms.host.faq_list##])">
+            <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">@title</h2>
+            <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
+          </face>
+        </basis>
+        <basis core="list" datamembername="faq_list.list">
+          <layout>
+            <div class="w-full mt-9">
+              <div class="tabs relative overflow-hidden">
+                <div class="tabs-container flex items-center gap-8 border-b-2 border-solid border-zinc-200 pb-4">@child
+                </div>
+                <div class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300"></div>
+              </div>
+            </div>
+          </layout>
+          <face>
+            <button class="faq-fetch-btn font-medium transition-all duration-300 hover:text-primary-600" data-id="@id"
+              data-src="@image">
+              @title
+            </button>
+          </face>
+        </basis>
+
+        <div class="flex items-center justify-center gap-6 mt-16 tabs-content fetch-content-faq min-h-60"></div>
       </section>
+    </basis>
+  </main>
 
-      <section class="relative group rounded-2xl overflow-hidden mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-14">
-        <div class="bg-specialcolor-3 absolute inset-0 w-full h-full pointer-events-none"></div>
-        <a href="" class="flex flex-col">
-          <basis core="print" datamembername="feature_banner.gallery">
-            <face filter="ord in(1)">
-              <img
-              src="\@largeIMG"
-              class="w-full h-52 object-cover object-[center_70%]"
-              alt="@name"
-              width="208"
-              height="1280"
-              loading="lazy"
-            />
-            </face>
-          </basis>
+  <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
+  <script src="[##cms.cms.cdn##]/PrimeTemplate_A/js/template-list.js"></script>
+  <basis core="call" file="template-footer.inc" pageindexid="1" />
+</body>
 
-          <basis core="print" datamembername="feature_banner.view">
-            <face filter="TypeID in(150)">
-              <div
-                class="absolute z-10 -translate-y-1/2 top-1/2 px-9 group-hover:invisible group-hover:opacity-0 transition-all duration-300"
-              >
-                <h2 class="text-3xl text-white mb-3">@text</h2>
-              </div>
-            </face>
-          </basis>
-
-          <basis core="print" datamembername="feature_banner.view">
-            <layout>
-              <div
-                class="absolute z-10 -translate-y-1/2 top-1/2 px-9 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-500"
-              >
-                @child
-              </div>
-            </layout>
-            <face filter="TypeID in(150)">
-              <h2
-                class="text-3xl text-white mb-3 transition-all duration-300 opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0"
-              >
-                @text
-              </h2>
-            </face>
-            <face filter="TypeID in(129)">
-              <div
-              class="text-sm text-white text-justify hyphens-auto leading-5 mb-3 line-clamp-4 transition-all duration-300 opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0"
-            >
-              @largetext
-            </div>
-            </face>
-          </basis>
-        </a>
-      </section>
-
-      <section class="flex gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-12">
-        <aside class="sticky h-fit top-0 w-[295px]">
-          <section class="gradient-border from-primary-600 rounded-3xl px-4 py-6">
-            <div>
-              <div class="flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
-                <h3 class="relative z-10 text-zinc-700 font-bold">جستجو بر اساس نام هتل</h3>
-              </div>
-              <div class="mt-5">
-                <input
-                  type="text"
-                  id="hotelNameFilter"
-                  class="w-full py-4 px-5 border border-solid border-zinc-400 rounded-xl text-zinc-900 placeholder-zinc-400 outline-none"
-                  aria-label="سرچ هتل"
-                  placeholder="نام هتل"
-                />
-              </div>
-            </div>
-            <div class="mt-6">
-              <div class="flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
-                <h3 class="relative z-10 text-zinc-700 font-bold">جستجو بر اساس نام شهر</h3>
-              </div>
-              <div id="cityFilterMenu" class="flex flex-col gap-3 mt-5 pr-3">
-                <!-- city -->
-              </div>
-            </div>
-            <div class="mt-6">
-              <div
-                class="accordion-toggle flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3"
-              >
-                <h3 class="relative z-10 text-zinc-700 font-bold">درجه ی هتل</h3>
-              </div>
-              <div
-                class="rate-filter accordion-content flex flex-col gap-6 pr-3 mt-5 overflow-hidden transition-all duration-300 ease-in-out"
-              >
-                <div id="ratingFilterMenu" class="flex-col gap-3">
-                  <!-- rating -->
-                </div>
-              </div>
-            </div>
-            <div class="mt-6">
-              <div
-                class="accordion-toggle flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3"
-              >
-                <h3 class="relative z-10 text-zinc-700 font-bold">بازه قیمت</h3>
-              </div>
-              <div class="mt-5 accordion-content overflow-hidden transition-all duration-300 ease-in-out">
-                <div class="range-container">
-                  <div class="range-values flex justify-between mb-1">
-                    <span class="text-xs font-light">
-                      <span id="minValue-hotel">0</span>
-                      تومان
-                    </span>
-                    <span class="text-xs font-light">
-                      <span id="maxValue-hotel">0</span>
-                      تومان
-                    </span>
-                  </div>
-
-                  <div class="slider-wrapper relative h-8">
-                    <div class="absolute top-4 left-0 right-0 h-1 bg-primary-100 rounded-full z-0"></div>
-                    <input
-                      type="range"
-                      aria-label="range"
-                      id="minRange-hotel"
-                      min="0"
-                      max="100"
-                      value="0"
-                      class="absolute w-full top-0 pointer-events-none appearance-none bg-transparent"
-                    />
-                    <input
-                      type="range"
-                      aria-label="range"
-                      id="maxRange-hotel"
-                      min="0"
-                      max="100"
-                      value="100"
-                      class="absolute w-full top-0 pointer-events-none appearance-none bg-transparent"
-                    />
-                    <div id="rangeTrack-hotel" class="absolute h-1 rounded-full top-4 z-10 bg-primary-700"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section class="relative rounded-3xl overflow-hidden mt-3">
-            <img
-              src="[##cms.cms.cdn##]/PrimeTemplate_A/images/contact-tour-list.jpg"
-              class="w-full h-[425px] object-cover"
-              alt=""
-              width="295"
-              height="425"
-              loading="lazy"
-            />
-            <div class="absolute z-10 bottom-7 left-5 right-5">
-              <div class="flex flex-col gap-2 direction-ltr">
-                <basis core="print" datamembername="db.info">
-                  <face filter="prpID in(8000)">
-                    <a href="tel:@text" class="group flex items-center gap-3 bg-white rounded-xl p-2">
-                      <span class="bg-primary-50 rounded-full p-3 group-hover:animate-phoneRing">
-                        <svg width="24" height="24" class="flex-shrink-0">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-phone"></use>
-                        </svg>
-                      </span>
-                      <div class="flex flex-col gap-1">
-                        <span class="text-zinc-500 text-xs">تماس تلفنی</span>
-                        <span class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">@text</span>
-                      </div>
-                    </a>
-                  </face>
-                </basis>
-
-                <div class="relative">
-                  <div id="shareBtn" class="group flex items-center gap-3 bg-white rounded-xl p-2 cursor-pointer">
-                    <span class="bg-primary-50 rounded-full p-3 transition-all duration-300 group-hover:animate-bounce">
-                      <svg width="24" height="24" class="flex-shrink-0">
-                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-share"></use>
-                      </svg>
-                    </span>
-                    <div class="flex flex-col gap-1">
-                      <span class="text-zinc-500 text-xs">اشتراک‌گذاری</span>
-                      <span class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">
-                        ارسال لینک و محتوا
-                      </span>
-                    </div>
-                  </div>
-
-                  <ul
-                    id="shareMenu"
-                    class="absolute inset-0 flex items-center justify-center gap-px bg-white rounded-xl pointer-events-none opacity-0 transition-opacity duration-300"
-                  >
-                    <li>
-                      <a
-                        href="https://twitter.com/intent/tweet?url=[##cms.request.full-url##]&text=[##cms.request.title##]"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Twitter"
-                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
-                      >
-                        <svg width="16" height="12">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-twitter"></use>
-                        </svg>
-                        <span
-                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
-                        ></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="mailto:?subject=[##cms.request.title##]&body=[##cms.request.full-url##]"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Email"
-                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
-                      >
-                        <svg width="16" height="16">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-email"></use>
-                        </svg>
-                        <span
-                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
-                        ></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.facebook.com/sharer/sharer.php?u=[##cms.request.full-url##]"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Facebook"
-                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
-                      >
-                        <svg width="10" height="16">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-facebook"></use>
-                        </svg>
-                        <span
-                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
-                        ></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://t.me/share/url?url=[##cms.request.full-url##]&text=[##cms.request.title##]"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Telegram"
-                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
-                      >
-                        <svg width="32" height="32">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-telegram"></use>
-                        </svg>
-                        <span
-                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
-                        ></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://wa.me/?text=[##cms.request.full-url##]"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="WhatsApp"
-                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
-                      >
-                        <svg width="40" height="40">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-whatsapp"></use>
-                        </svg>
-                        <span
-                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
-                        ></span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </section>
-        </aside>
-        <div class="flex-1">
-          <basis core="list" datamembername="hotel_group.list">
-            <layout>
-              <div class="hotel-card-container grid grid-cols-3 gap-3">@child</div>
-            </layout>
-            <face filter="[00295X00160prp] is null">
-              <a
-                href="/@link"
-                data-rate="@prp_[##cms.host.hotel_rate##]"
-                data-city="@prp_[##cms.host.hotel_region##]"
-                data-name="@title"
-                data-price="@prp_[##cms.host.hotel_price##]"
-                class="hotel-card group flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1"
-              >
-                <div class="shine-effect relative overflow-hidden rounded-2xl">
-                  <img
-                    src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
-                    class="w-full h-40 object-cover"
-                    alt="@title"
-                    width="295"
-                    height="160"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
-                  <h3 class="font-bold text-zinc-900 line-clamp-1">@title</h3>
-                  <div class="grid grid-cols-2 gap-1 flex-1">
-                    <div class="border-dashed-zinc rounded-full p-1">
-                      <div class="relative z-20 flex items-center gap-3">
-                        <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                          <svg width="17" height="17" class="flex-shrink-0">
-                            <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-star"></use>
-                          </svg>
-                        </span>
-                        <span class="text-xs text-zinc-700">@prp_[##cms.host.hotel_rate##]</span>
-                      </div>
-                    </div>
-                    <div class="border-dashed-zinc rounded-full p-1">
-                      <div class="relative z-20 flex items-center gap-3">
-                        <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                          <svg width="17" height="17" class="flex-shrink-0">
-                            <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-map"></use>
-                          </svg>
-                        </span>
-                        <span class="text-xs text-zinc-700">@prp_[##cms.host.hotel_region##]</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex items-center gap-2 justify-between py-1 pr-2">
-                    <div>
-                      <span class="text-zinc-500 text-xs">شروع قیمت:</span>
-                      <div class="text-zinc-900 text-sm font-medium mt-1">@prp_[##cms.host.hotel_price##]</div>
-                    </div>
-                    <button
-                      class="check-contrast flex items-center gap-3 justify-center h-12 px-4 text-xs bg-primary-600 rounded-xl transition-all duration-300 hover:bg-secondary-600"
-                    >
-                      مشاهده
-                    </button>
-                  </div>
-                </div>
-              </a>
-            </face>
-            <face>
-              <a
-                href="/@link"
-                data-rate="@prp_[##cms.host.hotel_rate##]"
-                data-city="@prp_[##cms.host.hotel_region##]"
-                data-name="@title"
-                data-price="@prp_[##cms.host.hotel_price##]"
-                class="hotel-card group flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1"
-              >
-                <div class="shine-effect relative overflow-hidden rounded-2xl">
-                  <img src="\@00295X00160prp" class="w-full h-40 object-cover" alt="@title" width="295" height="160" loading="lazy" />
-                </div>
-                <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
-                  <h3 class="font-bold text-zinc-900 line-clamp-1">@title</h3>
-                  <div class="grid grid-cols-2 gap-1 flex-1">
-                    <div class="border-dashed-zinc rounded-full p-1">
-                      <div class="relative z-20 flex items-center gap-3">
-                        <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                          <svg width="17" height="17" class="flex-shrink-0">
-                            <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-star"></use>
-                          </svg>
-                        </span>
-                        <span class="text-xs text-zinc-700">@prp_[##cms.host.hotel_rate##]</span>
-                      </div>
-                    </div>
-                    <div class="border-dashed-zinc rounded-full p-1">
-                      <div class="relative z-20 flex items-center gap-3">
-                        <span class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
-                          <svg width="17" height="17" class="flex-shrink-0">
-                            <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-map"></use>
-                          </svg>
-                        </span>
-                        <span class="text-xs text-zinc-700">@prp_[##cms.host.hotel_region##]</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex items-center gap-2 justify-between py-1 pr-2">
-                    <div>
-                      <span class="text-zinc-500 text-xs">شروع قیمت:</span>
-                      <div class="text-zinc-900 text-sm font-medium mt-1">@prp_[##cms.host.hotel_price##]</div>
-                    </div>
-                    <button
-                      class="check-contrast flex items-center gap-3 justify-center h-12 px-4 text-xs bg-primary-600 rounded-xl transition-all duration-300 hover:bg-secondary-600"
-                    >
-                      مشاهده
-                    </button>
-                  </div>
-                </div>
-              </a>
-            </face>
-          </basis>
-
-          <div id="paging" class="flex justify-center mt-12">
-            <ul class="flex items-center gap-1 cd-pagination no-space direction-ltr" id="wibpaging">
-              <basis core="print" datamembername="hotel_group.paging">
-                <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
-                  <li
-                    class="flex items-center justify-center w-12 h-12 rounded-lg bg-zinc-100 ml-2 transition-all duration-300 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no prev-page"
-                  >
-                    <a
-                      class="flex items-center justify-center w-full cursor-pointer text-zinc-900"
-                      aria-label="angle-left"
-                      href="/[##cms.cms.link_page##]&pagenum=@page"
-                    >
-                      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M6.53068 15.5757C6.31228 15.3728 6.281 15.0438 6.44481 14.8052L6.49981 14.7366L11.4296 9.42993L6.12326 4.49984C5.90486 4.29693 5.87358 3.968 6.03739 3.72938L6.09239 3.66072C6.2953 3.44232 6.62423 3.41104 6.86285 3.57485L6.93152 3.62985L12.6731 8.96406C12.8915 9.16697 12.9228 9.4959 12.759 9.73452L12.704 9.80318L7.3698 15.5448C7.1466 15.7851 6.77092 15.7989 6.53068 15.5757Z"
-                          fill="var(--primary-600)"
-                        />
-                      </svg>
-                    </a>
-                  </li>
-                </face>
-                <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')">
-                  <li
-                    class="flex items-center justify-center w-12 h-12 rounded-lg bg-zinc-100 ml-2 transition-all duration-300 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no prev-page"
-                  >
-                    <a
-                      class="flex items-center justify-center w-full cursor-pointer text-zinc-900"
-                      aria-label="angle-left"
-                      href="/[##cms.cms.pageurl##]?pagenum=@page"
-                    >
-                      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M6.53068 15.5757C6.31228 15.3728 6.281 15.0438 6.44481 14.8052L6.49981 14.7366L11.4296 9.42993L6.12326 4.49984C5.90486 4.29693 5.87358 3.968 6.03739 3.72938L6.09239 3.66072C6.2953 3.44232 6.62423 3.41104 6.86285 3.57485L6.93152 3.62985L12.6731 8.96406C12.8915 9.16697 12.9228 9.4959 12.759 9.73452L12.704 9.80318L7.3698 15.5448C7.1466 15.7851 6.77092 15.7989 6.53068 15.5757Z"
-                          fill="var(--primary-600)"
-                        />
-                      </svg>
-                    </a>
-                  </li>
-                </face>
-              </basis>
-              <basis core="print" datamembername="hotel_group.paging">
-                <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
-                  <li
-                    class="flex items-center justify-center w-12 h-12 text-primary-600 rounded-lg bg-primary-50 gradient-border from-primary-600 page-no"
-                  >
-                    <a
-                      class="flex items-center justify-center w-full h-full cursor-pointer page-number"
-                      href="/[##cms.cms.link_page##]&pagenum=@page"
-                    >
-                      @page
-                    </a>
-                  </li>
-                </face>
-                <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
-                  <li
-                    class="flex items-center justify-center w-12 h-12 text-primary-600 rounded-lg bg-primary-50 gradient-border from-primary-600 page-no"
-                  >
-                    <a
-                      class="flex items-center justify-center w-full h-full cursor-pointer page-number"
-                      href="/[##cms.cms.pageurl##]?pagenum=@page"
-                    >
-                      @page
-                    </a>
-                  </li>
-                </face>
-                <face filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') ">
-                  <li
-                    class="flex items-center justify-center w-12 h-12 text-zinc-900 rounded-lg bg-zinc-100 transition-all duration-300 hover:text-primary-600 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no"
-                  >
-                    <a
-                      class="flex items-center justify-center w-full h-full cursor-pointer page-number"
-                      href="/[##cms.cms.link_page##]&pagenum=@page"
-                    >
-                      @page
-                    </a>
-                  </li>
-                </face>
-                <face filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
-                  <li
-                    class="flex items-center justify-center w-12 h-12 text-zinc-900 rounded-lg bg-zinc-100 transition-all duration-300 hover:text-primary-600 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no"
-                  >
-                    <a
-                      class="flex items-center justify-center w-full h-full cursor-pointer page-number"
-                      href="/[##cms.cms.pageurl##]?pagenum=@page"
-                    >
-                      @page
-                    </a>
-                  </li>
-                </face>
-              </basis>
-              <basis core="print" datamembername="hotel_group.paging">
-                <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'='')">
-                  <li
-                    class="flex items-center justify-center w-12 h-12 rounded-lg bg-zinc-100 mr-2 transition-all duration-300 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no next-page"
-                  >
-                    <a
-                      class="flex items-center justify-center w-full h-full cursor-pointer text-zinc-900"
-                      aria-label="angle-right"
-                      href="/[##cms.cms.link_page##]&pagenum=@page"
-                    >
-                      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M12.4693 3.42432C12.6877 3.62722 12.719 3.95616 12.5552 4.19478L12.5002 4.26344L7.57037 9.57007L12.8767 14.5002C13.0951 14.7031 13.1264 15.032 12.9626 15.2706L12.9076 15.3393C12.7047 15.5577 12.3758 15.589 12.1371 15.4252L12.0685 15.3702L6.32686 10.0359C6.10846 9.83304 6.07718 9.5041 6.24099 9.26548L6.29599 9.19682L11.6302 3.45519C11.8534 3.21495 12.2291 3.20113 12.4693 3.42432Z"
-                          fill="var(--primary-600)"
-                        />
-                      </svg>
-                    </a>
-                  </li>
-                </face>
-                <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'<>'')">
-                  <li
-                    class="flex items-center justify-center w-12 h-12 rounded-lg bg-zinc-100 mr-2 transition-all duration-300 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no next-page"
-                  >
-                    <a
-                      class="flex items-center justify-center w-full h-full cursor-pointer text-zinc-900"
-                      aria-label="angle-right"
-                      href="/[##cms.cms.pageurl##]?pagenum=@page"
-                    >
-                      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M12.4693 3.42432C12.6877 3.62722 12.719 3.95616 12.5552 4.19478L12.5002 4.26344L7.57037 9.57007L12.8767 14.5002C13.0951 14.7031 13.1264 15.032 12.9626 15.2706L12.9076 15.3393C12.7047 15.5577 12.3758 15.589 12.1371 15.4252L12.0685 15.3702L6.32686 10.0359C6.10846 9.83304 6.07718 9.5041 6.24099 9.26548L6.29599 9.19682L11.6302 3.45519C11.8534 3.21495 12.2291 3.20113 12.4693 3.42432Z"
-                          fill="var(--primary-600)"
-                        />
-                      </svg>
-                    </a>
-                  </li>
-                </face>
-              </basis>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <basis core="print" datamembername="db.p-under">
-        <layout>
-          <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl my-20">@child</section>
-        </layout>
-        <face filter="TypeID in (150)">
-          <h2 class="font-bold text-2xl text-zinc-900 mb-3">@text</h2>
-        </face>
-        <face filter="TypeID in (129)">
-          <h2 class="font-bold text-2xl text-zinc-900 mb-3">@text</h2>
-          <div class="text-zinc-900 text-sm text-justify hyphens-auto leading-5 mb-6">@largetext</div>
-        </face>
-        <face filter="TypeID in (250)">
-          <h2 class="font-bold text-2xl text-zinc-900 mb-3">@text</h2>
-          <div class="text-zinc-900 text-sm text-justify hyphens-auto leading-5 mb-6">@largetext</div>
-        </face>
-      </basis>
-
-      <basis core="group" if="'[##cms.host.faq_default##]' <> ''">
-        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-12">
-          <basis core="list" datamembername="faq_list.cat">
-            <face filter="catid in([##cms.host.faq_list##])">
-              <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">@title</h2>
-              <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
-            </face>
-          </basis>
-          <basis core="list" datamembername="faq_list.list">
-            <layout>
-              <div class="w-full mt-9">
-                <div class="tabs relative overflow-hidden">
-                  <div class="tabs-container flex items-center gap-8 border-b-2 border-solid border-zinc-200 pb-4">@child</div>
-                  <div class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300"></div>
-                </div>
-              </div>
-            </layout>
-            <face>
-              <button class="faq-fetch-btn font-medium transition-all duration-300 hover:text-primary-600" data-id="@id" data-src="@image">
-                @title
-              </button>
-            </face>
-          </basis>
-
-          <div class="flex items-center justify-center gap-6 mt-16 tabs-content fetch-content-faq min-h-60"></div>
-        </section>
-      </basis>
-    </main>
-
-    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
-    <script src="[##cms.cms.cdn##]/PrimeTemplate_A/js/template-list.js"></script>
-    <basis core="call" file="template-footer.inc" pageindexid="1" />
-  </body>
 </html>

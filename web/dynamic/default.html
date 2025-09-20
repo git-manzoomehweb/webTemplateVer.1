@@ -1,788 +1,814 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="landing_to_search_engine">
-    <member name="cat" type="tree" request="cat" parentid="[##cms.host.landing_to_search_engine##]" order="ord"
-        postsql="select * from [landing_to_search_engine.cat] where catid in([##cms.host.landing_to_search_engine##])">
-    </member>
+  <member name="cat" type="tree" request="cat" parentid="[##cms.host.landing_to_search_engine##]" order="ord"
+    postsql="select * from [landing_to_search_engine.cat] where catid in([##cms.host.landing_to_search_engine##])">
+  </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="landing_to_search_engine"
-    catid="[##cms.host.landing_to_search_engine##]">
-    <member name="list" type="list" link="article.bc" propertyid="[##cms.host.all_prp_landing##]" perpage="8"
-        order="ord" size="" />
+  catid="[##cms.host.landing_to_search_engine##]">
+  <member name="list" type="list" link="article.bc" propertyid="[##cms.host.all_prp_landing##]" perpage="8" order="ord"
+    size="" />
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="slogans">
-    <member name="cat" type="tree" request="cat" parentid="[##cms.host.slogans##]" order="ord"
-        postsql="select * from [slogans.cat] where catid in([##cms.host.slogans##])"></member>
+  <member name="cat" type="tree" request="cat" parentid="[##cms.host.slogans##]" order="ord"
+    postsql="select * from [slogans.cat] where catid in([##cms.host.slogans##])"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="slogans" catid="[##cms.host.slogans##]">
-    <member name="list" type="list" link="article.bc" propertyid="7244" perpage="8" order="ord" size="40x40" />
+  <member name="list" type="list" link="article.bc" propertyid="7244" perpage="8" order="ord" size="40x40" />
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour_category">
-    <member name="cat" type="tree" request="cat" parentid="[##cms.host.tour_category##]" order="ord"
-        postsql="select * from [tour_category.cat] where catid in([##cms.host.tour_category##]) or parentid in([##cms.host.tour_category##])">
-    </member>
+  <member name="cat" type="tree" request="cat" parentid="[##cms.host.tour_category##]" order="ord"
+    postsql="select * from [tour_category.cat] where catid in([##cms.host.tour_category##]) or parentid in([##cms.host.tour_category##])">
+  </member>
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour_group">
-    <member name="cat" type="tree" request="cat" parentid="[##cms.host.tour_group##]" order="ord"
-        postsql="select * from [tour_group.cat] where catid in([##cms.host.tour_group##]) or parentid in([##cms.host.tour_group##])">
-    </member>
+  <member name="cat" type="tree" request="cat" parentid="[##cms.host.tour_group##]" order="ord"
+    postsql="select * from [tour_group.cat] where catid in([##cms.host.tour_group##]) or parentid in([##cms.host.tour_group##])">
+  </member>
 </basis>
-
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="hotel_group">
-    <member name="cat" type="tree" request="cat" parentid="[##cms.host.hotel_group##]" order="ord"
-        postsql="select * from [hotel_group.cat] where catid in([##cms.host.hotel_group##]) or parentid in([##cms.host.hotel_group##])">
-    </member>
+  <member name="cat" type="tree" request="cat" parentid="[##cms.host.hotel_group##]" order="ord"
+    postsql="select * from [hotel_group.cat] where catid in([##cms.host.hotel_group##]) or parentid in([##cms.host.hotel_group##])">
+  </member>
 </basis>
-
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="article_group">
-    <member name="cat" type="tree" request="cat" parentid="[##cms.host.article_group##]" order="ord"
-        postsql="select * from [article_group.cat] where catid in([##cms.host.article_group##])"></member>
+  <member name="cat" type="tree" request="cat" parentid="[##cms.host.article_group##]" order="ord"
+    postsql="select * from [article_group.cat] where catid in([##cms.host.article_group##])"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="article_group" catid="[##cms.host.article_group##]">
-    <member name="list" type="list" link="article.bc" propertyid="7244,7248" perpage="8" order="ord" size="273x160" />
+  <member name="list" type="list" link="article.bc" propertyid="7244,7248" perpage="8" order="ord" size="273x160" />
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="visa_category">
-    <member name="cat" type="tree" request="cat" parentid="[##cms.host.visa_category##]" order="ord"
-        postsql="select * from [visa_category.cat] where catid in([##cms.host.visa_category##]) or parentid in([##cms.host.visa_category##])">
-    </member>
+  <member name="cat" type="tree" request="cat" parentid="[##cms.host.visa_category##]" order="ord"
+    postsql="select * from [visa_category.cat] where catid in([##cms.host.visa_category##]) or parentid in([##cms.host.visa_category##])">
+  </member>
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_default">
-    <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq_default##]" order="ord"
-        postsql="select * from [faq_default.cat] where catid in([##cms.host.faq_default##]) or parentid in([##cms.host.faq_default##])">
-    </member>
+  <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq_default##]" order="ord"
+    postsql="select * from [faq_default.cat] where catid in([##cms.host.faq_default##]) or parentid in([##cms.host.faq_default##])">
+  </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_default" catid="[##cms.host.faq_default##]">
-    <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
+  <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="aboutUs_default"
-    usedforid="[##cms.host.aboutUs_default##]">
-    <member name="view" type="view" size="" propertyid="7244" />
+  usedforid="[##cms.host.aboutUs_default##]">
+  <member name="view" type="view" size="" propertyid="7244" />
 </basis>
 <basis core="dbsource" source="media" lid="1" name="aboutUs_default" usedforid="[##cms.host.aboutUs_default##]"
-    sourcemid="article">
-    <member type="list" name="gallery" format="4" order="ord"></member>
+  sourcemid="article">
+  <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
-    <basis core="call" file="style.inc" pageindexid="1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
+  <basis core="call" file="style.inc" pageindexid="1" />
 </head>
 
 <body>
-    <basis core="call" file="template-header.inc" pageindexid="1"/>
+  <basis core="call" file="template-header.inc" pageindexid="1" />
 
-    <main data-activepage="home" data-sectionorder="">
-        <basis core="print" datamembername="db.info">
-            <face filter="TypeID in(150)">
-              <h1 class="h1-tag">@text</h1>
+  <main data-activepage="home" data-sectionorder="">
+    <basis core="print" datamembername="db.info">
+      <face filter="TypeID in(150)">
+        <h1 class="h1-tag">@text</h1>
+      </face>
+    </basis>
+    <section class="relative z-10 flex items-center mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
+      <div class="module-banner-image" data-img-path="PrimeTemplate_A">
+        <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/flight-search-bg.jpg"
+          class="top-0 absolute w-[700px] h-full object-cover rounded-3xl" alt="flight-search-bg" width="700"
+          height="569" loading="lazy" />
+      </div>
+      <div class="flex justify-end w-full pt-14 pb-14">
+        <div
+          class="search-banner gradient-border from-primary-600 bg-white overflow-visible rounded-3xl shadow-search-engine">
+          <div class="search-box-container">
+            <div id="search-box" class="dir-rtl" data-view="pc">
+              <div class="flex justify-center">
+                <span class="loader"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="parent-container">
+      <basis core="group" if="'[##cms.host.landing_to_search_engine##]' <> ''">
+        <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-28" data-order="1">
+          <basis core="list" datamembername="landing_to_search_engine.cat">
+            <face>
+              <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">
+                @title
+              </h2>
+              <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">
+                @urldescription
+              </div>
             </face>
           </basis>
-        <section class="relative z-10 flex items-center mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
-            <div class="module-banner-image" data-img-path="PrimeTemplate_A">
-                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/flight-search-bg.jpg"
-                    class="top-0 absolute w-[700px] h-full object-cover rounded-3xl" alt="flight-search-bg" width="700"
-                    height="569" loading="lazy" />
-            </div>
-            <div class="flex justify-end w-full pt-14 pb-14">
+          <basis core="list" datamembername="landing_to_search_engine.list">
+            <layout>
+              <div class="swiper swiper-busy-destination mt-7 pb-14 pt-1">
+                <div class="swiper-wrapper">@child</div>
+                <div class="swiper-pagination flex items-center justify-center gap-1"></div>
+              </div>
+            </layout>
+            <face>
+              <div class="ticket-article swiper-slide max-w-[314px]">
                 <div
-                    class="search-banner gradient-border from-primary-600 bg-white overflow-visible rounded-3xl shadow-search-engine">
-                    <div class="search-box-container">
-                        <div id="search-box" class="dir-rtl" data-view="pc">
-                            <div class="flex justify-center"><span class="loader"></span></div>
-                        </div>
+                  class="set-ticket flex items-center justify-between border border-solid border-zinc-300 bg-zinc-gradient rounded-xl p-3 cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary-600">
+                  <div class="flex gap-4">
+                    <div>
+                      <h3 class="font-bold text-sm mb-2 dep-text">
+                        @prp_[##cms.host.origin_city_landing##]
+                      </h3>
+                      <span class="hidden dep-id">@prp_[##cms.host.origin_airport_code_landing##]</span>
+                      <span class="empty-face-fields flex items-center gap-1 text-zinc-500 text-xs">
+                        <svg width="12" height="12">
+                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-pin"></use>
+                        </svg>
+                        <span class="empty-face-text">@prp_[##cms.host.origin_airport_landing##]</span>
+                      </span>
                     </div>
+                    <div>
+                      <h3 class="font-bold text-sm mb-2 des-text">
+                        @prp_[##cms.host.destination_city_landing##]
+                      </h3>
+                      <span class="hidden des-id">@prp_[##cms.host.destination_airport_code_landing##]</span>
+                      <span class="empty-face-fields flex items-center gap-1 text-zinc-500 text-xs">
+                        <svg width="12" height="12">
+                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-location-zinc"></use>
+                        </svg>
+                        <span class="empty-face-text">@prp_[##cms.host.destination_airport_landing##]</span>
+                      </span>
+                    </div>
+                  </div>
+                  <span>
+                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                        fill="var(--primary-600)" />
+                    </svg>
+                  </span>
                 </div>
-            </div>
+              </div>
+            </face>
+          </basis>
         </section>
-        <div class="parent-container">
-            <basis core="group" if="'[##cms.host.landing_to_search_engine##]' <> ''">
-                <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-28" data-order="1">
-                    <basis core="list" datamembername="landing_to_search_engine.cat">
-                        <face>
-                            <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">@title</h2>
-                            <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
-                        </face>
-                    </basis>
-                    <basis core="list" datamembername="landing_to_search_engine.list">
-                        <layout>
-                            <div class="swiper swiper-busy-destination mt-7 pb-14 pt-1">
-                                <div class="swiper-wrapper">
-                                    @child
-                                </div>
-                                <div class="swiper-pagination flex items-center justify-center gap-1"></div>
-                            </div>
-                        </layout>
-                        <face>
-                            <div class="swiper-slide max-w-[314px]">
-                                <div
-                                    class="flex items-center justify-between border border-solid border-zinc-300 bg-zinc-gradient rounded-xl p-3 cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary-600">
-                                    <div class="flex gap-4">
-                                        <div>
-                                            <h3 class="font-bold text-sm mb-2">@prp_[##cms.host.origin_city_landing##]
-                                            </h3>
-                                            <span class="hidden">@prp_[##cms.host.origin_airport_code_landing##]</span>
-                                            <span
-                                                class="empty-face-fields flex items-center gap-1 text-zinc-500 text-xs">
-                                                <svg width="12" height="12">
-                                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-pin"></use>
-                                                </svg>
-                                                <span
-                                                    class="empty-face-text">@prp_[##cms.host.origin_airport_landing##]</span>
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <h3 class="font-bold text-sm mb-2">
-                                                @prp_[##cms.host.destination_city_landing##]</h3>
-                                            <span
-                                                class="hidden">@prp_[##cms.host.destination_airport_code_landing##]</span>
-                                            <span
-                                                class="empty-face-fields flex items-center gap-1 text-zinc-500 text-xs">
-                                                <svg width="12" height="12">
-                                                    <use
-                                                        href="/PrimeTemplate_A/images/sprite-icons.svg#icon-location-zinc">
-                                                    </use>
-                                                </svg>
-                                                <span
-                                                    class="empty-face-text">@prp_[##cms.host.destination_airport_landing##]</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <span>
-                                        <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                                                fill="var(--primary-600)" />
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </face>
-                    </basis>
+      </basis>
 
-                </section>
-            </basis>
+      <basis core="group" if="'[##cms.host.slogans##]' <> ''">
+        <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="2">
+          <basis core="list" datamembername="slogans.cat">
+            <face>
+              <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">
+                @title
+              </h2>
+              <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">
+                @urldescription
+              </div>
+            </face>
+          </basis>
 
+          <basis core="list" datamembername="slogans.list">
+            <layout>
+              <div class="grid grid-cols-4 gap-2 mt-8">
+                <!-- items -->
+                @child
+              </div>
+            </layout>
+            <face filter="[00040X00040prp] is null">
+              <div
+                class="flex flex-col items-center justify-between gap-3 gradient-border from-primary-600 bg-zinc-50 rounded-2xl p-4">
+                <span class="bg-primary-600 rounded-full p-4">
+                  <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M34.8968 24.1658C34.8827 24.2217 34.867 24.2773 34.8498 24.3328C34.2615 26.2278 33.2715 28.2295 31.9082 30.2845C31.3398 31.2462 30.4348 31.9345 29.3532 32.2228C29.2312 32.2558 29.1082 32.2833 28.9848 32.3052C26.649 36.2887 24.1175 36.7498 21.4508 36.7498C21.0525 36.7498 20.6508 36.7398 20.2458 36.7282L20.1145 36.725C19.7328 36.7158 19.3408 36.7065 18.9358 36.7065C18.2458 36.7065 17.6858 36.1465 17.6858 35.4565C17.6858 34.7665 18.2458 34.2065 18.9358 34.2065C19.4092 34.2065 19.8675 34.2182 20.3092 34.2298C22.9558 34.3003 24.581 34.341 26.2943 31.8857C26.2407 31.8577 26.1875 31.8283 26.1348 31.7978C24.1148 30.6295 23.4198 28.0345 24.5848 26.0112L27.0965 21.6595C28.2615 19.6378 30.8582 18.9395 32.8832 20.1045L33.0227 20.1855C33.0268 20.0485 33.029 19.911 33.029 19.7733C33.029 12.5917 27.1823 6.75 19.994 6.75C12.8124 6.75 6.9707 12.5917 6.9707 19.7733C6.9707 19.9127 6.97285 20.0517 6.97717 20.1902L7.11824 20.109C9.14657 18.9423 11.7399 19.6407 12.9082 21.6623L15.4182 26.0123C16.5866 28.0357 15.8916 30.6323 13.8699 31.8007C13.2166 32.179 12.4899 32.3707 11.7549 32.3707C11.3866 32.3707 11.0166 32.3223 10.6516 32.2257C9.57157 31.9357 8.66657 31.2473 8.09824 30.2857C6.9134 28.5012 6.01042 26.7593 5.40992 25.0947C4.78674 23.3978 4.4707 21.6087 4.4707 19.7733C4.4707 11.2133 11.434 4.25 19.994 4.25C28.5607 4.25 35.529 11.2133 35.529 19.7733C35.529 21.2747 35.317 22.7453 34.8968 24.1658Z"
+                      fill="white" />
+                  </svg>
+                </span>
+                <h3 class="text-zinc-900 font-bold text-sm">@title</h3>
+                <div class="text-zinc-500 text-xs text-center leading-5">
+                  @prp_7244
+                </div>
+              </div>
+            </face>
+            <face>
+              <div
+                class="flex flex-col items-center justify-between gap-3 gradient-border from-primary-600 bg-zinc-50 rounded-2xl p-4">
+                <span class="bg-primary-600 rounded-full p-4">
+                  <img src="\@00048X00048prp" class="w-10 h-10 object-cover" alt="@title" width="40" height="40"
+                    loading="lazy" />
+                </span>
+                <h3 class="text-zinc-900 font-bold text-sm">@title</h3>
+                <div class="text-zinc-500 text-xs text-center leading-5">
+                  @prp_7244
+                </div>
+              </div>
+            </face>
+          </basis>
+        </section>
+      </basis>
 
-            <basis core="group" if="'[##cms.host.slogans##]' <> ''">
-                <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="2">
-                    <basis core="list" datamembername="slogans.cat">
-                        <face>
-                            <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">@title</h2>
-                            <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
-                        </face>
-                    </basis>
-
-                    <basis core="list" datamembername="slogans.list">
-                        <layout>
-                            <div class="grid grid-cols-4 gap-2 mt-8">
-                                <!-- items -->
-                                @child
-                            </div>
-                        </layout>
-                        <face filter="[00040X00040prp] is null">
-                            <div
-                                class="flex flex-col items-center justify-between gap-3 gradient-border from-primary-600 bg-zinc-50 rounded-2xl p-4">
-                                <span class="bg-primary-600 rounded-full p-4">
-                                    <svg width="40" height="41" viewBox="0 0 40 41" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M34.8968 24.1658C34.8827 24.2217 34.867 24.2773 34.8498 24.3328C34.2615 26.2278 33.2715 28.2295 31.9082 30.2845C31.3398 31.2462 30.4348 31.9345 29.3532 32.2228C29.2312 32.2558 29.1082 32.2833 28.9848 32.3052C26.649 36.2887 24.1175 36.7498 21.4508 36.7498C21.0525 36.7498 20.6508 36.7398 20.2458 36.7282L20.1145 36.725C19.7328 36.7158 19.3408 36.7065 18.9358 36.7065C18.2458 36.7065 17.6858 36.1465 17.6858 35.4565C17.6858 34.7665 18.2458 34.2065 18.9358 34.2065C19.4092 34.2065 19.8675 34.2182 20.3092 34.2298C22.9558 34.3003 24.581 34.341 26.2943 31.8857C26.2407 31.8577 26.1875 31.8283 26.1348 31.7978C24.1148 30.6295 23.4198 28.0345 24.5848 26.0112L27.0965 21.6595C28.2615 19.6378 30.8582 18.9395 32.8832 20.1045L33.0227 20.1855C33.0268 20.0485 33.029 19.911 33.029 19.7733C33.029 12.5917 27.1823 6.75 19.994 6.75C12.8124 6.75 6.9707 12.5917 6.9707 19.7733C6.9707 19.9127 6.97285 20.0517 6.97717 20.1902L7.11824 20.109C9.14657 18.9423 11.7399 19.6407 12.9082 21.6623L15.4182 26.0123C16.5866 28.0357 15.8916 30.6323 13.8699 31.8007C13.2166 32.179 12.4899 32.3707 11.7549 32.3707C11.3866 32.3707 11.0166 32.3223 10.6516 32.2257C9.57157 31.9357 8.66657 31.2473 8.09824 30.2857C6.9134 28.5012 6.01042 26.7593 5.40992 25.0947C4.78674 23.3978 4.4707 21.6087 4.4707 19.7733C4.4707 11.2133 11.434 4.25 19.994 4.25C28.5607 4.25 35.529 11.2133 35.529 19.7733C35.529 21.2747 35.317 22.7453 34.8968 24.1658Z"
-                                            fill="white" />
-                                    </svg>
-                                </span>
-                                <h3 class="text-zinc-900 font-bold text-sm">@title</h3>
-                                <div class="text-zinc-500 text-xs text-center leading-5">@prp_7244</div>
-                            </div>
-                        </face>
-                        <face>
-                            <div
-                                class="flex flex-col items-center justify-between gap-3 gradient-border from-primary-600 bg-zinc-50 rounded-2xl p-4">
-                                <span class="bg-primary-600 rounded-full p-4">
-                                    <img src="\@00048X00048prp" class="w-10 h-10 object-cover" alt="@title" width="40"
-                                        height="40" loading="lazy" />
-                                </span>
-                                <h3 class="text-zinc-900 font-bold text-sm">@title</h3>
-                                <div class="text-zinc-500 text-xs text-center leading-5">@prp_7244</div>
-                            </div>
-                        </face>
-                    </basis>
-                </section>
-
-            </basis>
-
-
-            <basis core="group" if="'[##cms.host.tour_category##]' <> ''">
-                <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24" data-order="3">
-                    <basis core="list" datamembername="tour_category.cat">
-                        <face filter="catid in([##cms.host.tour_category##])">
-                            <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">@title</h2>
-                            <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
-                        </face>
-                    </basis>
-                    <basis core="list" datamembername="tour_category.cat">
-                        <layout>
-                            <!-- Slider main container -->
-                            <div class="swiper swiper-popular-destination pb-14 mt-10 pt-1">
-                                <!-- Additional required wrapper -->
-                                <div class="swiper-wrapper">
-                                    <!-- Slides -->
-                                    @child
-                                </div>
-                                <div class="swiper-pagination flex items-center justify-center gap-1"></div>
-                            </div>
-                        </layout>
-                        <face filter="link is null and parentid in([##cms.host.tour_category##])">
-                            <div class="swiper-slide max-w-[246px]">
-                                <a href="/tour-list.bc?catid=@catid"
-                                    class="flex flex-col relative rounded-2xl overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                                    <span class="pointer-events-none absolute -inset-4 rounded-3xl
-                                        bg-gradient-to-t from-black/60 via-black/50 to-black/90
-                                        blur-4xl opacity-0 group-hover:opacity-100
-                                        transition-all duration-500"></span>
-                                    <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
-                                    <img src="\@image" class="w-full h-60 object-cover" alt="@title" width="246"
-                                        height="240" loading="lazy" />
-                                    <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
-                                        <div
-                                            class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
-                                            <h3 class="text-sm font-bold text-white">@title</h3>
-                                            <svg width="49" height="48" viewBox="0 0 49 48" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
-                                                    fill="white" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </face>
-                        <face filter="link is null and image is null and parentid in([##cms.host.tour_category##])">
-                            <div class="swiper-slide max-w-[246px]">
-                                <a href="/tour-list.bc?catid=@catid"
-                                    class="flex flex-col relative rounded-2xl overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                                    <span class="pointer-events-none absolute -inset-4 rounded-3xl
-                                        bg-gradient-to-t from-black/60 via-black/50 to-black/90
-                                        blur-4xl opacity-0 group-hover:opacity-100
-                                        transition-all duration-500"></span>
-                                    <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
-                                    <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
-                                        class="w-full h-60 object-cover" alt="@title" width="246" height="240"
-                                        loading="lazy" />
-                                    <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
-                                        <div
-                                            class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
-                                            <h3 class="text-sm font-bold text-white">@title</h3>
-                                            <svg width="49" height="48" viewBox="0 0 49 48" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
-                                                    fill="white" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </face>
-                        <face filter="image is null and parentid in([##cms.host.tour_category##])">
-                            <div class="swiper-slide max-w-[246px]">
-                                <a href="/@link"
-                                    class="flex flex-col relative rounded-2xl overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                                    <span class="pointer-events-none absolute -inset-4 rounded-3xl
-                                        bg-gradient-to-t from-black/60 via-black/50 to-black/90
-                                        blur-4xl opacity-0 group-hover:opacity-100
-                                        transition-all duration-500"></span>
-                                    <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
-                                    <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
-                                        class="w-full h-60 object-cover" alt="@title" width="246" height="240"
-                                        loading="lazy" />
-                                    <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
-                                        <div
-                                            class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
-                                            <h3 class="text-sm font-bold text-white">@title</h3>
-                                            <svg width="49" height="48" viewBox="0 0 49 48" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
-                                                    fill="white" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </face>
-                        <face filter="parentid in([##cms.host.tour_category##])">
-                            <div class="swiper-slide max-w-[246px]">
-                                <a href="/@link"
-                                    class="flex flex-col relative rounded-2xl overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                                    <span class="pointer-events-none absolute -inset-4 rounded-3xl
-                                        bg-gradient-to-t from-black/60 via-black/50 to-black/90
-                                        blur-4xl opacity-0 group-hover:opacity-100
-                                        transition-all duration-500"></span>
-                                    <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
-                                    <img src="\@image" class="w-full h-60 object-cover" alt="@title" width="246"
-                                        height="240" loading="lazy" />
-                                    <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
-                                        <div
-                                            class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
-                                            <h3 class="text-sm font-bold text-white">@title</h3>
-                                            <svg width="49" height="48" viewBox="0 0 49 48" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
-                                                    fill="white" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </face>
-                    </basis>
-
-                </section>
-            </basis>
-
-
-            <basis core="group" if="'[##cms.host.tour_group##]' <> ''">
-                <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24" data-order="4">
-
-                    <basis core="list" datamembername="tour_group.cat">
-                        <face filter="catid in([##cms.host.tour_group##])">
-                            <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">@title</h2>
-                            <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
-                        </face>
-                    </basis>
-
-                    <basis core="list" datamembername="tour_group.cat">
-                        <layout>
-                            <div class="w-full mt-6">
-                                <div class="tabs relative overflow-hidden">
-                                    <div
-                                        class="tabs-container flex items-center gap-8 border-b-2 border-solid border-zinc-200 pb-4">
-                                        @child
-                                    </div>
-                                    <div
-                                        class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300">
-                                    </div>
-                                </div>
-                            </div>
-                        </layout>
-                        <face filter="parentid in([##cms.host.tour_group##])">
-                            <button
-                                class="tour-fetch-btn font-medium transition-all duration-300 hover:text-primary-600"
-                                data-id="@catid">@title</button>
-                        </face>
-                    </basis>
-
-                    <div class="tabs-content fetch-content-tour_group flex items-center justify-center min-h-[450px]">
-
-                    </div>
-
-                </section>
-            </basis>
-
-
-
-
-            <basis core="group" if="'[##cms.host.big_banner##]' <> ''">
-                <section class="section-order relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10"
-                    data-order="5">
-                    <a href="[##cms.host.big_banner##]"
-                        class="flex flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.01] hover:shadow-2xl">
-                        <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/big-banner-pc.jpg"
-                            class="w-full h-64 object-cover" alt="first-banner" width="1280" height="256"
-                            loading="lazy" />
-                        <div class="absolute left-12 bottom-12">
-                            <div class="flex justify-end mt-10">
-                                <button
-                                    class="check-contrast flex items-center justify-center bg-primary-600 rounded-xl w-32 h-12 font-medium transition-all duration-300 hover:bg-secondary-600">مشاهده</button>
-                            </div>
-                        </div>
-                    </a>
-                </section>
-            </basis>
-
-
-            <basis core="group" if="'[##cms.host.hotel_group##]' <> ''">
-                <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24" data-order="6">
-                    <basis core="list" datamembername="hotel_group.cat">
-                        <face filter="catid in([##cms.host.hotel_group##])">
-                            <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">@title</h2>
-                            <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
-                        </face>
-                    </basis>
-
-                    <basis core="list" datamembername="hotel_group.cat">
-                        <layout>
-                            <div class="w-full mt-9">
-                                <div class="tabs relative overflow-hidden">
-                                    <div
-                                        class="tabs-container flex items-center gap-8 border-b-2 border-solid border-zinc-200 pb-4">
-                                        @child
-                                    </div>
-                                    <div
-                                        class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300">
-                                    </div>
-                                </div>
-                            </div>
-                        </layout>
-                        <face filter="parentid in([##cms.host.hotel_group##])">
-                            <button
-                                class="hotel-fetch-btn font-medium transition-all duration-300 hover:text-primary-600"
-                                data-id="@catid">@title</button>
-                        </face>
-                    </basis>
-
-                    <div class="tabs-content fetch-content-hotel_group flex items-center justify-center min-h-96">
-
-                    </div>
-
-
-                </section>
-            </basis>
-
-
-            <basis core="group" if="'[##cms.host.small_banner##]' <> ''">
-                <section class="section-order relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10"
-                    data-order="7">
-                    <a href="[##cms.host.small_banner##]"
-                        class="flex flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.01] hover:shadow-2xl">
-                        <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/small-banner-pc.jpg"
-                            class="w-full h-36 object-cover" alt="small-banner" width="1280" height="144"
-                            loading="lazy" />
-                        <div class="absolute top-1/2 -translate-y-1/2 left-6 px-3">
-                            <button
-                                class="check-contrast flex items-center justify-center flex-shrink-0 w-32 h-12 bg-white rounded-xl font-medium transition-all duration-300 hover:bg-primary-600">مشاهده</button>
-                        </div>
-                    </a>
-                </section>
-            </basis>
-
-
-            <basis core="group" if="'[##cms.host.article_group##]' <> ''">
-                <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24" data-order="8">
-                    <basis core="list" datamembername="article_group.cat">
-                        <face filter="catid in([##cms.host.article_group##])">
-                            <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">@title</h2>
-                            <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
-                        </face>
-                    </basis>
-                    <basis core="list" datamembername="article_group.list">
-                        <layout>
-                            <div class="swiper swiper-news pb-14 pt-1 mt-7">
-                                <div class="swiper-wrapper">
-                                    @child
-                                </div>
-                                <div class="swiper-pagination flex items-center justify-center gap-1"></div>
-                            </div>
-                        </layout>
-                        <face filter="[00273X00160prp] is null">
-                            <div class="swiper-slide max-w-[640px]">
-                                <a href="/@link"
-                                    class="group flex gap-6 gradient-border from-gray-300 rounded-2xl p-2 min-h-44 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
-                                    <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
-                                        <h3 class="font-medium text-zinc-900 line-clamp-1">@title
-                                        </h3>
-                                        <div
-                                            class="text-xs line-clamp-3 text-zinc-700 text-justify hyphens-auto leading-5">
-                                            @prp_7244
-                                        </div>
-                                        <div class="flex items-center justify-between">
-                                            <span class="flex items-center gap-1 text-xs text-zinc-900">
-                                                <svg width="17" height="17" class="flex-shrink-0">
-                                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-person">
-                                                    </use>
-                                                </svg>
-                                                @prp_7248
-                                            </span>
-                                            <button class="flex items-center">
-                                                <span class="text-primary-600 text-xs">مطالعه بیشتر</span>
-                                                <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                                                        fill="var(--primary-600)" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="shine-effect relative overflow-hidden rounded-2xl">
-                                        <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
-                                            class="w-[273px] h-40 object-cover" alt="@title" width="273" height="160"
-                                            loading="lazy" />
-                                    </div>
-                                </a>
-                            </div>
-                        </face>
-                        <face>
-                            <div class="swiper-slide max-w-[640px]">
-                                <a href="/@link"
-                                    class="group flex gap-6 gradient-border from-gray-300 rounded-2xl p-2 min-h-44 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
-                                    <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
-                                        <h3 class="font-medium text-zinc-900 line-clamp-1">@title
-                                        </h3>
-                                        <div
-                                            class="text-xs line-clamp-3 text-zinc-700 text-justify hyphens-auto leading-5">
-                                            @prp_7244
-                                        </div>
-                                        <div class="flex items-center justify-between">
-                                            <span class="flex items-center gap-1 text-xs text-zinc-900">
-                                                <svg width="17" height="17" class="flex-shrink-0">
-                                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-person">
-                                                    </use>
-                                                </svg>
-                                                @prp_7248
-                                            </span>
-                                            <button class="flex items-center">
-                                                <span class="text-primary-600 text-xs">مطالعه بیشتر</span>
-                                                <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                                                        fill="var(--primary-600)" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="shine-effect relative overflow-hidden rounded-2xl">
-                                        <img src="\@00273X00160prp" class="w-[273px] h-40 object-cover" alt="@title"
-                                            width="273" height="160" loading="lazy" />
-                                    </div>
-                                </a>
-                            </div>
-                        </face>
-                    </basis>
-
-                </section>
-            </basis>
-
-
-            <basis core="group" if="'[##cms.host.visa_category##]' <> ''">
-                <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24" data-order="9">
-                    <basis core="list" datamembername="visa_category.cat">
-                        <face filter="catid in([##cms.host.visa_category##])">
-                            <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">@title</h2>
-                            <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
-                        </face>
-                    </basis>
-                    <basis core="list" datamembername="visa_category.cat">
-                        <layout>
-                            <div class="swiper swiper-popular-destination pb-14 pt-1 mt-7">
-                                <div class="swiper-wrapper">
-                                    @child
-                                </div>
-                                <div class="swiper-pagination flex items-center justify-center gap-1"></div>
-                            </div>
-                        </layout>
-                        <face filter="link is null and image is null and parentid in([##cms.host.visa_category##])">
-                            <div class="swiper-slide max-w-[311px]">
-                                <a href="/visa-list.bc?catid=@catid"
-                                    class="group flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
-                                    <div class="shine-effect relative overflow-hidden rounded-2xl">
-                                        <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
-                                            class="w-full h-40 object-cover" alt="@title" width="295" height="160"
-                                            loading="lazy" />
-                                    </div>
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-bold">@title</h3>
-                                        <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                                                fill="var(--primary-600)" />
-                                        </svg>
-                                    </div>
-                                </a>
-                            </div>
-                        </face>
-                        <face filter="link is null and parentid in([##cms.host.visa_category##])">
-                            <div class="swiper-slide max-w-[311px]">
-                                <a href="/visa-list.bc?catid=@catid"
-                                    class="group flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
-                                    <div class="shine-effect relative overflow-hidden rounded-2xl">
-                                        <img src="\@image" class="w-full h-40 object-cover" alt="@title" width="295"
-                                            height="160" loading="lazy" />
-                                    </div>
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-bold">@title</h3>
-                                        <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                                                fill="var(--primary-600)" />
-                                        </svg>
-                                    </div>
-                                </a>
-                            </div>
-                        </face>
-                        <face filter="image is null and parentid in([##cms.host.visa_category##])">
-                            <div class="swiper-slide max-w-[311px]">
-                                <a href="/@link"
-                                    class="group flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
-                                    <div class="shine-effect relative overflow-hidden rounded-2xl">
-                                        <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
-                                            class="w-full h-40 object-cover" alt="@title" width="295" height="160"
-                                            loading="lazy" />
-                                    </div>
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-bold">@title</h3>
-                                        <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                                                fill="var(--primary-600)" />
-                                        </svg>
-                                    </div>
-                                </a>
-                            </div>
-                        </face>
-                        <face filter="parentid in([##cms.host.visa_category##])">
-                            <div class="swiper-slide max-w-[311px]">
-                                <a href="/@link"
-                                    class="group flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
-                                    <div class="shine-effect relative overflow-hidden rounded-2xl">
-                                        <img src="\@image" class="w-full h-40 object-cover" alt="@title" width="295"
-                                            height="160" loading="lazy" />
-                                    </div>
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-bold">@title</h3>
-                                        <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                                                fill="var(--primary-600)" />
-                                        </svg>
-                                    </div>
-                                </a>
-                            </div>
-                        </face>
-                    </basis>
-                </section>
-            </basis>
-
-
-            <basis core="group" if="'[##cms.host.faq_default##]' <> ''">
-                <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24" data-order="10">
-                    <basis core="list" datamembername="faq_default.cat">
-                        <face filter="catid in([##cms.host.faq_default##])">
-                            <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">@title</h2>
-                            <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
-                        </face>
-                    </basis>
-                    <basis core="list" datamembername="faq_default.list">
-                        <layout>
-                            <div class="w-full mt-9">
-                                <div class="tabs relative overflow-hidden">
-                                    <div
-                                        class="tabs-container flex items-center gap-8 border-b-2 border-solid border-zinc-200 pb-4">
-                                        @child
-                                    </div>
-                                    <div
-                                        class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300">
-                                    </div>
-                                </div>
-                            </div>
-                        </layout>
-                        <face>
-                            <button class="faq-fetch-btn font-medium transition-all duration-300 hover:text-primary-600"
-                                data-id="@id" data-src="@image">@title</button>
-                        </face>
-                    </basis>
-
-
+      <basis core="group" if="'[##cms.host.tour_category##]' <> ''">
+        <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24" data-order="3">
+          <basis core="list" datamembername="tour_category.cat">
+            <face filter="catid in([##cms.host.tour_category##])">
+              <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">
+                @title
+              </h2>
+              <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">
+                @urldescription
+              </div>
+            </face>
+          </basis>
+          <basis core="list" datamembername="tour_category.cat">
+            <layout>
+              <!-- Slider main container -->
+              <div class="swiper swiper-popular-destination pb-14 mt-10 pt-1">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                  <!-- Slides -->
+                  @child
+                </div>
+                <div class="swiper-pagination flex items-center justify-center gap-1"></div>
+              </div>
+            </layout>
+            <face filter="link is null and parentid in([##cms.host.tour_category##])">
+              <div class="swiper-slide max-w-[246px]">
+                <a href="/tour-list.bc?catid=@catid"
+                  class="flex flex-col relative rounded-2xl overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  <span
+                    class="pointer-events-none absolute -inset-4 rounded-3xl bg-gradient-to-t from-black/60 via-black/50 to-black/90 blur-4xl opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+                  <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
+                  <img src="\@image" class="w-full h-60 object-cover" alt="@title" width="246" height="240"
+                    loading="lazy" />
+                  <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
                     <div
-                        class="flex items-center justify-center gap-6 mt-16 tabs-content fetch-content-faq min-h-60">
-
+                      class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
+                      <h3 class="text-sm font-bold text-white">@title</h3>
+                      <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
+                          fill="white" />
+                      </svg>
                     </div>
-                </section>
-            </basis>
+                  </div>
+                </a>
+              </div>
+            </face>
+            <face filter="link is null and image is null and parentid in([##cms.host.tour_category##])">
+              <div class="swiper-slide max-w-[246px]">
+                <a href="/tour-list.bc?catid=@catid"
+                  class="flex flex-col relative rounded-2xl overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  <span
+                    class="pointer-events-none absolute -inset-4 rounded-3xl bg-gradient-to-t from-black/60 via-black/50 to-black/90 blur-4xl opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+                  <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
+                  <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
+                    class="w-full h-60 object-cover" alt="@title" width="246" height="240" loading="lazy" />
+                  <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
+                    <div
+                      class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
+                      <h3 class="text-sm font-bold text-white">@title</h3>
+                      <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </face>
+            <face filter="image is null and parentid in([##cms.host.tour_category##])">
+              <div class="swiper-slide max-w-[246px]">
+                <a href="/@link"
+                  class="flex flex-col relative rounded-2xl overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  <span
+                    class="pointer-events-none absolute -inset-4 rounded-3xl bg-gradient-to-t from-black/60 via-black/50 to-black/90 blur-4xl opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+                  <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
+                  <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
+                    class="w-full h-60 object-cover" alt="@title" width="246" height="240" loading="lazy" />
+                  <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
+                    <div
+                      class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
+                      <h3 class="text-sm font-bold text-white">@title</h3>
+                      <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </face>
+            <face filter="parentid in([##cms.host.tour_category##])">
+              <div class="swiper-slide max-w-[246px]">
+                <a href="/@link"
+                  class="flex flex-col relative rounded-2xl overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  <span
+                    class="pointer-events-none absolute -inset-4 rounded-3xl bg-gradient-to-t from-black/60 via-black/50 to-black/90 blur-4xl opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+                  <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
+                  <img src="\@image" class="w-full h-60 object-cover" alt="@title" width="246" height="240"
+                    loading="lazy" />
+                  <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
+                    <div
+                      class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
+                      <h3 class="text-sm font-bold text-white">@title</h3>
+                      <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M15.893 22.2929C15.5025 22.6834 15.5025 23.3166 15.893 23.7071L22.257 30.0711C22.6475 30.4616 23.2806 30.4616 23.6712 30.0711C24.0617 29.6805 24.0617 29.0474 23.6712 28.6569L18.0143 23L23.6712 17.3431C24.0617 16.9526 24.0617 16.3195 23.6712 15.9289C23.2806 15.5384 22.6475 15.5384 22.257 15.9289L15.893 22.2929ZM31.6001 23L31.6001 22L16.6001 22L16.6001 23L16.6001 24L31.6001 24L31.6001 23Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </face>
+          </basis>
+        </section>
+      </basis>
 
+      <basis core="group" if="'[##cms.host.tour_group##]' <> ''">
+        <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24" data-order="4">
+          <basis core="list" datamembername="tour_group.cat">
+            <face filter="catid in([##cms.host.tour_group##])">
+              <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">
+                @title
+              </h2>
+              <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">
+                @urldescription
+              </div>
+            </face>
+          </basis>
 
-            <basis core="group" if="'[##cms.host.aboutUs_default##]' <> ''">
-                <section
-                    class="section-order relative flex items-center mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-48"
-                    data-order="11">
-                    <basis core="print" datamembername="aboutUs_default.gallery">
-                        <face>
-                            <div
-                                class="absolute z-10 left-0 -bottom-3 about-mask-img lg:w-[33rem] lg:h-[31rem] xl:w-[620px] xl:h-[470px]">
-                                <img src="\@largeIMG"
-                                    class="lg:w-[33rem] lg:h-[31rem] xl:w-[620px] xl:h-[470px] object-cover" alt="@name"
-                                    width="620" height="470" loading="lazy" />
-                            </div>
-                        </face>
-                    </basis>
-                    <basis core="print" datamembername="aboutUs_default.view">
-                        <layout>
-                            <div
-                                class="mask-image content-box gradient-border from-gray-300 max-w-[870px] lg:pl-[27rem] xl:pl-60 pr-7 pb-16 pt-24 -mt-24">
-                                @child
-                                <a href="" class="read-more-link w-full text-center text-xs text-blue-500 mt-4"
-                                    data-max="240">مشاهده
-                                    بیشتر</a>
-                            </div>
-                        </layout>
-                        <face>
-                            <h2 class="inline-block image-text text-[50px] font-black mb-6">@text</h2>
-                            <div
-                                class="content-inner text-zinc-900 text-xs text-justify hyphens-auto leading-5 line-clamp-10 max-h-60">
-                                @largetext
-                            </div>
-                        </face>
-                    </basis>
-                </section>
-            </basis>
+          <basis core="list" datamembername="tour_group.cat">
+            <layout>
+              <div class="w-full mt-6">
+                <div class="tabs relative overflow-hidden">
+                  <div class="tabs-container flex items-center gap-8 border-b-2 border-solid border-zinc-200 pb-4">
+                    @child
+                  </div>
+                  <div class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300"></div>
+                </div>
+              </div>
+            </layout>
+            <face filter="parentid in([##cms.host.tour_group##])">
+              <button class="tour-fetch-btn font-medium transition-all duration-300 hover:text-primary-600"
+                data-id="@catid">
+                @title
+              </button>
+            </face>
+          </basis>
 
-        </div>
+          <div class="tabs-content fetch-content-tour_group flex items-center justify-center min-h-[450px]"></div>
+        </section>
+      </basis>
 
-    </main>
+      <basis core="group" if="'[##cms.host.big_banner##]' <> ''">
+        <section class="section-order relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="5">
+          <a href="[##cms.host.big_banner##]"
+            class="flex flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.01] hover:shadow-2xl">
+            <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/big-banner-pc.jpg" class="w-full h-64 object-cover"
+              alt="first-banner" width="1280" height="256" loading="lazy" />
+            <div class="absolute left-12 bottom-12">
+              <div class="flex justify-end mt-10">
+                <button
+                  class="check-contrast flex items-center justify-center bg-primary-600 rounded-xl w-32 h-12 font-medium transition-all duration-300 hover:bg-secondary-600">
+                  مشاهده
+                </button>
+              </div>
+            </div>
+          </a>
+        </section>
+      </basis>
 
-    <script>
-        document.addEventListener("click", function (e) {
-            const dateBox = e.target.closest(".Basis_Date_Box");
-            if (!dateBox) return;
+      <basis core="group" if="'[##cms.host.hotel_group##]' <> ''">
+        <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24" data-order="6">
+          <basis core="list" datamembername="hotel_group.cat">
+            <face filter="catid in([##cms.host.hotel_group##])">
+              <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">
+                @title
+              </h2>
+              <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">
+                @urldescription
+              </div>
+            </face>
+          </basis>
 
-            setTimeout(() => {
-                const popup = document.querySelector(".Basis_Calendar_Box.Selected_Basis_Calendar_Box");
-                if (!popup) return;
+          <basis core="list" datamembername="hotel_group.cat">
+            <layout>
+              <div class="w-full mt-9">
+                <div class="tabs relative overflow-hidden">
+                  <div class="tabs-container flex items-center gap-8 border-b-2 border-solid border-zinc-200 pb-4">
+                    @child
+                  </div>
+                  <div class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300"></div>
+                </div>
+              </div>
+            </layout>
+            <face filter="parentid in([##cms.host.hotel_group##])">
+              <button class="hotel-fetch-btn font-medium transition-all duration-300 hover:text-primary-600"
+                data-id="@catid">
+                @title
+              </button>
+            </face>
+          </basis>
 
-                const rect = dateBox.getBoundingClientRect();
-                const parent = popup.offsetParent.getBoundingClientRect();
+          <div class="tabs-content fetch-content-hotel_group flex items-center justify-center min-h-96"></div>
+        </section>
+      </basis>
 
-                // محاسبه top نسبت به offsetParent
-                popup.style.top = rect.top - parent.top + dateBox.offsetHeight + 50 + "px";
+      <basis core="group" if="'[##cms.host.small_banner##]' <> ''">
+        <section class="section-order relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="7">
+          <a href="[##cms.host.small_banner##]"
+            class="flex flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.01] hover:shadow-2xl">
+            <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/small-banner-pc.jpg" class="w-full h-36 object-cover"
+              alt="small-banner" width="1280" height="144" loading="lazy" />
+            <div class="absolute top-1/2 -translate-y-1/2 left-6 px-3">
+              <button
+                class="check-contrast flex items-center justify-center flex-shrink-0 w-32 h-12 bg-white rounded-xl font-medium transition-all duration-300 hover:bg-primary-600">
+                مشاهده
+              </button>
+            </div>
+          </a>
+        </section>
+      </basis>
 
-                if (document.documentElement.getAttribute("lang") === "fa" ||
-                    document.documentElement.getAttribute("lang") === "ar") {
-                    // محاسبه right دقیق
-                    popup.style.right = parent.right - rect.right + "px"; // 20px فاصله دلخواه
-                    popup.style.left = "unset";
-                } else {
-                    // محاسبه left دقیق
-                    popup.style.left = rect.left - parent.left + "px";
-                    popup.style.right = "unset";
-                }
+      <basis core="group" if="'[##cms.host.article_group##]' <> ''">
+        <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24" data-order="8">
+          <basis core="list" datamembername="article_group.cat">
+            <face filter="catid in([##cms.host.article_group##])">
+              <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">
+                @title
+              </h2>
+              <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">
+                @urldescription
+              </div>
+            </face>
+          </basis>
+          <basis core="list" datamembername="article_group.list">
+            <layout>
+              <div class="swiper swiper-news pb-14 pt-1 mt-7">
+                <div class="swiper-wrapper">@child</div>
+                <div class="swiper-pagination flex items-center justify-center gap-1"></div>
+              </div>
+            </layout>
+            <face filter="[00273X00160prp] is null">
+              <div class="swiper-slide max-w-[640px]">
+                <a href="/@link"
+                  class="group flex gap-6 gradient-border from-gray-300 rounded-2xl p-2 min-h-44 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
+                  <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
+                    <h3 class="font-medium text-zinc-900 line-clamp-1">
+                      @title
+                    </h3>
+                    <div class="text-xs line-clamp-3 text-zinc-700 text-justify hyphens-auto leading-5">
+                      @prp_7244
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="flex items-center gap-1 text-xs text-zinc-900">
+                        <svg width="17" height="17" class="flex-shrink-0">
+                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-person"></use>
+                        </svg>
+                        @prp_7248
+                      </span>
+                      <button class="flex items-center">
+                        <span class="text-primary-600 text-xs">مطالعه بیشتر</span>
+                        <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                            fill="var(--primary-600)" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="shine-effect relative overflow-hidden rounded-2xl">
+                    <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
+                      class="w-[273px] h-40 object-cover" alt="@title" width="273" height="160" loading="lazy" />
+                  </div>
+                </a>
+              </div>
+            </face>
+            <face>
+              <div class="swiper-slide max-w-[640px]">
+                <a href="/@link"
+                  class="group flex gap-6 gradient-border from-gray-300 rounded-2xl p-2 min-h-44 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
+                  <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
+                    <h3 class="font-medium text-zinc-900 line-clamp-1">
+                      @title
+                    </h3>
+                    <div class="text-xs line-clamp-3 text-zinc-700 text-justify hyphens-auto leading-5">
+                      @prp_7244
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="flex items-center gap-1 text-xs text-zinc-900">
+                        <svg width="17" height="17" class="flex-shrink-0">
+                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-person"></use>
+                        </svg>
+                        @prp_7248
+                      </span>
+                      <button class="flex items-center">
+                        <span class="text-primary-600 text-xs">مطالعه بیشتر</span>
+                        <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                            fill="var(--primary-600)" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="shine-effect relative overflow-hidden rounded-2xl">
+                    <img src="\@00273X00160prp" class="w-[273px] h-40 object-cover" alt="@title" width="273"
+                      height="160" loading="lazy" />
+                  </div>
+                </a>
+              </div>
+            </face>
+          </basis>
+        </section>
+      </basis>
 
-                console.log("✅ موقعیت پاپ‌آپ دقیق اعمال شد", popup.style.top, popup.style.right || popup.style.left);
-            }, 50);
-        });
+      <basis core="group" if="'[##cms.host.visa_category##]' <> ''">
+        <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24" data-order="9">
+          <basis core="list" datamembername="visa_category.cat">
+            <face filter="catid in([##cms.host.visa_category##])">
+              <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">
+                @title
+              </h2>
+              <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">
+                @urldescription
+              </div>
+            </face>
+          </basis>
+          <basis core="list" datamembername="visa_category.cat">
+            <layout>
+              <div class="swiper swiper-popular-destination pb-14 pt-1 mt-7">
+                <div class="swiper-wrapper">@child</div>
+                <div class="swiper-pagination flex items-center justify-center gap-1"></div>
+              </div>
+            </layout>
+            <face filter="link is null and image is null and parentid in([##cms.host.visa_category##])">
+              <div class="swiper-slide max-w-[311px]">
+                <a href="/visa-list.bc?catid=@catid"
+                  class="group flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
+                  <div class="shine-effect relative overflow-hidden rounded-2xl">
+                    <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
+                      class="w-full h-40 object-cover" alt="@title" width="295" height="160" loading="lazy" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <h3 class="font-bold">@title</h3>
+                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                        fill="var(--primary-600)" />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </face>
+            <face filter="link is null and parentid in([##cms.host.visa_category##])">
+              <div class="swiper-slide max-w-[311px]">
+                <a href="/visa-list.bc?catid=@catid"
+                  class="group flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
+                  <div class="shine-effect relative overflow-hidden rounded-2xl">
+                    <img src="\@image" class="w-full h-40 object-cover" alt="@title" width="295" height="160"
+                      loading="lazy" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <h3 class="font-bold">@title</h3>
+                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                        fill="var(--primary-600)" />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </face>
+            <face filter="image is null and parentid in([##cms.host.visa_category##])">
+              <div class="swiper-slide max-w-[311px]">
+                <a href="/@link"
+                  class="group flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
+                  <div class="shine-effect relative overflow-hidden rounded-2xl">
+                    <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
+                      class="w-full h-40 object-cover" alt="@title" width="295" height="160" loading="lazy" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <h3 class="font-bold">@title</h3>
+                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                        fill="var(--primary-600)" />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </face>
+            <face filter="parentid in([##cms.host.visa_category##])">
+              <div class="swiper-slide max-w-[311px]">
+                <a href="/@link"
+                  class="group flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
+                  <div class="shine-effect relative overflow-hidden rounded-2xl">
+                    <img src="\@image" class="w-full h-40 object-cover" alt="@title" width="295" height="160"
+                      loading="lazy" />
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <h3 class="font-bold">@title</h3>
+                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                        fill="var(--primary-600)" />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </face>
+          </basis>
+        </section>
+      </basis>
 
-    </script>
-    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
-    <basis core="call" file="template-footer.inc" pageindexid="1"/>
+      <basis core="group" if="'[##cms.host.faq_default##]' <> ''">
+        <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24" data-order="10">
+          <basis core="list" datamembername="faq_default.cat">
+            <face filter="catid in([##cms.host.faq_default##])">
+              <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">
+                @title
+              </h2>
+              <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">
+                @urldescription
+              </div>
+            </face>
+          </basis>
+          <basis core="list" datamembername="faq_default.list">
+            <layout>
+              <div class="w-full mt-9">
+                <div class="tabs relative overflow-hidden">
+                  <div class="tabs-container flex items-center gap-8 border-b-2 border-solid border-zinc-200 pb-4">
+                    @child
+                  </div>
+                  <div class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300"></div>
+                </div>
+              </div>
+            </layout>
+            <face>
+              <button class="faq-fetch-btn font-medium transition-all duration-300 hover:text-primary-600" data-id="@id"
+                data-src="@image">
+                @title
+              </button>
+            </face>
+          </basis>
+
+          <div class="flex items-center justify-center gap-6 mt-16 tabs-content fetch-content-faq min-h-60"></div>
+        </section>
+      </basis>
+
+      <basis core="group" if="'[##cms.host.aboutUs_default##]' <> ''">
+        <section
+          class="section-order relative flex items-center mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-48"
+          data-order="11">
+          <basis core="print" datamembername="aboutUs_default.gallery">
+            <face>
+              <div
+                class="absolute z-10 left-0 -bottom-3 about-mask-img lg:w-[33rem] lg:h-[31rem] xl:w-[620px] xl:h-[470px]">
+                <img src="\@largeIMG" class="lg:w-[33rem] lg:h-[31rem] xl:w-[620px] xl:h-[470px] object-cover"
+                  alt="@name" width="620" height="470" loading="lazy" />
+              </div>
+            </face>
+          </basis>
+          <basis core="print" datamembername="aboutUs_default.view">
+            <layout>
+              <div
+                class="mask-image content-box gradient-border from-gray-300 max-w-[870px] min-h-[500px] lg:pl-[27rem] xl:pl-60 pr-7 pb-16 pt-24 -mt-24">
+                @child
+                <a href="" class="read-more-link w-full text-center text-xs text-blue-500 mt-4" data-max="240">مشاهده
+                  بیشتر</a>
+              </div>
+            </layout>
+            <face>
+              <h2 class="inline-block image-text text-[50px] font-black mb-6">
+                @text
+              </h2>
+              <div
+                class="content-inner text-zinc-900 text-xs text-justify hyphens-auto leading-5 line-clamp-10 max-h-60">
+                @largetext
+              </div>
+            </face>
+          </basis>
+        </section>
+      </basis>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener("click", function (e) {
+      const dateBox = e.target.closest(".Basis_Date_Box");
+      if (!dateBox) return;
+
+      setTimeout(() => {
+        const popup = document.querySelector(
+          ".Basis_Calendar_Box.Selected_Basis_Calendar_Box"
+        );
+        if (!popup) return;
+
+        const rect = dateBox.getBoundingClientRect();
+        const parent = popup.offsetParent.getBoundingClientRect();
+
+        // محاسبه top نسبت به offsetParent
+        popup.style.top =
+          rect.top - parent.top + dateBox.offsetHeight + 50 + "px";
+
+        if (
+          document.documentElement.getAttribute("lang") === "fa" ||
+          document.documentElement.getAttribute("lang") === "ar"
+        ) {
+          // محاسبه right دقیق
+          popup.style.right = parent.right - rect.right + "px"; // 20px فاصله دلخواه
+          popup.style.left = "unset";
+        } else {
+          // محاسبه left دقیق
+          popup.style.left = rect.left - parent.left + "px";
+          popup.style.right = "unset";
+        }
+
+        console.log(
+          "✅ موقعیت پاپ‌آپ دقیق اعمال شد",
+          popup.style.top,
+          popup.style.right || popup.style.left
+        );
+      }, 50);
+    });
+  </script>
+  <script>
+    document.querySelectorAll(".ticket-article").forEach((e) => {
+      const rEl = e.querySelector(".dep-text");
+      const r = rEl ? rEl.innerText.trim() : "";
+
+      const iEl = e.querySelector(".dep-id");
+      const i = iEl ? iEl.innerText.trim() : "";
+
+      const aEl = e.querySelector(".des-text");
+      const a = aEl ? aEl.innerText.trim() : "";
+
+      const lEl = e.querySelector(".des-id");
+      const l = lEl ? lEl.innerText.trim() : "";
+
+      const btn = e.querySelector(".set-ticket");
+      if (!btn) return;
+
+      btn.addEventListener("click", () => {
+        if (
+          window.location.pathname === "/" ||
+          window.location.pathname === "/index.html"
+        ) {
+          const dep1 = document.querySelector(
+            "#r-flight #flightSearch #departure1"
+          );
+          const depId = document.querySelector(
+            "#r-flight #flightSearch .departure-route .locationId"
+          );
+          const des1 = document.querySelector(
+            "#r-flight #flightSearch .destination-route #destination1"
+          );
+          const desId = document.querySelector(
+            "#r-flight #flightSearch .destination-route .locationId"
+          );
+
+          if (dep1) dep1.value = r;
+          if (depId) depId.value = i;
+          if (des1) des1.value = a;
+          if (desId) desId.value = l;
+
+          const rFlight = document.querySelector("#r-flight");
+          if (rFlight) rFlight.classList.remove("hidden");
+
+          const scrollTarget = document.querySelector(".search-box-container");
+          if (scrollTarget) {
+            window.scrollTo({
+              top: scrollTarget.offsetTop,
+              behavior: "smooth",
+            });
+          }
+        }
+      });
+    });
+  </script>
+
+  <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
+  <basis core="call" file="template-footer.inc" pageindexid="1" />
 </body>
 
 </html>

@@ -1240,6 +1240,26 @@ async function RenderFormContact() {
   inputElementVisa7.setAttribute("placeholder", "ایمیل");
 }
 
+// dont repeat breadcrumb
+document.addEventListener('DOMContentLoaded', function () {
+  const breadcrumbContainer = document.querySelector('.breadcrumb');
+  const items = breadcrumbContainer.querySelectorAll('li');
+  const uniqueLinks = new Map();
+
+  items.forEach((li) => {
+    const link = li.querySelector('a');
+    if (link) {
+      const text = link.textContent.trim();
+      if (!uniqueLinks.has(text)) {
+        uniqueLinks.set(text, li);
+      } else {
+        li.remove();
+      }
+    }
+  });
+});
+
+
 
 //-----------swiper--------------
 if (document.querySelector(".swiper-busy-destination")) {
