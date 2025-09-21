@@ -1304,6 +1304,11 @@
   list-style: decimal;
 }
 
+.revert-text-styles table{
+  table-layout: fixed;
+  width: 100% !important;
+}
+
 .fetch-loader {
   width: 60px;
   height: 60px;
@@ -1816,7 +1821,10 @@
   margin-bottom: 30px !important;
 }
 
-.FlightClass.hidden-box li {
+.FlightClass.hidden-box li,
+.traveltype.hidden-box li,
+.flighttype.hidden-box li,
+.Compartment.hidden-box li {
   line-height: 2rem;
   font-size: 1rem;
   text-align: center;
@@ -1828,29 +1836,41 @@
 }
 
 .active-r-btn,
-.active-FlightClass {
+.active-FlightClass,
+.active-FlightType,
+.active-TravelType,
+.active-Compartment {
   border-radius: 8px !important;
   background-color: var(--primary-600) !important;
   transition: all 300ms ease;
 }
 
 .active-r-btn span,
-.active-FlightClass span {
+.active-FlightClass,
+.active-FlightType label,
+.active-TravelType label,
+.active-Compartment label {
   color: #ffffff !important;
 }
 
 #oneway:hover span,
 #backtoback:hover span,
 #multi:hover span,
-.FlightClass.hidden-box li:hover span {
+.FlightClass.hidden-box li:hover span,
+.traveltype.hidden-box li:hover label,
+.flighttype.hidden-box li:hover label,
+.Compartment.hidden-box li:hover label {
   color: white !important;
 }
 
 #oneway:hover,
 #backtoback:hover,
 #multi:hover,
-.FlightClass.hidden-box li:hover {
-  background-color: var(--primary-900);
+.FlightClass.hidden-box li:hover,
+.traveltype.hidden-box li:hover,
+.flighttype.hidden-box li:hover,
+.Compartment.hidden-box li:hover {
+  background-color: var(--primary-600);
   border-radius: 8px !important;
 }
 
@@ -1876,10 +1896,7 @@
   color: white !important;
 }
 
-.ul-list ul li:not(:last-child),
-.Compartment.hidden-box li:not(:last-of-type),
-.traveltype.hidden-box li:not(:last-of-type),
-.flighttype.hidden-box li:not(:last-of-type) {
+.ul-list ul li:not(:last-child){
   border-bottom: 1px solid var(--primary-50);
 }
 

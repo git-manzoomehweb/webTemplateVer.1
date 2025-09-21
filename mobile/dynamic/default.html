@@ -42,7 +42,7 @@
     postsql="select * from [article_group.cat] where catid in([##cms.host.article_group##])"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="article_group" catid="[##cms.host.article_group##]">
-  <member name="list" type="list" link="article.bc" propertyid="7244,7248" perpage="8" order="ord" size="273x160" />
+  <member name="list" type="list" link="article.bc" propertyid="7244,7248" perpage="8" order="ord" size="256x160" />
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="visa_category">
@@ -77,11 +77,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
   <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
-  <basis core="call" file="style.inc" pageindexid="2"/>
+  <basis core="call" file="style.inc" pageindexid="2" />
 </head>
 
 <body>
-  <basis core="call" file="template-header.inc" pageindexid="2"/>
+  <basis core="call" file="template-header.inc" pageindexid="2" />
   <main data-activepage="home" data-sectionorder="">
     <basis core="print" datamembername="db.info">
       <face filter="TypeID in(150)">
@@ -89,13 +89,12 @@
       </face>
     </basis>
     <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
-      <div class="module-banner-image">
+      <div class="module-banner-image" data-img-path="PrimeTemplate_A">
         <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/flight-search-bg.jpg"
           class="w-full h-48 object-cover rounded-3xl" alt="search-banner" width="288" height="192" loading="lazy" />
       </div>
-      <div
-        class="search-banner mobile-search-box gradient-border from-primary-600 bg-white rounded-3xl shadow-search-engine -mt-10">
-        <div class="search-box-container">
+      <div class="search-banner gradient-border from-primary-600 bg-white rounded-3xl shadow-search-engine -mt-10">
+        <div class="search-box-container mobile-search-box ">
           <div id="search-box" class="dir-rtl" data-view="mobile">
             <div class="flex justify-center"><span class="loader"></span></div>
           </div>
@@ -121,36 +120,38 @@
             </layout>
             <face>
               <div
-                class="flex items-center justify-between border border-solid border-zinc-300 bg-zinc-gradient rounded-xl p-3">
-                <div class="flex gap-4">
-                  <div>
-                    <h3 class="font-bold text-sm mb-2">@prp_[##cms.host.origin_city_landing##]</h3>
-                    <span class="hidden">@prp_[##cms.host.origin_airport_code_landing##]</span>
-                    <span class="empty-face-fields flex items-center gap-1 text-zinc-500 text-xs">
-                      <svg width="12" height="12">
-                        <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-pin"></use>
-                      </svg>
-                      <span class="empty-face-text">@prp_[##cms.host.origin_airport_landing##]</span>
-                    </span>
+                class="ticket-article border border-solid border-zinc-300 bg-zinc-gradient rounded-xl">
+                <div class="set-ticket flex items-center justify-between p-3">
+                  <div class="flex gap-4">
+                    <div>
+                      <h3 class="font-bold text-sm mb-2 dep-text">@prp_[##cms.host.origin_city_landing##]</h3>
+                      <span class="hidden dep-id">@prp_[##cms.host.origin_airport_code_landing##]</span>
+                      <span class="empty-face-fields flex items-center gap-1 text-zinc-500 text-xs">
+                        <svg width="12" height="12">
+                          <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-pin"></use>
+                        </svg>
+                        <span class="empty-face-text">@prp_[##cms.host.origin_airport_landing##]</span>
+                      </span>
+                    </div>
+                    <div>
+                      <h3 class="font-bold text-sm mb-2 des-text">@prp_[##cms.host.destination_city_landing##]</h3>
+                      <span class="hidden des-id">@prp_[##cms.host.destination_airport_code_landing##]</span>
+                      <span class="empty-face-fields flex items-center gap-1 text-zinc-500 text-xs">
+                        <svg width="12" height="12">
+                          <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-location-zinc"></use>
+                        </svg>
+                        <span class="empty-face-text">@prp_[##cms.host.destination_airport_landing##]</span>
+                      </span>
+                    </div>
                   </div>
-                  <div>
-                    <h3 class="font-bold text-sm mb-2">@prp_[##cms.host.destination_city_landing##]</h3>
-                    <span class="hidden">@prp_[##cms.host.destination_airport_code_landing##]</span>
-                    <span class="empty-face-fields flex items-center gap-1 text-zinc-500 text-xs">
-                      <svg width="12" height="12">
-                        <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-location-zinc"></use>
-                      </svg>
-                      <span class="empty-face-text">@prp_[##cms.host.destination_airport_landing##]</span>
-                    </span>
-                  </div>
+                  <span>
+                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                        fill="var(--primary-600)" />
+                    </svg>
+                  </span>
                 </div>
-                <span>
-                  <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
-                      fill="var(--primary-600)" />
-                  </svg>
-                </span>
               </div>
             </face>
           </basis>
@@ -615,7 +616,7 @@
             </basis>
 
           </div>
-          <div class="fetch-content-faq_default tabs-content flex items-center justify-center min-h-80">
+          <div class="fetch-content-faq tabs-content flex items-center justify-center min-h-80">
 
           </div>
 
@@ -653,7 +654,7 @@
                 @largetext
               </div>
             </face>
-        </basis>
+          </basis>
 
         </section>
       </basis>
@@ -663,7 +664,7 @@
   </main>
 
   <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
-  <basis core="call" file="template-footer.inc" pageindexid="2"/>
+  <basis core="call" file="template-footer.inc" pageindexid="2" />
 </body>
 
 </html>

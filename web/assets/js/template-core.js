@@ -664,8 +664,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelectorAll(".content-box").forEach((box) => {
     const contents = box.querySelectorAll(".content-inner");
+    const seeMoreBtn = box.querySelector(".see-more");
     contents.forEach((content) => {
-      const seeMoreBtn = content.parentElement.querySelector(".see-more");
       const linkBtn = content.parentElement.querySelector(".read-more-link");
 
       if (seeMoreBtn) setupSeeMore(content, seeMoreBtn);
@@ -729,6 +729,59 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", closeMenu);
 });
 
+//--------------landing to search-engine------------
+document.querySelectorAll(".ticket-article").forEach((e) => {
+  const rEl = e.querySelector(".dep-text");
+  const r = rEl ? rEl.innerText.trim() : "";
+
+  const iEl = e.querySelector(".dep-id");
+  const i = iEl ? iEl.innerText.trim() : "";
+
+  const aEl = e.querySelector(".des-text");
+  const a = aEl ? aEl.innerText.trim() : "";
+
+  const lEl = e.querySelector(".des-id");
+  const l = lEl ? lEl.innerText.trim() : "";
+
+  const btn = e.querySelector(".set-ticket");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    if (
+      window.location.pathname === "/" ||
+      window.location.pathname === "/index.html"
+    ) {
+      const dep1 = document.querySelector(
+        "#r-flight #flightSearch #departure1"
+      );
+      const depId = document.querySelector(
+        "#r-flight #flightSearch .departure-route .locationId"
+      );
+      const des1 = document.querySelector(
+        "#r-flight #flightSearch .destination-route #destination1"
+      );
+      const desId = document.querySelector(
+        "#r-flight #flightSearch .destination-route .locationId"
+      );
+
+      if (dep1) dep1.value = r;
+      if (depId) depId.value = i;
+      if (des1) des1.value = a;
+      if (desId) desId.value = l;
+
+      const rFlight = document.querySelector("#r-flight");
+      if (rFlight) rFlight.classList.remove("hidden");
+
+      const scrollTarget = document.querySelector(".search-box-container");
+      if (scrollTarget) {
+        window.scrollTo({
+          top: scrollTarget.offsetTop,
+          behavior: "smooth",
+        });
+      }
+    }
+  });
+});
 
 // ---------------fetch-content-----------------
 document.addEventListener("DOMContentLoaded", () => {
@@ -1243,18 +1296,26 @@ async function RenderFormContact() {
 // dont repeat breadcrumb
 document.addEventListener('DOMContentLoaded', function () {
   const breadcrumbContainer = document.querySelector('.breadcrumb');
+  if (!breadcrumbContainer) return; 
+
   const items = breadcrumbContainer.querySelectorAll('li');
+  if (!items || items.length === 0) return; 
+
   const uniqueLinks = new Map();
 
   items.forEach((li) => {
+    if (!li) return;
+
     const link = li.querySelector('a');
-    if (link) {
-      const text = link.textContent.trim();
-      if (!uniqueLinks.has(text)) {
-        uniqueLinks.set(text, li);
-      } else {
-        li.remove();
-      }
+    if (!link) return;
+
+    const text = link.textContent.trim();
+    if (!text) return; 
+
+    if (!uniqueLinks.has(text)) {
+      uniqueLinks.set(text, li);
+    } else {
+      li.remove(); 
     }
   });
 });
@@ -1270,7 +1331,7 @@ if (document.querySelector(".swiper-busy-destination")) {
     spaceBetween: 8,
     grabCursor: true,
     autoplay: {
-      delay: 2500,
+      delay: 3000,
       disableOnInteraction: false,
     },
     loop: true,
@@ -1288,7 +1349,7 @@ if (document.querySelector(".swiper-popular-destination")) {
     spaceBetween: 12,
     grabCursor: true,
     autoplay: {
-      delay: 2500,
+      delay: 3500,
       disableOnInteraction: false,
     },
     loop: true,
@@ -1311,7 +1372,7 @@ if (document.querySelector(".swiper-popular-tours")) {
     spaceBetween: 4,
     grabCursor: true,
     autoplay: {
-      delay: 2500,
+      delay: 4000,
       disableOnInteraction: false,
     },
     loop: true,
@@ -1334,7 +1395,7 @@ if (document.querySelector(".swiper-popular-hotels")) {
     spaceBetween: 4,
     grabCursor: true,
     autoplay: {
-      delay: 2500,
+      delay: 3000,
       disableOnInteraction: false,
     },
     loop: true,
@@ -1350,18 +1411,6 @@ if (document.querySelector(".swiper-popular-hotels")) {
     }
   });
 }
-// if (document.querySelector(".big-img-gallery")) {
-//   var bigImgGallery = new Swiper(".big-img-gallery", {
-//     spaceBetween: 10,
-//     navigation: {
-//       nextEl: ".swiper-button-next",
-//       prevEl: ".swiper-button-prev",
-//     },
-//     thumbs: {
-//       swiper: smallImgGallery,
-//     },
-//   });
-// }
 if (document.querySelector(".swiper-news")) {
   var swiperNews = new Swiper(".swiper-news", {
     slidesPerView: 1.17,
@@ -1369,7 +1418,7 @@ if (document.querySelector(".swiper-news")) {
     spaceBetween: 4,
     grabCursor: true,
     autoplay: {
-      delay: 2500,
+      delay: 3500,
       disableOnInteraction: false,
     },
     loop: true,
@@ -1385,69 +1434,14 @@ if (document.querySelector(".swiper-news")) {
     }
   });
 }
-// if (document.querySelector(".swiper-popular-destination-mobile")) {
-//   var swiperPopularDestinationMobile = new Swiper(
-//     ".swiper-popular-destination-mobile",
-//     {
-//       slidesPerView: 1.3,
-//       speed: 400,
-//       centeredSlides: false,
-//       spaceBetween: 12,
-//       grabCursor: true,
-//       autoplay: {
-//         delay: 2500,
-//         disableOnInteraction: false,
-//       },
-//       loop: true,
-//       pagination: {
-//         el: ".swiper-pagination",
-//         clickable: true,
-//       },
-//     }
-//   );
-// }
-// if (document.querySelector(".swiper-popular-hotels-mobile")) {
-//   var swiperPopularHotelsMobile = new Swiper(".swiper-popular-hotels-mobile", {
-//     slidesPerView: 1.17,
-//     speed: 400,
-//     spaceBetween: 4,
-//     grabCursor: true,
-//     autoplay: {
-//       delay: 2500,
-//       disableOnInteraction: false,
-//     },
-//     loop: true,
-//     pagination: {
-//       el: ".swiper-pagination",
-//       clickable: true,
-//     },
-//   });
-// }
-// if (document.querySelector(".swiper-news-mobile")) {
-//   var swiperNewsMobile = new Swiper(".swiper-news-mobile", {
-//     slidesPerView: 1.17,
-//     speed: 400,
-//     spaceBetween: 4,
-//     grabCursor: true,
-//     autoplay: {
-//       delay: 2500,
-//       disableOnInteraction: false,
-//     },
-//     loop: true,
-//     pagination: {
-//       el: ".swiper-pagination",
-//       clickable: true,
-//     },
-//   });
-// }
-if (document.querySelector(".swiper-visa-mobile")) {
-  var swiperVisaMobile = new Swiper(".swiper-visa-mobile", {
+if (document.querySelector(".swiper-visa")) {
+  var swiperVisaMobile = new Swiper(".swiper-visa", {
     slidesPerView: 1.17,
     speed: 400,
     spaceBetween: 4,
     grabCursor: true,
     autoplay: {
-      delay: 2500,
+      delay: 4000,
       disableOnInteraction: false,
     },
     loop: true,
@@ -1455,25 +1449,14 @@ if (document.querySelector(".swiper-visa-mobile")) {
       el: ".swiper-pagination",
       clickable: true,
     },
+    breakpoints: {
+      1024: {
+        slidesPerView: 'auto', 
+        spaceBetween: 0,
+      }
+    }
   });
 }
-// if (document.querySelector(".swiper-popular-tours-mobile")) {
-//   var swiperPopularToursMobile = new Swiper(".swiper-popular-tours-mobile", {
-//     slidesPerView: 1.17,
-//     speed: 400,
-//     spaceBetween: 4,
-//     grabCursor: true,
-//     autoplay: {
-//       delay: 2500,
-//       disableOnInteraction: false,
-//     },
-//     loop: true,
-//     pagination: {
-//       el: ".swiper-pagination",
-//       clickable: true,
-//     },
-//   });
-// }
 if (document.querySelector(".swiper-comments")) {
 var swiperComments = new Swiper('.swiper-comments', {
   slidesPerView: 3,
@@ -1481,7 +1464,7 @@ var swiperComments = new Swiper('.swiper-comments', {
   spaceBetween: 12,
   grabCursor: true,
   autoplay: {
-    delay: 2500,
+    delay: 3500,
     disableOnInteraction: false,
   },
   loop: true,

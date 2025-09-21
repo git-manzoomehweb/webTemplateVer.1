@@ -13,11 +13,11 @@
     <member name="p-under" type="view" size="" propertyid="" />
   </basis>
   <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list">
-    <member name="cat" type="tree" request="cat" parentid="217452" order="ord"
-        postsql="select * from [faq_list.cat] where catid in(217452) or parentid in(217452)">
+    <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq##]" order="ord"
+        postsql="select * from [faq_list.cat] where catid in([##cms.host.faq##]) or parentid in([##cms.host.faq##])">
     </member>
   </basis>
-  <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="217452">
+  <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="[##cms.host.faq##]">
     <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
   </basis>
 
@@ -249,7 +249,7 @@
             </face>
         </basis>
 
-        <basis core="group" if="'[##cms.host.faq_default##]' <> ''">
+        <basis core="group" if="'[##cms.host.faq##]' <> ''">
             <section class="mt-14">
               <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
                 <basis core="list" datamembername="faq_list.cat">

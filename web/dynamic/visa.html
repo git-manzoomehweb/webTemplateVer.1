@@ -8,8 +8,8 @@
   <member name="navigation" type="tree" request="navigationcat" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="18" name="db" usedforid="[##cms.query.catid##]">
-    <member name="scalar" type="scalar" typeid="150" />
-  </basis>
+  <member name="scalar" type="scalar" typeid="150" />
+</basis>
 <basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
   <member name="comment" type="list" order="ord" request="listcomment" />
 </basis>
@@ -19,400 +19,377 @@
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-  <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
-
-  <basis core="call" file="head-elements.inc" pageindexid="1" />
+<basis core="call" file="head-elements.inc" pageindexid="1" />
 
 
-  <body>
-    <basis core="call" file="template-header.inc" pageindexid="1"/>
-    <main itemscope itemtype="https://schema.org/Product">
-      <section class="relative bg-visa bg-center bg-cover py-24">
-        <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
-        <div class="bg-specialcolor-4 absolute inset-0 w-full h-full"></div>
-        <div class="relative z-10 flex flex-col items-center gap-2">
-          <basis core="print" datamembername="db.view">
-            <layout>
-                <div class="bg-specialcolor-3 rounded-xl py-5 px-6">
-                  @child
-                </div>
-            </layout>
-            <face filter="TypeID in(150)">
-                <h1 class="font-bold text-white">@text</h1>
-            </face>
+<body>
+  <basis core="call" file="template-header.inc" pageindexid="1" />
+  <main itemscope itemtype="https://schema.org/Product">
+    <section class="relative bg-visa bg-center bg-cover py-24">
+      <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
+      <div class="bg-specialcolor-4 absolute inset-0 w-full h-full"></div>
+      <div class="relative z-10 flex flex-col items-center gap-2">
+        <basis core="print" datamembername="db.view">
+          <layout>
+            <div class="bg-specialcolor-3 rounded-xl py-5 px-6">
+              @child
+            </div>
+          </layout>
+          <face filter="TypeID in(150)">
+            <h1 class="font-bold text-white">@text</h1>
+          </face>
         </basis>
-            <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="flex items-center text-sm gap-1 mt-2">
-                <li class="inline-block font-normal" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                  <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700" itemprop="item" href="/" aria-label="home">
-                    <span itemprop="name">صفحه اصلی</span>
-                    <meta itemprop="position" content="1" />
-                  </a>
-                </li>
+        <ul itemscope itemtype="https://schema.org/BreadcrumbList"
+          class="breadcrumb flex items-center text-sm gap-1 mt-2">
+          <li class="inline-block font-normal" itemprop="itemListElement" itemscope
+            itemtype="https://schema.org/ListItem">
+            <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
+              itemprop="item" href="/" aria-label="home">
+              <span itemprop="name">صفحه اصلی</span>
+              <meta itemprop="position" content="1" />
+            </a>
+          </li>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+          </svg>
+          <basis core="print" datamembername="db.navigation">
+            <face filter="RowNumber=max(RowNumber) and title <> 'ریشه'">
+              <li class="inline-block font-normal text-primary-700" itemprop="itemListElement" itemscope
+                itemtype="https://schema.org/ListItem">
+                <span itemprop="name">@title</span>
+                <meta itemprop="position" content="@rownumber" />
+              </li>
+            </face>
+            <face filter="link is null and title <> 'ریشه'">
+              <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope
+                itemtype="https://schema.org/ListItem">
+                <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
+                  itemprop="item" href="/visa-list.bc?catid=@parentcatid" aria-label="@title">
+                  <span itemprop="name">@title</span>
+                  <meta itemprop="position" content="@rownumber" />
+                </a>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
-                    </svg>
-                <basis core="print" datamembername="db.navigation">
-                  <face filter="RowNumber=max(RowNumber) and title <> 'ریشه'">
-                    <li class="inline-block font-normal text-primary-700" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                      <span itemprop="name">@title</span>
-                      <meta itemprop="position" content="@rownumber" />
-                    </li>
-                  </face>
-                  <face filter="link is null and title <> 'ریشه'">
-                    <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                      <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700" itemprop="item" href="/visa-list.bc?catid=@parentcatid" aria-label="@title">
-                        <span itemprop="name">@title</span>
-                        <meta itemprop="position" content="@rownumber" />
-                      </a>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
-                        </svg>
-                    </li>
-                  </face>
-                  <face filter="title <> 'ریشه'">
-                    <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                      <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700" itemprop="item" href="/@link" aria-label="@title">
-                        <span class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700" itemprop="name">@title</span>
-                        <meta itemprop="position" content="@rownumber" />
-                      </a>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
-                        </svg>
-                    </li>
-                  </face>
-                </basis>
-              </ul>
-        </div>
-      </section>
+                  <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+                </svg>
+              </li>
+            </face>
+            <face filter="title <> 'ریشه'">
+              <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope
+                itemtype="https://schema.org/ListItem">
+                <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
+                  itemprop="item" href="/@link" aria-label="@title">
+                  <span class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
+                    itemprop="name">@title</span>
+                  <meta itemprop="position" content="@rownumber" />
+                </a>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+                </svg>
+              </li>
+            </face>
+          </basis>
+        </ul>
+      </div>
+    </section>
 
-      <div class="flex gap-6 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
-        <div class="flex-1 min-w-0">
-          <section>
-            <div class="bg-zinc-100 rounded-xl px-2 py-6">
-              <ul class="grid grid-cols-2 gap-3">
-                <basis core="print" datamembername="db.view">
-                  <face filter="TypeID in(251) and vocabulary in('مدت-اعتبار-ویزا')">
-                    <li>
-                      <h2 class="text-zinc-700 font-bold mb-3" itemprop="description">مدت اعتبار ویزا:</h2>
-                      <div class="bg-white rounded-xl px-6 py-4">
-                        <span class="text-zinc-700 text-sm" itemprop="validThrough">@Answer</span>
-                      </div>
-                    </li>
-                  </face>
-                  <face filter="TypeID in(128) and vocabulary in('شرکت-اقدام-کننده')">
-                    <li>
-                      <h2 class="text-zinc-700 font-bold mb-3">شرکت اقدام کننده:</h2>
-                      <div class="bg-white rounded-xl px-6 py-4">
-                        <span class="text-zinc-700 text-sm">@text</span>
-                      </div>
-                    </li>
-                  </face>
-                </basis>
-                <basis core="print" datamembername="db.view">
-                  <layout>
-                    <li class="col-span-2">
-                      <h2 class="text-zinc-700 font-bold mb-3">مدارک مورد نیاز:</h2>
-                      <div class="flex flex-col gap-1 bg-white rounded-xl text-zinc-700 text-sm px-6 py-4">@child</div>
-                    </li>
-                  </layout>
-                  <face filter="TypeID in(140) and vocabulary in('مدارک')">
-                    <span itemprop="itemListElement">@text</span>
-                  </face>
-                </basis>
-                <basis core="print" datamembername="db.view">
-                  <face filter="TypeID in(150) and vocabulary in('عنوان')">
-                    <li>
-                      <h2 class="text-zinc-700 font-bold mb-3">عنوان:</h2>
-                      <div class="bg-white rounded-xl px-6 py-4">
-                        <span class="text-zinc-700 text-sm" itemprop="name">@text</span>
-                      </div>
-                    </li>
-                  </face>
-                  <face filter="TypeID in(144) and vocabulary in('توضیحات')">
-                    <li class="content-box">
-                      <h2 class="text-zinc-700 font-bold mb-3">توضیحات:</h2>
-                      <div class="bg-white rounded-xl px-6 py-4">
-                        <div class="content-inner text-zinc-700 text-sm text-justify hyphens-auto leading-5" itemprop="description">@largetext</div>
-                      </div>
-                      <button class="see-more w-full text-center text-sm text-blue-500 mt-4" data-max="283">بیشتر بخوانید</button>
-                    </li>
-                  </face>
-                  <face filter="TypeID in(170) and vocabulary in('قیمت')">
-                    <li>
-                      <h2 class="text-zinc-700 font-bold mb-3">قیمت:</h2>
-                      <div class="bg-white rounded-xl px-6 py-4">
-                        <span class="text-zinc-700 text-sm" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                          <meta itemprop="priceCurrency" content="IRR" />
-                          <span itemprop="price">@Answer</span>
-                        </span>
-                      </div>
-                    </li>
-                  </face>
-                  <face filter="TypeID in(199) and vocabulary in('کشور')">
-                    <li>
-                      <h2 class="text-zinc-700 font-bold mb-3">کشور:</h2>
-                      <div class="bg-white rounded-xl px-6 py-4">
-                        <span class="text-zinc-700 text-sm" itemprop="countryOfOrigin">@Answer</span>
-                      </div>
-                    </li>
-                  </face>
-                </basis>
-              </ul>
-            </div>
-          </section>
-
-          <section class="mt-8 relative">
-            <div class="bg-zinc-100 p-6 rounded-xl">
-              <div class="flex items-center gap-10 border-b border-solid border-zinc-300 pb-3 relative z-10">
-                <button class="comment-btn text-primary-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900" data-comment="comment-form">ثبت نظر</button>
-                <button class="comment-btn text-zinc-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900" data-comment="user-comments">نظر کاربران</button>
-              </div>
-
-              <div class="relative">
-                <div id="comment-form" class="comment-content block opacity-100 scale-100 transition duration-500">
-                  <form action="/Tem1_OpinionAction.bc" method="POST" class="pov-form mt-3">
-                    <input type="hidden" name="title" value="[##cms.seo.title##]">
-                    <div>
-                        <div>
-                            <div class="flex items-center gap-2 mb-2">
-                                <input
-                                    class="flex-1 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl"
-                                    type="text" name="Username" placeholder="نام و نام خانوادگی" required>
-                                <input
-                                    class="flex-1 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl"
-                                    type="text" name="_root.Phone" placeholder="تلفن همراه" required>
-                                <input
-                                    class="flex-1 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl"
-                                    type="text" name="_root.Email" placeholder="ایمیل" required>
-                            </div>
-                            <textarea
-                                class="w-full bg-white text-zinc-700 px-6 pt-4 outline-none rounded-xl"
-                                required name="OpinionMessage" placeholder="نظرات و پیشنهادات" cols="30"
-                                rows="7"></textarea>
-
-                            <input name="productid" value="[##cms.query.id##]" type="hidden">
-                            <input name="mid" value="1" type="hidden">
-                            <div class="flex items-center">
-                                <div class="flex gap-3 w-full">
-                                    <div>
-                                        <input
-                                            class="bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl"
-                                            type="text" name="Captcha" placeholder="کد امنیتی" required="">
-                                    </div>
-                                    <span class="field-captcha flex items-center gap-3">
-                                        <span class="load-captcha">
-                                            <img class="captchaa w-20 h-auto" alt="کد امنیتی"
-                                                src="[##captcha.code.captcha##]" width="80" height="60">
-                                            <input type="hidden" value="[##captcha.code.captcha##]"
-                                                name="Captchaid">
-                                        </span>
-                                        <div onclick="refresh_captcha(this,event)">
-                                          <svg width="48" height="48" class="flex-shrink-0 cursor-pointer">
-                                            <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-refresh"></use>
-                                          </svg>
-                                        </div>
-                                    </span>
-                                </div>
-                                <div>
-                                    <button
-                                        class="check-contrast w-32 h-12 flex items-center justify-center text-white transition-all duration-300 bg-primary-600 rounded-xl hover:bg-secondary-600"
-                                        type="submit">ارسال دیدگاه
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+    <div class="flex gap-6 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
+      <div class="flex-1 min-w-0">
+        <section>
+          <div class="bg-zinc-100 rounded-xl px-2 py-6">
+            <ul class="grid grid-cols-2 gap-3">
+              <basis core="print" datamembername="db.view">
+                <face filter="TypeID in(251) and vocabulary in('مدت-اعتبار-ویزا')">
+                  <li>
+                    <h2 class="text-zinc-700 font-bold mb-3" itemprop="description">مدت اعتبار ویزا:</h2>
+                    <div class="bg-white rounded-xl px-6 py-4">
+                      <span class="text-zinc-700 text-sm" itemprop="validThrough">@Answer</span>
                     </div>
-                    <div class="Loading_Form hidden">
-                        <div id="ballsWaveG">
-                            <div id="ballsWaveG_1" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_2" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_3" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_4" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_5" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_6" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_7" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_8" class="ballsWaveG"></div>
-                        </div>
+                  </li>
+                </face>
+                <face filter="TypeID in(128) and vocabulary in('شرکت-اقدام-کننده')">
+                  <li>
+                    <h2 class="text-zinc-700 font-bold mb-3">شرکت اقدام کننده:</h2>
+                    <div class="bg-white rounded-xl px-6 py-4">
+                      <span class="text-zinc-700 text-sm">@text</span>
                     </div>
-                    <div class="Message-Form text-center mt-6"></div>
-                </form>
-                </div>
-
-                <div id="user-comments" class="comment-content hidden opacity-0 scale-95 pointer-events-none w-full transition duration-500">
-                  <basis core="tree" datamembername="db.comment" idcol="id" parentidcol="parentid" nullvalue="0">
-                    <layout>
-                      <div class="swiper swiper-comments mt-3">
-                        <div class="swiper-wrapper">
-                          @child
-                        </div>
-                      </div>
-                    </layout>
-                    <else-layout>
-                      <div class="flex flex-col items-center justify-center h-full mt-8">
-                        <h2 class="text-xl font-bold mb-2">هنوز نظری ثبت نشده است</h2>
-                        <p>شما می‌توانید اولین نفری باشید که تجربه یا دیدگاه خود را به اشتراک می‌گذارد.</p>
-                      </div>
-                  </else-layout>
-                    <face level="1">
-                      <div class="swiper-slide">
-                        <div class="flex flex-col gap-2 bg-white rounded-xl p-6">
-                          <h3 class="font-bold text-sm text-zinc-900">@username</h3>
-                          <div class="text-xs text-zinc-600 line-clamp-6 leading-5">
-                            @comment
-                          </div>
-                          <span class="text-xs text-zinc-400 self-end">@createdate</span>
-                        </div>
-                      </div>
-                    </face>
-                  </basis>
-
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-        <aside class="sticky h-fit top-0 w-80">
-          <section class="relative rounded-3xl overflow-hidden mt-3">
-            <img
-              src="[##cms.cms.cdn##]/PrimeTemplate_A/images/contact-tour-list.jpg"
-              class="w-full h-[425px] object-cover"
-              alt=""
-              width="295"
-              height="425"
-              loading="lazy"
-            />
-            <div class="absolute z-10 bottom-7 left-5 right-5">
-              <div class="flex flex-col gap-2 direction-ltr">
-                <basis core="print" datamembername="db.info">
-                  <face filter="prpID in(8000)">
-                    <a href="tel:@text" class="group flex items-center gap-3 bg-white rounded-xl p-2">
-                      <span class="bg-primary-50 rounded-full p-3 group-hover:animate-phoneRing">
-                        <svg width="24" height="24" class="flex-shrink-0">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-phone"></use>
-                        </svg>
+                  </li>
+                </face>
+              </basis>
+              <basis core="print" datamembername="db.view">
+                <layout>
+                  <li class="col-span-2">
+                    <h2 class="text-zinc-700 font-bold mb-3">مدارک مورد نیاز:</h2>
+                    <div class="flex flex-col gap-1 bg-white rounded-xl text-zinc-700 text-sm px-6 py-4">@child</div>
+                  </li>
+                </layout>
+                <face filter="TypeID in(140) and vocabulary in('مدارک')">
+                  <span itemprop="itemListElement">@text</span>
+                </face>
+              </basis>
+              <basis core="print" datamembername="db.view">
+                <face filter="TypeID in(150) and vocabulary in('عنوان')">
+                  <li>
+                    <h2 class="text-zinc-700 font-bold mb-3">عنوان:</h2>
+                    <div class="bg-white rounded-xl px-6 py-4">
+                      <span class="text-zinc-700 text-sm" itemprop="name">@text</span>
+                    </div>
+                  </li>
+                </face>
+                <face filter="TypeID in(144) and vocabulary in('توضیحات')">
+                  <li class="content-box">
+                    <h2 class="text-zinc-700 font-bold mb-3">توضیحات:</h2>
+                    <div class="bg-white rounded-xl px-6 py-4">
+                      <div class="content-inner text-zinc-700 text-sm text-justify hyphens-auto leading-5"
+                        itemprop="description">@largetext</div>
+                    </div>
+                    <button class="see-more w-full text-center text-sm text-blue-500 mt-4" data-max="283">بیشتر
+                      بخوانید</button>
+                  </li>
+                </face>
+                <face filter="TypeID in(170) and vocabulary in('قیمت')">
+                  <li>
+                    <h2 class="text-zinc-700 font-bold mb-3">قیمت:</h2>
+                    <div class="bg-white rounded-xl px-6 py-4">
+                      <span class="text-zinc-700 text-sm" itemprop="offers" itemscope
+                        itemtype="https://schema.org/Offer">
+                        <meta itemprop="priceCurrency" content="IRR" />
+                        <span itemprop="price">@Answer</span>
                       </span>
-                      <div class="flex flex-col gap-1">
-                        <span class="text-zinc-500 text-xs">تماس تلفنی</span>
-                        <span class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">@text</span>
+                    </div>
+                  </li>
+                </face>
+                <face filter="TypeID in(199) and vocabulary in('کشور')">
+                  <li>
+                    <h2 class="text-zinc-700 font-bold mb-3">کشور:</h2>
+                    <div class="bg-white rounded-xl px-6 py-4">
+                      <span class="text-zinc-700 text-sm" itemprop="countryOfOrigin">@Answer</span>
+                    </div>
+                  </li>
+                </face>
+              </basis>
+            </ul>
+          </div>
+        </section>
+
+        <section class="mt-8 relative">
+          <div class="bg-zinc-100 p-6 rounded-xl">
+            <div class="flex items-center gap-10 border-b border-solid border-zinc-300 pb-3 relative z-10">
+              <button
+                class="comment-btn text-primary-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900"
+                data-comment="comment-form">ثبت نظر</button>
+              <button
+                class="comment-btn text-zinc-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900"
+                data-comment="user-comments">نظر کاربران</button>
+            </div>
+
+            <div class="relative">
+              <div id="comment-form" class="comment-content block opacity-100 scale-100 transition duration-500">
+                <form action="/Tem1_OpinionAction.bc" method="POST" class="pov-form mt-3">
+                  <input type="hidden" name="title" value="[##cms.seo.title##]">
+                  <div>
+                    <div>
+                      <div class="flex items-center gap-2 mb-2">
+                        <input class="flex-1 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl" type="text"
+                          name="Username" placeholder="نام و نام خانوادگی" required>
+                        <input class="flex-1 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl" type="text"
+                          name="_root.Phone" placeholder="تلفن همراه" required>
+                        <input class="flex-1 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl" type="text"
+                          name="_root.Email" placeholder="ایمیل" required>
                       </div>
-                    </a>
+                      <textarea class="w-full bg-white text-zinc-700 px-6 pt-4 outline-none rounded-xl" required
+                        name="OpinionMessage" placeholder="نظرات و پیشنهادات" cols="30" rows="7"></textarea>
+
+                      <input name="productid" value="[##cms.query.id##]" type="hidden">
+                      <input name="mid" value="1" type="hidden">
+                      <div class="flex items-center">
+                        <div class="flex gap-3 w-full">
+                          <div>
+                            <input class="bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl" type="text"
+                              name="Captcha" placeholder="کد امنیتی" required="">
+                          </div>
+                          <span class="field-captcha flex items-center gap-3">
+                            <span class="load-captcha">
+                              <img class="captchaa w-20 h-auto" alt="کد امنیتی" src="\[##captcha.code.captcha##]"
+                                width="80" height="60">
+                              <input type="hidden" value="[##captcha.code.captcha##]" name="Captchaid">
+                            </span>
+                            <div onclick="refresh_captcha(this,event)">
+                              <svg width="48" height="48" class="flex-shrink-0 cursor-pointer">
+                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-refresh"></use>
+                              </svg>
+                            </div>
+                          </span>
+                        </div>
+                        <div>
+                          <button
+                            class="check-contrast w-32 h-12 flex items-center justify-center text-white transition-all duration-300 bg-primary-600 rounded-xl hover:bg-secondary-600"
+                            type="submit">ارسال دیدگاه
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Loading_Form hidden">
+                    <div id="ballsWaveG">
+                      <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                    </div>
+                  </div>
+                  <div class="Message-Form text-center mt-6"></div>
+                </form>
+              </div>
+
+              <div id="user-comments"
+                class="comment-content hidden opacity-0 scale-95 pointer-events-none w-full transition duration-500">
+                <basis core="tree" datamembername="db.comment" idcol="id" parentidcol="parentid" nullvalue="0">
+                  <layout>
+                    <div class="swiper swiper-comments mt-3">
+                      <div class="swiper-wrapper">
+                        @child
+                      </div>
+                    </div>
+                  </layout>
+                  <else-layout>
+                    <div class="flex flex-col items-center justify-center h-full mt-8">
+                      <h2 class="text-xl font-bold mb-2">هنوز نظری ثبت نشده است</h2>
+                      <p>شما می‌توانید اولین نفری باشید که تجربه یا دیدگاه خود را به اشتراک می‌گذارد.</p>
+                    </div>
+                  </else-layout>
+                  <face level="1">
+                    <div class="swiper-slide">
+                      <div class="flex flex-col gap-2 bg-white rounded-xl p-6">
+                        <h3 class="font-bold text-sm text-zinc-900">@username</h3>
+                        <div class="text-xs text-zinc-600 line-clamp-6 leading-5">
+                          @comment
+                        </div>
+                        <span class="text-xs text-zinc-400 self-end">@createdate</span>
+                      </div>
+                    </div>
                   </face>
                 </basis>
 
-                <div class="relative">
-                  <div id="shareBtn" class="group flex items-center gap-3 bg-white rounded-xl p-2 cursor-pointer">
-                    <span class="bg-primary-50 rounded-full p-3 transition-all duration-300 group-hover:animate-bounce">
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <aside class="sticky h-fit top-0 w-80">
+        <section class="relative rounded-3xl overflow-hidden mt-3">
+          <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/contact-tour-list.jpg"
+            class="w-full h-[425px] object-cover" alt="" width="295" height="425" loading="lazy" />
+          <div class="absolute z-10 bottom-7 left-5 right-5">
+            <div class="flex flex-col gap-2 direction-ltr">
+              <basis core="print" datamembername="db.info">
+                <face filter="prpID in(8000)">
+                  <a href="tel:@text" class="empty-face-fields group flex items-center gap-3 bg-white rounded-xl p-2">
+                    <span class="bg-primary-50 rounded-full p-3 group-hover:animate-phoneRing">
                       <svg width="24" height="24" class="flex-shrink-0">
-                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-share"></use>
+                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-phone"></use>
                       </svg>
                     </span>
                     <div class="flex flex-col gap-1">
-                      <span class="text-zinc-500 text-xs">اشتراک‌گذاری</span>
-                      <span class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">
-                        ارسال لینک و محتوا
-                      </span>
+                      <span class="text-zinc-500 text-xs">تماس تلفنی</span>
+                      <span
+                        class="empty-face-text text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">@text</span>
                     </div>
-                  </div>
+                  </a>
+                </face>
+              </basis>
 
-                  <ul
-                    id="shareMenu"
-                    class="absolute inset-0 flex items-center justify-center gap-px bg-white rounded-xl pointer-events-none opacity-0 transition-opacity duration-300"
-                  >
-                    <li>
-                      <a
-                        href="https://twitter.com/intent/tweet?url=[##cms.request.full-url##]&text=[##cms.request.title##]"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Twitter"
-                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
-                      >
-                        <svg width="16" height="12">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-twitter"></use>
-                        </svg>
-                        <span
-                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
-                        ></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="mailto:?subject=[##cms.request.title##]&body=[##cms.request.full-url##]"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Email"
-                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
-                      >
-                        <svg width="16" height="16">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-email"></use>
-                        </svg>
-                        <span
-                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
-                        ></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.facebook.com/sharer/sharer.php?u=[##cms.request.full-url##]"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Facebook"
-                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
-                      >
-                        <svg width="10" height="16">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-facebook"></use>
-                        </svg>
-                        <span
-                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
-                        ></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://t.me/share/url?url=[##cms.request.full-url##]&text=[##cms.request.title##]"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Telegram"
-                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
-                      >
-                        <svg width="32" height="32">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-telegram"></use>
-                        </svg>
-                        <span
-                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
-                        ></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://wa.me/?text=[##cms.request.full-url##]"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="WhatsApp"
-                        class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300"
-                      >
-                        <svg width="40" height="40">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-whatsapp"></use>
-                        </svg>
-                        <span
-                          class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"
-                        ></span>
-                      </a>
-                    </li>
-                  </ul>
+              <div class="relative">
+                <div id="shareBtn" class="group flex items-center gap-3 bg-white rounded-xl p-2 cursor-pointer">
+                  <span class="bg-primary-50 rounded-full p-3 transition-all duration-300 group-hover:animate-bounce">
+                    <svg width="24" height="24" class="flex-shrink-0">
+                      <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-share"></use>
+                    </svg>
+                  </span>
+                  <div class="flex flex-col gap-1">
+                    <span class="text-zinc-500 text-xs">اشتراک‌گذاری</span>
+                    <span class="text-zinc-900 font-medium transition-all duration-300 group-hover:text-primary-600">
+                      ارسال لینک و محتوا
+                    </span>
+                  </div>
                 </div>
+
+                <ul id="shareMenu"
+                  class="absolute inset-0 flex items-center justify-center gap-px bg-white rounded-xl pointer-events-none opacity-0 transition-opacity duration-300">
+                  <li>
+                    <a href="https://twitter.com/intent/tweet?url=[##cms.request.full-url##]&text=[##cms.request.title##]"
+                      target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+                      class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300">
+                      <svg width="16" height="12">
+                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-twitter"></use>
+                      </svg>
+                      <span
+                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="mailto:?subject=[##cms.request.title##]&body=[##cms.request.full-url##]" target="_blank"
+                      rel="noopener noreferrer" aria-label="Email"
+                      class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300">
+                      <svg width="16" height="16">
+                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-email"></use>
+                      </svg>
+                      <span
+                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=[##cms.request.full-url##]" target="_blank"
+                      rel="noopener noreferrer" aria-label="Facebook"
+                      class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300">
+                      <svg width="10" height="16">
+                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-facebook"></use>
+                      </svg>
+                      <span
+                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://t.me/share/url?url=[##cms.request.full-url##]&text=[##cms.request.title##]"
+                      target="_blank" rel="noopener noreferrer" aria-label="Telegram"
+                      class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300">
+                      <svg width="32" height="32">
+                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-telegram"></use>
+                      </svg>
+                      <span
+                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://wa.me/?text=[##cms.request.full-url##]" target="_blank" rel="noopener noreferrer"
+                      aria-label="WhatsApp"
+                      class="share-item group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white transform scale-0 transition-transform duration-300">
+                      <svg width="40" height="40">
+                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-whatsapp"></use>
+                      </svg>
+                      <span
+                        class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
-          </section>
-        </aside>
-      </div>
-    </main>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
 
-    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
+  <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
 
-    <basis core="call" file="template-footer.inc" pageindexid="1"/>
+  <basis core="call" file="template-footer.inc" pageindexid="1" />
 
-    <script type="application/ld+json">
+  <script type="application/ld+json">
       [##db.json.Column1##]
     </script>
-  </body>
+</body>
+
 </html>

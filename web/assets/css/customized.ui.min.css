@@ -132,7 +132,7 @@
 
 ::before,
 ::after {
-  --tw-content: "";
+  --tw-content: '';
 }
 
 /*
@@ -156,8 +156,8 @@ html,
   -o-tab-size: 4;
   tab-size: 4;
   /* 3 */
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -247,7 +247,7 @@ kbd,
 samp,
 pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+    'Liberation Mono', 'Courier New', monospace;
   /* 1 */
   font-feature-settings: normal;
   /* 2 */
@@ -348,9 +348,9 @@ select {
   */
 
 button,
-input:where([type="button"]),
-input:where([type="reset"]),
-input:where([type="submit"]) {
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -397,7 +397,7 @@ progress {
   2. Correct the outline style in Safari.
   */
 
-[type="search"] {
+[type='search'] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -511,7 +511,7 @@ textarea::placeholder {
   */
 
 button,
-[role="button"] {
+[role='button'] {
   cursor: pointer;
 }
 
@@ -555,13 +555,13 @@ video {
 
 /* Make elements with the HTML hidden attribute stay hidden by default */
 
-[hidden]:where(:not([hidden="until-found"])) {
+[hidden]:where(:not([hidden='until-found'])) {
   display: none;
 }
 
 body {
-  font-family: "DanaFaNum";
-  overflow-wrap: break-word
+  font-family: 'DanaFaNum';
+  overflow-wrap: break-word;
 }
 
 .gradient-border {
@@ -572,7 +572,7 @@ body {
 }
 
 .gradient-border::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   padding: 0.75px;
@@ -996,6 +996,10 @@ body {
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-between {
@@ -1543,66 +1547,66 @@ body {
   --special-3: #0000009c;
   --special-4: #00000033;
   --client-color: #466def;
-  ---bg: url("");
-  --visaList-bg: url("../images/visa-list-background.jpg");
-  --visa-bg: url("../images/visa-background.jpg");
-  --contact-bg: url("../images/contact-background.jpg");
-  --articleList-bg: url("../images/article-list-background.jpg");
-  --article-bg: url("../images/article-background.jpg");
-  --tourList-bg: url("../images/tour-list-background.jpg");
-  --hotelList-bg: url("../images/hotel-list-background.jpg");
-  --hotel-bg: url("../images/hotel-background.jpg");
+  ---bg: url('');
+  --visaList-bg: url('../images/visa-list-background.jpg');
+  --visa-bg: url('../images/visa-background.jpg');
+  --contact-bg: url('../images/contact-background.jpg');
+  --articleList-bg: url('../images/article-list-background.jpg');
+  --article-bg: url('../images/article-background.jpg');
+  --tourList-bg: url('../images/tour-list-background.jpg');
+  --hotelList-bg: url('../images/hotel-list-background.jpg');
+  --hotel-bg: url('../images/hotel-background.jpg');
 }
 
 @font-face {
   font-display: swap;
 
-  font-family: "DanaFaNum";
+  font-family: 'DanaFaNum';
 
   font-style: normal;
 
   font-weight: 400;
 
-  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Regular.ttf")
-    format("truetype");
+  src: url('http://basisflydemo.ir/fonts/DanaFaNum-Regular.ttf')
+    format('truetype');
 }
 
 @font-face {
   font-display: swap;
 
-  font-family: "DanaFaNum";
+  font-family: 'DanaFaNum';
 
   font-style: normal;
 
   font-weight: 500;
 
-  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Medium.ttf")
-    format("truetype");
+  src: url('http://basisflydemo.ir/fonts/DanaFaNum-Medium.ttf')
+    format('truetype');
 }
 
 @font-face {
   font-display: swap;
 
-  font-family: "DanaFaNum";
+  font-family: 'DanaFaNum';
 
   font-style: normal;
 
   font-weight: 700;
 
-  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Bold.ttf") format("truetype");
+  src: url('http://basisflydemo.ir/fonts/DanaFaNum-Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-display: swap;
 
-  font-family: "DanaFaNum";
+  font-family: 'DanaFaNum';
 
   font-style: normal;
 
   font-weight: 900;
 
-  src: url("http://basisflydemo.ir/fonts/DanaFaNum-Black.ttf")
-    format("truetype");
+  src: url('http://basisflydemo.ir/fonts/DanaFaNum-Black.ttf')
+    format('truetype');
 }
 
 .h1-tag {
@@ -1647,7 +1651,7 @@ body {
 }
 
 .mask-image-mobile::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background: #f4f4f5;
@@ -1675,7 +1679,7 @@ body {
 }
 
 .border-dashed-zinc::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
@@ -1697,7 +1701,7 @@ body {
 }
 
 .border-dashed-zinc::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0.75px;
   border-radius: inherit;
@@ -1705,7 +1709,7 @@ body {
 }
 
 .faq-border::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   right: 0;
@@ -1753,7 +1757,7 @@ body {
 }
 
 .phone-number a:not(:last-child)::after {
-  content: "-";
+  content: '-';
   margin-left: 4px;
   margin-right: 4px;
 }
@@ -2050,10 +2054,11 @@ body {
   }
 }
 
-.hasNot-login-icon{
+.hasNot-login-icon {
   display: none;
 }
 
-.itemInput, .login-btn {
-  font-family: "DanaFaNum" !important;
+.itemInput,
+.login-btn {
+  font-family: 'DanaFaNum' !important;
 }

@@ -757,14 +757,11 @@
     </symbol>
 
     <symbol id="engine-exchange-icon" viewBox="0 0 24 25" fill="none">
-        <path d="M16.8398 20.6647L16.8398 7.04688" stroke="white" stroke-width="1.5" stroke-linecap="round"
-            stroke-linejoin="round" />
-        <path d="M20.9173 16.5664L16.8395 20.6631L12.7617 16.5664" stroke="white" stroke-width="1.5"
-            stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M6.91016 4.33203L6.91016 17.9498" stroke="white" stroke-width="1.5" stroke-linecap="round"
-            stroke-linejoin="round" />
-        <path d="M2.83203 8.4287L6.90981 4.33203L10.9876 8.4287" stroke="white" stroke-width="1.5"
-            stroke-linecap="round" stroke-linejoin="round" />
+<path d="M16.8398 20.1647L16.8398 6.54688" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.9173 16.0664L16.8395 20.1631L12.7617 16.0664" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.91016 3.83203L6.91016 17.4498" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2.83203 7.9287L6.90981 3.83203L10.9876 7.9287" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
 
     </symbol>
     <symbol id="engine-departurehotel-icon" viewBox="0 0 48 48" fill="none">
