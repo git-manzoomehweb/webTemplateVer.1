@@ -9,20 +9,21 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="18" name="db" usedforid="[##cms.query.catid##]">
   <member name="scalar" type="scalar" typeid="150" />
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="feature_banner" usedforid="2356699">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="feature_banner" usedforid="[##cms.query.bid##]">
   <member name="view" type="view" size="" propertyid="" />
 </basis>
-<basis core="dbsource" source="media" lid="1" name="feature_banner" usedforid="2356699" sourcemid="article">
+<basis core="dbsource" source="media" lid="1" name="feature_banner" usedforid="[##cms.query.bid##]" sourcemid="article">
   <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
   <member name="p-under" type="view" size="" propertyid="" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list">
-  <member name="cat" type="tree" request="cat" parentid="217452" order="ord"
-    postsql="select * from [faq_list.cat] where catid in(217452) or parentid in(217452)"></member>
+  <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq##]" order="ord"
+    postsql="select * from [faq_list.cat] where catid in([##cms.host.faq##]) or parentid in([##cms.host.faq##])">
+  </member>
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="217452">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="[##cms.host.faq##]">
   <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
 </basis>
 
@@ -99,48 +100,51 @@
       </div>
     </section>
 
-    <section
-      class="relative group rounded-2xl overflow-hidden mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-14">
-      <div class="bg-specialcolor-3 absolute inset-0 w-full h-full pointer-events-none"></div>
-      <a href="" class="flex flex-col">
-        <basis core="print" datamembername="feature_banner.gallery">
-          <face filter="ord in(1)">
-            <img src="\@largeIMG" class="w-full h-52 object-cover object-[center_70%]" alt="@name" width="208"
-              height="1280" loading="lazy" />
-          </face>
-        </basis>
+    <basis core="group" if="'[##cms.query.bid##]' <> ''">
+      <section
+        class="relative group rounded-2xl overflow-hidden mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-14">
+        <div class="bg-specialcolor-3 absolute inset-0 w-full h-full pointer-events-none"></div>
+        <a href="" class="flex flex-col">
+          <basis core="print" datamembername="feature_banner.gallery">
+            <face filter="ord in(1)">
+              <img src="\@largeIMG" class="w-full h-52 object-cover object-[center_70%]" alt="@name" width="208"
+                height="1280" loading="lazy" />
+            </face>
+          </basis>
 
-        <basis core="print" datamembername="feature_banner.view">
-          <face filter="TypeID in(150)">
-            <div
-              class="absolute z-10 -translate-y-1/2 top-1/2 px-9 group-hover:invisible group-hover:opacity-0 transition-all duration-300">
-              <h2 class="text-3xl text-white mb-3">@text</h2>
-            </div>
-          </face>
-        </basis>
+          <basis core="print" datamembername="feature_banner.view">
+            <face filter="TypeID in(150)">
+              <div
+                class="absolute z-10 -translate-y-1/2 top-1/2 px-9 group-hover:invisible group-hover:opacity-0 transition-all duration-300">
+                <h2 class="text-3xl text-white mb-3">@text</h2>
+              </div>
+            </face>
+          </basis>
 
-        <basis core="print" datamembername="feature_banner.view">
-          <layout>
-            <div
-              class="absolute z-10 -translate-y-1/2 top-1/2 px-9 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-500">
-              @child
-            </div>
-          </layout>
-          <face filter="TypeID in(150)">
-            <h2
-              class="text-3xl text-white mb-3 transition-all duration-300 opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0">
-              @text
-            </h2>
-          </face>
-          <face filter="TypeID in(129)">
-            <div
-              class="text-sm text-white text-justify hyphens-auto leading-5 mb-3 line-clamp-4 transition-all duration-300 opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0">
-              @largetext
-            </div>
-          </face>
-        </basis>
-      </a>
-    </section>
+          <basis core="print" datamembername="feature_banner.view">
+            <layout>
+              <div
+                class="absolute z-10 -translate-y-1/2 top-1/2 px-9 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-500">
+                @child
+              </div>
+            </layout>
+            <face filter="TypeID in(150)">
+              <h2
+                class="text-3xl text-white mb-3 transition-all duration-300 opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0">
+                @text
+              </h2>
+            </face>
+            <face filter="TypeID in(129)">
+              <div
+                class="text-sm text-white text-justify hyphens-auto leading-5 mb-3 line-clamp-4 transition-all duration-300 opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0">
+                @largetext
+              </div>
+            </face>
+          </basis>
+        </a>
+      </section>
+    </basis>
+
 
     <section class="flex gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-12">
       <aside class="sticky h-fit top-0 w-[295px]">
@@ -524,7 +528,7 @@
       </face>
     </basis>
 
-    <basis core="group" if="'[##cms.host.faq_default##]' <> ''">
+    <basis core="group" if="'[##cms.host.faq##]' <> ''">
       <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-12">
         <basis core="list" datamembername="faq_list.cat">
           <face filter="catid in([##cms.host.faq_list##])">

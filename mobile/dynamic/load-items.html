@@ -279,6 +279,13 @@
   <layout>
     <div class="article-card-container flex flex-col gap-2 mt-6">@child</div>
   </layout>
+  <else-layout>
+    <div class="flex flex-col items-center justify-center h-full">
+      <h2 class="text-xl font-bold mb-2">هیچ موردی پیدا نشد!</h2>
+      <p class="mb-6">چشم‌ها همه‌جا رو گشتن ولی چیزی پیدا نکردن</p>
+      <span class="not-found-loader"></span>
+    </div>
+  </else-layout>
   <face filter="[00256X00160prp] is null">
     <a href="/@link" class="article-card flex flex-col gradient-border from-gray-300 rounded-2xl p-2 min-h-[355px]" data-title="@title">
       <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg" class="w-full h-40 object-cover rounded-2xl" alt="@title" width="256" height="160" loading="lazy" />
