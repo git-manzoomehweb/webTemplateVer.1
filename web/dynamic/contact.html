@@ -1,24 +1,25 @@
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_contact">
-    <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq_contact##]" order="ord"
-        postsql="select * from [faq_contact.cat] where catid in([##cms.host.faq_contact##]) or parentid in([##cms.host.faq_contact##])">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq">
+    <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq##]" order="ord"
+        postsql="select * from [faq.cat] where catid in([##cms.host.faq##]) or parentid in([##cms.host.faq##])">
     </member>
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_contact" catid="[##cms.host.faq_contact##]">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq" catid="[##cms.host.faq##]">
     <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="our_services" usedforid="2382517">
+    <member name="view" type="view" size="" propertyid="" />
+</basis>
+<basis core="dbsource" source="media" lid="1" name="our_services" usedforid="2382517" sourcemid="article">
+    <member type="list" name="gallery" format="4" order="ord"></member>
+</basis>
+
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <basis core="call" file="style.inc" pageindexid="1"/>
-</head>
+<basis core="call" file="head-elements.inc" pageindexid="1" />
 
 <body>
-    <basis core="call" file="template-header.inc" pageindexid="1"/>
+    <basis core="call" file="template-header.inc" pageindexid="1" />
     <main data-activepage="contact">
         <section class="relative bg-contact bg-center bg-cover py-24">
             <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
@@ -29,43 +30,33 @@
                 <div class="relative flex items-center gap-1">
                     <a href="/" class="text-white text-xs transition-all duration-300 hover:text-primary-700">خانه</a>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+                        <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
                     </svg>
                     <span class="text-primary-700 text-xs">درباره ما</span>
-                    </div>
+                </div>
             </div>
         </section>
         <basis core="print" datamembername="db.info">
             <layout>
-                <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
-                    @child
-                </section>
+                <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">@child</section>
             </layout>
             <face filter="TypeID in(150)">
                 <h2 class="text-zinc-900 text-2xl font-bold mb-3">@text</h2>
             </face>
             <face filter="TypeID in(144)">
-                <div class="text-sm text-justify hyphens-auto text-zinc-900 leading-5">
-                    @largetext
-                </div>
+                <div class="text-sm text-justify hyphens-auto text-zinc-900 leading-5">@largetext</div>
             </face>
         </basis>
-
 
         <section class="flex items-center gap-9 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-16">
             <basis core="print" datamembername="db.info">
                 <layout>
-                    <div class="flex-1 rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
-                        @child
-                    </div>
+                    <div class="flex-1 rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">@child</div>
                 </layout>
                 <face filter="prpID=91462">
-                    <iframe defer title="location"
-                    class="w-full h-80 object-cover rounded-2xl" width="288"
-                    height="320" loading="lazy"
-                        target="_blank" allowfullscreen
-                        src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed">
-                    </iframe>
+                    <iframe defer title="location" class="w-full h-80 object-cover rounded-2xl" width="288" height="320"
+                        loading="lazy" target="_blank" allowfullscreen
+                        src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed"></iframe>
                 </face>
             </basis>
 
@@ -74,7 +65,7 @@
                 <div class="flex flex-col gap-3 mt-7">
                     <basis core="print" datamembername="db.info">
                         <layout>
-                            <div class="flex items-start gap-3">
+                            <div class="empty-face-fields flex items-start gap-3">
                                 <svg width="24" height="24" class="flex-shrink-0">
                                     <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-location"></use>
                                 </svg>
@@ -82,24 +73,23 @@
                             </div>
                         </layout>
                         <face filter="TypeID in(244)">
-                            <div class="text-zinc-900 text-justify">@largetext</div>
+                            <div class="empty-face-text text-zinc-900 text-justify">@largetext</div>
                         </face>
                     </basis>
 
                     <basis core="print" datamembername="db.info">
                         <layout>
-                            <div class="flex items-center gap-3">
+                            <div class="empty-face-fields flex items-center gap-3">
                                 <svg width="24" height="24" class="flex-shrink-0">
                                     <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-phone"></use>
                                 </svg>
-                                <div class="phone-number flex items-center">
-                                    @child
-                                </div>
+                                <div class="phone-number flex items-center">@child</div>
                             </div>
                         </layout>
                         <face filter="TypeID in(240)">
                             <a href="tel:@text"
-                                class="relative group text-zinc-900 transition-all duration-300 hover:text-primary-600">@text
+                                class="empty-face-text relative group text-zinc-900 transition-all duration-300 hover:text-primary-600">
+                                @text
                                 <span
                                     class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
                             </a>
@@ -108,12 +98,12 @@
 
                     <basis core="print" datamembername="db.info">
                         <face filter="TypeID in(242)">
-                            <a href="mailto:@text" class="group flex items-center gap-3">
+                            <a href="mailto:@text" class="empty-face-fields group flex items-center gap-3">
                                 <svg width="24" height="24" class="flex-shrink-0">
                                     <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-mail"></use>
                                 </svg>
                                 <div
-                                    class="relative text-zinc-900 transition-all duration-300 group-hover:text-primary-600">
+                                    class="empty-face-text relative text-zinc-900 transition-all duration-300 group-hover:text-primary-600">
                                     @text
                                     <span
                                         class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
@@ -131,206 +121,208 @@
                     <face filter="TypeID in('245') and text in('توییتر')">
                         <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
-                                class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                      w-12 h-12 rounded-full bg-primary-600">
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="16" height="12">
                                     <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-twitter"></use>
                                 </svg>
-                                <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                             transform translate-y-full -bottom-1 -z-10 bg-client 
-                                             group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
                             </a>
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('اینستاگرام')">
                         <li>
-                            <a href="@largetext" target="_blank" rel="noopener noreferrer"
-                                aria-label="Instagram"
-                                class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                      w-12 h-12 rounded-full bg-primary-600">
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="14" height="14">
                                     <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-instagram"></use>
                                 </svg>
-                                <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out
-                                             transform translate-y-full -bottom-1 -z-10 bg-client
-                                             group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
                             </a>
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('فیس بوک')">
                         <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-                                class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                      w-12 h-12 rounded-full bg-primary-600">
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="10" height="16">
                                     <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-facebook"></use>
                                 </svg>
-                                <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                             transform translate-y-full -bottom-1 -z-10 bg-client 
-                                             group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
                             </a>
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('تلگرام')">
                         <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Telegram"
-                                class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                      w-12 h-12 rounded-full bg-primary-600">
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="32" height="32">
                                     <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-telegram"></use>
                                 </svg>
-                                <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                             transform translate-y-full -bottom-1 -z-10 bg-client
-                                             group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
                             </a>
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('واتس اپ')">
                         <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Whatsapp"
-                                class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                      w-12 h-12 rounded-full bg-primary-600">
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="32" height="32">
                                     <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-whatsapp"></use>
                                 </svg>
-                                <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                             transform translate-y-full -bottom-1 -z-10 bg-client
-                                             group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
                             </a>
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('لینکدین')">
                         <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Linkdin"
-                                class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                      w-12 h-12 rounded-full bg-primary-600">
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="32" height="32">
                                     <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-linkdin"></use>
                                 </svg>
-                                <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                             transform translate-y-full -bottom-1 -z-10 bg-client
-                                             group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
                             </a>
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('یوتیوب')">
                         <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
-                                class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                      w-12 h-12 rounded-full bg-primary-600">
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="32" height="32">
                                     <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-youtube"></use>
                                 </svg>
-                                <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                             transform translate-y-full -bottom-1 -z-10 bg-client
-                                             group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
                             </a>
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('آپارات')">
                         <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Aparat"
-                                class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                  w-12 h-12 rounded-full bg-primary-600">
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="32" height="32">
                                     <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-aparat"></use>
                                 </svg>
-                                <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                         transform translate-y-full -bottom-1 -z-10 bg-client
-                                         group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
                             </a>
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('ایتا')">
-                        <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="eita" class="group relative z-10 overflow-hidden flex items-center justify-center 
-                              w-12 h-12 rounded-full bg-primary-600">
-                            <svg width="14" height="14">
-                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-eita"></use>
-                            </svg>
-                            <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                     transform translate-y-full -bottom-1 -z-10 bg-client
-                                     group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
+                        <li>
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="eita"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="14" height="14">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-eita"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
                     </face>
                     <face filter="TypeID in('245') and text in('بله')">
-                        <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Bale" class="group relative z-10 overflow-hidden flex items-center justify-center 
-                              w-12 h-12 rounded-full bg-primary-600">
-                            <svg width="14" height="14">
-                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-bale"></use>
-                            </svg>
-                            <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                     transform translate-y-full -bottom-1 -z-10 bg-client
-                                     group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
+                        <li>
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Bale"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="14" height="14">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-bale"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
                     </face>
                     <face filter="TypeID in('245') and text in('روبیکا')">
-                        <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Rubika"
-                            class="group relative z-10 overflow-hidden flex items-center justify-center 
-                              w-12 h-12 rounded-full bg-primary-600">
-                            <svg width="20" height="20">
-                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-rubika"></use>
-                            </svg>
-                            <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                     transform translate-y-full -bottom-1 -z-10 bg-client
-                                     group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
+                        <li>
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Rubika"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="20" height="20">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-rubika"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
                     </face>
                 </basis>
             </div>
         </section>
 
-        <section class="flex items-center gap-9 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
-            <div class="flex-1">
-                <h2 class="text-zinc-900 font-bold text-2xl mb-3">خدمات ما</h2>
-                <div class="text-sm text-justify hyphens-auto text-zinc-900 leading-5">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
-                    چاپگرها و
-                    متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
-                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
-                    آینده،
-                    شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-                    الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و
-                    دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
-                    دستاوردهای
-                    اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. لورم ایپسوم متن
-                    ساختگی
-                </div>
-            </div>
-            <div class="flex-1 rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
-                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/helpdesk.jpg" class="w-full h-80 object-cover rounded-2xl" alt="" width="288"
-                    height="320" loading="lazy">
-            </div>
-        </section>
+        <basis core="group" if="'[##cms.host.our_services##]' <> ''">
+            <section class="flex items-center gap-9 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
+                <basis core="print" datamembername="our_services.view">
+                    <layout>
+                        <div class="flex-1">
+                            @child
+                        </div>
+                    </layout>
+                    <face filter="TypeID in(150)">
+                        <h2 class="text-zinc-900 font-bold text-2xl mb-3">@text</h2>
+                    </face>
+                    <face filter="TypeID in(129)">
 
-        <section class="flex items-center gap-9 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
-            <div class="flex-1 rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
-                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/team.jpg" class="w-full h-80 object-cover rounded-2xl" alt="" width="288"
-                    height="320" loading="lazy">
-            </div>
-            <div class="flex-1">
-                <h2 class="text-zinc-900 text-2xl font-bold mb-3">اهداف تیم</h2>
-                <div class="text-sm text-justify hyphens-auto text-zinc-900 leading-5">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
-                    چاپگرها و
-                    متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
-                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
-                    آینده،
-                    شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-                    الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و
-                    دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
-                    دستاوردهای
-                    اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. لورم ایپسوم متن
-                    ساختگی
-                </div>
-            </div>
-        </section>
+                        <div class="text-sm text-justify hyphens-auto text-zinc-900 leading-5">
+                            @largetext
+                        </div>
+                    </face>
+                </basis>
+                <basis core="print" datamembername="our_services.gallery">
+                    <layout>
+                        <div class="flex-1 rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
+                            @child
+                        </div>
+                    </layout>
+                    <face filter="ord in(1)">
+                        <img src="\@largeIMG" class="w-full h-80 object-cover rounded-2xl" alt="@name" width="288"
+                            height="320" loading="lazy" />
+                    </face>
+                </basis>
+
+            </section>
+        </basis>
+
+        <basis core="group" if="'[##cms.host.our_services##]' <> ''">
+            <section class="flex items-center gap-9 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
+                <basis core="print" datamembername="our_services.gallery">
+                    <layout>
+                        <div class="flex-1 rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
+                            @child
+                        </div>
+                    </layout>
+                    <face filter="ord in(2)">
+                        <img src="\@largeIMG" class="w-full h-80 object-cover rounded-2xl" alt="@name" width="288"
+                            height="320" loading="lazy" />
+                    </face>
+                </basis>
+                <basis core="print" datamembername="our_services.view">
+                    <layout>
+                        <div class="flex-1">
+                            @child
+                        </div>
+                    </layout>
+                    <face filter="TypeID in(250)">
+                        <h2 class="text-zinc-900 font-bold text-2xl mb-3">@text</h2>
+                        <div class="text-sm text-justify hyphens-auto text-zinc-900 leading-5">
+                            @largetext
+                        </div>
+                    </face>
+                </basis>
+            </section>
+        </basis>
 
         <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-20">
             <div class="gradient-border from-primary-600 bg-zinc-100 p-6 rounded-2xl">
-                <h2 class="text-zinc-900 text-3xl mb-6">ارتباط با <span class="font-bold text-primary-600">کارشناسان ما</span>
+                <h2 class="text-zinc-900 text-3xl mb-6">
+                    ارتباط با
+                    <span class="font-bold text-primary-600">کارشناسان ما</span>
                 </h2>
                 <div class="flex mx-auto contact-form" id="contact-form-resize">
-
                     <basis core="schema" run="atclient"
                         schemaurl="/schema/domainform/[##cms.host.contactFormId1##]/[##cms.host.contactFormId2##]/fa/ارتباط-با-کارشناسان-ما"
                         displaymode="new" button="[data-btn-uploadContact]" resultsourceid="upload.dataContact"
@@ -338,41 +330,43 @@
                     <basis core="api" if="{##cms.uploadContact.run|(false)##}" run="atclient"
                         url="/schema/domainform/[##cms.host.contactFormId1##]/fa/editobject" method="post"
                         body="object_edit={##cms.uploadContact.value##}&captcha={##cms.uploadContact.captcha##}&captchaid={##cms.uploadContact.captchaid##}"
-                        content-type="application/x-www-form-urlencoded" triggers='cms.uploadContact'
+                        content-type="application/x-www-form-urlencoded" triggers="cms.uploadContact"
                         OnProcessed="OnProcessedEditObjectContact"></basis>
                     <basis core="callback" run="atclient" method="uploadDocumentContact" triggers="upload.dataContact">
                     </basis>
 
-                    <div class="captcha-button flex flex-col gap-4 items-center justify-center">
+                    <div class="captcha-button flex gap-4 items-center justify-between">
                         <div id="captchaContainer" class="captchaContainerclass captcha-sefaresh w-auto"
                             data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
                             data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
-                            <!-- <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                            <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
                                 triggers="captcha.refreshContact">
                                 <member name="code" type="scalar" request="captcha"></member>
                             </basis>
                             <basis datamembername="captcha.code" core="print" run="atclient">
                                 <face>
-                                    <script type="text/template"><div class="d-inline-block"><div class="flex gap-6 mt-4">
-                    
-                                        <div class="float-right w-[323px]"><input type="text" class="!w-[185px] contactUsInput codeinputm" name="captcha" maxlength="4" placeholder="کد امنیتی"/><input type="hidden" name="captchaid" value="@captcha@" /></div>
-                                        <div class="flex items-center gap-6">
-                                            <img src="/@captcha@" loading="lazy" width="120" height="60" alt="captcha" class="w-16 h-auto" />
-                                                                            <svg width="48" height="48" onclick="refreshCaptchaContact()" class="inline-block align-middle cursor-pointer w-9 h-9">
-                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-location"></use>
-                                </svg>
-                                            <svg  onclick="refreshCaptchaContact()" width="24" height="24" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1247 8.56165H18.1238C18.0007 8.56175 17.8788 8.5861 17.7651 8.63331C17.6514 8.68052 17.5481 8.74967 17.4611 8.8368C17.3741 8.92393 17.3052 9.02734 17.2581 9.14113C17.2111 9.25492 17.187 9.37685 17.1871 9.49997C17.1859 10.8143 16.8245 12.1032 16.1421 13.2265C15.4597 14.3498 14.4824 15.2646 13.3166 15.8714C12.1507 16.4782 10.8408 16.7538 9.52921 16.6683C8.21765 16.5827 6.95463 16.1393 5.87744 15.3862C2.63134 13.1132 1.83959 8.62309 4.11255 5.37696C6.38552 2.13083 10.8757 1.33899 14.1218 3.61204C14.6129 3.95501 15.0592 4.358 15.4504 4.81165H12.8121C12.5635 4.81165 12.325 4.91042 12.1492 5.08623C11.9734 5.26205 11.8746 5.5005 11.8746 5.74915C11.8746 5.99779 11.9734 6.23624 12.1492 6.41206C12.325 6.58787 12.5635 6.68665 12.8121 6.68665H17.1871C17.4358 6.68665 17.6742 6.58787 17.85 6.41206C18.0259 6.23624 18.1246 5.99779 18.1246 5.74915V1.37415C18.1246 1.12551 18.0259 0.887048 17.85 0.711233C17.6742 0.535418 17.4358 0.436646 17.1871 0.436646C16.9385 0.436646 16.7 0.535418 16.5242 0.711233C16.3484 0.887048 16.2496 1.12551 16.2496 1.37415V2.93536C15.9206 2.62321 15.5689 2.33596 15.1973 2.07598C14.2225 1.39342 13.1228 0.909542 11.9609 0.651979C10.7991 0.394417 9.59797 0.368213 8.42603 0.574863C7.25409 0.781513 6.13433 1.21697 5.13067 1.85637C4.12702 2.49578 3.25914 3.3266 2.57658 4.30141C1.19808 6.27013 0.658111 8.70582 1.07546 11.0727C1.49281 13.4395 2.83329 15.5436 4.80201 16.9221C6.31776 17.9898 8.12639 18.563 9.98041 18.5633C10.5144 18.5631 11.0474 18.5162 11.5732 18.4233C13.6714 18.0531 15.5722 16.9556 16.9417 15.3235C18.3112 13.6914 19.062 11.6289 19.0621 9.49833C19.0619 9.24983 18.963 9.01159 18.7873 8.83596C18.6115 8.66032 18.3732 8.56166 18.1247 8.56165Z" fill="#52525B"/></svg>
-                                        </div>
-                                        
-                                    </div></div></script>
+                                    <script type="text/template">
+                      <div class="d-inline-block"><div class="flex gap-4">
+
+                                 <div class="float-right w-[323px] mr-1"><input type="text" class="!w-32 contactUsInput codeinputm" name="captcha" maxlength="4" placeholder="کد امنیتی"/><input type="hidden" name="captchaid" value="@captcha@" /></div>
+                                 <div class="flex items-center gap-2">
+                                     <img src="/@captcha@" loading="lazy" width="120" height="60" alt="captcha" class="w-20 h-auto" />
+                                                                     <svg width="48" height="48" onclick="refreshCaptchaContact()" class="inline-block align-middle cursor-pointer w-9 h-9">
+                             <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-refresh"></use>
+                         </svg>
+                                 </div>
+
+                             </div>
+                           </div>
+                    </script>
                                 </face>
-                            </basis> -->
+                            </basis>
                         </div>
                         <button
-                            class="check-contrast w-20 h-12 flex items-center justify-center text-white transition-all duration-300 data-body-btn bg-primary-600 rounded-xl hover:bg-secondary-600"
-                            type="button" data-btn-uploadContact><span class="">ارسال</span>
+                            class="check-contrast flex-shrink-0 w-20 h-12 flex items-center justify-center text-white transition-all duration-300 data-body-btn bg-primary-600 rounded-xl hover:bg-secondary-600"
+                            type="button" data-btn-uploadContact>
+                            <span class="">ارسال</span>
                         </button>
-
                     </div>
                     <div
                         class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 bg-secondary-800 rounded-2xl justify-center items-center gap-2.5">
@@ -392,22 +386,21 @@
             </div>
         </section>
 
-        <basis core="group" if="'[##cms.host.faq_contact##]' <> ''">
+        <basis core="group" if="'[##cms.host.faq##]' <> ''">
             <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-20">
-                <basis core="list" datamembername="faq_contact.cat">
-                    <face filter="catid in([##cms.host.faq_contact##])">
+                <basis core="list" datamembername="faq.cat">
+                    <face filter="catid in([##cms.host.faq##])">
                         <h2 class="highlight-rest text-3xl text-zinc-900 mb-3">@title</h2>
                         <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
                     </face>
                 </basis>
-                <basis core="list" datamembername="faq_contact.list">
+                <basis core="list" datamembername="faq.list">
                     <layout>
                         <div class="w-full mt-9">
                             <div class="tabs relative overflow-hidden">
                                 <div
                                     class="tabs-container flex items-center gap-8 border-b-2 border-solid border-zinc-200 pb-4">
-                                    @child
-                                </div>
+                                    @child</div>
                                 <div
                                     class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300">
                                 </div>
@@ -416,20 +409,18 @@
                     </layout>
                     <face>
                         <button class="faq-fetch-btn font-medium transition-all duration-300 hover:text-primary-600"
-                            data-id="@id" data-src="@image">@title</button>
+                            data-id="@id" data-src="@image">
+                            @title
+                        </button>
                     </face>
                 </basis>
 
-
-                <div
-                    class="flex items-center justify-center gap-6 mt-16 tabs-content fetch-content-faq min-h-60">
-
-                </div>
+                <div class="flex items-center justify-center gap-6 mt-16 tabs-content fetch-content-faq min-h-60"></div>
             </section>
         </basis>
     </main>
 
-    <basis core="call" file="template-footer.inc" pageindexid="1"/>
+    <basis core="call" file="template-footer.inc" pageindexid="1" />
 </body>
 
 </html>

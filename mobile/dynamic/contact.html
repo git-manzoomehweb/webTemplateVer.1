@@ -1,15 +1,25 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq">
+    <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq##]" order="ord"
+        postsql="select * from [faq.cat] where catid in([##cms.host.faq##]) or parentid in([##cms.host.faq##])">
+    </member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq" catid="[##cms.host.faq##]">
+    <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="our_services" usedforid="2382517">
+    <member name="view" type="view" size="" propertyid="" />
+</basis>
+<basis core="dbsource" source="media" lid="1" name="our_services" usedforid="2382517" sourcemid="article">
+    <member type="list" name="gallery" format="4" order="ord"></member>
+</basis>
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+<basis core="call" file="head-elements.inc" pageindexid="2" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <basis core="call" file="style.inc" />
-</head>
 
 <body>
-    <basis core="call" file="template-header.inc" />
+    <basis core="call" file="template-header.inc" pageindexid="2" />
     <main data-activepage="contact">
         <section class="relative bg-contact bg-center bg-cover py-20">
             <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
@@ -17,242 +27,390 @@
                 <div class="bg-specialcolor-3 rounded-xl py-4 px-10">
                     <h1 class="font-bold text-white">درباره ما</h1>
                 </div>
-                <div class="text-white text-xs">صفحه اصلی / درباره ما</div>
+                <div class="relative flex items-center gap-1">
+                    <a href="/" class="text-white text-xs transition-all duration-300 hover:text-primary-700">خانه</a>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+                    </svg>
+                    <span class="text-primary-600 text-xs">درباره ما</span>
+                </div>
             </div>
         </section>
-        <section class="content-box mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
-            <h2 class="text-zinc-900 font-bold mb-3">درباره ما</h2>
-            <div class="content-inner text-xs text-justify hyphens-auto text-zinc-900 leading-5">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و
-                متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
-                کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده،
-                شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-                الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و
-                دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
-                اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. لورم ایپسوم متن ساختگی
-                با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
-                مجله در ستون و سطرآنچنان که لازم
-                شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-                الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و
-                دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
-                اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. لورم ایپسوم متن ساختگی
-                با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
-                مجله در ستون و سطرآنچنان که لازم
-            </div>
-            <button class="see-more w-full text-center text-xs text-blue-500 mt-4" data-max="320">بیشتر بخوانید</button>
-        </section>
+        <basis core="print" datamembername="db.info">
+            <layout>
+                <section class="content-box mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
+                    @child
+                    <button class="see-more w-full text-center text-xs text-blue-500 mt-4" data-max="320">بیشتر
+                        بخوانید</button>
+                </section>
+            </layout>
+            <face filter="TypeID in(150)">
+                <h2 class="text-zinc-900 font-bold mb-3">@text</h2>
+            </face>
+            <face filter="TypeID in(144)">
+                <div class="content-inner text-xs text-justify hyphens-auto text-zinc-900 leading-5">@largetext</div>
+            </face>
+        </basis>
 
         <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-16">
-            <div class="rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
-                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/map.png" class="w-full h-44 object-cover rounded-2xl" alt="" width="288"
-                    height="176" loading="lazy">
-            </div>
+            <basis core="print" datamembername="db.info">
+                <layout>
+                    <div class="rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">@child</div>
+                </layout>
+                <face filter="prpID=91462">
+                    <iframe defer title="location" class="w-full h-44 object-cover rounded-2xl" width="288" height="176"
+                        loading="lazy" target="_blank" allowfullscreen
+                        src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed"></iframe>
+                </face>
+            </basis>
+
             <div class="mt-4">
                 <h2 class="text-zinc-900 font-medium text-2xl mb-7">ارتباط با ما</h2>
                 <div class="flex flex-col gap-3 mt-9">
-                    <div class="flex items-start gap-3">
-                        <svg width="24" height="24" class="flex-shrink-0">
-                            <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-location"></use>
-                        </svg>
-                        <div class="text-xs text-zinc-900 text-justify">تهران، میدان انقلاب، ابتدای خیابان آزادی، جنب
-                            کوچه مهرناز،
-                            پاساژ ایران، طبقه ۲، واحد ۹۳</div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <svg width="24" height="24" class="flex-shrink-0">
-                            <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-phone"></use>
-                        </svg>
-                        <div class="flex items-center flex-wrap phone-number">
-                            <div class="text-xs text-zinc-900">09202400580</div>
-                            <div class="text-xs text-zinc-900">09202400580</div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <svg width="24" height="24" class="flex-shrink-0">
-                            <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-mail"></use>
-                        </svg>
-                        <div class="text-xs text-zinc-900">support@travila.com</div>
-                    </div>
+                    <basis core="print" datamembername="db.info">
+                        <layout>
+                            <div class="empty-face-fields flex items-start gap-3">
+                                <svg width="24" height="24" class="flex-shrink-0">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-location"></use>
+                                </svg>
+                                @child
+                            </div>
+                        </layout>
+                        <face filter="TypeID in(244)">
+                            <div class="empty-face-fields text-xs text-zinc-900 text-justify">@largetext</div>
+                        </face>
+                    </basis>
+
+                    <basis core="print" datamembername="db.info">
+                        <layout>
+                            <div class="empty-face-fields flex items-center gap-3">
+                                <svg width="24" height="24" class="flex-shrink-0">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-phone"></use>
+                                </svg>
+                                <div class="empty-face-text flex items-center flex-wrap phone-number">
+                                    @child
+                                </div>
+                            </div>
+                        </layout>
+                        <face filter="TypeID in(240)">
+                            <a href="tel:@text" class="text-xs text-zinc-900">09202400580</a>
+                        </face>
+                    </basis>
+
+                    <basis core="print" datamembername="db.info">
+                        <face filter="TypeID in(242)">
+                            <a href="mailto:@text" class="empty-face-fields flex items-center gap-3">
+                                <svg width="24" height="24" class="flex-shrink-0">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-mail"></use>
+                                </svg>
+                                <div class="empty-face-text text-xs text-zinc-900">@text</div>
+                            </a>
+                        </face>
+                    </basis>
+
                 </div>
-                <ul class="grid grid-cols-3 mt-7 gap-y-2">
-                    <li class="justify-self-start">
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
-                            class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                    w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600">
-                            <svg width="16" height="12">
-                                <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-twitter"></use>
-                            </svg>
-                            <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                           transform translate-y-full -bottom-1 -z-10 bg-client 
-                                           group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
-                    </li>
-                    <li class="justify-self-center">
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-                            class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                    w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600">
-                            <svg width="14" height="14">
-                                <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-instagram"></use>
-                            </svg>
-                            <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out
-                                           transform translate-y-full -bottom-1 -z-10 bg-client
-                                           group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
-                    </li>
-                    <li class="justify-self-end">
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-                            class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                    w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600">
-                            <svg width="10" height="16">
-                                <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-facebook"></use>
-                            </svg>
-                            <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                           transform translate-y-full -bottom-1 -z-10 bg-client 
-                                           group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
-                    </li>
-                    <li class="justify-self-start">
-                        <a href="https://t.me" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                    w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600">
-                            <svg width="32" height="32">
-                                <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-telegram"></use>
-                            </svg>
-                            <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                           transform translate-y-full -bottom-1 -z-10 bg-client
-                                           group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
-                    </li>
-                    <li class="justify-self-center">
-                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
-                            class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                    w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600">
-                            <svg width="32" height="32">
-                                <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-youtube"></use>
-                            </svg>
-                            <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                           transform translate-y-full -bottom-1 -z-10 bg-client
-                                           group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
-                    </li>
-                    <li class="justify-self-end">
-                        <a href="https://aparat.com" target="_blank" rel="noopener noreferrer" aria-label="Aparat"
-                            class="group relative z-10 overflow-hidden flex items-center justify-center 
-                                    w-12 h-12 rounded-full bg-primary-600 border-2 border-solid border-primary-600">
-                            <svg width="32" height="32">
-                                <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-aparat"></use>
-                            </svg>
-                            <span class="absolute left-0 w-full h-full transition-transform duration-300 ease-out 
-                                           transform translate-y-full -bottom-1 -z-10 bg-client
-                                           group-hover:translate-y-0 group-hover:bottom-0"></span>
-                        </a>
-                    </li>
-                </ul>
+                <basis core="print" datamembername="db.info">
+                    <layout>
+                        <ul class="grid grid-cols-3 mt-7 gap-y-2">
+                            @child
+                        </ul>
+                    </layout>
+                    <face filter="TypeID in('245') and text in('توییتر')">
+                        <li class="justify-self-start">
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="16" height="12">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-twitter"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in('245') and text in('اینستاگرام')">
+                        <li class="justify-self-center">
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="14" height="14">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-instagram"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in('245') and text in('فیس بوک')">
+                        <li class="justify-self-end">
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="10" height="16">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-facebook"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in('245') and text in('تلگرام')">
+                        <li class="justify-self-start">
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Telegram"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="32" height="32">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-telegram"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in('245') and text in('واتس اپ')">
+                        <li class="justify-self-center">
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Whatsapp"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="32" height="32">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-whatsapp"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in('245') and text in('لینکدین')">
+                        <li class="justify-self-end">
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Linkdin"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="32" height="32">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-linkdin"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in('245') and text in('یوتیوب')">
+                        <li class="justify-self-start">
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="32" height="32">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-youtube"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in('245') and text in('آپارات')">
+                        <li class="justify-self-center">
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Aparat"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="32" height="32">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-aparat"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in('245') and text in('ایتا')">
+                        <li class="justify-self-end">
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="eita"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="14" height="14">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-eita"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in('245') and text in('بله')">
+                        <li class="justify-self-start">
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Bale"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="14" height="14">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-bale"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in('245') and text in('روبیکا')">
+                        <li class="justify-self-center">
+                            <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Rubika"
+                                class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
+                                <svg width="20" height="20">
+                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-rubika"></use>
+                                </svg>
+                                <span
+                                    class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                            </a>
+                        </li>
+                    </face>
+                </basis>
+
             </div>
 
         </section>
 
-        <section class="flex flex-col gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
-            <div class="rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
-                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/helpdesk.jpg" class="w-full h-44 object-cover rounded-2xl" alt="" width="288"
-                    height="176" loading="lazy">
-            </div>
-            <h2 class="text-zinc-900 font-bold">خدمات ما</h2>
-            <div class="text-xs text-justify hyphens-auto text-zinc-900 leading-5">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و
-                متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
-                کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده،
-                شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-                الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و
-                دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
-                اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. لورم ایپسوم متن ساختگی
-            </div>
-        </section>
+        <basis core="group" if="'[##cms.host.our_services##]' <> ''">
+            <section class="flex flex-col gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
+                <basis core="print" datamembername="our_services.gallery">
+                    <layout>
+                        <div class="rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
+                            @child
+                        </div>
+                    </layout>
+                    <face filter="ord in(1)">
+                        <img src="\@largeIMG" class="w-full h-44 object-cover rounded-2xl" alt="@name" width="288"
+                            height="176" loading="lazy" />
+                    </face>
+                </basis>
+                <basis core="print" datamembername="our_services.view">
+                    <face filter="TypeID in(150)">
+                        <h2 class="text-zinc-900 font-bold">@text</h2>
+                    </face>
+                    <face filter="TypeID in(129)">
+                        <div class="text-xs text-justify hyphens-auto text-zinc-900 leading-5">
+                            @largetext
+                        </div>
+                    </face>
+                </basis>
+            </section>
+        </basis>
 
-        <section class="flex flex-col gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
-            <div class="rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
-                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/team.jpg" class="w-full h-44 object-cover rounded-2xl" alt="" width="288"
-                    height="176" loading="lazy">
-            </div>
-            <h2 class="text-zinc-900 font-bold">اهداف تیم</h2>
-            <div class="text-xs text-justify hyphens-auto text-zinc-900 leading-5">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و
-                متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
-                کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده،
-                شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-                الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و
-                دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
-                اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. لورم ایپسوم متن ساختگی
-            </div>
-        </section>
+        <basis core="group" if="'[##cms.host.our_services##]' <> ''">
+            <section class="flex flex-col gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
+                <basis core="print" datamembername="our_services.gallery">
+                    <layout>
+                        <div class="rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
+                            @child
+                        </div>
+                    </layout>
+                    <face filter="ord in(1)">
+                        <img src="\@largeIMG" class="w-full h-44 object-cover rounded-2xl" alt="@name" width="288"
+                            height="176" loading="lazy" />
+                    </face>
+                </basis>
+                <basis core="print" datamembername="our_services.view">
+                    <face filter="TypeID in(250)">
+                        <h2 class="text-zinc-900 font-bold">@text</h2>
+                        <div class="text-xs text-justify hyphens-auto text-zinc-900 leading-5">
+                            @largetext
+                        </div>
+                    </face>
+                </basis>
+            </section>
+        </basis>
 
         <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
             <div class="gradient-border from-primary-600 bg-zinc-100 py-3 px-2 rounded-2xl">
-                <h2 class="text-zinc-900 mb-4">ارتباط با <span class="font-bold text-primary-600">کارشناسان ما</span></h2>
+                <h2 class="text-zinc-900 mb-4">ارتباط با <span class="font-bold text-primary-600">کارشناسان ما</span>
+                </h2>
+                <div class="flex mx-auto contact-form" id="contact-form-resize">
+                    <basis core="schema" run="atclient"
+                        schemaurl="/schema/domainform/[##cms.host.contactFormId1##]/[##cms.host.contactFormId2##]/fa/ارتباط-با-کارشناسان-ما"
+                        displaymode="new" button="[data-btn-uploadContact]" resultsourceid="upload.dataContact"
+                        OnRendered="RenderFormContact"></basis>
+                    <basis core="api" if="{##cms.uploadContact.run|(false)##}" run="atclient"
+                        url="/schema/domainform/[##cms.host.contactFormId1##]/fa/editobject" method="post"
+                        body="object_edit={##cms.uploadContact.value##}&captcha={##cms.uploadContact.captcha##}&captchaid={##cms.uploadContact.captchaid##}"
+                        content-type="application/x-www-form-urlencoded" triggers="cms.uploadContact"
+                        OnProcessed="OnProcessedEditObjectContact"></basis>
+                    <basis core="callback" run="atclient" method="uploadDocumentContact" triggers="upload.dataContact">
+                    </basis>
+
+                    <div class="captcha-button flex gap-4 items-center justify-between">
+                        <div id="captchaContainer" class="captchaContainerclass captcha-sefaresh w-auto"
+                            data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                            data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                            <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                                triggers="captcha.refreshContact">
+                                <member name="code" type="scalar" request="captcha"></member>
+                            </basis>
+                            <basis datamembername="captcha.code" core="print" run="atclient">
+                                <face>
+                                    <script type="text/template">
+                      <div class="d-inline-block"><div class="flex gap-4">
+
+                                 <div class="float-right w-[323px] mr-1"><input type="text" class="!w-32 contactUsInput codeinputm" name="captcha" maxlength="4" placeholder="کد امنیتی"/><input type="hidden" name="captchaid" value="@captcha@" /></div>
+                                 <div class="flex items-center gap-2">
+                                     <img src="/@captcha@" loading="lazy" width="120" height="60" alt="captcha" class="w-20 h-auto" />
+                                                                     <svg width="48" height="48" onclick="refreshCaptchaContact()" class="inline-block align-middle cursor-pointer w-9 h-9">
+                             <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-refresh"></use>
+                         </svg>
+                                 </div>
+
+                             </div>
+                           </div>
+                    </script>
+                                </face>
+                            </basis>
+                        </div>
+                        <button
+                            class="check-contrast flex-shrink-0 w-20 h-12 flex items-center justify-center text-white transition-all duration-300 data-body-btn bg-primary-600 rounded-xl hover:bg-secondary-600"
+                            type="button" data-btn-uploadContact>
+                            <span class="">ارسال</span>
+                        </button>
+                    </div>
+                    <div
+                        class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 bg-secondary-800 rounded-2xl justify-center items-center gap-2.5">
+                        <div id="ballsWaveG" class="text-base font-normal leading-normal ext-zinc-50">
+                            <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                            <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                            <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                            <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                            <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                            <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                            <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                            <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center text-primary-600 message-api"></div>
+                </div>
             </div>
         </section>
 
-        <section class="mt-6">
-            <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
-              <h2 class="highlight-rest text-zinc-900 mb-3">سوالات متداول</h2>
-              <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">لورم ایپسوم متن ساختگی با تولید سادگی
-                نامفهوم از صنعت چاپ، و با استفاده</div>
-              <div class="w-full mt-3">
-                <div class="tabs relative overflow-hidden">
-                  <div
-                    class="tabs-container flex items-center gap-8 overflow-x-auto scrollbar-thin whitespace-nowrap border-b-2 border-solid border-zinc-200 pb-4">
-                    <button class="flex-1 text-primary-600 text-sm font-medium px-2" data-index="0">پرواز</button>
-                    <button class="flex-1 text-primary-600 text-sm font-medium px-2" data-index="1">هتل</button>
-                    <button class="flex-1 text-primary-600 text-sm font-medium px-2" data-index="2">هتل + پرواز</button>
-                    <button class="flex-1 text-primary-600 text-sm font-medium px-2" data-index="3">تور</button>
-                  </div>
-                  <div class="active-line absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300"></div>
+        <basis core="group" if="'[##cms.host.faq##]' <> ''">
+            <section class="mt-10">
+                <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
+                    <basis core="list" datamembername="faq.cat">
+                        <face filter="catid in([##cms.host.faq##])">
+                            <h2 class="highlight-rest text-zinc-900 mb-3">@title</h2>
+                            <div class="text-zinc-500 text-xs text-justify hyphens-auto leading-5">@urldescription</div>
+                        </face>
+                    </basis>
+
+                    <basis core="list" datamembername="faq.list">
+                        <layout>
+                            <div class="w-full mt-3">
+                                <div class="tabs relative overflow-hidden">
+                                    <div
+                                        class="tabs-container flex items-center gap-8 overflow-x-auto scrollbar-thin whitespace-nowrap border-b-2 border-solid border-zinc-200 pb-4">
+                                        @child
+                                    </div>
+                                    <div
+                                        class="active-line absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300">
+                                    </div>
+                                </div>
+                            </div>
+                        </layout>
+                        <face>
+                            <button class="faq-fetch-btn flex-1 text-primary-600 text-sm font-medium px-2" data-id="@id"
+                                data-src="@image">@title</button>
+                        </face>
+                    </basis>
+
                 </div>
-              </div>
-            </div>
-            <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-16 tabs-content">
-              <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/faq-img.jpg" class="w-full h-[346px] object-cover rounded-3xl" alt="" width="288"
-                height="346" loading="lazy" />
-              <div class="flex flex-col gap-3 mt-6">
-                <div class="relative faq-border pr-2">
-                  <div class="faq-content rounded-xl p-3 bg-zinc-100 transition-all duration-300">
-                    <h3 class="faq-question text-zinc-900 text-sm font-bold cursor-pointer">برای دریافت راهنمای سفر باید چه
-                      کاری انجام دهیم؟</h3>
-                    <div class="faq-answer text-justify text-zinc-900 text-xs hyphens-auto leading-5 max-h-0 overflow-hidden">
-                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و
-                      متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی
-                      مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته
-                      حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را
-                      برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می
-                      توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و
-                      زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد
-                      استفاده قرار گیرد. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-                      استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-                    </div>
-                  </div>
+                <div class="fetch-content-faq tabs-content flex items-center justify-center min-h-80">
+
                 </div>
-                <div class="relative faq-border pr-2">
-                  <div class="faq-content rounded-xl p-3 bg-zinc-100 transition-all duration-300">
-                    <h3 class="faq-question text-zinc-900 text-sm font-bold cursor-pointer">برای دریافت راهنمای سفر باید چه
-                      کاری انجام دهیم؟</h3>
-                    <div class="faq-answer text-justify text-zinc-900 text-xs hyphens-auto leading-5 max-h-0 overflow-hidden">
-                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و
-                      متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی
-                      مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته
-                      حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را
-                      برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می
-                      توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و
-                      زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد
-                      استفاده قرار گیرد. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-                      استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+
+            </section>
+        </basis>
     </main>
 
-    <basis core="call" file="template-footer.inc" />
+    <basis core="call" file="template-footer.inc" pageindexid="2" />
 </body>
 
 </html>
