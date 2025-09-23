@@ -1610,7 +1610,7 @@
 }
 
 .flighttype-field.flighttype-dropDown .flighttype-field-icon {
-  position: unset !important;
+  left: 8px;
   display: block !important;
 }
 

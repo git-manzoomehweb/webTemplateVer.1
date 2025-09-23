@@ -14,6 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const filterPanel = document.querySelector('.filters-panel')
   const paging = document.getElementById('paging')
+  let noResults = document.createElement('div')
+  noResults.id = 'noResults'
+  noResults.style.display = 'none'
+
+  noResults.innerHTML = `
+  <div class="flex flex-col items-center justify-center h-full">
+    <h2 class="text-3xl font-bold mb-2">هیچ موردی پیدا نشد!</h2>
+    <p class="text-lg mb-6">لطفاً فیلترها را تغییر دهید یا دوباره جستجو کنید</p>
+  </div>
+`
+  if (paging && paging.parentNode) {
+    paging.parentNode.insertBefore(noResults, paging.nextSibling)
+  }
 
   const normalizeText = (text) => String(text).replace(/\s/g, '').toLowerCase()
 
@@ -167,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function filterCards() {
     const priceActive = isPriceFilterActive()
 
-    let visibleCount = 0 
+    let visibleCount = 0
 
     cards.forEach((card) => {
       const price = parsePrice(
@@ -187,13 +200,14 @@ document.addEventListener('DOMContentLoaded', () => {
         selectedAirlines.size === 0 || selectedAirlines.has(airline)
       const matchDays = selectedDays.size === 0 || selectedDays.has(days)
 
-      const isMatch = matchPrice && matchAirline && matchDays 
+      const isMatch = matchPrice && matchAirline && matchDays
       card.style.display = isMatch ? '' : 'none'
 
-      if (isMatch) visibleCount++ 
+      if (isMatch) visibleCount++
     })
 
     if (paging) paging.style.display = visibleCount === 0 ? 'none' : ''
+    if (noResults) noResults.style.display = visibleCount === 0 ? '' : 'none'
   }
 
   function updatePriceRange() {
@@ -285,7 +299,20 @@ document.addEventListener('DOMContentLoaded', () => {
 // ----filter hotelList card------
 document.addEventListener('DOMContentLoaded', function () {
   const hotelCards = document.querySelectorAll('.hotel-card')
-  const paging = document.getElementById('paging');
+  const paging = document.getElementById('paging')
+  let noResults = document.createElement('div')
+  noResults.id = 'noResults'
+  noResults.style.display = 'none'
+
+  noResults.innerHTML = `
+  <div class="flex flex-col items-center justify-center h-full">
+    <h2 class="text-3xl font-bold mb-2">هیچ موردی پیدا نشد!</h2>
+    <p class="text-lg mb-6">لطفاً فیلترها را تغییر دهید یا دوباره جستجو کنید</p>
+  </div>
+`
+  if (paging && paging.parentNode) {
+    paging.parentNode.insertBefore(noResults, paging.nextSibling)
+  }
 
   let activeCityFilters = new Set()
   let activeRatingFilters = new Set()
@@ -449,7 +476,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function applyFilters() {
-    let visibleCount = 0; 
+    let visibleCount = 0
     hotelCards.forEach((card) => {
       const name = (card.dataset.name || '').toLowerCase()
       const city = (card.dataset.city || '').toLowerCase()
@@ -465,9 +492,10 @@ document.addEventListener('DOMContentLoaded', function () {
       if (price < realMin || price > realMax) match = false
 
       card.style.display = match ? 'flex' : 'none'
-      if (match) visibleCount++ 
+      if (match) visibleCount++
     })
     if (paging) paging.style.display = visibleCount === 0 ? 'none' : ''
+    if (noResults) noResults.style.display = visibleCount === 0 ? '' : 'none'
   }
 
   const nameInput = document.getElementById('hotelNameFilter')
