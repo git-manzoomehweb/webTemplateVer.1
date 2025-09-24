@@ -19,7 +19,7 @@
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour_category">
   <member name="cat" type="tree" request="cat" parentid="[##cms.host.tour_category##]" order="ord"
-    postsql="select * from [tour_category.cat] where catid in([##cms.host.tour_category##]) or parentid in([##cms.host.tour_category##])">
+    postsql="select * from [tour_category.cat] where catid in([##cms.host.tour_category##]) or parentid in([##cms.host.tour_category##]) limit 20">
   </member>
 </basis>
 
