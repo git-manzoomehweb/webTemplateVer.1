@@ -2,6 +2,9 @@
     <member name="info" type="view" />
 </basis>
 <basis core="group" if="'[##cms.cms.page_index##]' = 'نمایه پیش فرض'">
+    <basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour">
+        <member name="cat" type="tree" request="cat" parentid="217445" order="ord"></member>
+    </basis>
     <header>
         <section class="relative z-30 bg-white mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl pt-6">
             <div class="flex items-center justify-between">
@@ -10,273 +13,39 @@
                         class="flex items-stretch w-full h-full justify-between border-b border-solid pb-4 border-zinc-300">
                         <div class="flex items-center gap-6">
                             <a href="/">
-                                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/logo.png" alt="logo-header" width="80" height="50"
-                                    loading="lazy" class="w-20 h-auto transition-all duration-300 hover:scale-90" />
+                                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/logo.png" alt="logo-header"
+                                    width="80" height="50" loading="lazy"
+                                    class="w-20 h-auto transition-all duration-300 hover:scale-90" />
                             </a>
 
                             <nav class="header-nav flex h-full">
-                                <ul class="nav-menu flex items-center lg:gap-4 xl:gap-8">
-                                    <li class="relative flex items-center h-full group">
-                                        <a href="/"
-                                            class="group flex items-center lg:text-xs xl:text-base h-full transition-all duration-300 text-zinc-900 hover:text-primary-600"
-                                            data-activepage="home">صفحه اصلی
-                                            <span
-                                                class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-0.5 bg-primary-600 group-hover:w-full"></span>
-                                        </a>
-                                    </li>
-                                    <li class="relative flex items-center h-full group">
-                                        <a href="Hotels"
-                                            class="relative group flex items-center gap-4 transition-all duration-300 h-full text-zinc-900 hover:text-primary-600 lg:text-xs xl:text-base"
-                                            data-activepage="tours">
-                                            تور ها
-                                            <svg width="25" height="24"
-                                                class="transition-all duration-300 group-hover:rotate-180 group-hover:fill-primary-600 lg:w-4 lg:h-4 xl:w-6 xl:h-6"
-                                                viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path class="transition-all duration-300 group-hover:fill-primary-900"
-                                                    fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M19.0018 7.4392L12.0018 14.4392L5.00183 7.4392L3.94113 8.4999L12.0018 16.5605L20.0625 8.4999L19.0018 7.4392Z"
-                                                    fill="currentColor" />
-                                            </svg>
-                                            <span
-                                                class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-0.5 bg-primary-600 group-hover:w-full"></span>
-                                        </a>
+                                <ul class="header-fetch-container nav-menu flex items-center lg:gap-4 xl:gap-8"
+                                    data-header-json='[##cms.host.data_header_json##]'>
 
-                                        <!-- submenu first level -->
-                                        <ul
-                                            class="absolute z-30 flex flex-col invisible max-h-72 overflo  -y-auto submenu-scroll w-56 gap-0.5 p-2 font-medium transition-all duration-300 bg-white/90 backdrop-blur-md border border-solid border-primary-100 shadow-lg opacity-0 rounded-xl top-16 translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0">
-                                            <li
-                                                class="relative group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                <div class="flex items-center justify-between">
-                                                    <a href=""
-                                                        class="block text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">ویزای
-                                                        شینگن</a>
-                                                    <svg width="25" height="24"
-                                                        class="transition-all duration-300 group-hover/leveltwo:rotate-90 lg:w-4 lg:h-4 xl:w-6 xl:h-6"
-                                                        viewBox="0 0 25 24" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            class="transition-all duration-[30ms] group-hover/leveltwo:fill-white"
-                                                            fill-rule="evenodd" clip-rule="evenodd"
-                                                            d="M19.0018 7.4392L12.0018 14.4392L5.00183 7.4392L3.94113 8.4999L12.0018 16.5605L20.0625 8.4999L19.0018 7.4392Z"
-                                                            fill="currentColor" />
-                                                    </svg>
-                                                </div>
-                                                <!-- submenu second level -->
-                                                <ul
-                                                    class="absolute z-30 flex flex-col invisible w-56 gap-0.5 p-2 font-medium transition-all duration-300 bg-white/95 backdrop-blur-md border border-solid border-primary-100 shadow-lg opacity-0 rounded-xl top-0 right-full translate-y-2 group-hover/leveltwo:visible group-hover/leveltwo:opacity-100 group-hover/leveltwo:translate-y-0">
-                                                    <li
-                                                        class="group/levelthree px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                        <div class="flex items-center justify-between">
-                                                            <a href=""
-                                                                class="block text-zinc-800 transition-all duration-[30ms] group-hover/levelthree:text-white">ویزای
-                                                                شینگن</a>
-                                                            <svg width="25" height="24"
-                                                                class="transition-all duration-300 group-hover/levelthree:rotate-90 lg:w-4 lg:h-4 xl:w-6 xl:h-6"
-                                                                viewBox="0 0 25 24" fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                <path
-                                                                    class="transition-all duration-[30ms] group-hover/levelthree:fill-white"
-                                                                    fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M19.0018 7.4392L12.0018 14.4392L5.00183 7.4392L3.94113 8.4999L12.0018 16.5605L20.0625 8.4999L19.0018 7.4392Z"
-                                                                    fill="currentColor" />
-                                                            </svg>
-                                                        </div>
-                                                        <!-- submenu third level -->
-                                                        <ul
-                                                            class="absolute z-30 flex flex-col invisible w-56 gap-0.5 p-2 font-medium transition-all duration-300 bg-white/95 backdrop-blur-md border border-solid border-primary-100 shadow-lg opacity-0 rounded-xl top-0 right-full translate-y-2 group-hover/levelthree:visible group-hover/levelthree:opacity-100 group-hover/levelthree:translate-y-0">
-                                                            <li
-                                                                class="group/levelfour flex items-center justify-between px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                                <a href=""
-                                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/levelfour:text-white">ویزای
-                                                                    شینگن</a>
-                                                                <svg width="25" height="24"
-                                                                    class="transition-all duration-300 group-hover/levelfour:rotate-90 lg:w-4 lg:h-4 xl:w-6 xl:h-6"
-                                                                    viewBox="0 0 25 24" fill="none"
-                                                                    xmlns="http://www.w3.org/2000/svg">
-                                                                    <path
-                                                                        class="transition-all duration-[30ms] group-hover/levelfour:fill-white"
-                                                                        fill-rule="evenodd" clip-rule="evenodd"
-                                                                        d="M19.0018 7.4392L12.0018 14.4392L5.00183 7.4392L3.94113 8.4999L12.0018 16.5605L20.0625 8.4999L19.0018 7.4392Z"
-                                                                        fill="currentColor" />
-                                                                </svg>
-                                                            </li>
-                                                            <li
-                                                                class="group/levelfour px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                                <a href=""
-                                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/levelfour:text-white">ویزای
-                                                                    شینگن</a>
-                                                            </li>
-                                                            <li
-                                                                class="group/levelfour px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                                <a href=""
-                                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/levelfour:text-white">ویزای
-                                                                    شینگن</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li
-                                                        class="group/levelthree px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                        <a href=""
-                                                            class="block text-zinc-800 transition-all duration-[30ms] group-hover/levelthree:text-white">ویزای
-                                                            شینگن</a>
-                                                    </li>
-                                                    <li
-                                                        class="group/levelthree px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                        <a href=""
-                                                            class="block text-zinc-800 transition-all duration-[30ms] group-hover/levelthree:text-white">ویزای
-                                                            شینگن</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li
-                                                class="group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                <a href=""
-                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">ویزای
-                                                    شینگن</a>
-                                            </li>
-                                            <li
-                                                class="group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                <a href=""
-                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">ویزای
-                                                    شینگن</a>
-                                            </li>
-                                            <li
-                                                class="group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                <a href=""
-                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">ویزای
-                                                    شینگن</a>
-                                            </li>
-                                            <li
-                                                class="group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                <a href=""
-                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">ویزای
-                                                    شینگن</a>
-                                            </li>
-                                        </ul>
-                                        <!-- submenu end -->
-                                    </li>
-                                    <li class="relative flex items-center h-full group">
-                                        <a href=""
-                                            class="relative group flex items-center gap-4 transition-all duration-300 h-full group text-zinc-900 hover:text-primary-600 lg:text-xs xl:text-base"
-                                            data-activepage="asesd">
-                                            خدمات سفارت
-                                            <svg width="25" height="24"
-                                                class="transition-all duration-300 group-hover:rotate-180 lg:w-4 lg:h-4 xl:w-6 xl:h-6"
-                                                viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    class="transition-all duration-300 group-hover:fill-primary-900"
-                                                    clip-rule="evenodd"
-                                                    d="M19.0018 7.4392L12.0018 14.4392L5.00183 7.4392L3.94113 8.4999L12.0018 16.5605L20.0625 8.4999L19.0018 7.4392Z"
-                                                    fill="#222222" />
-                                            </svg>
-                                            <span
-                                                class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-0.5 bg-primary-600 group-hover:w-full"></span>
-                                        </a>
-                                        <!-- submenu -->
-                                        <ul
-                                            class="absolute z-30 flex flex-col invisible max-h-72 overflow-y-auto submenu-scroll w-64 gap-0.5 p-2 font-medium transition-all duration-300 bg-white/80 backdrop-blur-md border border-solid border-primary-100 shadow-lg opacity-0 rounded-xl top-16 translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0">
-                                            <li
-                                                class="group/leveltwo check-contrast px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                <a href=""
-                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">ویزای
-                                                    شینگن</a>
-                                            </li>
-                                            <li
-                                                class="group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                <a href=""
-                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">ویزای
-                                                    شینگن</a>
-                                            </li>
-                                            <li
-                                                class="group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                <a href=""
-                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">ویزای
-                                                    شینگن</a>
-                                            </li>
-                                            <li
-                                                class="group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                <a href=""
-                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">ویزای
-                                                    شینگن</a>
-                                            </li>
-                                            <li
-                                                class="group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                <a href=""
-                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">ویزای
-                                                    شینگن</a>
-                                            </li>
-                                            <li
-                                                class="group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                <a href=""
-                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">ویزای
-                                                    شینگن</a>
-                                            </li>
-                                            <li
-                                                class="group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                <a href=""
-                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">ویزای
-                                                    شینگن</a>
-                                            </li>
-                                            <li
-                                                class="group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
-                                                <a href=""
-                                                    class="block text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">ویزای
-                                                    شینگن</a>
-                                            </li>
-                                        </ul>
-                                        <!-- submenu end -->
-                                    </li>
-                                    <li class="relative flex items-center h-full">
-                                        <a href=""
-                                            class="group flex items-center h-full transition-all duration-300 text-zinc-900 hover:text-primary-600 lg:text-xs xl:text-base"
-                                            data-activepage="article-list">اخبار گردشگری
-                                            <span
-                                                class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-0.5 bg-primary-600 group-hover:w-full"></span>
-                                        </a>
-                                    </li>
-                                    <li class="relative flex items-center h-full">
-                                        <a href="/" data-activepage="hotel-list"
-                                            class="group flex items-center h-full transition-all duration-300 text-zinc-900 hover:text-primary-600 lg:text-xs xl:text-base">
-                                            هتل
-                                            <span
-                                                class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-0.5 bg-primary-600 group-hover:w-full"></span>
-                                        </a>
-                                    </li>
-
-                                    <li class="relative flex items-center h-full">
-                                        <a href=""
-                                            class="group flex items-center h-full transition-all duration-300 text-zinc-900 hover:text-primary-600 lg:text-xs xl:text-base">ارتباط
-                                            با ما
-                                            <span
-                                                class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-0.5 bg-primary-600 group-hover:w-full"></span>
-                                        </a>
-                                    </li>
-                                    <li class="relative flex items-center h-full">
-                                        <a href=""
-                                            class="group flex items-center h-full transition-all duration-300 text-zinc-900 hover:text-primary-600 lg:text-xs xl:text-base">ارتباط
-                                            با ما
-                                            <span
-                                                class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-0.5 bg-primary-600 group-hover:w-full"></span>
-                                        </a>
-                                    </li>
                                 </ul>
                             </nav>
                         </div>
 
                         <div class="flex items-center gap-2 divide-x divide-x-reverse divide-zinc-200">
-                            <a href="tel:" class="group flex items-center">
-                                <span
-                                    class="phone-number-header relative text-sm font-medium text-zinc-900 transition-all duration-300 group-hover:text-primary-600">021-22889966
-                                    <span
-                                        class="absolute -bottom-2 right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
-                                </span>
-                                <svg width="48" height="48" class="phone-svg-header">
-                                    <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-headphone"></use>
-                                </svg>
-                            </a>
+                            <basis core="print" datamembername="db.info">
+                                <face filter="prpid in(8000)">
+                                    <a href="tel:@text" class="group flex items-center">
+                                        <span
+                                            class="phone-number-header relative text-sm font-medium text-zinc-900 transition-all duration-300 group-hover:text-primary-600">@text
+                                            <span
+                                                class="absolute -bottom-2 right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
+                                        </span>
+                                        <svg width="48" height="48" class="phone-svg-header">
+                                            <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-headphone"></use>
+                                        </svg>
+                                    </a>
+                                </face>
+                            </basis>
+
                             <div class="flex items-center gap-4 pr-2">
-                                <form method="get" action="/search-content.bc"
+                                <form method="get" action="/template-search-content.bc"
                                     class="search-form relative flex items-center border border-primary-100 bg-white rounded-lg overflow-hidden transition-all duration-300 hover:border-secondary-600 w-12 h-12 group">
+                                    <input type="hidden" name="q" value="all">
                                     <input
                                         class="search-input placeholder-gray-400 pl-10 text-sm pr-0 outline-none text-gray-400 font-semibold h-full w-0 transition-all duration-300"
                                         placeholder="جستجو کنید" aria-label="جستجو کنید" type="text" autocomplete="on"

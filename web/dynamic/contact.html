@@ -12,6 +12,9 @@
 <basis core="dbsource" source="media" lid="1" name="our_services" usedforid="2382517" sourcemid="article">
     <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
+<basis core="dbsource" source="media" name="db"  lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
+    <member name="info-gallery" type="list" format="4" order="ord"></member>
+  </basis>
 
 
 <!DOCTYPE html>
@@ -21,7 +24,15 @@
 <body>
     <basis core="call" file="template-header.inc" pageindexid="1" />
     <main data-activepage="contact">
-        <section class="relative bg-contact bg-center bg-cover py-24">
+        <section class="dynamic-bg relative bg-center bg-cover py-24">
+            <basis core="print" datamembername="db.info-gallery">
+                <face filter="largeIMG is null">
+                    <div class="dynamic-img" data-bg="../images/contact-background.jpg"></div>
+                </face>
+                <face>
+                    <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@largeIMG"></div>
+                </face>
+            </basis>
             <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
             <div class="relative z-10 flex flex-col items-center gap-2">
                 <div class="bg-specialcolor-3 rounded-xl py-5 px-10">
@@ -266,49 +277,14 @@
                         <h2 class="text-zinc-900 font-bold text-2xl mb-3">@text</h2>
                     </face>
                     <face filter="TypeID in(129)">
-
-                        <div class="text-sm text-justify hyphens-auto text-zinc-900 leading-5">
+                        <h2 class="text-zinc-900 font-bold text-2xl mb-3">@text</h2>
+                        <div class="revert-text-styles text-sm text-justify hyphens-auto text-zinc-900 leading-5">
                             @largetext
                         </div>
                     </face>
-                </basis>
-                <basis core="print" datamembername="our_services.gallery">
-                    <layout>
-                        <div class="flex-1 rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
-                            @child
-                        </div>
-                    </layout>
-                    <face filter="ord in(1)">
-                        <img src="\@largeIMG" class="w-full h-80 object-cover rounded-2xl" alt="@name" width="288"
-                            height="320" loading="lazy" />
-                    </face>
-                </basis>
-
-            </section>
-        </basis>
-
-        <basis core="group" if="'[##cms.host.our_services##]' <> ''">
-            <section class="flex items-center gap-9 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
-                <basis core="print" datamembername="our_services.gallery">
-                    <layout>
-                        <div class="flex-1 rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
-                            @child
-                        </div>
-                    </layout>
-                    <face filter="ord in(2)">
-                        <img src="\@largeIMG" class="w-full h-80 object-cover rounded-2xl" alt="@name" width="288"
-                            height="320" loading="lazy" />
-                    </face>
-                </basis>
-                <basis core="print" datamembername="our_services.view">
-                    <layout>
-                        <div class="flex-1">
-                            @child
-                        </div>
-                    </layout>
                     <face filter="TypeID in(250)">
                         <h2 class="text-zinc-900 font-bold text-2xl mb-3">@text</h2>
-                        <div class="text-sm text-justify hyphens-auto text-zinc-900 leading-5">
+                        <div class="revert-text-styles text-sm text-justify hyphens-auto text-zinc-900 leading-5">
                             @largetext
                         </div>
                     </face>

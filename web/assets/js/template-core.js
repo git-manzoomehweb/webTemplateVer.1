@@ -116,6 +116,83 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+//-----------fetch-menu-header------------
+document.addEventListener("DOMContentLoaded", async () => {
+  const container = document.querySelector(".header-fetch-container");
+  if (!container) return;
+
+  const jsonData = container.dataset.headerJson;
+  if (!jsonData) return;
+
+  let items;
+  try {
+    items = JSON.parse(jsonData);
+  } catch (err) {
+    console.error("Invalid JSON:", err);
+    return;
+  }
+
+  const fetchCache = new Map();
+
+  const fetchPromises = items.map(async (item) => {
+    try {
+      const fetchType = item.fetch;
+
+      if (fetchCache.has(fetchType)) {
+        return { item, html: fetchCache.get(fetchType) };
+      }
+
+      const res = await fetch(
+        `/template-load-items.bc?fetch=${encodeURIComponent(fetchType)}&catid=${item.catid}&mid=${item.mid}&v=${Date.now()}`
+      );
+
+      if (!res.ok) throw new Error(`خطا در fetch (${res.status})`);
+      let html = await res.text();
+
+      fetchCache.set(fetchType, html);
+
+      return { item, html };
+    } catch (err) {
+      console.error(err);
+      return { item, html: "" };
+    }
+  });
+
+  const results = await Promise.all(fetchPromises);
+
+  results.forEach(({ item, html }) => {
+    if (!html) return;
+
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+
+    const mainLink = tempDiv.querySelector(".header-mainLink-fetch");
+    if (mainLink) {
+      mainLink.href = item.mainLink;
+      if (item.activePage) mainLink.dataset.activepage = item.activePage;
+
+      const spanText = mainLink.querySelector(".header-fetch-text");
+      if (spanText) spanText.textContent = item.name;
+    }
+
+    if (item.submenu) {
+      const subLinks = tempDiv.querySelectorAll(".header-subLink-fetch");
+      subLinks.forEach((a) => {
+        const originalHref = a.getAttribute("href");
+        const queryString = originalHref.includes("?") ? originalHref.split("?")[1] : "";
+        a.href = item.subLinks + (queryString ? "?" + queryString : "");
+      });
+    }
+
+    container.innerHTML += tempDiv.innerHTML;
+  });
+
+  applyActivePage();
+  initSearchForm();
+});
+
+
+//----------open-menu-mobile------------
 document.addEventListener("DOMContentLoaded", function () {
   const headerMenu = document.querySelector(".header-menu");
   const headerMenuClose = document.querySelector(".header-menu-close");
@@ -148,30 +225,30 @@ document.addEventListener("DOMContentLoaded", function () {
   bars3.addEventListener("click", openMenu);
   headerMenuClose.addEventListener("click", closeMenu);
 
-  // Dropdown
-  const toggleDropdowns = document.querySelectorAll(".toggle-dropdown");
+  headerMenu.addEventListener("click", (e) => {
+    const toggle = e.target.closest(".toggle-dropdown");
+    if (!toggle) return;
 
-  toggleDropdowns.forEach((toggle) => {
     const submenu = toggle.nextElementSibling;
-    const dropdownIcon = toggle.querySelector(".dropdown-icon");
-
     if (!submenu) return;
 
-    toggle.addEventListener("click", function () {
-      const isOpen = submenu.style.maxHeight;
+    const dropdownIcon = toggle.querySelector(".dropdown-icon");
+    const isOpen = submenu.style.maxHeight;
 
-      if (isOpen) {
-        submenu.style.maxHeight = null;
-        submenu.style.opacity = "0";
-      } else {
-        submenu.style.maxHeight = submenu.scrollHeight + "px";
-        submenu.style.opacity = "1";
-      }
+    if (isOpen) {
+      submenu.style.maxHeight = null;
+      submenu.style.opacity = "0";
+    } else {
+      submenu.style.maxHeight = submenu.scrollHeight * 30 + "px";
+      submenu.style.opacity = "1";
+    }
 
-      if (dropdownIcon) dropdownIcon.classList.toggle("rotate-180");
-    });
+    if (dropdownIcon) dropdownIcon.classList.toggle("rotate-180");
+
+    e.stopPropagation(); 
   });
 });
+
 
 // ---------Section-order------------
 document.addEventListener("DOMContentLoaded", function () {
@@ -205,7 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ---------active header items------------
-document.addEventListener("DOMContentLoaded", () => {
+function applyActivePage() {
   const main = document.querySelector("main");
   if (!main) return;
 
@@ -221,27 +298,32 @@ document.addEventListener("DOMContentLoaded", () => {
         link.classList.remove("text-zinc-900");
         link.classList.add("text-primary-600");
 
-        if (!link.querySelector(".active-underline")) {
-          link.style.position = "relative"; 
-          link.insertAdjacentHTML(
-            "beforeend",
-            `<span class="active-underline absolute -bottom-px right-0 w-full transition-all duration-300 h-0.5 bg-primary-600"></span>`
-          );
+        if (window.innerWidth >= 1024) {
+          if (!link.querySelector(".active-underline")) {
+            link.style.position = "relative"; 
+            link.insertAdjacentHTML(
+              "beforeend",
+              `<span class="active-underline absolute -bottom-px right-0 w-full transition-all duration-300 h-0.5 bg-primary-600"></span>`
+            );
+          }
         }
 
-        const icon = link.closest("li, .toggle-dropdown")?.querySelector("use");
-        if (icon) {
-          const href = icon.getAttribute("href");
-          if (href.includes("-zinc")) {
-            icon.setAttribute("href", href.replace("-zinc", "-primary"));
+        if (window.innerWidth < 1024) {
+          const icon = link.closest("li, .toggle-dropdown")?.querySelector("use");
+          if (icon) {
+            const href = icon.getAttribute("href");
+            if (href.includes("-zinc")) {
+              icon.setAttribute("href", href.replace("-zinc", "-primary"));
+            }
           }
         }
       }
     });
-});
+};
+
 
 // -----------form header--------------
-document.addEventListener("DOMContentLoaded", function () {
+function initSearchForm() {
   const form = document.querySelector(".search-form");
   if (!form) return;
 
@@ -317,7 +399,7 @@ document.addEventListener("DOMContentLoaded", function () {
       input.focus();
     }
   });
-});
+};
 
 document.querySelectorAll(".highlight-rest").forEach((el) => {
   let words = el.textContent.trim().split(" ");
@@ -674,6 +756,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+//-----------dynamic-bg-----------------
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".dynamic-bg").forEach((section, index) => {
+    const imgSource = section.querySelector(".dynamic-img");
+    const bgUrl = imgSource?.dataset.bg?.trim();
+    if (bgUrl) {
+      section.style.setProperty("--bg", `url(${bgUrl})`);
+    } else {
+      section.style.setProperty("--bg", "none");
+    }
+  });
+});
+
 // ---------------shareBtn-----------------
 document.addEventListener("DOMContentLoaded", () => {
   const shareBtn = document.getElementById("shareBtn");
@@ -849,7 +944,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ({ btnClass, containerClass, type, swiperSelector, swiperVar, initialLoad }) => {
       const buttons = document.querySelectorAll(`.${btnClass}`);
       const container = document.querySelector(`.${containerClass}`);
-      if (!container || buttons.length === 0) return;
+      if (!container) return;
 
       async function loadContent(btn) {
         buttons.forEach((b) => b.classList.remove("active"));
@@ -913,21 +1008,18 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       buttons.forEach((btn) => btn.addEventListener("click", () => loadContent(btn)));
+      const allId = container.dataset.all_id;
 
-      if (buttons.length > 0) {
-        if (initialLoad) {
-          loadContent(buttons[0]);
-        } else {
-          const allId = container.getAttribute("data-all_id");
-          if (allId) {
-            const tempBtn = {
-              getAttribute: () => allId,
-              classList: { remove: () => {}, add: () => {} }
-            };
-            loadContent(tempBtn);
-          }
-        }
+      if (allId) {
+        const tempBtn = {
+          getAttribute: (attr) => attr === "data-id" ? allId : null,
+          classList: { remove: () => {}, add: () => {} }
+        };
+        loadContent(tempBtn);
+      } else if (buttons.length > 0) {
+        loadContent(buttons[0]);
       }
+      
     }
   );
 });
@@ -1009,6 +1101,62 @@ function bindArticleFilter() {
     }
   });
 }
+
+//-----------hotel and visa words-------------
+document.addEventListener('DOMContentLoaded', function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const qParam = urlParams.get('q');
+  if (qParam !== 'all') return;
+
+  const filters = [
+    {
+      wrapper: '.hotel-card-container',
+      items: '.hotel-card',
+      title: '.hotel-card-title',
+      keyword: ['hotel', 'هتل'],
+      containerTitle: '.hotel-container-title'
+    },
+    {
+      wrapper: '.visa-card-container',
+      items: '.visa-card',
+      title: '.visa-card-title',
+      keyword: ['visa', 'ویزا'],
+      containerTitle: '.visa-container-title'
+    }
+  ];
+
+  filters.forEach(filter => {
+    const container = document.querySelector(filter.wrapper);
+    const containerTitle = document.querySelector(filter.containerTitle);
+    if (!container) return;
+
+    const allItems = Array.from(container.querySelectorAll(filter.items));
+    if (allItems.length === 0) {
+      if (containerTitle) containerTitle.style.display = 'none';
+      container.style.display = 'none';
+      return;
+    }
+
+    container.innerHTML = '';
+    let hasMatch = false;
+
+    allItems.forEach(item => {
+      const titleEl = item.querySelector(filter.title);
+      const titleText = titleEl ? titleEl.textContent.toLowerCase() : '';
+      if (filter.keyword.some(kw => titleText.startsWith(kw))) {
+        const clone = item.cloneNode(true);
+        container.appendChild(clone);
+        hasMatch = true;
+      }
+    });
+
+    if (!hasMatch) {
+      if (containerTitle) containerTitle.style.display = 'none';
+      container.style.display = 'none';
+    }
+  });
+});
+
 
 //--------switch-comment-btn---------
 document.addEventListener('DOMContentLoaded', () => {
@@ -1265,7 +1413,7 @@ async function OnProcessedEditObjectContact(args) {
       "none";
     document.querySelector("#contact-form-resize .message-api").innerHTML =
       "درخواست شما با موفقیت ثبت شد.";
-      document.querySelector("#about-form .message-api").style.color =
+      document.querySelector("#contact-form-resize .message-api").style.color =
       "rgb(20 240 20)";
   } else {
     refreshCaptchaContact();
@@ -1275,7 +1423,7 @@ async function OnProcessedEditObjectContact(args) {
       ).style.display = "none";
       document.querySelector("#contact-form-resize .message-api").innerHTML =
         "خطایی رخ داده, لطفا مجدد اقدام کنید.";
-        document.querySelector("#about-form .message-api").style.color =
+        document.querySelector("#contact-form-resize .message-api").style.color =
         "rgb(220 38 38)";
     }, 2000);
   }

@@ -266,7 +266,6 @@
     </basis>
 </basis>
 
-
 <basis core="group" if="'[##cms.query.fetch##]' = 'faq'">
     <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.id##]">
         <member name="faq-list" type="view" size="" propertyid="" />
@@ -289,7 +288,8 @@
         </else-layout>
         <face filter="TypeID in(250)">
             <div class="relative faq-border pr-6">
-                <div class="relative faq-content rounded-xl p-6 bg-zinc-100 transition-all duration-300 cursor-pointer hover:gradient-border hover:from-primary-600 hover:rounded-xl hover:bg-primary-50">
+                <div
+                    class="relative faq-content rounded-xl p-6 bg-zinc-100 transition-all duration-300 cursor-pointer hover:gradient-border hover:from-primary-600 hover:rounded-xl hover:bg-primary-50">
                     <h3 class="faq-question text-zinc-900 font-bold">@text</h3>
                     <div
                         class="faq-answer text-justify text-zinc-900 text-xs hyphens-auto leading-5 max-h-0 overflow-hidden">
@@ -486,4 +486,156 @@
             </basis>
         </ul>
     </div>
+</basis>
+
+<basis core="group" if="'[##cms.query.fetch##]' = 'subMenu'">
+    <basis core="dbsource" source="basiscore" lid="1" mid="[##cms.query.mid##]" name="menu">
+        <member name="cat" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"></member>
+    </basis>
+    <basis core="tree" datamembername="menu.cat" idcol="catid" parentidcol="parentid" nullvalue="[##cms.query.catid##]">
+        <layout>
+            <li class="relative flex items-center h-full group">
+                <a href=""
+                    class="header-mainLink-fetch relative group flex items-center gap-4 transition-all duration-300 h-full text-zinc-900 hover:text-primary-600 lg:text-xs xl:text-base"
+                    data-activepage="">
+                    <span class="header-fetch-text"></span>
+                    <svg width="25" height="24"
+                        class="transition-all duration-300 group-hover:rotate-180 group-hover:fill-primary-600 lg:w-4 lg:h-4 xl:w-6 xl:h-6"
+                        viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="transition-all duration-300 group-hover:fill-primary-900" fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M19.0018 7.4392L12.0018 14.4392L5.00183 7.4392L3.94113 8.4999L12.0018 16.5605L20.0625 8.4999L19.0018 7.4392Z"
+                            fill="currentColor" />
+                    </svg>
+                    <span
+                        class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-0.5 bg-primary-600 group-hover:w-full"></span>
+                </a>
+
+                <!-- submenu first level -->
+                <ul
+                    class="absolute z-30 flex flex-col invisible max-h-72 overflo  -y-auto submenu-scroll w-56 gap-0.5 p-2 font-medium transition-all duration-300 bg-white/90 backdrop-blur-md border border-solid border-primary-100 shadow-lg opacity-0 rounded-xl top-16 translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0">
+                    @child
+                </ul>
+                <!-- submenu first level end -->
+            </li>
+        </layout>
+        <face level="end" filter="link is null">
+            <li
+                class="group/levelfour flex items-center justify-between px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
+                <a href="/test-list.bc?catid=@catid"
+                    class="header-subLink-fetch block flex-1 text-zinc-800 transition-all duration-[30ms] group-hover/levelfour:text-white">@title</a>
+            </li>
+        </face>
+        <face level="end">
+            <li
+                class="group/levelfour flex items-center justify-between px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
+                <a href="/@link"
+                    class="block flex-1 text-zinc-800 transition-all duration-[30ms] group-hover/levelfour:text-white">@title</a>
+            </li>
+        </face>
+        <face level="1" filter="link is null">
+            <li
+                class="relative group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
+                <div class="flex items-center justify-between">
+                    <a href="/test-list.bc?catid=@catid"
+                        class="header-subLink-fetch block flex-1 text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">@title</a>
+                    <svg width="25" height="24"
+                        class="transition-all duration-300 group-hover/leveltwo:rotate-90 lg:w-4 lg:h-4 xl:w-6 xl:h-6"
+                        viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="transition-all duration-[30ms] group-hover/leveltwo:fill-white" fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M19.0018 7.4392L12.0018 14.4392L5.00183 7.4392L3.94113 8.4999L12.0018 16.5605L20.0625 8.4999L19.0018 7.4392Z"
+                            fill="currentColor" />
+                    </svg>
+                </div>
+                <!-- submenu second level -->
+                <ul
+                    class="absolute z-30 flex flex-col invisible w-56 gap-0.5 p-2 font-medium transition-all duration-300 bg-white/95 backdrop-blur-md border border-solid border-primary-100 shadow-lg opacity-0 rounded-xl top-0 right-full translate-y-2 group-hover/leveltwo:visible group-hover/leveltwo:opacity-100 group-hover/leveltwo:translate-y-0">
+                    @child
+                </ul>
+                <!-- submenu second level end -->
+            </li>
+        </face>
+        <face level="1">
+            <li
+                class="relative group/leveltwo px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
+                <div class="flex items-center justify-between">
+                    <a href="/@link"
+                        class="block flex-1 text-zinc-800 transition-all duration-[30ms] group-hover/leveltwo:text-white">@title</a>
+                    <svg width="25" height="24"
+                        class="transition-all duration-300 group-hover/leveltwo:rotate-90 lg:w-4 lg:h-4 xl:w-6 xl:h-6"
+                        viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="transition-all duration-[30ms] group-hover/leveltwo:fill-white" fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M19.0018 7.4392L12.0018 14.4392L5.00183 7.4392L3.94113 8.4999L12.0018 16.5605L20.0625 8.4999L19.0018 7.4392Z"
+                            fill="currentColor" />
+                    </svg>
+                </div>
+                <!-- submenu second level -->
+                <ul
+                    class="absolute z-30 flex flex-col invisible w-56 gap-0.5 p-2 font-medium transition-all duration-300 bg-white/95 backdrop-blur-md border border-solid border-primary-100 shadow-lg opacity-0 rounded-xl top-0 right-full translate-y-2 group-hover/leveltwo:visible group-hover/leveltwo:opacity-100 group-hover/leveltwo:translate-y-0">
+                    @child
+                </ul>
+                <!-- submenu second level end -->
+            </li>
+        </face>
+        <face level="2" filter="link is null">
+            <li
+                class="group/levelthree px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
+                <div class="flex items-center justify-between">
+                    <a href="/test-list.bc?catid=@catid"
+                        class="header-subLink-fetch block flex-1 text-zinc-800 transition-all duration-[30ms] group-hover/levelthree:text-white">@title</a>
+                    <svg width="25" height="24"
+                        class="transition-all duration-300 group-hover/levelthree:rotate-90 lg:w-4 lg:h-4 xl:w-6 xl:h-6"
+                        viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="transition-all duration-[30ms] group-hover/levelthree:fill-white"
+                            fill-rule="evenodd" clip-rule="evenodd"
+                            d="M19.0018 7.4392L12.0018 14.4392L5.00183 7.4392L3.94113 8.4999L12.0018 16.5605L20.0625 8.4999L19.0018 7.4392Z"
+                            fill="currentColor" />
+                    </svg>
+                </div>
+                <!-- submenu third level -->
+                <ul
+                    class="absolute z-30 flex flex-col invisible w-56 gap-0.5 p-2 font-medium transition-all duration-300 bg-white/95 backdrop-blur-md border border-solid border-primary-100 shadow-lg opacity-0 rounded-xl top-0 right-full translate-y-2 group-hover/levelthree:visible group-hover/levelthree:opacity-100 group-hover/levelthree:translate-y-0">
+                    @child
+                </ul>
+                <!-- submenu third level end -->
+            </li>
+        </face>
+        <face level="2">
+            <li
+                class="group/levelthree px-3 py-2 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-primary-900 hover:to-primary-400 hover:-translate-y-px hover:shadow-lg">
+                <div class="flex items-center justify-between">
+                    <a href="/@link"
+                        class="block flex-1 text-zinc-800 transition-all duration-[30ms] group-hover/levelthree:text-white">@title</a>
+                    <svg width="25" height="24"
+                        class="transition-all duration-300 group-hover/levelthree:rotate-90 lg:w-4 lg:h-4 xl:w-6 xl:h-6"
+                        viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="transition-all duration-[30ms] group-hover/levelthree:fill-white"
+                            fill-rule="evenodd" clip-rule="evenodd"
+                            d="M19.0018 7.4392L12.0018 14.4392L5.00183 7.4392L3.94113 8.4999L12.0018 16.5605L20.0625 8.4999L19.0018 7.4392Z"
+                            fill="currentColor" />
+                    </svg>
+                </div>
+                <!-- submenu third level -->
+                <ul
+                    class="absolute z-30 flex flex-col invisible w-56 gap-0.5 p-2 font-medium transition-all duration-300 bg-white/95 backdrop-blur-md border border-solid border-primary-100 shadow-lg opacity-0 rounded-xl top-0 right-full translate-y-2 group-hover/levelthree:visible group-hover/levelthree:opacity-100 group-hover/levelthree:translate-y-0">
+                    @child
+                </ul>
+                <!-- submenu third level end -->
+            </li>
+        </face>
+    </basis>
+</basis>
+
+<basis core="group" if="'[##cms.query.fetch##]' = 'mainMenu'">
+    <li class="relative flex items-center h-full group">
+        <a href=""
+            class="header-mainLink-fetch group flex items-center lg:text-xs xl:text-base h-full transition-all duration-300 text-zinc-900 hover:text-primary-600"
+            data-activepage="">
+            <span class="header-fetch-text"></span>
+            <span
+                class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-0.5 bg-primary-600 group-hover:w-full"></span>
+        </a>
+      </li>
 </basis>

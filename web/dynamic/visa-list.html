@@ -1,8 +1,12 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="visa_group" catid="[##cms.query.catid##]">
-  <member name="list" type="list" link="visa.bc" propertyid="" perpage="8" order="ord" size="295x160"
+  <member name="list" type="list" link="visa.bc" propertyid="" perpage="12" order="ord" size="295x160"
     pageno="[##cms.query.pagenum|(1)##]" />
   <member name="paging" type="list" request="paging" count="3" parentname="list" />
-
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="visa_group">
+  <member name="image" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"
+    postsql="select * from [visa_group.image] where catid in([##cms.query.catid##])">
+  </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
   <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid##]" />
@@ -10,7 +14,7 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="18" name="db" usedforid="[##cms.query.catid##]">
   <member name="scalar" type="scalar" typeid="150" />
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" usedforid="[##cms.query.aid##]">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
   <member name="p-under" type="view" size="" propertyid="" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list">
@@ -29,7 +33,15 @@
 <body>
   <basis core="call" file="template-header.inc" pageindexid="1" />
   <main data-activepage="visa-list">
-    <section class="relative bg-visaList bg-center bg-cover py-24">
+    <section class="dynamic-bg relative bg-center bg-cover py-24">
+      <basis core="print" datamembername="visa_group.image">
+        <face filter="image is null">
+          <div class="dynamic-img" data-bg="../images/visa-list-background.jpg"></div>
+        </face>
+        <face>
+          <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@image"></div>
+        </face>
+      </basis>
       <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
       <div class="relative z-10 flex flex-col items-center gap-2">
         <basis core="print" datamembername="db.scalar">
@@ -64,7 +76,7 @@
               <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem">
                 <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-600"
-                  itemprop="item" href="/tour-list.bc?catid=@parentcatid" aria-label="@title">
+                  itemprop="item" href="/visa-list.bc?catid=@parentcatid" aria-label="@title">
                   <span itemprop="name">@title</span>
                   <meta itemprop="position" content="@rownumber" />
                 </a>
@@ -99,7 +111,6 @@
           </div>
         </layout>
         <face filter="[00295X00160prp] is null">
-          <div class="swiper-slide max-w-[311px]">
             <a href="/@link"
               class="group flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
               <div class="shine-effect relative overflow-hidden rounded-2xl">
@@ -115,10 +126,8 @@
                 </svg>
               </div>
             </a>
-          </div>
         </face>
         <face>
-          <div class="swiper-slide max-w-[311px]">
             <a href="/@link"
               class="group flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
               <div class="shine-effect relative overflow-hidden rounded-2xl">
@@ -134,7 +143,6 @@
                 </svg>
               </div>
             </a>
-          </div>
         </face>
       </basis>
 

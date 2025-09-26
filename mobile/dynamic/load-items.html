@@ -434,3 +434,105 @@
     </ul>
   </div>
 </basis>
+
+<basis core="group" if="'[##cms.query.fetch##]' = 'subMenu'">
+  <basis core="dbsource" source="basiscore" lid="1" mid="[##cms.query.mid##]" name="menu">
+    <member name="cat" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"></member>
+  </basis>
+  <basis core="tree" datamembername="menu.cat" idcol="catid" parentidcol="parentid" nullvalue="[##cms.query.catid##]">
+    <layout>
+      <li class="">
+        <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+          <a href="" class="header-mainLink-fetch text-zinc-900 font-medium text-sm" data-activepage=""><span class="header-fetch-text"></span></a>
+          <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
+            <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-chevron-down-zinc"></use>
+          </svg>
+        </div>
+        <!-- submenu -->
+        <ul
+          class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
+          @child
+        </ul>
+        <!-- submenu end -->
+      </li>
+    </layout>
+    <face level="end" filter="link is null">
+      <li class="px-6 py-2"><a href="/test-list?catid=@catid" class="header-subLink-fetch text-zinc-900">@title</a></li>
+    </face>
+    <face level="end">
+      <li class="px-6 py-2"><a href="/@link" class="text-zinc-900">@title</a></li>
+    </face>
+    <face level="1" filter="link is null">
+      <li class="">
+        <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+          <a href="/test-list?catid=@catid" class="header-subLink-fetch text-zinc-900 font-medium text-sm">@title</a>
+          <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
+            <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-chevron-down-zinc"></use>
+          </svg>
+        </div>
+        <!-- submenu -->
+        <ul
+          class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
+          @child
+        </ul>
+        <!-- submenu end -->
+      </li>
+    </face>
+    <face level="1">
+      <li class="">
+        <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+          <a href="/@link" class="text-zinc-900 font-medium text-sm">@title</a>
+          <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
+            <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-chevron-down-zinc"></use>
+          </svg>
+        </div>
+        <!-- submenu -->
+        <ul
+          class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
+          @child
+        </ul>
+        <!-- submenu end -->
+      </li>
+    </face>
+    <face level="2" filter="link is null">
+      <li class="">
+        <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+          <a href="/test-list?catid=@catid" class="header-subLink-fetch text-zinc-900 font-medium text-sm">@title</a>
+          <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
+            <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-chevron-down-zinc"></use>
+          </svg>
+        </div>
+        <!-- submenu -->
+        <ul
+          class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
+          @child
+        </ul>
+        <!-- submenu end -->
+      </li>
+    </face>
+    <face level="2">
+      <li class="">
+        <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
+          <a href="/@link" class="text-zinc-900 font-medium text-sm">@title</a>
+          <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
+            <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-chevron-down-zinc"></use>
+          </svg>
+        </div>
+        <!-- submenu -->
+        <ul
+          class="flex flex-col overflow-hidden transition-all duration-300 bg-white divide-y opacity-0 divide-zinc-100 max-h-0">
+          @child
+        </ul>
+        <!-- submenu end -->
+      </li>
+    </face>
+  </basis>
+</basis>
+
+<basis core="group" if="'[##cms.query.fetch##]' = 'mainMenu'">
+  <li class="flex items-center py-4">
+    <a href="" class="header-mainLink-fetch w-full font-medium text-sm text-zinc-900" data-activepage="contact-us">
+      <span class="header-fetch-text"></span>
+    </a>
+  </li>
+</basis>

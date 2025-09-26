@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<basis core="call" file="head-elements.inc" pageindexid="2" />
+
+<body>
+    <basis core="call" file="template-header.inc" pageindexid="2" />
+    <main>
+        <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10">
+            <basis core="group" if=" '[##cms.query.q##]' = 'all' ">
+                <basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour_group"
+                    q="[##cms.query.search-content-name##]">
+                    <member name="list" type="list" link="tour.bc" propertyid="8076,8077,10000504,8181" perpage="6"
+                        order="ord" size="256x160" />
+                </basis>
+                <basis core="list" datamembername="tour_group.list">
+                    <layout>
+                        <h2 class="highlight-rest text-zinc-900 mb-3">لیست تورها</h2>
+                        <div class="tourL-tour-list flex flex-col gap-3">
+                            @child
+                        </div>
+                    </layout>
+                    <face filter="[00256X00160prp] is null">
+                        <div class="swiper-slide min-w-[272px]">
+                            <a href="/@link" data-price="@prp_8181" data-days="@prp_8076"
+                                data-airline-name="@prp_10000504"
+                                class="tourL-tour-card flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-[389px]">
+                                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
+                                    class="w-full h-40 object-cover rounded-2xl" alt="@title" width="256" height="160"
+                                    loading="lazy" />
+                                <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
+                                    <h3 class="font-bold text-zinc-900 text-center line-clamp-1">@title</h3>
+                                    <div class="flex flex-col gap-1">
+                                        <div class="empty-face-fields border-dashed-zinc rounded-full p-1">
+                                            <div class="flex items-center gap-3 relative z-10">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use
+                                                            href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-clock">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                                <span class="empty-face-text text-xs text-zinc-700">@prp_8076</span>
+                                            </div>
+                                        </div>
+                                        <div class="empty-face-fields border-dashed-zinc rounded-full p-1">
+                                            <div class="flex items-center gap-3 relative z-10">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use
+                                                            href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-calender">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                                <span class="empty-face-text text-xs text-zinc-700">@prp_8077</span>
+                                            </div>
+                                        </div>
+                                        <div class="empty-face-fields border-dashed-zinc rounded-full p-1">
+                                            <div class="flex items-center gap-3 relative z-10">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use
+                                                            href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-airplane">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                                <span class="empty-face-text text-xs text-zinc-700">@prp_10000504</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex items-center gap-2 justify-between gradient-border from-gray-300 to-white rounded-xl py-1 pr-2">
+                                        <div>
+                                            <span class="text-zinc-500 text-xs">قیمت از:</span>
+                                            <div class="text-zinc-900 text-sm font-medium mt-1">@prp_8181</div>
+                                        </div>
+                                        <button
+                                            class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </face>
+                    <face>
+                        <div class="swiper-slide min-w-[272px]">
+                            <a href="/@link" data-price="@prp_8181" data-days="@prp_8076"
+                                data-airline-name="@prp_10000504"
+                                class="tourL-tour-card flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-[389px]">
+                                <img src="\@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
+                                    width="256" height="160" loading="lazy" />
+                                <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
+                                    <h3 class="font-bold text-zinc-900 text-center line-clamp-1">@title</h3>
+                                    <div class="flex flex-col gap-1">
+                                        <div class="empty-face-fields border-dashed-zinc rounded-full p-1">
+                                            <div class="flex items-center gap-3 relative z-10">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use
+                                                            href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-clock">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                                <span class="empty-face-text text-xs text-zinc-700">@prp_8076</span>
+                                            </div>
+                                        </div>
+                                        <div class="empty-face-fields border-dashed-zinc rounded-full p-1">
+                                            <div class="flex items-center gap-3 relative z-10">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use
+                                                            href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-calender">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                                <span class="empty-face-text text-xs text-zinc-700">@prp_8077</span>
+                                            </div>
+                                        </div>
+                                        <div class="empty-face-fields border-dashed-zinc rounded-full p-1">
+                                            <div class="flex items-center gap-3 relative z-10">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use
+                                                            href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-airplane">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                                <span class="empty-face-text text-xs text-zinc-700">@prp_10000504</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex items-center gap-2 justify-between gradient-border from-gray-300 to-white rounded-xl py-1 pr-2">
+                                        <div>
+                                            <span class="text-zinc-500 text-xs">قیمت از:</span>
+                                            <div class="text-zinc-900 text-sm font-medium mt-1">@prp_8181</div>
+                                        </div>
+                                        <button
+                                            class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </face>
+                </basis>
+
+
+                <basis core="dbsource" source="basiscore" lid="1" mid="1" name="article-list_group"
+                    q="[##cms.query.search-content-name##]">
+                    <member name="list" type="list" link="article.bc" propertyid="7244,7248" perpage="6" order="ord"
+                        size="256x160" />
+                </basis>
+                <basis core="list" datamembername="article-list_group.list">
+                    <layout>
+                        <h2 class="highlight-rest text-zinc-900 mb-3 mt-10">لیست مقاله‌ها</h2>
+                        <div class="article-card-container flex flex-col gap-2">@child</div>
+                    </layout>
+                    <face filter="[00256X00160prp] is null">
+                        <a href="/@link"
+                            class="article-card flex flex-col gradient-border from-gray-300 rounded-2xl p-2 min-h-[355px]"
+                            data-title="@title">
+                            <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
+                                class="w-full h-40 object-cover rounded-2xl" alt="@title" width="256" height="160"
+                                loading="lazy" />
+                            <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
+                                <h3 class="font-medium text-zinc-900 line-clamp-1">@title</h3>
+                                <div class="text-xs text-zinc-700 line-clamp-4 text-justify hyphens-auto leading-5">
+                                    @prp_7244</div>
+                                <div class="flex items-center justify-between">
+                                    <span
+                                        class="empty-face-fields flex flex-1 items-center gap-1 text-xs text-zinc-900">
+                                        <svg width="17" height="17" class="flex-shrink-0">
+                                            <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-person">
+                                            </use>
+                                        </svg>
+                                        <span class="empty-face-text">@prp_7248</span>
+                                    </span>
+                                    <button class="flex flex-1 justify-end items-center">
+                                        <span class="text-primary-600 text-xs">مطالعه بیشتر</span>
+                                        <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                                                fill="var(--primary-600)"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </face>
+                    <face>
+                        <a href="/@link"
+                            class="article-card flex flex-col gradient-border from-gray-300 rounded-2xl p-2 min-h-[355px]"
+                            data-title="@title">
+                            <img src="\@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
+                                width="256" height="160" loading="lazy" />
+                            <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
+                                <h3 class="font-medium text-zinc-900 line-clamp-1">@title</h3>
+                                <div class="text-xs text-zinc-700 line-clamp-4 text-justify hyphens-auto leading-5">
+                                    @prp_7244</div>
+                                <div class="flex items-center justify-between">
+                                    <span
+                                        class="empty-face-fields flex flex-1 items-center gap-1 text-xs text-zinc-900">
+                                        <svg width="17" height="17" class="flex-shrink-0">
+                                            <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-person">
+                                            </use>
+                                        </svg>
+                                        <span class="empty-face-text">@prp_7248</span>
+                                    </span>
+                                    <button class="flex flex-1 justify-end items-center">
+                                        <span class="text-primary-600 text-xs">مطالعه بیشتر</span>
+                                        <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                                                fill="var(--primary-600)"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    </face>
+                </basis>
+
+                <basis core="dbsource" source="basiscore" lid="1" mid="20" name="visa_group"
+                    q="[##cms.query.search-content-name##]">
+                    <member name="list" type="list" link="visa.bc" propertyid="" perpage="6" order="ord"
+                        size="272x160" />
+                </basis>
+                <basis core="list" datamembername="visa_group.list">
+                    <layout>
+                        <h2 class="visa-container-title highlight-rest text-zinc-900 mb-3 mt-10">لیست ویزاها</h2>
+                        <div class="visa-card-container flex flex-col gap-3">
+                            @child
+                        </div>
+                    </layout>
+                    <face filter="[00272X00160prp] is null">
+                        <a href="/@link"
+                            class="visa-card flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60">
+                            <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
+                                class="w-full h-40 object-cover rounded-2xl" alt="@title" width="272" height="160"
+                                loading="lazy" />
+                            <div class="flex items-center justify-between">
+                                <h3 class="visa-card-title font-bold">@title</h3>
+                                <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                                        fill="var(--primary-600)" />
+                                </svg>
+                            </div>
+                        </a>
+                    </face>
+                    <face>
+                        <a href="/@link"
+                            class="visa-card flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60">
+                            <img src="\@00272X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
+                                width="272" height="160" loading="lazy" />
+                            <div class="flex items-center justify-between">
+                                <h3 class="visa-card-title font-bold">@title</h3>
+                                <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16.2929 23.2929C15.9024 23.6834 15.9024 24.3166 16.2929 24.7071L22.6569 31.0711C23.0474 31.4616 23.6805 31.4616 24.0711 31.0711C24.4616 30.6805 24.4616 30.0474 24.0711 29.6569L18.4142 24L24.0711 18.3431C24.4616 17.9526 24.4616 17.3195 24.0711 16.9289C23.6805 16.5384 23.0474 16.5384 22.6569 16.9289L16.2929 23.2929ZM32 24L32 23L17 23L17 24L17 25L32 25L32 24Z"
+                                        fill="var(--primary-600)" />
+                                </svg>
+                            </div>
+                        </a>
+                    </face>
+                </basis>
+
+                <basis core="dbsource" source="basiscore" lid="1" mid="1" name="hotel_group"
+                    q="[##cms.query.search-content-name##]">
+                    <member name="list" type="list" link="hotel.bc" propertyid="[##cms.host.all_prp_hotel##]"
+                        perpage="6" order="ord" size="256x160" />
+                </basis>
+                <basis core="list" datamembername="hotel_group.list">
+                    <layout>
+                        <h2 class="hotel-container-title highlight-rest text-zinc-900 mb-3 mt-10">لیست هتل‌ها</h2>
+                        <div class="hotel-card-container flex flex-col gap-3">
+                            @child
+                        </div>
+                    </layout>
+                    <face filter="[00256X00160prp] is null">
+                        <div class="swiper-slide min-w-[272px]">
+                            <a href="/@link" data-rate="@prp_[##cms.host.hotel_rate##]"
+                                data-city="@prp_[##cms.host.hotel_region##]" data-name="@title"
+                                data-price="@prp_[##cms.host.hotel_price##]"
+                                class="hotel-card flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80">
+                                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/no-image-placeholder.jpg"
+                                    class="w-full h-40 object-cover rounded-2xl" alt="@title" width="256" height="160"
+                                    loading="lazy" />
+                                <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
+                                    <h3 class="hotel-card-title font-bold text-zinc-900 line-clamp-1">@title</h3>
+                                    <div class="grid grid-cols-2 gap-1 flex-1">
+                                        <div class="empty-face-fields border-dashed-zinc rounded-full p-1">
+                                            <div class="relative z-20 flex items-center gap-3">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use
+                                                            href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-star">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                                <span
+                                                    class="empty-face-text text-xs text-zinc-700">@prp_[##cms.host.hotel_rate##]</span>
+                                            </div>
+                                        </div>
+                                        <div class="empty-face-fields border-dashed-zinc rounded-full p-1">
+                                            <div class="relative z-20 flex items-center gap-3">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use
+                                                            href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-map">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                                <span
+                                                    class="empty-face-text text-xs text-zinc-700">@prp_[##cms.host.hotel_region##]</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2 justify-between py-1 pr-2">
+                                        <div>
+                                            <span class="text-zinc-500 text-xs">شروع قیمت:</span>
+                                            <div class="text-zinc-900 text-sm font-medium mt-1">
+                                                @prp_[##cms.host.hotel_price##]</div>
+                                        </div>
+                                        <button
+                                            class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </face>
+                    <face>
+                        <div class="swiper-slide min-w-[272px]">
+                            <a href="/@link" data-rate="@prp_[##cms.host.hotel_rate##]"
+                                data-city="@prp_[##cms.host.hotel_region##]" data-name="@title"
+                                data-price="@prp_[##cms.host.hotel_price##]"
+                                class="hotel-card flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80">
+                                <img src="\@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
+                                    width="256" height="160" loading="lazy" />
+                                <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
+                                    <h3 class="hotel-card-title font-bold text-zinc-900 line-clamp-1">@title</h3>
+                                    <div class="grid grid-cols-2 gap-1 flex-1">
+                                        <div class="empty-face-fields border-dashed-zinc rounded-full p-1">
+                                            <div class="relative z-20 flex items-center gap-3">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use
+                                                            href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-star">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                                <span
+                                                    class="empty-face-text text-xs text-zinc-700">@prp_[##cms.host.hotel_rate##]</span>
+                                            </div>
+                                        </div>
+                                        <div class="empty-face-fields border-dashed-zinc rounded-full p-1">
+                                            <div class="relative z-20 flex items-center gap-3">
+                                                <span
+                                                    class="bg-zinc-50 border border-solid border-zinc-300 rounded-full p-1">
+                                                    <svg width="17" height="17" class="flex-shrink-0">
+                                                        <use
+                                                            href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-map">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                                <span
+                                                    class="empty-face-text text-xs text-zinc-700">@prp_[##cms.host.hotel_region##]</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2 justify-between py-1 pr-2">
+                                        <div>
+                                            <span class="text-zinc-500 text-xs">شروع قیمت:</span>
+                                            <div class="text-zinc-900 text-sm font-medium mt-1">
+                                                @prp_[##cms.host.hotel_price##]</div>
+                                        </div>
+                                        <button
+                                            class="flex items-center gap-3 justify-center h-12 px-4 text-white text-xs bg-primary-600 rounded-xl">مشاهده</button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </face>
+                </basis>
+            </basis>
+        </div>
+
+    </main>
+    <basis core="call" file="template-footer.inc" pageindexid="2" />
+</body>
+
+</html>

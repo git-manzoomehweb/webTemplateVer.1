@@ -3,6 +3,11 @@
     size="295x160" pageno="[##cms.query.pagenum|(1)##]" />
   <member name="paging" type="list" request="paging" count="3" parentname="list" />
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour_group">
+  <member name="image" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"
+    postsql="select * from [tour_group.image] where catid in([##cms.query.catid##])">
+  </member>
+</basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="featured_tours">
   <member name="cat" type="tree" request="cat" parentid="[##cms.query.tid##]" order="ord"
     postsql="select * from [featured_tours.cat] where catid in([##cms.query.tid##])">
@@ -25,7 +30,7 @@
   sourcemid="article">
   <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" usedforid="[##cms.query.aid##]">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
   <member name="p-under" type="view" size="" propertyid="" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list">
@@ -36,6 +41,10 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="[##cms.host.faq##]">
   <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
 </basis>
+<basis core="dbsource" source="media" name="db"  lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
+  <member name="info-gallery" type="list" format="4" order="ord"></member>
+</basis>
+
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -44,7 +53,15 @@
 <body>
   <basis core="call" file="template-header.inc" pageindexid="1" />
   <main data-activepage="tour-list">
-    <section class="relative bg-tourList bg-center bg-cover py-24">
+    <section class="dynamic-bg relative bg-tourList bg-center bg-cover py-24">
+      <basis core="print" datamembername="tour_group.image">
+        <face filter="image is null">
+          <div class="dynamic-img" data-bg="../images/tour-list-background.jpg"></div>
+        </face>
+        <face>
+          <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@image"></div>
+        </face>
+      </basis>
       <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
       <div class="relative z-10 flex flex-col items-center gap-2">
         <basis core="print" datamembername="db.scalar">
@@ -343,8 +360,17 @@
           </div>
         </section>
         <section class="relative rounded-3xl overflow-hidden mt-3">
-          <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/contact-tour-list.jpg"
-            class="w-full h-[425px] object-cover" alt="" width="295" height="425" loading="lazy" />
+          <basis core="print" datamembername="db.info-gallery">
+            <face filter="largeIMG is null">
+              <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/sidebar-banner.jpg"
+              class="w-full h-[425px] object-cover" alt="@name" width="295" height="425" loading="lazy" />
+            </face>
+            <face filter="ord in(2)">
+              <img src="\@largeIMG"
+              class="w-full h-[425px] object-cover" alt="@name" width="295" height="425" loading="lazy" />
+            </face>
+          </basis>
+
           <div class="absolute z-10 bottom-7 left-5 right-5">
             <div class="flex flex-col gap-2 direction-ltr">
               <basis core="print" datamembername="db.info">

@@ -1,6 +1,11 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="article-list_category">
-  <member name="cat" type="tree" request="cat" parentid="[##cms.host.article-list_category##]" order="ord"
-    postsql="select * from [article-list_category.cat] where parentid in([##cms.host.article-list_category##])">
+  <member name="cat" type="tree" request="cat" parentid="[##cms.query.cid##]" order="ord"
+    postsql="select * from [article-list_category.cat] where parentid in([##cms.query.cid##])">
+  </member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="article-list_category">
+  <member name="image" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"
+    postsql="select * from [article-list_category.image] where catid in([##cms.query.catid##])">
   </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
@@ -20,6 +25,9 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="[##cms.host.faq##]">
   <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
 </basis>
+<basis core="dbsource" source="media" name="db"  lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
+  <member name="info-gallery" type="list" format="4" order="ord"></member>
+</basis>
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -28,7 +36,15 @@
 <body>
   <basis core="call" file="template-header.inc" pageindexid="1" />
   <main data-activepage="article-list">
-    <section class="relative bg-articleList bg-[center_30%] bg-cover py-16">
+    <section class="dynamic-bg relative bg-[center_30%] bg-cover py-16">
+      <basis core="print" datamembername="article-list_category.image">
+        <face filter="image is null">
+          <div class="dynamic-img" data-bg="../images/article-list-background.jpg"></div>
+        </face>
+        <face>
+          <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@image"></div>
+        </face>
+      </basis>
       <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
       <div class="relative z-10 flex flex-col items-center gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
         <basis core="print" datamembername="db.scalar">
@@ -104,7 +120,7 @@
     </section>
     <section class="flex gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-9">
       <aside class="sticky h-fit top-0 w-[295px]">
-        <basis core="group" if="'[##cms.host.article-list_category##]' <> ''">
+        <basis core="group" if="'[##cms.query.cid##]' <> ''">
           <section class="rounded-3xl gradient-border from-gray-300 bg-zinc-50 px-4 py-6">
             <div class="">
               <div
@@ -129,8 +145,16 @@
           </section>
         </basis>
         <section class="relative rounded-3xl overflow-hidden mt-3">
-          <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/contact-tour-list.jpg"
-            class="w-full h-[425px] object-cover" alt="" width="295" height="425" loading="lazy" />
+          <basis core="print" datamembername="db.info-gallery">
+            <face filter="largeIMG is null">
+              <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/sidebar-banner.jpg"
+              class="w-full h-[425px] object-cover" alt="@name" width="295" height="425" loading="lazy" />
+            </face>
+            <face filter="ord in(2)">
+              <img src="\@largeIMG"
+              class="w-full h-[425px] object-cover" alt="@name" width="295" height="425" loading="lazy" />
+            </face>
+          </basis>
           <div class="absolute z-10 bottom-7 left-5 right-5">
             <div class="flex flex-col gap-2 direction-ltr">
               <basis core="print" datamembername="db.info">
@@ -230,7 +254,7 @@
         </section>
       </aside>
       <div class="flex-1">
-        <div class="fetch-content-article-list_group h-full" data-all_id="[##cms.host.article-list_category##]"></div>
+        <div class="fetch-content-article-list_group h-full" data-all_id="[##cms.query.catid##]"></div>
       </div>
     </section>
 
