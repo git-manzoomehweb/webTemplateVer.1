@@ -894,6 +894,10 @@
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.hover\:bg-secondary-600:hover {
+  background-color: var(--secondary-600);
+}
+
 .group:hover .group-hover\:bottom-0 {
   bottom: 0px;
 }
@@ -958,7 +962,7 @@
 }
 
 .revert-text-styles table{
-  table-layout: auto;  
+  table-layout: fixed;  
   width: auto;          
   max-width: 100%; 
 }

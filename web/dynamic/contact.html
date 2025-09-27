@@ -12,9 +12,9 @@
 <basis core="dbsource" source="media" lid="1" name="our_services" usedforid="2382517" sourcemid="article">
     <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
-<basis core="dbsource" source="media" name="db"  lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
+<basis core="dbsource" source="media" name="db" lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
     <member name="info-gallery" type="list" format="4" order="ord"></member>
-  </basis>
+</basis>
 
 
 <!DOCTYPE html>
@@ -298,30 +298,32 @@
                     ارتباط با
                     <span class="font-bold text-primary-600">کارشناسان ما</span>
                 </h2>
-                <div class="flex mx-auto contact-form" id="contact-form-resize">
-                    <basis core="schema" run="atclient"
-                        schemaurl="/schema/domainform/[##cms.host.contactFormId1##]/[##cms.host.contactFormId2##]/fa/ارتباط-با-کارشناسان-ما"
-                        displaymode="new" button="[data-btn-uploadContact]" resultsourceid="upload.dataContact"
-                        OnRendered="RenderFormContact"></basis>
-                    <basis core="api" if="{##cms.uploadContact.run|(false)##}" run="atclient"
-                        url="/schema/domainform/[##cms.host.contactFormId1##]/fa/editobject" method="post"
-                        body="object_edit={##cms.uploadContact.value##}&captcha={##cms.uploadContact.captcha##}&captchaid={##cms.uploadContact.captchaid##}"
-                        content-type="application/x-www-form-urlencoded" triggers="cms.uploadContact"
-                        OnProcessed="OnProcessedEditObjectContact"></basis>
-                    <basis core="callback" run="atclient" method="uploadDocumentContact" triggers="upload.dataContact">
-                    </basis>
+                <div class="flex flex-col mx-auto contact-form" id="contact-form-resize">
+                    <div class="flex">
+                        <basis core="schema" run="atclient"
+                            schemaurl="/schema/domainform/[##cms.host.contactFormId1##]/[##cms.host.contactFormId2##]/fa/ارتباط-با-کارشناسان-ما"
+                            displaymode="new" button="[data-btn-uploadContact]" resultsourceid="upload.dataContact"
+                            OnRendered="RenderFormContact"></basis>
+                        <basis core="api" if="{##cms.uploadContact.run|(false)##}" run="atclient"
+                            url="/schema/domainform/[##cms.host.contactFormId1##]/fa/editobject" method="post"
+                            body="object_edit={##cms.uploadContact.value##}&captcha={##cms.uploadContact.captcha##}&captchaid={##cms.uploadContact.captchaid##}"
+                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadContact"
+                            OnProcessed="OnProcessedEditObjectContact"></basis>
+                        <basis core="callback" run="atclient" method="uploadDocumentContact"
+                            triggers="upload.dataContact">
+                        </basis>
 
-                    <div class="captcha-button flex gap-4 items-center justify-between">
-                        <div id="captchaContainer" class="captchaContainerclass captcha-sefaresh w-auto"
-                            data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
-                            data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
-                            <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
-                                triggers="captcha.refreshContact">
-                                <member name="code" type="scalar" request="captcha"></member>
-                            </basis>
-                            <basis datamembername="captcha.code" core="print" run="atclient">
-                                <face>
-                                    <script type="text/template">
+                        <div class="captcha-button flex gap-4 items-center justify-between">
+                            <div id="captchaContainer" class="captchaContainerclass captcha-sefaresh w-auto"
+                                data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                                data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                                <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                                    triggers="captcha.refreshContact">
+                                    <member name="code" type="scalar" request="captcha"></member>
+                                </basis>
+                                <basis datamembername="captcha.code" core="print" run="atclient">
+                                    <face>
+                                        <script type="text/template">
                       <div class="d-inline-block"><div class="flex gap-4">
 
                                  <div class="float-right w-[323px] mr-1"><input type="text" class="!w-32 contactUsInput codeinputm" name="captcha" maxlength="4" placeholder="کد امنیتی"/><input type="hidden" name="captchaid" value="@captcha@" /></div>
@@ -335,18 +337,19 @@
                              </div>
                            </div>
                     </script>
-                                </face>
-                            </basis>
+                                    </face>
+                                </basis>
+                            </div>
+                            <button
+                                class="check-contrast flex-shrink-0 w-20 h-12 flex items-center justify-center text-white transition-all duration-300 data-body-btn bg-primary-600 rounded-xl hover:bg-secondary-600"
+                                type="button" data-btn-uploadContact>
+                                <span class="">ارسال</span>
+                            </button>
                         </div>
-                        <button
-                            class="check-contrast flex-shrink-0 w-20 h-12 flex items-center justify-center text-white transition-all duration-300 data-body-btn bg-primary-600 rounded-xl hover:bg-secondary-600"
-                            type="button" data-btn-uploadContact>
-                            <span class="">ارسال</span>
-                        </button>
                     </div>
                     <div
-                        class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 bg-secondary-800 rounded-2xl justify-center items-center gap-2.5">
-                        <div id="ballsWaveG" class="text-base font-normal leading-normal ext-zinc-50">
+                        class="Loading_Form hidden data-body-btn mt-6 px-4 bg-secondary-800 rounded-2xl justify-center items-center gap-2.5">
+                        <div id="ballsWaveG" class="text-base font-normal leading-normal">
                             <div id="ballsWaveG_1" class="ballsWaveG"></div>
                             <div id="ballsWaveG_2" class="ballsWaveG"></div>
                             <div id="ballsWaveG_3" class="ballsWaveG"></div>

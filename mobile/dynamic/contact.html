@@ -12,6 +12,9 @@
 <basis core="dbsource" source="media" lid="1" name="our_services" usedforid="2382517" sourcemid="article">
     <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
+<basis core="dbsource" source="media" name="db" lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
+    <member name="info-gallery" type="list" format="4" order="ord"></member>
+</basis>
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -21,7 +24,15 @@
 <body>
     <basis core="call" file="template-header.inc" pageindexid="2" />
     <main data-activepage="contact">
-        <section class="relative bg-contact bg-center bg-cover py-20">
+        <section class="dynamic-bg relative bg-center bg-cover py-20">
+            <basis core="print" datamembername="db.info-gallery">
+                <face filter="largeIMG is null">
+                    <div class="dynamic-img" data-bg="../images/contact-background.jpg"></div>
+                </face>
+                <face>
+                    <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@largeIMG"></div>
+                </face>
+            </basis>
             <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
             <div class="relative z-10 flex flex-col items-center gap-2">
                 <div class="bg-specialcolor-3 rounded-xl py-4 px-10">
@@ -111,12 +122,12 @@
                 </div>
                 <basis core="print" datamembername="db.info">
                     <layout>
-                        <ul class="grid grid-cols-3 mt-7 gap-y-2">
+                        <ul class="grid grid-cols-5 mt-7 gap-y-2">
                             @child
                         </ul>
                     </layout>
                     <face filter="TypeID in('245') and text in('توییتر')">
-                        <li class="justify-self-start">
+                        <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
                                 class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="16" height="12">
@@ -128,7 +139,7 @@
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('اینستاگرام')">
-                        <li class="justify-self-center">
+                        <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
                                 class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="14" height="14">
@@ -140,7 +151,7 @@
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('فیس بوک')">
-                        <li class="justify-self-end">
+                        <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
                                 class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="10" height="16">
@@ -152,7 +163,7 @@
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('تلگرام')">
-                        <li class="justify-self-start">
+                        <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Telegram"
                                 class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="32" height="32">
@@ -164,7 +175,7 @@
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('واتس اپ')">
-                        <li class="justify-self-center">
+                        <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Whatsapp"
                                 class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="32" height="32">
@@ -176,7 +187,7 @@
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('لینکدین')">
-                        <li class="justify-self-end">
+                        <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Linkdin"
                                 class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="32" height="32">
@@ -188,7 +199,7 @@
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('یوتیوب')">
-                        <li class="justify-self-start">
+                        <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
                                 class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="32" height="32">
@@ -200,7 +211,7 @@
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('آپارات')">
-                        <li class="justify-self-center">
+                        <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Aparat"
                                 class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="32" height="32">
@@ -212,7 +223,7 @@
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('ایتا')">
-                        <li class="justify-self-end">
+                        <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="eita"
                                 class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="14" height="14">
@@ -224,7 +235,7 @@
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('بله')">
-                        <li class="justify-self-start">
+                        <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Bale"
                                 class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="14" height="14">
@@ -236,7 +247,7 @@
                         </li>
                     </face>
                     <face filter="TypeID in('245') and text in('روبیکا')">
-                        <li class="justify-self-center">
+                        <li>
                             <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Rubika"
                                 class="group relative z-10 overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-primary-600">
                                 <svg width="20" height="20">
@@ -255,47 +266,19 @@
 
         <basis core="group" if="'[##cms.host.our_services##]' <> ''">
             <section class="flex flex-col gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
-                <basis core="print" datamembername="our_services.gallery">
-                    <layout>
-                        <div class="rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
-                            @child
-                        </div>
-                    </layout>
-                    <face filter="ord in(1)">
-                        <img src="\@largeIMG" class="w-full h-44 object-cover rounded-2xl" alt="@name" width="288"
-                            height="176" loading="lazy" />
-                    </face>
-                </basis>
                 <basis core="print" datamembername="our_services.view">
                     <face filter="TypeID in(150)">
                         <h2 class="text-zinc-900 font-bold">@text</h2>
                     </face>
                     <face filter="TypeID in(129)">
-                        <div class="text-xs text-justify hyphens-auto text-zinc-900 leading-5">
+                        <h2 class="text-zinc-900 font-bold">@text</h2>
+                        <div class="revert-text-styles text-justify hyphens-auto text-zinc-900 leading-5">
                             @largetext
                         </div>
                     </face>
-                </basis>
-            </section>
-        </basis>
-
-        <basis core="group" if="'[##cms.host.our_services##]' <> ''">
-            <section class="flex flex-col gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
-                <basis core="print" datamembername="our_services.gallery">
-                    <layout>
-                        <div class="rounded-2xl gradient-border from-primary-600 overflow-hidden p-px">
-                            @child
-                        </div>
-                    </layout>
-                    <face filter="ord in(1)">
-                        <img src="\@largeIMG" class="w-full h-44 object-cover rounded-2xl" alt="@name" width="288"
-                            height="176" loading="lazy" />
-                    </face>
-                </basis>
-                <basis core="print" datamembername="our_services.view">
                     <face filter="TypeID in(250)">
                         <h2 class="text-zinc-900 font-bold">@text</h2>
-                        <div class="text-xs text-justify hyphens-auto text-zinc-900 leading-5">
+                        <div class="revert-text-styles text-justify hyphens-auto text-zinc-900 leading-5">
                             @largetext
                         </div>
                     </face>
@@ -303,11 +286,12 @@
             </section>
         </basis>
 
+
         <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
-            <div class="gradient-border from-primary-600 bg-zinc-100 py-3 px-2 rounded-2xl">
+            <div class="gradient-border from-primary-600 bg-zinc-100 pt-6 pb-3 px-2 rounded-2xl">
                 <h2 class="text-zinc-900 mb-4">ارتباط با <span class="font-bold text-primary-600">کارشناسان ما</span>
                 </h2>
-                <div class="flex mx-auto contact-form" id="contact-form-resize">
+                <div class="flex flex-col mx-auto contact-form" id="contact-form-resize">
                     <basis core="schema" run="atclient"
                         schemaurl="/schema/domainform/[##cms.host.contactFormId1##]/[##cms.host.contactFormId2##]/fa/ارتباط-با-کارشناسان-ما"
                         displaymode="new" button="[data-btn-uploadContact]" resultsourceid="upload.dataContact"
@@ -320,7 +304,7 @@
                     <basis core="callback" run="atclient" method="uploadDocumentContact" triggers="upload.dataContact">
                     </basis>
 
-                    <div class="captcha-button flex gap-4 items-center justify-between">
+                    <div class="captcha-button flex flex-col gap-4 items-center justify-between mt-1">
                         <div id="captchaContainer" class="captchaContainerclass captcha-sefaresh w-auto"
                             data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
                             data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
@@ -331,9 +315,13 @@
                             <basis datamembername="captcha.code" core="print" run="atclient">
                                 <face>
                                     <script type="text/template">
-                      <div class="d-inline-block"><div class="flex gap-4">
+                             <div class="d-inline-block">
+                                 <div class="flex gap-4">
 
-                                 <div class="float-right w-[323px] mr-1"><input type="text" class="!w-32 contactUsInput codeinputm" name="captcha" maxlength="4" placeholder="کد امنیتی"/><input type="hidden" name="captchaid" value="@captcha@" /></div>
+                                 <div class="flex-1">
+                                    <input type="text" class="!w-32 contactUsInput codeinputm" name="captcha" maxlength="4" placeholder="کد امنیتی"/>
+                                    <input type="hidden" name="captchaid" value="@captcha@" />
+                                </div>
                                  <div class="flex items-center gap-2">
                                      <img src="/@captcha@" loading="lazy" width="120" height="60" alt="captcha" class="w-20 h-auto" />
                                                                      <svg width="48" height="48" onclick="refreshCaptchaContact()" class="inline-block align-middle cursor-pointer w-9 h-9">
@@ -348,14 +336,14 @@
                             </basis>
                         </div>
                         <button
-                            class="check-contrast flex-shrink-0 w-20 h-12 flex items-center justify-center text-white transition-all duration-300 data-body-btn bg-primary-600 rounded-xl hover:bg-secondary-600"
+                            class="check-contrast flex-shrink-0 w-full h-12 flex items-center justify-center text-white transition-all duration-300 data-body-btn bg-primary-600 rounded-xl hover:bg-secondary-600"
                             type="button" data-btn-uploadContact>
                             <span class="">ارسال</span>
                         </button>
                     </div>
                     <div
-                        class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 bg-secondary-800 rounded-2xl justify-center items-center gap-2.5">
-                        <div id="ballsWaveG" class="text-base font-normal leading-normal ext-zinc-50">
+                        class="Loading_Form hidden data-body-btn mt-4 bg-secondary-800 rounded-2xl justify-center items-center gap-2.5">
+                        <div id="ballsWaveG">
                             <div id="ballsWaveG_1" class="ballsWaveG"></div>
                             <div id="ballsWaveG_2" class="ballsWaveG"></div>
                             <div id="ballsWaveG_3" class="ballsWaveG"></div>

@@ -1,18 +1,21 @@
 <basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="[##cms.query.id##]">
     <member request="json-ld" type="scalar" name="json" />
-  </basis>
-  <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
     <member name="view" type="view" propertyid="7249" />
-  </basis>
-  <basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="[##cms.query.id##]">
+</basis>
+<basis core="dbsource" source="media" lid="1" name="view" usedforid="[##cms.query.id##]" sourcemid="article">
+    <member type="list" name="gallery" format="4" order="ord"></member>
+</basis>
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="[##cms.query.id##]">
     <member name="navigation" type="tree" request="navigationcat" />
-  </basis>
-  <basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
+</basis>
+<basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
     <member name="comment" type="list" order="ord" request="listcomment" />
-  </basis>
-  <basis core="dbsource" name="captcha" source="trust_login">
+</basis>
+<basis core="dbsource" name="captcha" source="trust_login">
     <member name="code" type="scalar" request="captcha"></member>
-  </basis>
+</basis>
 
 
 <!DOCTYPE html>
@@ -20,16 +23,25 @@
 <basis core="call" file="head-elements.inc" pageindexid="2" />
 
 <body>
-    <basis core="call" file="template-header.inc" pageindexid="2"/>
+    <basis core="call" file="template-header.inc" pageindexid="2" />
     <main>
-        <section class="relative bg-article bg-center bg-cover py-24">
+        <section class="dynamic-bg relative bg-center bg-cover py-24">
+            <basis core="print" datamembername="view.gallery">
+                <else-layout>
+                    <div class="dynamic-img" data-bg="../images/hotel-background.jpg"></div>
+                </else-layout>
+                <face filter="ord in(1)">
+                    <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@largeIMG"></div>
+                </face>
+            </basis>
             <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
             <div class="bg-specialcolor-4 absolute inset-0 w-full h-full"></div>
-            <div class="relative z-10 flex flex-col items-center gap-2 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
+            <div
+                class="relative z-10 flex flex-col items-center gap-2 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
                 <basis core="print" datamembername="db.view">
                     <layout>
                         <div class="bg-specialcolor-3 rounded-xl py-5 px-6">
-                          @child
+                            @child
                         </div>
                     </layout>
                     <face filter="TypeID in(150)">
@@ -37,11 +49,12 @@
                     </face>
                 </basis>
 
-                <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb flex flex-wrap items-center justify-center text-sm gap-1 mt-2">
+                <ul itemscope itemtype="https://schema.org/BreadcrumbList"
+                    class="breadcrumb flex flex-wrap items-center justify-center text-sm gap-1 mt-2">
                     <li class="inline-block font-normal" itemprop="itemListElement" itemscope
                         itemtype="https://schema.org/ListItem">
-                        <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700" itemprop="item"
-                            href="/" aria-label="home">
+                        <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
+                            itemprop="item" href="/" aria-label="home">
                             <span itemprop="name">صفحه اصلی</span>
                             <meta itemprop="position" content="1" />
                         </a>
@@ -76,7 +89,8 @@
                                 itemtype="https://schema.org/ListItem">
                                 <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
                                     itemprop="item" href="/@link" aria-label="@title">
-                                    <span class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
+                                    <span
+                                        class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
                                         itemprop="name">@title</span>
                                     <meta itemprop="position" content="@rownumber" />
                                 </a>
@@ -129,119 +143,124 @@
             </face>
             <face filter="TypeID in(250)">
                 <h2 id="@valueID" class="text-sm font-bold text-zinc-900 mb-3">@text</h2>
-                <div class="revert-text-styles text-xs text-justify text-zinc-900 leading-5 hyphens-auto mb-8">@largetext</div>
+                <div class="revert-text-styles text-xs text-justify text-zinc-900 leading-5 hyphens-auto mb-8">
+                    @largetext</div>
             </face>
         </basis>
 
         <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
             <div class="bg-zinc-100 px-2 pt-4 pb-6 rounded-xl">
-              <div class="flex items-center justify-between border-b border-solid border-zinc-300 pb-3 px-8">
-                <button class="comment-btn text-primary-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900" data-comment="comment-form">ثبت نظر</button>
-                <button class="comment-btn text-zinc-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900" data-comment="user-comments">نظر کاربران</button>
-              </div>
-              <div class="relative">
-                <div id="comment-form" class="comment-content active opacity-100 scale-100 transition duration-500">
-                  <form action="/Tem1_OpinionAction.bc" method="POST" class="pov-form mt-3">
-                    <input type="hidden" name="title" value="[##cms.seo.title##]">
-                    <div>
-                        <div>
-                            <div class="flex flex-col items-center gap-3 mb-2">
-                                <input
-                                    class="w-full bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl"
-                                    type="text" name="Username" placeholder="نام و نام خانوادگی" required>
-                                <input
-                                    class="w-full bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl"
-                                    type="text" name="_root.Phone" placeholder="تلفن همراه" required>
-                                <input
-                                    class="w-full bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl"
-                                    type="text" name="_root.Email" placeholder="ایمیل" required>
-                            </div>
-                            <textarea
-                                class="w-full bg-white text-zinc-700 px-6 pt-4 outline-none rounded-xl"
-                                required name="OpinionMessage" placeholder="نظرات و پیشنهادات" cols="30"
-                                rows="7"></textarea>
-    
-                            <input name="productid" value="[##cms.query.id##]" type="hidden">
-                            <input name="mid" value="1" type="hidden">
-                            <div class="flex flex-col items-center">
-                                <div class="flex gap-3 w-full">
-                                    <div>
-                                        <input
-                                            class="w-32 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl"
-                                            type="text" name="Captcha" placeholder="کد امنیتی" required="">
+                <div class="flex items-center justify-between border-b border-solid border-zinc-300 pb-3 px-8">
+                    <button
+                        class="comment-btn text-primary-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900"
+                        data-comment="comment-form">ثبت نظر</button>
+                    <button
+                        class="comment-btn text-zinc-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900"
+                        data-comment="user-comments">نظر کاربران</button>
+                </div>
+                <div class="relative">
+                    <div id="comment-form" class="comment-content active opacity-100 scale-100 transition duration-500">
+                        <form action="/Tem1_OpinionAction.bc" method="POST" class="pov-form mt-3">
+                            <input type="hidden" name="title" value="[##cms.seo.title##]">
+                            <div>
+                                <div>
+                                    <div class="flex flex-col items-center gap-3 mb-2">
+                                        <input class="w-full bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl"
+                                            type="text" name="Username" placeholder="نام و نام خانوادگی" required>
+                                        <input class="w-full bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl"
+                                            type="text" name="_root.Phone" placeholder="تلفن همراه" required>
+                                        <input class="w-full bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl"
+                                            type="text" name="_root.Email" placeholder="ایمیل" required>
                                     </div>
-                                    <span class="field-captcha flex items-center gap-3">
-                                        <span class="load-captcha">
-                                            <img class="captchaa w-20 h-auto" alt="کد امنیتی"
-                                                src="\[##captcha.code.captcha##]" width="80" height="60">
-                                            <input type="hidden" value="[##captcha.code.captcha##]"
-                                                name="Captchaid">
-                                        </span>
-                                        <div onclick="refresh_captcha(this,event)">
-                                          <svg width="48" height="48" class="flex-shrink-0 cursor-pointer">
-                                            <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-refresh"></use>
-                                          </svg>
+                                    <textarea class="w-full bg-white text-zinc-700 px-6 pt-4 outline-none rounded-xl"
+                                        required name="OpinionMessage" placeholder="نظرات و پیشنهادات" cols="30"
+                                        rows="7"></textarea>
+
+                                    <input name="productid" value="[##cms.query.id##]" type="hidden">
+                                    <input name="mid" value="1" type="hidden">
+                                    <div class="flex flex-col items-center">
+                                        <div class="flex gap-3 w-full">
+                                            <div>
+                                                <input
+                                                    class="w-32 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl"
+                                                    type="text" name="Captcha" placeholder="کد امنیتی" required="">
+                                            </div>
+                                            <span class="field-captcha flex items-center gap-3">
+                                                <span class="load-captcha">
+                                                    <img class="captchaa w-20 h-auto" alt="کد امنیتی"
+                                                        src="\[##captcha.code.captcha##]" width="80" height="60">
+                                                    <input type="hidden" value="[##captcha.code.captcha##]"
+                                                        name="Captchaid">
+                                                </span>
+                                                <div onclick="refresh_captcha(this,event)">
+                                                    <svg width="48" height="48" class="flex-shrink-0 cursor-pointer">
+                                                        <use
+                                                            href="/PrimeTemplate_A/images/sprite-icons.svg#icon-refresh">
+                                                        </use>
+                                                    </svg>
+                                                </div>
+                                            </span>
                                         </div>
-                                    </span>
+                                        <button
+                                            class="check-contrast w-full h-12 flex items-center justify-center text-white transition-all duration-300 mt-3 bg-primary-600 rounded-xl hover:bg-secondary-600"
+                                            type="submit">ارسال دیدگاه
+                                        </button>
+                                    </div>
                                 </div>
-                                    <button
-                                        class="check-contrast w-full h-12 flex items-center justify-center text-white transition-all duration-300 mt-3 bg-primary-600 rounded-xl hover:bg-secondary-600"
-                                        type="submit">ارسال دیدگاه
-                                    </button>
                             </div>
-                        </div>
+                            <div class="Loading_Form hidden">
+                                <div id="ballsWaveG">
+                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                                </div>
+                            </div>
+                            <div class="Message-Form text-center mt-6"></div>
+                        </form>
                     </div>
-                    <div class="Loading_Form hidden">
-                        <div id="ballsWaveG">
-                            <div id="ballsWaveG_1" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_2" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_3" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_4" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_5" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_6" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_7" class="ballsWaveG"></div>
-                            <div id="ballsWaveG_8" class="ballsWaveG"></div>
-                        </div>
+
+                    <div id="user-comments"
+                        class="comment-content hidden opacity-0 scale-95 pointer-events-none w-full transition duration-500">
+                        <basis core="tree" datamembername="db.comment" idcol="id" parentidcol="parentid" nullvalue="0">
+                            <layout>
+                                <div class="swiper swiper-comments-mobile mt-3">
+                                    <div class="swiper-wrapper">
+                                        @child
+                                    </div>
+                                </div>
+                            </layout>
+                            <else-layout>
+                                <div class="flex flex-col items-center justify-center h-full mt-6">
+                                    <h2 class="text-lg font-bold mb-2">هنوز نظری ثبت نشده است</h2>
+                                    <p class="text-sm text-center">شما می‌توانید اولین نفری باشید که تجربه یا دیدگاه خود
+                                        را به اشتراک می‌گذارد.</p>
+                                </div>
+                            </else-layout>
+                            <face level="1">
+                                <div class="swiper-slide">
+                                    <div class="flex flex-col gap-2 bg-white rounded-xl p-6">
+                                        <h3 class="font-bold text-sm text-zinc-900">@username</h3>
+                                        <div class="text-xs text-zinc-600 line-clamp-6 leading-5">
+                                            @comment
+                                        </div>
+                                        <span class="text-xs text-zinc-400 self-end">@createdate</span>
+                                    </div>
+                                </div>
+                            </face>
+                        </basis>
+
                     </div>
-                    <div class="Message-Form text-center mt-6"></div>
-                </form>
                 </div>
-    
-                <div id="user-comments" class="comment-content hidden opacity-0 scale-95 pointer-events-none w-full transition duration-500">
-                  <basis core="tree" datamembername="db.comment" idcol="id" parentidcol="parentid" nullvalue="0">
-                    <layout>
-                      <div class="swiper swiper-comments-mobile mt-3">
-                        <div class="swiper-wrapper">
-                          @child
-                        </div>
-                      </div>
-                    </layout>
-                    <else-layout>
-                        <div class="flex flex-col items-center justify-center h-full mt-6">
-                          <h2 class="text-lg font-bold mb-2">هنوز نظری ثبت نشده است</h2>
-                          <p class="text-sm text-center">شما می‌توانید اولین نفری باشید که تجربه یا دیدگاه خود را به اشتراک می‌گذارد.</p>
-                        </div>
-                    </else-layout>
-                    <face level="1">
-                      <div class="swiper-slide">
-                        <div class="flex flex-col gap-2 bg-white rounded-xl p-6">
-                          <h3 class="font-bold text-sm text-zinc-900">@username</h3>
-                          <div class="text-xs text-zinc-600 line-clamp-6 leading-5">
-                            @comment
-                          </div>
-                          <span class="text-xs text-zinc-400 self-end">@createdate</span>
-                        </div>
-                      </div>
-                    </face>
-                  </basis>
-    
-                </div>
-              </div>
             </div>
-          </section>
+        </section>
 
     </main>
-    <basis core="call" file="template-footer.inc" pageindexid="2"/>
+    <basis core="call" file="template-footer.inc" pageindexid="2" />
 
     <script type="application/ld+json">
         [##db.json.Column1##]

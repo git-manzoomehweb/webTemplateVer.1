@@ -4,6 +4,9 @@
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
   <member name="view" type="view" propertyid="7249" />
 </basis>
+<basis core="dbsource" source="media" lid="1" name="view" usedforid="[##cms.query.id##]" sourcemid="article">
+  <member type="list" name="gallery" format="4" order="ord"></member>
+</basis>
 <basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="[##cms.query.id##]">
   <member name="navigation" type="tree" request="navigationcat" />
 </basis>
@@ -21,7 +24,15 @@
 <body>
   <basis core="call" file="template-header.inc" pageindexid="1" />
   <main>
-    <section class="relative bg-article bg-center bg-cover py-24">
+    <section class="dynamic-bg relative bg-center bg-cover py-24">
+      <basis core="print" datamembername="view.gallery">
+        <else-layout>
+            <div class="dynamic-img" data-bg="../images/hotel-background.jpg"></div>
+        </else-layout>
+        <face filter="ord in(1)">
+          <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@largeIMG"></div>
+        </face>
+      </basis>
       <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
       <div class="bg-specialcolor-4 absolute inset-0 w-full h-full"></div>
       <div class="relative z-10 flex flex-col items-center gap-2">

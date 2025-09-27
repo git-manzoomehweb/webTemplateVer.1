@@ -21,6 +21,7 @@
   <member name="code" type="scalar" request="captcha"></member>
 </basis>
 
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <basis core="call" file="head-elements.inc" pageindexid="1" />
@@ -28,7 +29,15 @@
 <body>
   <basis core="call" file="template-header.inc" pageindexid="1" />
   <main class="bg-zinc-50 pb-8">
-    <section class="relative bg-hotel bg-center bg-cover py-24">
+    <section class="dynamic-bg relative bg-center bg-cover py-24">
+      <basis core="print" datamembername="view.gallery">
+        <else-layout>
+            <div class="dynamic-img" data-bg="../images/hotel-background.jpg"></div>
+        </else-layout>
+        <face filter="ord in(1)">
+          <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@largeIMG"></div>
+        </face>
+      </basis>
       <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
       <div class="relative z-10 flex flex-col items-center gap-2">
         <basis core="print" datamembername="db.view">

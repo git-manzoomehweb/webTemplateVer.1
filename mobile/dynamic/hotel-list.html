@@ -3,6 +3,9 @@
         size="256x160" pageno="[##cms.query.pagenum|(1)##]" />
     <member name="paging" type="list" request="paging" count="3" parentname="list" />
 </basis>
+<basis core="dbsource" source="media" lid="1" name="hotel_group" usedforid="[##cms.query.id##]" sourcemid="article">
+    <member type="list" name="gallery" format="4" order="ord"></member>
+</basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
     <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid##]" />
 </basis>
@@ -27,6 +30,9 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="[##cms.host.faq##]">
     <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
 </basis>
+<basis core="dbsource" source="media" name="db" lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
+    <member name="info-gallery" type="list" format="4" order="ord"></member>
+</basis>
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -35,7 +41,15 @@
 <body>
     <basis core="call" file="template-header.inc" pageindexid="2" />
     <main data-activepage="hotel-list">
-        <section class="relative bg-hotelList bg-center bg-cover py-24">
+        <section class="dynamic-bg relative bg-center bg-cover py-24">
+            <basis core="print" datamembername="hotel_group.gallery">
+                <else-layout>
+                    <div class="dynamic-img" data-bg="../images/hotel-list-background.jpg"></div>
+                </else-layout>
+                <face filter="ord in(1)">
+                    <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@largeIMG"></div>
+                </face>
+            </basis>
             <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
             <div
                 class="relative z-10 flex flex-col items-center gap-2 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
@@ -319,7 +333,8 @@
                                                     </use>
                                                 </svg>
                                             </span>
-                                            <span class="empty-face-text text-xs text-zinc-700">@prp_[##cms.host.hotel_region##]</span>
+                                            <span
+                                                class="empty-face-text text-xs text-zinc-700">@prp_[##cms.host.hotel_region##]</span>
                                         </div>
                                     </div>
                                 </div>
@@ -437,12 +452,20 @@
         </section>
 
         <section class="relative rounded-3xl overflow-hidden mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-14">
-            <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/contact-tour-list.jpg"
-                class="w-full h-[425px] object-cover" alt="" width="295" height="425" loading="lazy" />
+            <basis core="print" datamembername="db.info-gallery">
+                <face filter="largeIMG is null">
+                    <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/sidebar-banner.jpg"
+                        class="w-full h-[425px] object-cover" alt="@name" width="295" height="425" loading="lazy" />
+                </face>
+                <face filter="ord in(2)">
+                    <img src="\@largeIMG" class="w-full h-[425px] object-cover" alt="@name" width="295" height="425"
+                        loading="lazy" />
+                </face>
+            </basis>
             <div class="absolute z-10 bottom-7 left-5 right-5">
                 <div class="flex flex-col gap-2 direction-ltr">
-                    <basis core="print" datamembername="db.info">
-                        <face filter="prpID in(8000)">
+                    <basis core="print" datamembername="db.info-number">
+                        <face>
                             <a href="tel:@text"
                                 class="empty-face-fields group flex items-center gap-3 bg-white rounded-xl p-2">
                                 <span class="bg-primary-50 rounded-full p-3 group-hover:animate-phoneRing">

@@ -1,6 +1,10 @@
 <basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
     <member name="info" type="view" />
 </basis>
+<basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
+    <member name="info-number" type="view" postsql="SELECT * FROM [db.info-number] WHERE TypeID IN (240) ORDER BY ROWID DESC
+    LIMIT 1" />
+</basis>
 <basis core="group" if="'[##cms.cms.page_index##]' = 'نمایه پیش فرض'">
     <basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour">
         <member name="cat" type="tree" request="cat" parentid="217445" order="ord"></member>
@@ -27,8 +31,8 @@
                         </div>
 
                         <div class="flex items-center gap-2 divide-x divide-x-reverse divide-zinc-200">
-                            <basis core="print" datamembername="db.info">
-                                <face filter="prpid in(8000)">
+                            <basis core="print" datamembername="db.info-number">
+                                <face>
                                     <a href="tel:@text" class="group flex items-center">
                                         <span
                                             class="phone-number-header relative text-sm font-medium text-zinc-900 transition-all duration-300 group-hover:text-primary-600">@text

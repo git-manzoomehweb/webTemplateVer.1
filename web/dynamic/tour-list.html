@@ -3,10 +3,8 @@
     size="295x160" pageno="[##cms.query.pagenum|(1)##]" />
   <member name="paging" type="list" request="paging" count="3" parentname="list" />
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour_group">
-  <member name="image" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"
-    postsql="select * from [tour_group.image] where catid in([##cms.query.catid##])">
-  </member>
+<basis core="dbsource" source="media" name="tour_group" lid="1" usedforid="[##cms.query.zid##]" sourcemid="product">
+  <member name="gallery" type="list" format="4" order="ord"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="featured_tours">
   <member name="cat" type="tree" request="cat" parentid="[##cms.query.tid##]" order="ord"
@@ -54,12 +52,12 @@
   <basis core="call" file="template-header.inc" pageindexid="1" />
   <main data-activepage="tour-list">
     <section class="dynamic-bg relative bg-tourList bg-center bg-cover py-24">
-      <basis core="print" datamembername="tour_group.image">
-        <face filter="image is null">
-          <div class="dynamic-img" data-bg="../images/tour-list-background.jpg"></div>
-        </face>
-        <face>
-          <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@image"></div>
+      <basis core="print" datamembername="tour_group.gallery">
+        <else-layout>
+            <div class="dynamic-img" data-bg="../images/tour-list-background.jpg"></div>
+        </else-layout>
+        <face filter="ord in(1)">
+          <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@largeIMG"></div>
         </face>
       </basis>
       <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>

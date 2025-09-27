@@ -1,6 +1,10 @@
 <basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
   <member name="info" type="view" />
 </basis>
+<basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
+  <member name="info-number" type="view" postsql="SELECT * FROM [db.info-number] WHERE TypeID IN (240) ORDER BY ROWID DESC
+  LIMIT 1" />
+</basis>
 <header class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
   <section class="relative z-30">
     <div class="flex items-center justify-between border-b border-solid border-zinc-300">
@@ -64,14 +68,14 @@
             </ul>
           </nav>
         </section>
-        <basis core="print" datamembername="db.info">
+        <basis core="print" datamembername="db.info-number">
           <layout>
             <section
               class="flex items-center justify-center mt-8 border border-solid border-primary-600 text-primary-600 rounded-xl h-12">
               @child
             </section>
           </layout>
-          <face filter="prpid in(8000)">
+          <face>
             <a href="tel:@text" class="flex items-center justify-center w-full h-full text-sm font-medium">تماس با
               کارشناسان</a>
           </face>

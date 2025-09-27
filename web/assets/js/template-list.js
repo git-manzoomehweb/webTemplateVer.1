@@ -16,17 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const paging = document.getElementById('paging')
   let noResults = document.createElement('div')
   noResults.id = 'noResults'
-  noResults.style.display = 'none'
-
+  
+  noResults.className = 'hidden flex-col items-center h-full'
+  
   noResults.innerHTML = `
-  <div class="flex flex-col items-center justify-center h-full">
     <h2 class="text-3xl font-bold mb-2">هیچ موردی پیدا نشد!</h2>
     <p class="text-lg mb-6">لطفاً فیلترها را تغییر دهید یا دوباره جستجو کنید</p>
-  </div>
-`
-  if (paging && paging.parentNode) {
-    paging.parentNode.insertBefore(noResults, paging.nextSibling)
-  }
+    <span class="not-found-loader"></span>
+  `
 
   const normalizeText = (text) => String(text).replace(/\s/g, '').toLowerCase()
 
@@ -207,7 +204,15 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     if (paging) paging.style.display = visibleCount === 0 ? 'none' : ''
-    if (noResults) noResults.style.display = visibleCount === 0 ? '' : 'none'
+    if (noResults) {
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden')
+        noResults.classList.add('flex')
+      } else {
+        noResults.classList.add('hidden')
+        noResults.classList.remove('flex')
+      }
+    }
   }
 
   function updatePriceRange() {
@@ -302,14 +307,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const paging = document.getElementById('paging')
   let noResults = document.createElement('div')
   noResults.id = 'noResults'
-  noResults.style.display = 'none'
-
+  
+  noResults.className = 'hidden flex-col items-center h-full'
+  
   noResults.innerHTML = `
-  <div class="flex flex-col items-center justify-center h-full">
     <h2 class="text-3xl font-bold mb-2">هیچ موردی پیدا نشد!</h2>
     <p class="text-lg mb-6">لطفاً فیلترها را تغییر دهید یا دوباره جستجو کنید</p>
-  </div>
-`
+    <span class="not-found-loader"></span>
+  `
   if (paging && paging.parentNode) {
     paging.parentNode.insertBefore(noResults, paging.nextSibling)
   }
@@ -443,7 +448,7 @@ document.addEventListener('DOMContentLoaded', function () {
     parsePriceHotel(card.dataset.price, card.dataset.priceToman),
   )
   const REAL_MIN = pricesHotel.length ? Math.min(...pricesHotel) : 0
-  const REAL_MAX = pricesHotel.length ? Math.max(...pricesHotel) : 100000000
+  const REAL_MAX = pricesHotel.length ? Math.max(...pricesHotel) : 0
 
   let realMin = REAL_MIN
   let realMax = REAL_MAX
@@ -495,7 +500,15 @@ document.addEventListener('DOMContentLoaded', function () {
       if (match) visibleCount++
     })
     if (paging) paging.style.display = visibleCount === 0 ? 'none' : ''
-    if (noResults) noResults.style.display = visibleCount === 0 ? '' : 'none'
+    if (noResults) {
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden')
+        noResults.classList.add('flex')
+      } else {
+        noResults.classList.add('hidden')
+        noResults.classList.remove('flex')
+      }
+    }
   }
 
   const nameInput = document.getElementById('hotelNameFilter')
