@@ -1,11 +1,11 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="footer_product_links">
-    <member name="cat" type="tree" request="cat" parentid="11027" order="ord"
-        postsql="select * from [footer_product_links.cat] where parentid in(11027) and ord in(1,2,3,4,5,6)">
+    <member name="cat" type="tree" request="cat" parentid="[##cms.host.footer_product_links##]" order="ord"
+        postsql="select * from [footer_product_links.cat] where parentid in([##cms.host.footer_product_links##]) and ord in(1,2,3,4,5,6)">
     </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="footer_article_links">
-    <member name="cat" type="tree" request="cat" parentid="11311" order="ord"
-        postsql="select * from [footer_article_links.cat] where parentid in(11311) and ord in(1,2,3,4,5,6)">
+    <member name="cat" type="tree" request="cat" parentid="[##cms.host.footer_article_links##]" order="ord"
+        postsql="select * from [footer_article_links.cat] where parentid in([##cms.host.footer_article_links##]) and ord in(1,2,3,4,5,6)">
     </member>
 </basis>
 <basis core="group" if="'[##cms.cms.page_index##]' = 'نمایه پیش فرض'">
@@ -13,17 +13,6 @@
         <div class="relative">
             <section class="absolute lg:w-[400px] xl:w-[600px] left-6 top-12 z-10">
                 <div class="gradient-border from-primary-600 bg-white rounded-xl p-6">
-                    <!-- <h2 class="font-bold text-zinc-900 mb-2">درباره ما</h2>
-                    <div class="text-xs text-zinc-900 text-justify">
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-                        است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-                        تکنولوژی مورد
-                        نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
-                        درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت
-                        بیشتری را برای
-                        طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت
-                        می توان امید داشت
-                    </div> -->
                     <div class="flex flex-col gap-3">
                         <basis core="print" datamembername="db.info">
                             <layout>
@@ -79,105 +68,164 @@
                 </div>
             </section>
             <div
-                class="mask-image flex items-end justify-between gradient-border from-gray-200 bg-zinc-100 rounded-b-xl pb-6 px-4">
+                class="mask-image flex justify-between gradient-border from-gray-200 bg-zinc-100 rounded-b-xl pb-6 px-4 min-h-96 max-xl:min-h-[450px]">
                 <div class="lg:w-[520px] xl:w-[600px] pt-12">
-                    <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/logo.png" class="w-20 h-12" alt="logo-footer"
-                        width="80" height="48" loading="lazy" />
+                    <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/logo.png" class="w-20 h-14 object-contain"
+                        alt="logo-footer" width="80" height="56" loading="lazy" />
                     <section class="mt-3">
-                        <div class="flex items-center gap-2">
-                            <input type="text" placeholder="ایمیل خود را وارد کنید"
-                                class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 flex-1" />
-                            <input type="text" placeholder="کد امنیتی"
-                                class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 w-20 text-center" />
-                            <button
-                                class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition">ارسال</button>
+                        <h2 class="font-medium text-zinc-900 mb-3">عضویت در خبرنامه</h2>
+                        <div class="flex flex-col mx-auto footer-form" id="footer-form-resize">
+                            <div class="flex justify-between">
+                                <basis core="schema" run="atclient"
+                                    schemaurl="/schema/domainform/[##cms.host.footerFormId1##]/[##cms.host.footerFormId2##]/fa/عضویت-در-خبرنامه"
+                                    displaymode="new" button="[data-btn-uploadFooter]"
+                                    resultsourceid="upload.dataFooter" OnRendered="RenderFormFooter"></basis>
+                                <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                                    url="/schema/domainform/[##cms.host.footerFormId1##]/fa/editobject" method="post"
+                                    body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                                    content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                                    OnProcessed="OnProcessedEditObjectFooter"></basis>
+                                <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                                    triggers="upload.dataFooter">
+                                </basis>
+
+                                <div class="captcha-button flex gap-4 items-center justify-between">
+                                    <div id="captchaContainer" class="captchaContainerclass captcha-sefaresh w-auto"
+                                        data-bc-answer-container data-bc-schema-info-multi="0"
+                                        data-bc-schema-info-word="58" data-bc-schema-info-part="1"
+                                        data-bc-schema-info-part-0-type="text">
+                                        <basis core="dbsource" source="trust_login" name="captcha-footer" run="atclient"
+                                            triggers="captcha.refreshFooter">
+                                            <member name="code" type="scalar" request="captcha"></member>
+                                        </basis>
+                                        <basis datamembername="captcha-footer.code" core="print" run="atclient">
+                                            <face>
+                                                <script type="text/template">
+                              <div class="d-inline-block"><div class="flex gap-4">
+        
+                                         <div class="float-right w-[323px] mr-1"><input type="text" class="!w-32 FooterUsInput codeinputm" name="captcha" maxlength="4" placeholder="کد امنیتی"/><input type="hidden" name="captchaid" value="@captcha@" /></div>
+                                         <div class="flex items-center gap-2">
+                                             <img src="/@captcha@" loading="lazy" width="120" height="60" alt="captcha" class="w-20 h-auto" />
+                                                                             <svg width="48" height="48" onclick="refreshCaptchaFooter()" class="inline-block align-middle cursor-pointer w-9 h-9">
+                                     <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-refresh"></use>
+                                 </svg>
+                                         </div>
+        
+                                     </div>
+                                   </div>
+                            </script>
+                                            </face>
+                                        </basis>
+                                    </div>
+                                    <button
+                                        class="check-contrast flex-shrink-0 w-20 h-12 flex items-center justify-center text-white transition-all duration-300 data-body-btn bg-primary-600 rounded-xl hover:bg-secondary-600"
+                                        type="button" data-btn-uploadFooter>
+                                        <span class="">ارسال</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div
+                                class="Loading_Form hidden data-body-btn mt-6 px-4 bg-secondary-800 rounded-2xl justify-center items-center gap-2.5">
+                                <div id="ballsWaveG" class="text-base font-normal leading-normal">
+                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-center text-primary-600 message-api"></div>
                         </div>
                     </section>
                     <section class="flex gap-7 mt-12">
-                        <div class="flex-1">
-                            <h2 class="text-sm font-medium text-zinc-900 border-b-2 border-dashed border-zinc-300 pb-2">
-                                دسته بندی</h2>
-                            <basis core="list" datamembername="footer_product_links.cat">
-                                <layout>
+                        <basis core="list" datamembername="footer_product_links.cat">
+                            <layout>
+                                <div class="flex-1">
+                                    <h2 class="font-medium text-zinc-900 border-b-2 border-dashed border-zinc-300 pb-2">
+                                        دسته بندی</h2>
                                     <div class="grid grid-cols-2 mt-3">
                                         @child
                                     </div>
-                                </layout>
-                                <face filter="link is null">
-                                    <a href="/tour-list.bc?catid=@catid"
-                                        class="relative group flex items-center text-zinc-900 text-sm">
-                                        <svg width="48" height="48">
-                                            <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-chevron-left">
-                                            </use>
-                                        </svg>
-                                        @title
-                                        <span
-                                            class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
-                                        <span
-                                            class="absolute -top-px left-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
-                                    </a>
-                                </face>
-                                <face>
-                                    <a href="/@link" class="relative group flex items-center text-zinc-900 text-sm">
-                                        <svg width="48" height="48">
-                                            <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-chevron-left">
-                                            </use>
-                                        </svg>
-                                        @title
-                                        <span
-                                            class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
-                                        <span
-                                            class="absolute -top-px left-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
-                                    </a>
-                                </face>
-                            </basis>
+                                </div>
+                            </layout>
+                            <face filter="link is null">
+                                <a href="/tour-list.bc?catid=@catid"
+                                    class="relative group flex items-center text-zinc-900 text-sm">
+                                    <svg width="48" height="48">
+                                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-chevron-left">
+                                        </use>
+                                    </svg>
+                                    <span class="line-clamp-1">@title</span>
+                                    <span
+                                        class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
+                                    <span
+                                        class="absolute -top-px left-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
+                                </a>
+                            </face>
+                            <face>
+                                <a href="/@link" class="relative group flex items-center text-zinc-900 text-sm">
+                                    <svg width="48" height="48">
+                                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-chevron-left">
+                                        </use>
+                                    </svg>
+                                    <span class="line-clamp-1">@title</span>
+                                    <span
+                                        class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
+                                    <span
+                                        class="absolute -top-px left-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
+                                </a>
+                            </face>
+                        </basis>
 
-                        </div>
-                        <div class="flex-1">
-                            <h2 class="text-sm font-medium text-zinc-900 border-b-2 border-dashed border-zinc-300 pb-2">
-                                دسته بندی</h2>
-                            <basis core="list" datamembername="footer_article_links.cat">
-                                <layout>
+                        <basis core="list" datamembername="footer_article_links.cat">
+                            <layout>
+                                <div class="flex-1">
+                                    <h2 class="font-medium text-zinc-900 border-b-2 border-dashed border-zinc-300 pb-2">
+                                        دسته بندی</h2>
                                     <div class="grid grid-cols-2 mt-3">
                                         @child
                                     </div>
-                                </layout>
-                                <face filter="link is null">
-                                    <a href="/article-list.bc?catid=@catid"
-                                        class="relative group flex items-center text-zinc-900 text-sm">
-                                        <svg width="48" height="48">
-                                            <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-chevron-left">
-                                            </use>
-                                        </svg>
-                                        @title
-                                        <span
-                                            class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
-                                        <span
-                                            class="absolute -top-px left-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
-                                    </a>
-                                </face>
-                                <face>
-                                    <a href="/@link" class="relative group flex items-center text-zinc-900 text-sm">
-                                        <svg width="48" height="48">
-                                            <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-chevron-left">
-                                            </use>
-                                        </svg>
-                                        @title
-                                        <span
-                                            class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
-                                        <span
-                                            class="absolute -top-px left-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
-                                    </a>
-                                </face>
-                            </basis>
-                        </div>
+                                </div>
+                            </layout>
+                            <face filter="link is null">
+                                <a href="/article-list.bc?catid=@catid"
+                                    class="relative group flex items-center text-zinc-900 text-sm">
+                                    <svg width="48" height="48">
+                                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-chevron-left">
+                                        </use>
+                                    </svg>
+                                    <span class="line-clamp-1">@title</span>
+                                    <span
+                                        class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
+                                    <span
+                                        class="absolute -top-px left-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
+                                </a>
+                            </face>
+                            <face>
+                                <a href="/@link" class="relative group flex items-center text-zinc-900 text-sm">
+                                    <svg width="48" height="48">
+                                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-chevron-left">
+                                        </use>
+                                    </svg>
+                                    <span class="line-clamp-1">@title</span>
+                                    <span
+                                        class="absolute -bottom-px right-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
+                                    <span
+                                        class="absolute -top-px left-0 w-0 transition-all duration-300 h-px bg-primary-600 group-hover:w-full"></span>
+                                </a>
+                            </face>
+                        </basis>
+
                     </section>
                 </div>
-                <div class="flex flex-col items-center justify-between gap-6 mt-6">
+                <div class="flex flex-col items-center justify-end gap-6 mt-6 max-xl:mr-2">
                     <section class="flex justify-center">
                         <basis core="print" datamembername="db.info">
                             <layout>
-                                <ul class="flex items-center gap-2">
+                                <ul class="flex items-center gap-2 max-xl:flex-wrap max-xl:justify-center">
                                     @child
                                 </ul>
                             </layout>
@@ -198,8 +246,7 @@
                             <face filter="TypeID in('245') and text in('اینستاگرام')">
                                 <li>
                                     <a href="@largetext" target="_blank" rel="noopener noreferrer"
-                                        aria-label="Instagram"
-                                        class="group relative z-10 overflow-hidden flex items-center justify-center 
+                                        aria-label="Instagram" class="group relative z-10 overflow-hidden flex items-center justify-center 
                                               w-12 h-12 rounded-full bg-primary-600">
                                         <svg width="14" height="14">
                                             <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-instagram"></use>
@@ -332,22 +379,48 @@
                     </section>
 
                     <section>
-                        <ul class="flex items-center gap-9">
-                            <a href="" rel="noopener" target="_blank"
-                                class="flex items-center justify-center w-12 h-12 bg-white border border-solid border-zinc-400 rounded transition-all duration-300 hover:scale-105 hover:border-primary-600">
-                                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/_images/plane-association.png"
-                                    class="w-10 h-10" alt="plane-association" width="39" height="41" loading="lazy" />
-                            </a>
-                            <a href="https://www.cao.ir/paxrights" rel="noopener" target="_blank"
-                                class="flex items-center justify-center w-12 h-12 bg-white border border-solid border-zinc-400 rounded">
-                                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/_images/pax.png" alt="pax" width="39"
-                                    height="41" loading="lazy" />
-                            </a>
-                            <a href="https://www.iata.org/" rel="noopener" target="_blank"
-                                class="flex items-center justify-center w-12 h-12 bg-white border border-solid border-zinc-400 rounded">
-                                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/_images/iata.png" alt="iata" width="39"
-                                    height="41" loading="lazy" />
-                            </a>
+                        <ul class="flex items-center gap-9 max-xl:gap-1">
+                            <li>
+                                <a href="https://www.cao.ir/" rel="noopener" target="_blank"
+                                    class="flex items-center justify-center w-14 h-14 bg-white border border-solid border-zinc-400 rounded transition-all duration-300 hover:scale-105 hover:border-primary-600">
+                                    <img src="[##cms.cms.cdn##]/_images/plane-association.png" class="w-14 h-auto"
+                                        alt="plane-association" width="56" height="36" loading="lazy" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.cao.ir/paxrights" rel="noopener" target="_blank"
+                                    class="flex items-center justify-center w-14 h-14 bg-white border border-solid border-zinc-400 rounded transition-all duration-300 hover:scale-105 hover:border-primary-600">
+                                    <img src="[##cms.cms.cdn##]/_images/pax.png" class="w-14 h-auto" alt="pax"
+                                        width="56" height="36" loading="lazy" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.iata.org/" rel="noopener" target="_blank"
+                                    class="flex items-center justify-center w-14 h-14 bg-white border border-solid border-zinc-400 rounded transition-all duration-300 hover:scale-105 hover:border-primary-600">
+                                    <img src="[##cms.cms.cdn##]/_images/iata.png" class="w-14 h-auto" alt="iata"
+                                        width="56" height="36" loading="lazy" />
+                                </a>
+                            </li>
+                            <basis core="group" if="'[##cms.host.enamad_ir##]' <> ''">
+                                <li>
+                                    [##cms.host.enamad_ir##]
+                                </li>
+                            </basis>
+                            <basis core="group" if="'[##cms.host.enamad_com##]' <> ''">
+                                <li>
+                                    [##cms.host.enamad_com##]
+                                </li>
+                            </basis>
+                            <basis core="group" if="'[##cms.host.samandehi_ir##]' <> ''">
+                                <li>
+                                    [##cms.host.samandehi_ir##]
+                                </li>
+                            </basis>
+                            <basis core="group" if="'[##cms.host.samandehi_com##]' <> ''">
+                                <li>
+                                    [##cms.host.samandehi_com##]
+                                </li>
+                            </basis>
                         </ul>
                     </section>
                 </div>

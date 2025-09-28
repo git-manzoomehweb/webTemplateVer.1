@@ -299,7 +299,7 @@
                     <span class="font-bold text-primary-600">کارشناسان ما</span>
                 </h2>
                 <div class="flex flex-col mx-auto contact-form" id="contact-form-resize">
-                    <div class="flex">
+                    <div class="flex gap-1 max-xl:flex-wrap">
                         <basis core="schema" run="atclient"
                             schemaurl="/schema/domainform/[##cms.host.contactFormId1##]/[##cms.host.contactFormId2##]/fa/ارتباط-با-کارشناسان-ما"
                             displaymode="new" button="[data-btn-uploadContact]" resultsourceid="upload.dataContact"
@@ -326,7 +326,7 @@
                                         <script type="text/template">
                       <div class="d-inline-block"><div class="flex gap-4">
 
-                                 <div class="float-right w-[323px] mr-1"><input type="text" class="!w-32 contactUsInput codeinputm" name="captcha" maxlength="4" placeholder="کد امنیتی"/><input type="hidden" name="captchaid" value="@captcha@" /></div>
+                                 <div class="float-right w-[323px]"><input type="text" class="!w-32 contactUsInput codeinputm" name="captcha" maxlength="4" placeholder="کد امنیتی"/><input type="hidden" name="captchaid" value="@captcha@" /></div>
                                  <div class="flex items-center gap-2">
                                      <img src="/@captcha@" loading="lazy" width="120" height="60" alt="captcha" class="w-20 h-auto" />
                                                                      <svg width="48" height="48" onclick="refreshCaptchaContact()" class="inline-block align-middle cursor-pointer w-9 h-9">

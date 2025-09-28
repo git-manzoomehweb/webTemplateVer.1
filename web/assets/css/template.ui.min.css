@@ -352,10 +352,6 @@
   min-height: 20rem;
 }
 
-.min-h-96 {
-  min-height: 24rem;
-}
-
 .min-h-\[396px\] {
   min-height: 396px;
 }
@@ -386,10 +382,6 @@
 
 .w-32 {
   width: 8rem;
-}
-
-.\!w-32 {
-  width: 8rem !important;
 }
 
 .w-4\/5 {

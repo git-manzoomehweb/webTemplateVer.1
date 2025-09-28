@@ -846,6 +846,10 @@ body {
   max-height: 24rem;
 }
 
+.min-h-96 {
+  min-height: 24rem;
+}
+
 .w-0 {
   width: 0px;
 }
@@ -856,6 +860,10 @@ body {
 
 .w-12 {
   width: 3rem;
+}
+
+.w-14 {
+  width: 3.5rem;
 }
 
 .w-20 {
@@ -888,6 +896,14 @@ body {
 
 .w-full {
   width: 100%;
+}
+
+.\!w-28 {
+  width: 7rem !important;
+}
+
+.\!w-32 {
+  width: 8rem !important;
 }
 
 .flex-1 {
@@ -1099,6 +1115,10 @@ body {
 .hyphens-auto {
   -webkit-hyphens: auto;
   hyphens: auto;
+}
+
+.object-contain {
+  object-fit: contain;
 }
 
 .rounded {
@@ -2000,11 +2020,30 @@ body {
   .max-xl\:w-\[97\%\] {
     width: 97%;
   }
+  .max-xl\:gap-1 {
+    gap: 0.25rem /* 4px */;
+  }
+  .max-xl\:justify-center {
+    justify-content: center;
+  }
+  .max-xl\:flex-wrap {
+    flex-wrap: wrap;
+  }
+  .max-xl\:mr-2 {
+    margin-right: 0.5rem /* 8px */;
+  }
+  .max-xl\:min-h-\[450px\] {
+    min-height: 450px;
+  }
 }
 
 @media not all and (min-width: 1024px) {
   .max-lg\:w-\[90\%\] {
     width: 90%;
+  }
+
+  .footer-form [data-bc-schema-info-part='1'] [data-bc-part-related-cell] {
+    width: 100% !important;
   }
 }
 
@@ -2069,4 +2108,58 @@ body {
 .itemInput,
 .login-btn {
   font-family: 'DanaFaNum' !important;
+}
+
+.footer-form [data-bc-schema-direction='rtl'] [data-bc-title-container] {
+  display: none !important;
+}
+
+.footer-form
+  [data-bc-schema-direction='rtl']
+  [data-bc-title-container]
+  [data-bc-question-title] {
+  display: none !important;
+}
+
+.footer-form [data-bc-answer-container] input[type='text'] {
+  background-color: white !important;
+  color: #18181b !important;
+  height: 56px !important;
+  padding: 0 16px !important;
+  font-weight: 400 !important;
+  outline: none !important;
+  border-radius: 12px !important;
+  border: none !important;
+  font-size: 16px !important;
+}
+
+.footer-form [data-bc-schema-direction='rtl'] [data-bc-part-container] {
+  width: 100%;
+}
+
+.footer-form [data-bc-answer-container] input[type='text']::placeholder {
+  color: #71717a !important;
+}
+
+.footer-form [data-bc-answer-container] {
+  width: 100%;
+}
+
+.footer-form [data-bc-schema-info-part='1'] [data-bc-part-related-cell] {
+  width: 220px !important;
+  margin-left: 0;
+}
+
+.footer-form [data-bc-schema-column] {
+  display: flex;
+  gap: 4px;
+}
+
+.footer-form [data-bc-part-related-cell] {
+  margin-bottom: 0 !important;
+}
+
+.footer-form [data-bc-question] {
+  width: 100%;
+  margin-bottom: 0 !important;
 }
