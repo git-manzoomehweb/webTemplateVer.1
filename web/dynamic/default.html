@@ -29,6 +29,11 @@
   </member>
 </basis>
 
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="big_banner"
+  usedforid="[##cms.host.big_banner##]">
+  <member name="view" type="view" size="" propertyid="7244" />
+</basis>
+
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="hotel_group">
   <member name="cat" type="tree" request="cat" parentid="[##cms.host.hotel_group##]" order="ord"
     postsql="select * from [hotel_group.cat] where catid in([##cms.host.hotel_group##]) or parentid in([##cms.host.hotel_group##])">
@@ -81,7 +86,7 @@
 <body>
   <basis core="call" file="template-header.inc" pageindexid="1" />
 
-  <main data-activepage="home" data-sectionorder="">
+  <main data-activepage="home" data-sectionorder="[##cms.host.section_order##]">
     <basis core="print" datamembername="db.info">
       <face filter="TypeID in(150)">
         <h1 class="h1-tag">@text</h1>
@@ -98,8 +103,8 @@
           class="search-banner gradient-border from-primary-600 bg-white overflow-visible rounded-3xl shadow-search-engine">
           <div class="search-box-container">
             <div id="search-box" class="dir-rtl" data-view="pc">
-              <div class="flex justify-center">
-                <span class="loader"></span>
+              <div class="flex justify-center items-center min-w-[808px] min-h-[500px]">
+                <span class="search-engine-loader"></span>
               </div>
             </div>
           </div>
@@ -699,7 +704,7 @@
               </div>
             </layout>
             <face>
-              <h2 class="inline-block image-text text-[50px] font-black mb-6">
+              <h2 class="inline-block image-text text-[50px] font-bold mb-6">
                 @text
               </h2>
               <div
@@ -713,7 +718,7 @@
     </div>
   </main>
 
-  <script>
+  <!-- <script>
     document.addEventListener("click", function (e) {
       const dateBox = e.target.closest(".Basis_Date_Box");
       if (!dateBox) return;
@@ -727,7 +732,6 @@
         const rect = dateBox.getBoundingClientRect();
         const parent = popup.offsetParent.getBoundingClientRect();
 
-        // محاسبه top نسبت به offsetParent
         popup.style.top =
           rect.top - parent.top + dateBox.offsetHeight + 50 + "px";
 
@@ -735,11 +739,9 @@
           document.documentElement.getAttribute("lang") === "fa" ||
           document.documentElement.getAttribute("lang") === "ar"
         ) {
-          // محاسبه right دقیق
-          popup.style.right = parent.right - rect.right + "px"; // 20px فاصله دلخواه
+          popup.style.right = parent.right - rect.right + "px";
           popup.style.left = "unset";
         } else {
-          // محاسبه left دقیق
           popup.style.left = rect.left - parent.left + "px";
           popup.style.right = "unset";
         }
@@ -751,7 +753,7 @@
         );
       }, 50);
     });
-  </script>
+  </script> -->
 
   <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
   <basis core="call" file="template-footer.inc" pageindexid="1" />

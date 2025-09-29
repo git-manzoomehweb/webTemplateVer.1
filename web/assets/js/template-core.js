@@ -45,6 +45,43 @@ document.addEventListener('DOMContentLoaded', function () {
     })
   }
 
+  function initializeCalendarPopup() {
+    document.addEventListener("click", function (e) {
+      const dateBox = e.target.closest(".Basis_Date_Box");
+      if (!dateBox) return;
+
+      setTimeout(() => {
+        const popup = document.querySelector(
+          ".Basis_Calendar_Box.Selected_Basis_Calendar_Box"
+        );
+        if (!popup) return;
+
+        const rect = dateBox.getBoundingClientRect();
+        const parent = popup.offsetParent.getBoundingClientRect();
+
+        popup.style.top =
+          rect.top - parent.top + dateBox.offsetHeight + 50 + "px";
+
+        if (
+          document.documentElement.getAttribute("lang") === "fa" ||
+          document.documentElement.getAttribute("lang") === "ar"
+        ) {
+          popup.style.right = parent.right - rect.right + "px";
+          popup.style.left = "unset";
+        } else {
+          popup.style.left = rect.left - parent.left + "px";
+          popup.style.right = "unset";
+        }
+
+        console.log(
+          "✅ موقعیت پاپ‌آپ دقیق اعمال شد",
+          popup.style.top,
+          popup.style.right || popup.style.left
+        );
+      }, 50);
+    });
+  }
+
   function fetchEngine() {
     try {
       const xhrobj = new XMLHttpRequest()
@@ -87,6 +124,9 @@ document.addEventListener('DOMContentLoaded', function () {
               .appendChild(scriptTag)
               .parentNode.removeChild(scriptTag)
           }
+
+          // Initialize calendar popup after content is loaded
+          initializeCalendarPopup();
 
           const observer = new MutationObserver((mutationsList) => {
             mutationsList.forEach((mutation) => {

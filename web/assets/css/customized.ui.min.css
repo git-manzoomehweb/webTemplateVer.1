@@ -559,9 +559,14 @@ video {
   display: none;
 }
 
+html{
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'DanaFaNum';
   overflow-wrap: break-word;
+  overflow-x: inherit;
 }
 
 .gradient-border {
@@ -1572,13 +1577,6 @@ body {
   --special-4: #00000033;
   --client-color: #466def;
   --bg: url('');
-  /* --visaList-bg: url('../images/visa-list-background.jpg');
-  --visa-bg: url('../images/visa-background.jpg');
-  --contact-bg: url('../images/contact-background.jpg');
-  --articleList-bg: url('../images/article-list-background.jpg');
-  --article-bg: url('../images/article-background.jpg');
-  --tourList-bg: url('../images/tour-list-background.jpg');
-  --hotelList-bg: url('../images/hotel-list-background.jpg'); */
   --hotel-bg: url('../images/hotel-background.jpg');
 }
 
@@ -1622,19 +1620,6 @@ body {
   font-weight: 700;
 
   src: url('http://basisflydemo.ir/fonts/DanaFaNum-Bold.ttf') format('truetype');
-}
-
-@font-face {
-  font-display: swap;
-
-  font-family: 'DanaFaNum';
-
-  font-style: normal;
-
-  font-weight: 900;
-
-  src: url('http://basisflydemo.ir/fonts/DanaFaNum-Black.ttf')
-    format('truetype');
 }
 
 .h1-tag {
@@ -1788,6 +1773,80 @@ body {
   content: '-';
   margin-left: 4px;
   margin-right: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 18px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #fafafa, #e5e5e5);
+  border-radius: 12px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--neutral-300);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-500), var(--primary-700));
+  border-radius: 12px;
+  border: 3px solid #fafafa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--primary-600), var(--primary-800));
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, var(--primary-700), var(--primary-900));
+}
+
+::-webkit-scrollbar-button {
+  background: #fafafa;
+  border: 2px solid #fafafa;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-button:hover {
+  background: #fafafa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-button:vertical:start {
+  background: var(--primary-500)
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M7 14l5-5 5 5z"/></svg>')
+    no-repeat center;
+  background-size: 16px;
+}
+
+::-webkit-scrollbar-button:vertical:end {
+  background: var(--primary-500)
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M7 10l5 5 5-5z"/></svg>')
+    no-repeat center;
+  background-size: 16px;
+}
+
+::-webkit-scrollbar-button:horizontal:start {
+  background: var(--secondary-500)
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M15 17l-5-5 5-5z"/></svg>')
+    no-repeat center;
+  background-size: 16px;
+}
+
+::-webkit-scrollbar-button:horizontal:end {
+  background: var(--secondary-500)
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 17l5-5-5-5z"/></svg>')
+    no-repeat center;
+  background-size: 16px;
+}
+
+::-webkit-scrollbar-corner {
+  background: #fafafa;
+  border-radius: 0 0 8px 0;
 }
 
 .hover\:-translate-y-px:hover {
@@ -2045,6 +2104,10 @@ body {
   .footer-form [data-bc-schema-info-part='1'] [data-bc-part-related-cell] {
     width: 100% !important;
   }
+
+  .hasNot-login-icon{
+    display: block;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -2103,6 +2166,14 @@ body {
 
 .hasNot-login-icon {
   display: none;
+}
+
+.btnstyle {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .itemInput,

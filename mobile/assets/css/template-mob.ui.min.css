@@ -1311,6 +1311,11 @@
   height: 48px !important;
 }
 
+.selectLocation svg {
+  width: 32px !important;
+  height: 32px !important;
+}
+
 .exchangeRoute svg,
 .removeroute-icon {
   width: 24px !important;
@@ -1324,6 +1329,10 @@
   position: absolute !important;
   top: -72px;
   right: 9rem;
+}
+
+#flightHotelSearch .reserve-field.flightclass-field{
+  right: 0;
 }
 
 .reserve-field.flightclass-field > div:first-of-type {
@@ -1397,7 +1406,8 @@
 }
 
 .Basis_Date.start_date,
-.Basis_Date.end_date {
+.Basis_Date.end_date,
+.Basis_Date_ExteraHoteldate {
   position: unset !important;
   padding: 0 !important;
 }
@@ -1510,7 +1520,7 @@
 .active-FlightType,
 .active-Compartment {
   border-radius: 8px !important;
-  background-color: var(--primary-900) !important;
+  background-color: var(--primary-600) !important;
   transition: all 300ms ease;
 }
 
@@ -1533,7 +1543,7 @@
 #backtoback:hover,
 #multi:hover,
 .FlightClass.hidden-box li:hover {
-  background-color: var(--primary-900);
+  background-color: var(--primary-600);
   border-radius: 8px !important;
 }
 
@@ -1544,6 +1554,8 @@
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   left: 0;
+  max-height: 254px;
+  overflow-y: auto;
 }
 
 .multicity-flight-form .searchList {
@@ -1555,18 +1567,19 @@
 }
 
 .ul-list ul li:first-of-type {
-  background-color: var(--primary-900);
+  background-color: var(--primary-600);
   color: white !important;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.ul-list ul li:not(:last-child) {
+.ul-list ul li:not(:last-child),
+.locationResult div:not(:last-of-type) {
   border-bottom: 1px solid var(--primary-50);
 }
 
 .ul-list ul li:hover {
-  background-color: var(--primary-900);
+  background-color: var(--primary-600);
   color: white !important;
   transition: all 300ms ease;
 }
@@ -1612,7 +1625,7 @@
   line-height: normal !important;
   width: 24px !important;
   height: 24px !important;
-  background: var(--primary-900);
+  background: var(--primary-600);
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1636,7 +1649,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 24px;
-  background-color: var(--primary-900) !important;
+  background-color: var(--primary-600) !important;
   color: white;
   border-radius: 8px;
   font-weight: 500;
@@ -1742,7 +1755,7 @@
   display: flex;
   align-items: center;
   width: 100% !important;
-  margin: 12px 0;
+  padding: 4px 0;
 }
 
 .createChildDropdown {
@@ -1797,7 +1810,7 @@
 }
 
 .traintype-items li:hover {
-  background-color: var(--primary-900);
+  background-color: var(--primary-600);
 }
 
 .traintype-items li:hover span {
