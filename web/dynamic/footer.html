@@ -8,7 +8,7 @@
         postsql="select * from [footer_article_links.cat] where parentid in([##cms.host.footer_article_links##]) and ord in(1,2,3,4,5,6)">
     </member>
 </basis>
-<basis core="group" if="'[##cms.cms.page_index##]' = 'نمایه پیش فرض'">
+<basis core="group" if="'[##cms.cms.page_index##]' = 'desktop'">
     <footer class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-14">
         <div class="relative">
             <section class="absolute lg:w-[400px] xl:w-[600px] left-6 top-12 z-10">
@@ -443,6 +443,6 @@
     <basis core="call" file="script.inc"></basis>
 </basis>
 
-<basis core="group" if="'[##cms.cms.page_index##]' = 'موبایل'">
+<basis core="group" if="'[##cms.cms.page_index##]' = 'mobile phone'">
     <basis core="call" file="template-footer.inc" pageindex="[##cms.cms.pageindex##]"></basis>
 </basis>

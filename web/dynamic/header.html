@@ -5,7 +5,7 @@
     <member name="info-number" type="view" postsql="SELECT * FROM [db.info-number] WHERE TypeID IN (240) ORDER BY ROWID DESC
     LIMIT 1" />
 </basis>
-<basis core="group" if="'[##cms.cms.page_index##]' = 'نمایه پیش فرض'">
+<basis core="group" if="'[##cms.cms.page_index##]' = 'desktop'">
     <basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour">
         <member name="cat" type="tree" request="cat" parentid="217445" order="ord"></member>
     </basis>
@@ -79,6 +79,6 @@
 
 </basis>
 
-<basis core="group" if="'[##cms.cms.page_index##]' = 'موبایل'">
+<basis core="group" if="'[##cms.cms.page_index##]' = 'mobile phone'">
     <basis core="call" file="template-header.inc" pageindex="[##cms.cms.pageindex##]"></basis>
 </basis>

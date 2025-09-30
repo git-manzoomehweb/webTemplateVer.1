@@ -125,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function () {
               .parentNode.removeChild(scriptTag)
           }
 
-          // Initialize calendar popup after content is loaded
           initializeCalendarPopup();
 
           const observer = new MutationObserver((mutationsList) => {

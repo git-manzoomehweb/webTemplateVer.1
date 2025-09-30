@@ -1,0 +1,26 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|cms.host.head_title##]
+    </title>
+    <meta name="description" content="[##cms.seo.description|cms.host.head_description##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="test-pwa.inc" pageindexid="2" />
+    <!-- common styles for all page -->
+    <basis core="call" file="style.inc" pageindexid="2" />
+    <!-- gtag script -->
+    <basis core="call" file="analytics-head.inc" />
+</head>
