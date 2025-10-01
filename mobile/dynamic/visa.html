@@ -4,8 +4,8 @@
 <basis core="dbsource" source="basiscore" name="db" mid="20" lid="1" usedforid="[##cms.query.id##]">
   <member name="view" type="view" propertyid="7249" />
 </basis>
-<basis core="dbsource" source="media" name="db" lid="1" usedforid="[##cms.query.id##]" sourcemid="product">
-  <member name="view-gallery" type="list" format="4" order="ord"></member>
+<basis core="dbsource" source="media" name="view" lid="1" usedforid="[##cms.query.id##]" sourcemid="product">
+  <member name="gallery" type="list" format="4" order="ord"></member>
 </basis>
 <basis core="dbsource" source="basiscore" name="db" lid="1" mid="20" usedforid="[##cms.query.id##]">
   <member name="navigation" type="tree" request="navigationcat" />
@@ -37,7 +37,7 @@
             <div class="dynamic-img" data-bg="../images/visa-background.jpg"></div>
         </else-layout>
         <face filter="ord in(1)">
-          <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@largeIMG"></div>
+          <div class="dynamic-img" data-bg="[##cms.cms.cdn##]/@largeIMG"></div>
         </face>
       </basis>
       <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>

@@ -989,6 +989,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   ]
 
+  const contentCache = {}
+
   function initSwiper(selector, globalVarName) {
     if (!selector) return
     window[globalVarName] = new Swiper(selector, {
@@ -1014,6 +1016,14 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
+  function setImageSrc(imgEl, imgSrc) {
+    imgEl.src = ''; 
+
+    imgEl.src = imgSrc + "?t=" + new Date().getTime();  
+
+    imgEl.style.display = imgSrc ? 'block' : 'none';
+  }
+
   tabGroups.forEach(
     ({
       btnClass,
@@ -1029,12 +1039,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
       async function loadContent(btn) {
         buttons.forEach((b) => b.classList.remove('active'))
-        if (btn.classList) btn.classList.add('active')
+        btn.classList.add('active')
 
         container.innerHTML =
           '<div class="h-full flex items-center justify-center"><span class="fetch-loader"></span></div>'
 
         const dataId = btn.getAttribute('data-id')
+
+        if (contentCache[dataId]) {
+          container.innerHTML = contentCache[dataId]
+          if (swiperSelector && swiperVar) {
+            initSwiper(swiperSelector, swiperVar)
+          }
+          if (btnClass === 'faq-fetch-btn') {
+            const imgSrc = btn.getAttribute('data-src') 
+            const imgEl = container.querySelector('.faq-img')  
+        
+            if (imgEl) {
+              setImageSrc(imgEl, imgSrc) 
+            }
+        
+            if (typeof initFaqAccordion === 'function') {
+              initFaqAccordion(container) 
+            }
+          }
+          return
+        }
 
         const paramKey = btnClass === 'faq-fetch-btn' ? 'id' : 'catid'
 
@@ -1046,7 +1076,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const res = await fetch(
             `/template-load-items.bc?fetch=${type}&${paramKey}=${encodeURIComponent(
               dataId,
-            )}`,
+            )}`
           )
           if (!res.ok)
             throw new Error(`خطا در ارتباط با سرور (کد ${res.status})`)
@@ -1055,12 +1085,13 @@ document.addEventListener('DOMContentLoaded', () => {
           await minLoaderTime
           container.innerHTML = html
 
+          contentCache[dataId] = html
+
           if (btnClass === 'faq-fetch-btn') {
             const imgSrc = btn.getAttribute('data-src')
             const imgEl = container.querySelector('.faq-img')
             if (imgEl) {
-              imgEl.style.display = imgSrc ? 'block' : 'none'
-              if (imgSrc) imgEl.src = imgSrc
+              setImageSrc(imgEl, imgSrc)  
             }
 
             if (typeof initFaqAccordion === 'function') {
@@ -1082,7 +1113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (err) {
           console.error(err)
           await minLoaderTime
-          container.innerHTML = `
+          container.innerHTML = `  
             <div class="text-center text-red-500 py-6">
               خطا در بارگذاری داده‌ها.<br>
               لطفاً دوباره تلاش کنید.
@@ -1093,6 +1124,7 @@ document.addEventListener('DOMContentLoaded', () => {
       buttons.forEach((btn) =>
         btn.addEventListener('click', () => loadContent(btn)),
       )
+
       const allId = container.dataset.all_id
 
       if (allId) {
@@ -1107,6 +1139,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   )
 })
+
+
+
 
 //-------------paging--------------
 const getSelectedCatId = () => {

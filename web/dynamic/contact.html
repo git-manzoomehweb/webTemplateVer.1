@@ -19,10 +19,10 @@
     <main data-activepage="contact">
         <section class="dynamic-bg relative bg-center bg-cover py-24 mt-6">
             <basis core="print" datamembername="db.info-gallery">
-                <face filter="largeIMG is null">
+                <else-layout>
                     <div class="dynamic-img" data-bg="../images/contact-background.jpg"></div>
-                </face>
-                <face>
+                </else-layout>
+                <face filter="ord in(1)">
                     <div class="dynamic-img" data-bg="[##cms.cms.cdn##]/@largeIMG"></div>
                 </face>
             </basis>

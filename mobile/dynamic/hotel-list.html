@@ -19,16 +19,8 @@
     sourcemid="article">
     <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
-    <member name="p-under" type="view" size="" propertyid="" />
-</basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list">
-    <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq##]" order="ord"
-        postsql="select * from [faq_list.cat] where catid in([##cms.host.faq##]) or parentid in([##cms.host.faq##])">
-    </member>
-</basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="[##cms.host.faq##]">
-    <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="aid-text" usedforid="[##cms.query.aid##]">
+    <member name="view" type="view" size="" propertyid="" />
 </basis>
 <basis core="dbsource" source="media" name="db" lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
     <member name="info-gallery" type="list" format="4" order="ord"></member>
@@ -48,7 +40,7 @@
                     <div class="dynamic-img" data-bg="../images/hotel-list-background.jpg"></div>
                 </else-layout>
                 <face filter="ord in(1)">
-                    <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@largeIMG"></div>
+                    <div class="dynamic-img" data-bg="[##cms.cms.cdn##]/@largeIMG"></div>
                 </face>
             </basis>
             <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
@@ -560,7 +552,7 @@
         </section>
 
 
-        <basis core="print" datamembername="db.p-under">
+        <basis core="print" datamembername="aid-text.view">
             <layout>
                 <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl my-14">
                     @child
@@ -582,6 +574,15 @@
         </basis>
 
         <basis core="group" if="'[##cms.host.faq##]' <> ''">
+            <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list">
+                <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq##]" order="ord"
+                    postsql="select * from [faq_list.cat] where catid in([##cms.host.faq##]) or parentid in([##cms.host.faq##])">
+                </member>
+            </basis>
+            <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="[##cms.host.faq##]">
+                <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord"
+                    size="320x480" />
+            </basis>
             <section class="mt-14">
                 <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
                     <basis core="list" datamembername="faq_list.cat">
@@ -600,7 +601,7 @@
                                         @child
                                     </div>
                                     <div
-                                        class="active-line absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300">
+                                        class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300">
                                     </div>
                                 </div>
                             </div>

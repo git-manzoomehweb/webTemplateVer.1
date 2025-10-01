@@ -143,7 +143,7 @@
                   </svg>
                 </span>
                 <h3 class="text-zinc-900 font-bold text-sm">@title</h3>
-                <div class="text-zinc-500 text-xs text-center leading-5">
+                <div class="text-zinc-500 text-xs text-center leading-5 min-h-10 line-clamp-2">
                   @prp_7244
                 </div>
               </div>
@@ -156,7 +156,7 @@
                     loading="lazy" />
                 </span>
                 <h3 class="text-zinc-900 font-bold text-sm">@title</h3>
-                <div class="text-zinc-500 text-xs text-center leading-5">
+                <div class="text-zinc-500 text-xs text-center leading-5 min-h-10 line-clamp-2">
                   @prp_7244
                 </div>
               </div>
@@ -362,7 +362,8 @@
                   </h2>
                 </face>
                 <face filter="TypeID in(129)">
-                  <div class="text-sm text-white text-justify hyphens-auto leading-5 line-clamp-3 drop-shadow-[2px_4px_3px_rgba(0,0,0,0.9)]">
+                  <div
+                    class="text-sm text-white text-justify hyphens-auto leading-5 line-clamp-3 drop-shadow-[2px_4px_3px_rgba(0,0,0,0.9)]">
                     @largetext
                   </div>
                 </face>
@@ -449,10 +450,12 @@
                   </div>
                 </layout>
                 <face filter="TypeID in(150)">
-                  <h2 class="font-bold text-3xl text-white mb-4 line-clamp-1 drop-shadow-[2px_4px_3px_rgba(0,0,0,0.9)]">@text</h2>
+                  <h2 class="font-bold text-3xl text-white mb-4 line-clamp-1 drop-shadow-[2px_4px_3px_rgba(0,0,0,0.9)]">
+                    @text</h2>
                 </face>
                 <face filter="TypeID in(129)">
-                  <div class="text-sm text-white text-justify hyphens-auto leading-5 line-clamp-3 drop-shadow-[2px_4px_3px_rgba(0,0,0,0.9)]">
+                  <div
+                    class="text-sm text-white text-justify hyphens-auto leading-5 line-clamp-3 drop-shadow-[2px_4px_3px_rgba(0,0,0,0.9)]">
                     @largetext
                   </div>
                 </face>
@@ -506,13 +509,14 @@
                       @prp_7244
                     </div>
                     <div class="flex items-center justify-between">
-                      <span class="flex items-center gap-1 text-xs text-zinc-900">
+                      <span class="empty-face-fields flex flex-1 items-center gap-1 text-xs text-zinc-900">
                         <svg width="17" height="17" class="flex-shrink-0">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-person"></use>
+                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-person">
+                          </use>
                         </svg>
-                        @prp_7248
+                        <span class="empty-face-text">@prp_7248</span>
                       </span>
-                      <button class="flex items-center">
+                      <button class="flex flex-1 justify-end items-center">
                         <span class="text-primary-600 text-xs">مطالعه بیشتر</span>
                         <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
@@ -541,13 +545,14 @@
                       @prp_7244
                     </div>
                     <div class="flex items-center justify-between">
-                      <span class="flex items-center gap-1 text-xs text-zinc-900">
+                      <span class="empty-face-fields flex flex-1 items-center gap-1 text-xs text-zinc-900">
                         <svg width="17" height="17" class="flex-shrink-0">
-                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-person"></use>
+                          <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-person">
+                          </use>
                         </svg>
-                        @prp_7248
+                        <span class="empty-face-text">@prp_7248</span>
                       </span>
-                      <button class="flex items-center">
+                      <button class="flex flex-1 justify-end items-center">
                         <span class="text-primary-600 text-xs">مطالعه بیشتر</span>
                         <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
@@ -728,7 +733,15 @@
           class="section-order relative flex items-center mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-48"
           data-order="11">
           <basis core="print" datamembername="aboutUs_default.gallery">
-            <face>
+            <else-layout>
+              <div
+                class="absolute z-10 left-0 -bottom-3 about-mask-img lg:w-[33rem] lg:h-[31rem] xl:w-[620px] xl:h-[470px]">
+                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/default-aboutus-img.jpg"
+                  class="lg:w-[33rem] lg:h-[31rem] xl:w-[620px] xl:h-[470px] object-cover" alt="default-about-us-img"
+                  width="620" height="470" loading="lazy" />
+              </div>
+            </else-layout>
+            <face filter="ord in(1)">
               <div
                 class="absolute z-10 left-0 -bottom-3 about-mask-img lg:w-[33rem] lg:h-[31rem] xl:w-[620px] xl:h-[470px]">
                 <img src="\@largeIMG" class="lg:w-[33rem] lg:h-[31rem] xl:w-[620px] xl:h-[470px] object-cover"
@@ -741,7 +754,7 @@
               <div
                 class="mask-image content-box gradient-border from-gray-300 max-w-[870px] min-h-[500px] lg:pl-[27rem] xl:pl-60 pr-7 pb-16 pt-24 -mt-24">
                 @child
-                <a href="" class="read-more-link w-full text-center text-xs text-blue-500 mt-4" data-max="240">مشاهده
+                <a href="[##cms.host.aboutUs_default_link##]" class="read-more-link w-full text-center text-xs text-blue-500 mt-4" data-max="240">مشاهده
                   بیشتر</a>
               </div>
             </layout>
@@ -750,7 +763,7 @@
                 @text
               </h2>
               <div
-                class="content-inner text-zinc-900 text-xs text-justify hyphens-auto leading-5 line-clamp-10 max-h-60">
+                class="content-inner aboutUs_default-text text-zinc-900 text-xs text-justify hyphens-auto leading-5 line-clamp-10 max-h-60">
                 @largetext
               </div>
             </face>

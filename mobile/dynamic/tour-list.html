@@ -28,18 +28,10 @@
   sourcemid="article">
   <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" usedforid="[##cms.query.aid##]">
-  <member name="p-under" type="view" size="" propertyid="" />
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="aid-text" usedforid="[##cms.query.aid##]">
+  <member name="view" type="view" size="" propertyid="" />
 </basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list">
-  <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq##]" order="ord"
-    postsql="select * from [faq_list.cat] where catid in([##cms.host.faq##]) or parentid in([##cms.host.faq##])">
-  </member>
-</basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="[##cms.host.faq##]">
-  <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
-</basis>
-<basis core="dbsource" source="media" name="db"  lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
+<basis core="dbsource" source="media" name="db" lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
   <member name="info-gallery" type="list" format="4" order="ord"></member>
 </basis>
 
@@ -54,10 +46,10 @@
     <section class="dynamic-bg relative bg-center bg-cover py-24">
       <basis core="print" datamembername="tour_group.gallery">
         <else-layout>
-            <div class="dynamic-img" data-bg="../images/tour-list-background.jpg"></div>
+          <div class="dynamic-img" data-bg="../images/tour-list-background.jpg"></div>
         </else-layout>
         <face filter="ord in(1)">
-          <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@largeIMG"></div>
+          <div class="dynamic-img" data-bg="[##cms.cms.cdn##]/@largeIMG"></div>
         </face>
       </basis>
       <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
@@ -575,17 +567,17 @@
       <basis core="print" datamembername="db.info-gallery">
         <face filter="largeIMG is null">
           <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/sidebar-banner.jpg" class="w-full h-[425px] object-cover"
-          alt="@name" width="295" height="425" loading="lazy" />
+            alt="@name" width="295" height="425" loading="lazy" />
         </face>
         <face filter="ord in(2)">
-          <img src="\@largeIMG"
-          class="w-full h-[425px] object-cover" alt="@name" width="295" height="425" loading="lazy" />
+          <img src="\@largeIMG" class="w-full h-[425px] object-cover" alt="@name" width="295" height="425"
+            loading="lazy" />
         </face>
       </basis>
       <div class="absolute z-10 bottom-7 left-5 right-5">
         <div class="flex flex-col gap-2 direction-ltr">
-          <basis core="print" datamembername="db.info">
-            <face filter="prpID in(8000)">
+          <basis core="print" datamembername="db.info-number">
+            <face>
               <a href="tel:@text" class="empty-face-fields group flex items-center gap-3 bg-white rounded-xl p-2">
                 <span class="bg-primary-50 rounded-full p-3 group-hover:animate-phoneRing">
                   <svg width="24" height="24" class="flex-shrink-0">
@@ -677,7 +669,7 @@
       </div>
     </section>
 
-    <basis core="print" datamembername="db.p-under">
+    <basis core="print" datamembername="aid-text.view">
       <layout>
         <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl my-14">
           @child
@@ -698,6 +690,14 @@
 
 
     <basis core="group" if="'[##cms.host.faq##]' <> ''">
+      <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list">
+        <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq##]" order="ord"
+          postsql="select * from [faq_list.cat] where catid in([##cms.host.faq##]) or parentid in([##cms.host.faq##])">
+        </member>
+      </basis>
+      <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="[##cms.host.faq##]">
+        <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
+      </basis>
       <section class="mt-14">
         <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
           <basis core="list" datamembername="faq_list.cat">
@@ -715,7 +715,7 @@
                     class="tabs-container flex items-center gap-8 overflow-x-auto scrollbar-thin whitespace-nowrap border-b-2 border-solid border-zinc-200 pb-4">
                     @child
                   </div>
-                  <div class="active-line absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300"></div>
+                  <div class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300"></div>
                 </div>
               </div>
             </layout>

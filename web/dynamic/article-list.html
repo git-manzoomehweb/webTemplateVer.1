@@ -1,9 +1,9 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="article-list_category">
   <member name="cat" type="tree" request="cat" parentid="[##cms.query.cid##]" order="ord"
-    postsql="select * from [article-list_category.cat] where parentid in([##cms.query.cid##])">
+    postsql="select * from [article-list_category.cat] where catid <> '[##cms.query.cid##]'">
   </member>
 </basis>
-<basis core="dbsource" source="media" lid="1" name="view" usedforid="[##cms.query.zid##]" sourcemid="article">
+<basis core="dbsource" source="media" lid="1" name="article_group" usedforid="[##cms.query.zid##]" sourcemid="article">
   <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
@@ -28,7 +28,7 @@
   <basis core="call" file="template-header.inc" pageindexid="1" />
   <main data-activepage="article-list">
     <section class="dynamic-bg relative bg-[center_30%] bg-cover py-16">
-      <basis core="print" datamembername="view.gallery">
+      <basis core="print" datamembername="article_group.gallery">
         <else-layout>
           <div class="dynamic-img" data-bg="../images/article-list-background.jpg"></div>
         </else-layout>
@@ -148,8 +148,8 @@
           </basis>
           <div class="absolute z-10 bottom-7 left-5 right-5">
             <div class="flex flex-col gap-2 direction-ltr">
-              <basis core="print" datamembername="db.info">
-                <face filter="prpID in(8000)">
+              <basis core="print" datamembername="db.info-number">
+                <face>
                   <a href="tel:@text" class="empty-face-fields group flex items-center gap-3 bg-white rounded-xl p-2">
                     <span class="bg-primary-50 rounded-full p-3 group-hover:animate-phoneRing">
                       <svg width="24" height="24" class="flex-shrink-0">

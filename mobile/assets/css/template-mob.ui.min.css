@@ -326,6 +326,10 @@
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.shadow-search-engine {
+  box-shadow: 0px 4px 50px 0px #0000001C;
+}
+
 .appearance-none {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -887,6 +891,11 @@
   z-index: 30;
 }
 
+.aboutUs_default-text img{
+  display: none !important;
+}
+
+
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
@@ -1422,15 +1431,15 @@
   display: flex;
   align-items: center;
   padding: 0;
-}
+} 
 
 .exchangeRoute {
-  top: 35px !important;
+  top: 40px !important;
   left: 20px !important;
   background-color: var(--primary-600) !important;
   border-radius: 100%;
-  width: 48px !important;
-  height: 48px !important;
+  width: 40px !important;
+  height: 40px !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1550,13 +1559,8 @@
 }
 
 .searchList {
-  position: absolute !important;
-  width: 450px !important;
-  min-width: auto !important;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  left: 0;
-  max-height: 254px;
   overflow-y: auto;
 }
 
@@ -1670,12 +1674,6 @@
   position: absolute;
 }
 
-.route-container {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  display: grid;
-  gap: 24px;
-}
-
 .multi-route-tlt {
   margin-bottom: 20px !important;
 }
@@ -1700,11 +1698,6 @@
   flex-wrap: wrap;
 }
 
-.multicity-flight-form .passengers-field-f {
-  width: 234px !important;
-  flex: unset;
-}
-
 .multicity-flight-form .reserve-search {
   width: auto !important;
   flex-basis: auto !important;
@@ -1712,7 +1705,7 @@
 }
 
 .Add-Remove.reserve-field {
-  width: 187px !important;
+  width: 100% !important;
   height: 48px !important;
   display: flex;
   align-items: center;
@@ -1784,7 +1777,7 @@
 .birthdate-day-value,
 .birthdate-month-value,
 .birthdate-year-value {
-  border: 1px solid #737373 !important;
+  border: 1px solid var(--primary-300) !important;
   border-radius: 8px;
   margin-top: 0.5rem;
 }

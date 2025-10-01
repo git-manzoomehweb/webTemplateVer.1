@@ -1,25 +1,9 @@
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="aboutUs_default"
-  usedforid="[##cms.host.aboutUs_default##]">
-  <member name="view" type="view" size="" propertyid="7244" />
-</basis>
-<basis core="dbsource" source="media" lid="1" name="aboutUs_default" usedforid="[##cms.host.aboutUs_default##]"
-  sourcemid="article">
-  <member type="list" name="gallery" format="4" order="ord"></member>
-</basis>
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
-  <basis core="call" file="style.inc" pageindexid="2" />
-</head>
+<basis core="call" file="home-head-elements.bc" pageindexid="2" />
 
 <body>
-  <basis core="call" file="analytics-body.inc" />
+  <basis core="call" file="analytics-body.inc" pageindexid="2" />
   <basis core="call" file="template-header.inc" pageindexid="2" />
   <main data-activepage="home" data-sectionorder="">
     <basis core="print" datamembername="db.info">
@@ -32,7 +16,7 @@
         <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/flight-search-bg.jpg"
           class="w-full h-48 object-cover rounded-3xl" alt="search-banner" width="288" height="192" loading="lazy" />
       </div>
-      <div class="search-banner gradient-border from-primary-600 bg-white rounded-3xl shadow-search-engine -mt-10">
+      <div class="search-banner z-50 gradient-border from-primary-600 bg-white rounded-3xl shadow-search-engine -mt-10">
         <div class="search-box-container mobile-search-box ">
           <div id="search-box" class="dir-rtl" data-view="mobile">
             <div class="flex justify-center"><span class="loader"></span></div>
@@ -137,7 +121,7 @@
                   </svg>
                 </span>
                 <h3 class="text-zinc-900 font-bold text-sm">@title</h3>
-                <div class="text-zinc-500 text-xs text-center leading-5 line-clamp-3">@prp_7244</div>
+                <div class="text-zinc-500 text-xs text-center leading-5 line-clamp-2">@prp_7244</div>
               </div>
             </face>
             <face>
@@ -147,7 +131,7 @@
                     loading="lazy" />
                 </span>
                 <h3 class="text-zinc-900 font-bold text-sm">@title</h3>
-                <div class="text-zinc-500 text-xs text-center leading-5 line-clamp-3">@prp_7244</div>
+                <div class="text-zinc-500 text-xs text-center leading-5 line-clamp-2">@prp_7244</div>
               </div>
             </face>
           </basis>
@@ -157,7 +141,7 @@
       <basis core="group" if="'[##cms.host.tour_category##]' <> ''">
         <basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour_category">
           <member name="cat" type="tree" request="cat" parentid="[##cms.host.tour_category##]" order="ord"
-            postsql="select * from [tour_category.cat] where catid in([##cms.host.tour_category##]) or parentid in([##cms.host.tour_category##]) limit 20">
+            postsql="select * from [tour_category.cat] where catid in([##cms.host.tour_category##]) or parentid in([##cms.host.tour_category##]) limit 10">
           </member>
         </basis>
         <section class="mt-10" data-order="3">
@@ -292,7 +276,7 @@
                     class="tabs-container flex items-center gap-8 overflow-x-auto scrollbar-thin whitespace-nowrap border-b-2 border-solid border-zinc-200 pb-4">
                     @child
                   </div>
-                  <div class="active-line absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300"></div>
+                  <div class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300"></div>
                 </div>
               </layout>
               <face filter="parentid in([##cms.host.tour_group##])">
@@ -308,12 +292,40 @@
         </section>
       </basis>
 
-      <basis core="group" if="'[##cms.host.big_banner_link##]' <> ''">
+      <basis core="group" if="'[##cms.host.top_banner##]' <> ''">
+        <basis core="dbsource" source="basiscore" lid="1" mid="1" name="top_banner"
+          usedforid="[##cms.host.top_banner##]">
+          <member name="view" type="view" size="" propertyid="7244" />
+        </basis>
+        <basis core="dbsource" source="media" lid="1" name="top_banner" usedforid="[##cms.host.top_banner##]"
+          sourcemid="article">
+          <member type="list" name="gallery" format="4" order="ord"></member>
+        </basis>
         <section class="relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="5">
-          <a href="[##cms.host.big_banner_link##]" class="flex flex-col rounded-2xl overflow-hidden">
-            <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/big-banner-mobile.jpg" class="w-full h-64 object-cover"
-              alt="big-banner" width="288" height="256" loading="lazy" />
-            <div class="w-full absolute bottom-3 px-3">
+          <a href="[##cms.host.top_banner_link##]" class="flex flex-col rounded-2xl overflow-hidden">
+            <basis core="print" datamembername="top_banner.gallery">
+              <else-layout>
+                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/big-banner-mobile.jpg"
+                  class="w-full h-64 object-cover" alt="top-banner" width="288" height="256" loading="lazy" />
+              </else-layout>
+              <face filter="ord in(1)">
+                <img src="\@largeIMG" class="w-full h-64 object-cover" alt="@name" width="288" height="256"
+                  loading="lazy" />
+              </face>
+            </basis>
+            <div class="absolute bottom-3 px-3">
+              <basis core="print" datamembername="top_banner.view">
+                <face filter="TypeID in(150)">
+                  <h2 class="text-sm font-medium text-white mb-4 drop-shadow-[2px_4px_3px_rgba(0,0,0,0.9)]">@text
+                  </h2>
+                </face>
+                <face filter="TypeID in(129)">
+                  <div
+                    class="text-xs text-white text-justify hyphens-auto leading-5 mb-3 line-clamp-3 drop-shadow-[2px_4px_3px_rgba(0,0,0,0.9)]">
+                    @largetext
+                  </div>
+                </face>
+              </basis>
               <div class="flex justify-center"><button
                   class="bg-primary-600 rounded-xl px-6 py-3 font-medium text-white">مشاهده</button></div>
             </div>
@@ -344,7 +356,7 @@
                       class="tabs-container flex items-center gap-8 overflow-x-auto scrollbar-thin whitespace-nowrap border-b-2 border-solid border-zinc-200 pb-4">
                       @child
                     </div>
-                    <div class="active-line absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300"></div>
+                    <div class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300"></div>
                   </div>
                 </div>
               </layout>
@@ -362,12 +374,44 @@
       </basis>
 
 
-      <basis core="group" if="'[##cms.host.small_banner_link##]' <> ''">
+      <basis core="group" if="'[##cms.host.bottom_banner##]' <> ''">
+        <basis core="dbsource" source="basiscore" lid="1" mid="1" name="bottom_banner"
+          usedforid="[##cms.host.bottom_banner##]">
+          <member name="view" type="view" size="" propertyid="7244" />
+        </basis>
+        <basis core="dbsource" source="media" lid="1" name="bottom_banner" usedforid="[##cms.host.bottom_banner##]"
+          sourcemid="article">
+          <member type="list" name="gallery" format="4" order="ord"></member>
+        </basis>
         <section class="relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="7">
           <a href="[##cms.host.small_banner_link##]" class="flex flex-col rounded-2xl overflow-hidden">
-            <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/small-banner-mobile.jpg" class="w-full h-80 object-cover"
-              alt="small-banner" width="288" height="320" loading="lazy" />
-            <div class="w-full absolute bottom-3 px-3">
+            <basis core="print" datamembername="bottom_banner.gallery">
+              <else-layout>
+                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/small-banner-mobile.jpg"
+                  class="w-full h-80 object-cover" alt="small-banner" width="288" height="320" loading="lazy" />
+              </else-layout>
+              <face filter="ord in(1)">
+                <img src="\@largeIMG" class="w-full h-80 object-cover" alt="@name" width="288" height="320"
+                  loading="lazy" />
+              </face>
+            </basis>
+            <div class="absolute bottom-3 px-3">
+              <basis core="print" datamembername="bottom_banner.view">
+                <layout>
+                  <div>
+                    @child
+                  </div>
+                </layout>
+                <face filter="TypeID in(150)">
+                  <h2 class="font-bold text-white mb-3 drop-shadow-[2px_4px_3px_rgba(0,0,0,0.9)]">@text</h2>
+                </face>
+                <face filter="TypeID in(129)">
+                  <div
+                    class="text-xs text-white text-justify hyphens-auto leading-5 mb-4 line-clamp-3 drop-shadow-[2px_4px_3px_rgba(0,0,0,0.9)]">
+                    @largetext
+                  </div>
+                </face>
+              </basis>
               <button
                 class="flex items-center justify-center w-full h-12 bg-white rounded-xl text-xs text-zinc-900">مشاهده</button>
             </div>
@@ -417,13 +461,13 @@
                       @prp_7244
                     </div>
                     <div class="flex items-center justify-between">
-                      <span class="flex items-center gap-1 text-xs text-zinc-900">
+                      <span class="empty-face-fields flex flex-1 items-center gap-1 text-xs text-zinc-900">
                         <svg width="17" height="17" class="flex-shrink-0">
                           <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-person"></use>
                         </svg>
-                        @prp_7248
+                        <span class="empty-face-text">@prp_7248</span>
                       </span>
-                      <button class="flex items-center">
+                      <button class="flex flex-1 justify-end items-center">
                         <span class="text-primary-600 text-xs">مطالعه بیشتر</span>
                         <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
@@ -447,13 +491,13 @@
                       @prp_7244
                     </div>
                     <div class="flex items-center justify-between">
-                      <span class="flex items-center gap-1 text-xs text-zinc-900">
+                      <span class="empty-face-fields flex flex-1 items-center gap-1 text-xs text-zinc-900">
                         <svg width="17" height="17" class="flex-shrink-0">
                           <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-person"></use>
                         </svg>
-                        @prp_7248
+                        <span class="empty-face-text">@prp_7248</span>
                       </span>
-                      <button class="flex items-center">
+                      <button class="flex flex-1 justify-end items-center">
                         <span class="text-primary-600 text-xs">مطالعه بیشتر</span>
                         <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
@@ -597,7 +641,7 @@
                       class="tabs-container flex items-center gap-8 overflow-x-auto scrollbar-thin whitespace-nowrap border-b-2 border-solid border-zinc-200 pb-4">
                       @child
                     </div>
-                    <div class="active-line absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300"></div>
+                    <div class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300"></div>
                   </div>
                 </div>
               </layout>
@@ -617,17 +661,22 @@
 
 
       <basis core="group" if="'[##cms.host.aboutUs_default##]' <> ''">
+        <basis core="dbsource" source="basiscore" lid="1" mid="1" name="aboutUs_default"
+          usedforid="[##cms.host.aboutUs_default##]">
+          <member name="view" type="view" size="" propertyid="7244" />
+        </basis>
+        <basis core="dbsource" source="media" lid="1" name="aboutUs_default" usedforid="[##cms.host.aboutUs_default##]"
+          sourcemid="article">
+          <member type="list" name="gallery" format="4" order="ord"></member>
+        </basis>
         <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="11">
           <basis core="print" datamembername="aboutUs_default.gallery">
-            <layout>
+            <else-layout>
               <div class="relative z-10 about-mask-img">
-                @child
+                <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/default-aboutus-img.jpg" alt="about-us-img"
+                  width="620" height="470" loading="lazy" />
               </div>
-            </layout>
-            <face filter="largeIMG is null and ord in(1)">
-              <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/default-about-us-img.jpg" alt="@name" width="620"
-                height="470" loading="lazy" />
-            </face>
+            </else-layout>
             <face filter="ord in(1)">
               <img src="\@largeIMG" alt="@name" width="620" height="470" loading="lazy" />
             </face>
@@ -636,13 +685,15 @@
             <layout>
               <div class="content-box about-mask-container-mobile pt-16 px-3 pb-6 -mt-16">
                 @child
-                <a href="" class="read-more-link w-full text-center text-xs text-blue-500 mt-4" data-max="480">مشاهده
+                <a href="[##cms.host.aboutUs_default_link##]"
+                  class="read-more-link w-full text-center text-xs text-blue-500 mt-4" data-max="480">مشاهده
                   بیشتر</a>
               </div>
             </layout>
             <face>
               <h2 class="inline-block image-text text-3xl font-black mb-6">@text</h2>
-              <div class="content-inner text-zinc-900 text-xs text-justify hyphens-auto leading-5 line-clamp-23">
+              <div
+                class="content-inner aboutUs_default-text text-zinc-900 text-xs text-justify hyphens-auto leading-5 line-clamp-23">
                 @largetext
               </div>
             </face>

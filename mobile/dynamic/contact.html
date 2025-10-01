@@ -27,11 +27,11 @@
     <main data-activepage="contact">
         <section class="dynamic-bg relative bg-center bg-cover py-20">
             <basis core="print" datamembername="db.info-gallery">
-                <face filter="largeIMG is null">
+                <else-layout>
                     <div class="dynamic-img" data-bg="../images/contact-background.jpg"></div>
-                </face>
-                <face>
-                    <div class="dynamic-img" data-bg="[##cms.cms.domainname##]/@largeIMG"></div>
+                </else-layout>
+                <face filter="ord in(1)">
+                    <div class="dynamic-img" data-bg="[##cms.cms.cdn##]/@largeIMG"></div>
                 </face>
             </basis>
             <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
@@ -379,7 +379,7 @@
                                         @child
                                     </div>
                                     <div
-                                        class="active-line absolute bottom-0 h-0.5 bg-red-500 transition-all duration-300">
+                                        class="active-line absolute bottom-0 h-0.5 bg-primary-600 transition-all duration-300">
                                     </div>
                                 </div>
                             </div>
