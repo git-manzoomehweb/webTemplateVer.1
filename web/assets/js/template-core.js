@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function fixUsePaths(root) {
-    const mainEl = document.querySelector('main')
+    const mainEl = document.getElementById('search-box')
     const view = mainEl ? mainEl.getAttribute('data-view') : null
     const spritePath =
       view === 'mobile'
@@ -1290,11 +1290,11 @@ document.addEventListener('DOMContentLoaded', () => {
   commentButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       commentButtons.forEach((b) => {
-        b.classList.remove('text-primary-900')
+        b.classList.remove('text-primary-600')
         b.classList.add('text-zinc-900')
       })
       btn.classList.remove('text-zinc-900')
-      btn.classList.add('text-primary-900')
+      btn.classList.add('text-primary-600')
 
       const targetId = btn.dataset.comment
       commentContents.forEach((content) => {

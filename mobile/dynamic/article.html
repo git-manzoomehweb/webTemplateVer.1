@@ -23,7 +23,7 @@
 <basis core="call" file="head-elements.inc" pageindexid="2" />
 
 <body>
-    <basis core="call" file="analytics-body.inc" />
+    <basis core="call" file="analytics-body.inc" pageindexid="2" />
     <basis core="call" file="template-header.inc" pageindexid="2" />
     <main>
         <section class="dynamic-bg relative bg-center bg-cover py-24">
@@ -46,7 +46,7 @@
                         </div>
                     </layout>
                     <face filter="TypeID in(150)">
-                        <h1 class="font-bold text-xl text-white">@text</h1>
+                        <h1 class="font-bold text-center text-white">@text</h1>
                     </face>
                 </basis>
 
@@ -153,10 +153,10 @@
             <div class="bg-zinc-100 px-2 pt-4 pb-6 rounded-xl">
                 <div class="flex items-center justify-between border-b border-solid border-zinc-300 pb-3 px-8">
                     <button
-                        class="comment-btn text-primary-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900"
+                        class="comment-btn text-primary-600 font-bold cursor-pointer transition-all duration-300 hover:text-primary-600"
                         data-comment="comment-form">ثبت نظر</button>
                     <button
-                        class="comment-btn text-zinc-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900"
+                        class="comment-btn text-zinc-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-600"
                         data-comment="user-comments">نظر کاربران</button>
                 </div>
                 <div class="relative">
@@ -189,7 +189,7 @@
                                             <span class="field-captcha flex items-center gap-3">
                                                 <span class="load-captcha">
                                                     <img class="captchaa w-20 h-auto" alt="کد امنیتی"
-                                                        src="\[##captcha.code.captcha##]" width="80" height="60">
+                                                        src="[##cms.cms.cdn##]/[##captcha.code.captcha##]" width="80" height="60">
                                                     <input type="hidden" value="[##captcha.code.captcha##]"
                                                         name="Captchaid">
                                                 </span>

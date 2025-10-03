@@ -22,7 +22,7 @@
 
 
 <body>
-    <basis core="call" file="analytics-body.inc" />
+    <basis core="call" file="analytics-body.inc" pageindexid="2"/>
     <basis core="call" file="template-header.inc" pageindexid="2" />
     <main data-activepage="visa-list">
         <section class="dynamic-bg relative bg-center bg-cover py-20">
@@ -42,7 +42,7 @@
                         <div class="bg-specialcolor-3 rounded-xl py-4 px-10">@child</div>
                     </layout>
                     <face>
-                        <h1 class="font-bold text-white">@column1</h1>
+                        <h1 class="font-bold text-center text-white">@column1</h1>
                     </face>
                 </basis>
 
@@ -126,7 +126,7 @@
                 <face>
                     <a href="/@link"
                         class="flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60">
-                        <img src="\@00272X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
+                        <img src="[##cms.cms.cdn##]/@00272X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
                             width="272" height="160" loading="lazy" />
                         <div class="flex items-center justify-between">
                             <h3 class="font-bold">@title</h3>

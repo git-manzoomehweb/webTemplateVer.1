@@ -27,13 +27,13 @@
 <basis core="call" file="head-elements.inc" pageindexid="1" />
 
 <body>
-  <basis core="call" file="analytics-body.inc" />
+  <basis core="call" file="analytics-body.inc" pageindexid="1"/>
   <basis core="call" file="template-header.inc" pageindexid="1" />
   <main class="bg-zinc-50 pb-8">
     <section class="dynamic-bg relative bg-center bg-cover py-24 mt-6">
       <basis core="print" datamembername="view.gallery">
         <else-layout>
-            <div class="dynamic-img" data-bg="../images/hotel-background.jpg"></div>
+          <div class="dynamic-img" data-bg="../images/hotel-background.jpg"></div>
         </else-layout>
         <face filter="ord in(1)">
           <div class="dynamic-img" data-bg="[##cms.cms.cdn##]/@largeIMG"></div>
@@ -140,204 +140,203 @@
                 <div thumbsslider="" class="swiper small-img-gallery mt-4">
                   <div class="swiper-wrapper">@child</div>
                 </div>
+              </layout>
+              <face>
+                <div class="swiper-slide cursor-pointer">
+                  <img src="[##cms.cms.cdn##]/@largeIMG" alt="@name" class="w-full h-16 object-cover rounded-xl"
+                    width="96" height="64" loading="lazy" />
+                </div>
+              </face>
+            </basis>
+            <div id="popupModalGallery"
+              class="popup-modal fixed inset-0 z-50 bg-black bg-opacity-70 justify-center items-center hidden">
+              <div
+                class="popup-content relative flex items-center justify-center border-4 border-solid border-white rounded-3xl h-[520px] max-w-7xl overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 flex items-center justify-between px-6 py-3 z-20">
+                  <h2 class="text-lg font-medium text-zinc-900">
+                    گالری تصاویر
+                  </h2>
+                  <button id="closePopupGallery"
+                    class="flex items-center justify-center w-12 h-12 bg-white/30 backdrop-blur-md rounded-full text-white transition-all duration-300 hover:bg-primary-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                      class="stroke-current">
+                      <path d="M6 6l12 12M18 6L6 18" stroke-width="2" stroke-linecap="round" stroke="#ffffff" />
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="swiper big-img-gallery-popup select-none h-full w-full">
+                  <div class="swiper-wrapper"></div>
+
+                  <div
+                    class="swiper-button-next w-12 h-12 after:text-2xl bg-white/30 backdrop-blur-md rounded-full text-white shadow-lg transition-all duration-300 hover:bg-primary-600">
+                  </div>
+                  <div
+                    class="swiper-button-prev w-12 h-12 after:text-2xl bg-white/30 backdrop-blur-md rounded-full text-white shadow-lg transition-all duration-300 hover:bg-primary-600">
+                  </div>
+                </div>
+
+                <div
+                  class="absolute bottom-0 left-0 right-0 px-6 py-3 rounded-3xl bg-gradient-to-t from-black/80 to-transparent flex items-center justify-between text-sm text-white z-20">
+                  <span class="gallery-img-count text-3xl"></span>
+                </div>
+              </div>
+            </div>
           </div>
+        </section>
+        <basis core="print" datamembername="db.view">
+          <layout>
+            <section>@child</section>
           </layout>
-          <face>
-            <div class="swiper-slide cursor-pointer">
-              <img src="[##cms.cms.cdn##]/@largeIMG" alt="@name" class="w-full h-16 object-cover rounded-xl" width="96"
-                height="64" loading="lazy" />
+          <face filter="TypeID in(250)">
+            <h2 id="@valueID" class="text-2xl font-bold text-zinc-900 mb-3">
+              @text
+            </h2>
+            <div class="revert-text-styles text-sm text-justify text-zinc-900 leading-5 hyphens-auto mb-8">
+              @largetext
             </div>
           </face>
-          </basis>
-          <div id="popupModalGallery"
-            class="popup-modal fixed inset-0 z-50 bg-black bg-opacity-70 justify-center items-center hidden">
-            <div
-              class="popup-content relative flex items-center justify-center border-4 border-solid border-white rounded-3xl h-[520px] max-w-7xl overflow-hidden">
-              <div class="absolute top-0 left-0 right-0 flex items-center justify-between px-6 py-3 z-20">
-                <h2 class="text-lg font-medium text-zinc-900">
-                  گالری تصاویر
-                </h2>
-                <button id="closePopupGallery"
-                  class="flex items-center justify-center w-12 h-12 bg-white/30 backdrop-blur-md rounded-full text-white transition-all duration-300 hover:bg-primary-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                    class="stroke-current">
-                    <path d="M6 6l12 12M18 6L6 18" stroke-width="2" stroke-linecap="round" stroke="#ffffff" />
-                  </svg>
-                </button>
+        </basis>
+        <section class="mt-8 relative">
+          <div class="bg-zinc-100 p-6 rounded-xl">
+            <div class="flex items-center gap-10 border-b border-solid border-zinc-300 pb-3 relative z-10">
+              <button
+                class="comment-btn text-primary-600 font-bold cursor-pointer transition-all duration-300 hover:text-primary-600"
+                data-comment="comment-form">
+                ثبت نظر
+              </button>
+              <button
+                class="comment-btn text-zinc-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-600"
+                data-comment="user-comments">
+                نظر کاربران
+              </button>
+            </div>
+
+            <div class="relative">
+              <div id="comment-form" class="comment-content block opacity-100 scale-100 transition duration-500">
+                <form action="/Tem1_OpinionAction.bc" method="POST" class="pov-form mt-3">
+                  <input type="hidden" name="title" value="[##cms.seo.title##]" />
+                  <div>
+                    <div>
+                      <div class="flex items-center gap-2 mb-2">
+                        <input class="flex-1 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl" type="text"
+                          name="Username" placeholder="نام و نام خانوادگی" required />
+                        <input class="flex-1 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl" type="text"
+                          name="_root.Phone" placeholder="تلفن همراه" required />
+                        <input class="flex-1 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl" type="text"
+                          name="_root.Email" placeholder="ایمیل" required />
+                      </div>
+                      <textarea class="w-full bg-white text-zinc-700 px-6 pt-4 outline-none rounded-xl" required
+                        name="OpinionMessage" placeholder="نظرات و پیشنهادات" cols="30" rows="7"></textarea>
+
+                      <input name="productid" value="[##cms.query.id##]" type="hidden" />
+                      <input name="mid" value="1" type="hidden" />
+                      <div class="flex items-center">
+                        <div class="flex gap-3 w-full">
+                          <div>
+                            <input class="bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl" type="text"
+                              name="Captcha" placeholder="کد امنیتی" required="" />
+                          </div>
+                          <span class="field-captcha flex items-center gap-3">
+                            <span class="load-captcha">
+                              <img class="captchaa w-20 h-auto" alt="کد امنیتی" src="[##cms.cms.cdn##]/[##captcha.code.captcha##]"
+                                width="80" height="60" />
+                              <input type="hidden" value="[##captcha.code.captcha##]" name="Captchaid" />
+                            </span>
+                            <div onclick="refresh_captcha(this,event)">
+                              <svg width="48" height="48" class="flex-shrink-0 cursor-pointer">
+                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-refresh"></use>
+                              </svg>
+                            </div>
+                          </span>
+                        </div>
+                        <div>
+                          <button
+                            class="check-contrast w-32 h-12 flex items-center justify-center text-white transition-all duration-300 bg-primary-600 rounded-xl hover:bg-secondary-600"
+                            type="submit">
+                            ارسال دیدگاه
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Loading_Form hidden">
+                    <div id="ballsWaveG">
+                      <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                      <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                    </div>
+                  </div>
+                  <div class="Message-Form text-center mt-6"></div>
+                </form>
               </div>
 
-              <div class="swiper big-img-gallery-popup select-none h-full w-full">
-                <div class="swiper-wrapper"></div>
-
-                <div
-                  class="swiper-button-next w-12 h-12 after:text-2xl bg-white/30 backdrop-blur-md rounded-full text-white shadow-lg transition-all duration-300 hover:bg-primary-600">
-                </div>
-                <div
-                  class="swiper-button-prev w-12 h-12 after:text-2xl bg-white/30 backdrop-blur-md rounded-full text-white shadow-lg transition-all duration-300 hover:bg-primary-600">
-                </div>
-              </div>
-
-              <div
-                class="absolute bottom-0 left-0 right-0 px-6 py-3 rounded-3xl bg-gradient-to-t from-black/80 to-transparent flex items-center justify-between text-sm text-white z-20">
-                <span class="gallery-img-count text-3xl"></span>
+              <div id="user-comments"
+                class="comment-content hidden opacity-0 scale-95 pointer-events-none w-full transition duration-500">
+                <basis core="tree" datamembername="db.comment" idcol="id" parentidcol="parentid" nullvalue="0">
+                  <layout>
+                    <div class="swiper swiper-comments mt-3">
+                      <div class="swiper-wrapper">@child</div>
+                    </div>
+                  </layout>
+                  <else-layout>
+                    <div class="flex flex-col items-center justify-center h-full mt-8">
+                      <h2 class="text-xl font-bold mb-2">
+                        هنوز نظری ثبت نشده است
+                      </h2>
+                      <p>
+                        شما می‌توانید اولین نفری باشید که تجربه یا دیدگاه خود
+                        را به اشتراک می‌گذارد.
+                      </p>
+                    </div>
+                  </else-layout>
+                  <face level="1">
+                    <div class="swiper-slide">
+                      <div class="flex flex-col gap-2 bg-white rounded-xl p-6">
+                        <h3 class="font-bold text-sm text-zinc-900">
+                          @username
+                        </h3>
+                        <div class="text-xs text-zinc-600 line-clamp-6 leading-5">
+                          @comment
+                        </div>
+                        <span class="text-xs text-zinc-400 self-end">@createdate</span>
+                      </div>
+                    </div>
+                  </face>
+                </basis>
               </div>
             </div>
           </div>
+        </section>
       </div>
-      </section>
       <basis core="print" datamembername="db.view">
         <layout>
-          <section>@child</section>
+          <aside class="sticky h-fit top-0 w-80">
+            <div class="bg-zinc-100 p-3 rounded-xl">
+              <div class="border-b border-solid border-zinc-300 pb-2">
+                <h2 class="text-zinc-900 font-medium">فهرست عناوین</h2>
+              </div>
+              <div class="flex flex-col gap-1 mt-2">@child</div>
+            </div>
+          </aside>
         </layout>
-        <face filter="TypeID in(250)">
-          <h2 id="@valueID" class="text-2xl font-bold text-zinc-900 mb-3">
-            @text
-          </h2>
-          <div class="revert-text-styles text-sm text-justify text-zinc-900 leading-5 hyphens-auto mb-8">
-            @largetext
-          </div>
+        <face filter="TypeID in(250,129)">
+          <a href="#@valueID"
+            class="empty-face-fields group flex items-center gap-1 transition-all duration-300 hover:text-primary-600">
+            <svg width="48" height="48" class="flex-shrink-0">
+              <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-black-star"></use>
+            </svg>
+            <h3 class="empty-face-text text-xs text-zinc-900 transition-all duration-300 group-hover:text-primary-600">
+              @text
+            </h3>
+          </a>
         </face>
       </basis>
-      <section class="mt-8 relative">
-        <div class="bg-zinc-100 p-6 rounded-xl">
-          <div class="flex items-center gap-10 border-b border-solid border-zinc-300 pb-3 relative z-10">
-            <button
-              class="comment-btn text-primary-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900"
-              data-comment="comment-form">
-              ثبت نظر
-            </button>
-            <button
-              class="comment-btn text-zinc-900 font-bold cursor-pointer transition-all duration-300 hover:text-primary-900"
-              data-comment="user-comments">
-              نظر کاربران
-            </button>
-          </div>
-
-          <div class="relative">
-            <div id="comment-form" class="comment-content block opacity-100 scale-100 transition duration-500">
-              <form action="/Tem1_OpinionAction.bc" method="POST" class="pov-form mt-3">
-                <input type="hidden" name="title" value="[##cms.seo.title##]" />
-                <div>
-                  <div>
-                    <div class="flex items-center gap-2 mb-2">
-                      <input class="flex-1 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl" type="text"
-                        name="Username" placeholder="نام و نام خانوادگی" required />
-                      <input class="flex-1 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl" type="text"
-                        name="_root.Phone" placeholder="تلفن همراه" required />
-                      <input class="flex-1 bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl" type="text"
-                        name="_root.Email" placeholder="ایمیل" required />
-                    </div>
-                    <textarea class="w-full bg-white text-zinc-700 px-6 pt-4 outline-none rounded-xl" required
-                      name="OpinionMessage" placeholder="نظرات و پیشنهادات" cols="30" rows="7"></textarea>
-
-                    <input name="productid" value="[##cms.query.id##]" type="hidden" />
-                    <input name="mid" value="1" type="hidden" />
-                    <div class="flex items-center">
-                      <div class="flex gap-3 w-full">
-                        <div>
-                          <input class="bg-white text-zinc-700 h-14 px-6 outline-none rounded-xl" type="text"
-                            name="Captcha" placeholder="کد امنیتی" required="" />
-                        </div>
-                        <span class="field-captcha flex items-center gap-3">
-                          <span class="load-captcha">
-                            <img class="captchaa w-20 h-auto" alt="کد امنیتی" src="\[##captcha.code.captcha##]"
-                              width="80" height="60" />
-                            <input type="hidden" value="[##captcha.code.captcha##]" name="Captchaid" />
-                          </span>
-                          <div onclick="refresh_captcha(this,event)">
-                            <svg width="48" height="48" class="flex-shrink-0 cursor-pointer">
-                              <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-refresh"></use>
-                            </svg>
-                          </div>
-                        </span>
-                      </div>
-                      <div>
-                        <button
-                          class="check-contrast w-32 h-12 flex items-center justify-center text-white transition-all duration-300 bg-primary-600 rounded-xl hover:bg-secondary-600"
-                          type="submit">
-                          ارسال دیدگاه
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="Loading_Form hidden">
-                  <div id="ballsWaveG">
-                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
-                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
-                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
-                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
-                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
-                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
-                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
-                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
-                  </div>
-                </div>
-                <div class="Message-Form text-center mt-6"></div>
-              </form>
-            </div>
-
-            <div id="user-comments"
-              class="comment-content hidden opacity-0 scale-95 pointer-events-none w-full transition duration-500">
-              <basis core="tree" datamembername="db.comment" idcol="id" parentidcol="parentid" nullvalue="0">
-                <layout>
-                  <div class="swiper swiper-comments mt-3">
-                    <div class="swiper-wrapper">@child</div>
-                  </div>
-                </layout>
-                <else-layout>
-                  <div class="flex flex-col items-center justify-center h-full mt-8">
-                    <h2 class="text-xl font-bold mb-2">
-                      هنوز نظری ثبت نشده است
-                    </h2>
-                    <p>
-                      شما می‌توانید اولین نفری باشید که تجربه یا دیدگاه خود
-                      را به اشتراک می‌گذارد.
-                    </p>
-                  </div>
-                </else-layout>
-                <face level="1">
-                  <div class="swiper-slide">
-                    <div class="flex flex-col gap-2 bg-white rounded-xl p-6">
-                      <h3 class="font-bold text-sm text-zinc-900">
-                        @username
-                      </h3>
-                      <div class="text-xs text-zinc-600 line-clamp-6 leading-5">
-                        @comment
-                      </div>
-                      <span class="text-xs text-zinc-400 self-end">@createdate</span>
-                    </div>
-                  </div>
-                </face>
-              </basis>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-    <basis core="print" datamembername="db.view">
-      <layout>
-        <aside class="sticky h-fit top-0 w-80">
-          <div class="bg-zinc-100 p-3 rounded-xl">
-            <div class="border-b border-solid border-zinc-300 pb-2">
-              <h2 class="text-zinc-900 font-medium">فهرست عناوین</h2>
-            </div>
-            <div class="flex flex-col gap-1 mt-2">@child</div>
-          </div>
-        </aside>
-      </layout>
-      <face filter="TypeID in(250,129)">
-        <a href="#@valueID"
-          class="empty-face-fields group flex items-center gap-1 transition-all duration-300 hover:text-primary-600">
-          <svg width="48" height="48" class="flex-shrink-0">
-            <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-black-star"></use>
-          </svg>
-          <h3 class="empty-face-text text-xs text-zinc-900 transition-all duration-300 group-hover:text-primary-600">
-            @text
-          </h3>
-        </a>
-      </face>
-    </basis>
     </div>
     <basis core="list" datamembername="db.related-tour">
       <layout>
@@ -415,7 +414,7 @@
           <a href="/@link"
             class="group flex flex-col bg-white gradient-border from-primary-600 rounded-2xl p-2 min-h-[396px] transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1">
             <div class="shine-effect relative overflow-hidden rounded-2xl">
-              <img src="\@00295X00160prp" class="w-full h-40 object-cover" alt="@title" width="295" height="160"
+              <img src="[##cms.cms.cdn##]/@00295X00160prp" class="w-full h-40 object-cover" alt="@title" width="295" height="160"
                 loading="lazy" />
             </div>
             <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
@@ -550,7 +549,7 @@
               </div>
             </div>
             <div class="shine-effect relative overflow-hidden rounded-2xl">
-              <img src="\@00273X00160prp" class="w-[273px] h-40 object-cover" alt="@title" width="273" height="160"
+              <img src="[##cms.cms.cdn##]/@00273X00160prp" class="w-[273px] h-40 object-cover" alt="@title" width="273" height="160"
                 loading="lazy" />
             </div>
           </a>

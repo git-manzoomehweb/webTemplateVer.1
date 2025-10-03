@@ -22,7 +22,7 @@
 
 
 <body>
-    <basis core="call" file="analytics-body.inc" />
+    <basis core="call" file="analytics-body.inc" pageindexid="2"/>
     <basis core="call" file="template-header.inc" pageindexid="2" />
     <main data-activepage="contact">
         <section class="dynamic-bg relative bg-center bg-cover py-20">
@@ -324,7 +324,7 @@
                                     <input type="hidden" name="captchaid" value="@captcha@" />
                                 </div>
                                  <div class="flex items-center gap-2">
-                                     <img src="/@captcha@" loading="lazy" width="120" height="60" alt="captcha" class="w-20 h-auto" />
+                                     <img src="[##cms.cms.cdn##]/@captcha@" loading="lazy" width="120" height="60" alt="captcha" class="w-20 h-auto" />
                                                                      <svg width="48" height="48" onclick="refreshCaptchaContact()" class="inline-block align-middle cursor-pointer w-9 h-9">
                              <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-refresh"></use>
                          </svg>

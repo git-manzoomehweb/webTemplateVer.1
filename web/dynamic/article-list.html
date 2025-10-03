@@ -24,7 +24,7 @@
 <basis core="call" file="head-elements.inc" pageindexid="1" />
 
 <body>
-  <basis core="call" file="analytics-body.inc" />
+  <basis core="call" file="analytics-body.inc" pageindexid="1"/>
   <basis core="call" file="template-header.inc" pageindexid="1" />
   <main data-activepage="article-list">
     <section class="dynamic-bg relative bg-[center_30%] bg-cover py-16">
@@ -142,7 +142,7 @@
                 class="w-full h-[425px] object-cover" alt="@name" width="295" height="425" loading="lazy" />
             </face>
             <face filter="ord in(2)">
-              <img src="\@largeIMG" class="w-full h-[425px] object-cover" alt="@name" width="295" height="425"
+              <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-[425px] object-cover" alt="@name" width="295" height="425"
                 loading="lazy" />
             </face>
           </basis>

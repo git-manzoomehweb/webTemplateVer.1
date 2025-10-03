@@ -1841,6 +1841,10 @@
   flex: 1;
 }
 
+.flightclass-in-passengerbox{
+  display: none !important;
+}
+
 .Wrapper-ExteraHoteldate {
   width: 60% !important;
 }
@@ -2018,7 +2022,7 @@
 
 .ul-list ul li:not(:last-child),
 .locationResult div:not(:last-of-type){
-  border-bottom: 1px solid var(--primary-50);
+  border-bottom: 1px solid var(--primary-100);
 }
 
 .ul-list ul li:hover {
@@ -2143,7 +2147,7 @@
 }
 
 .multicity-flight-form .passengers-field-f {
-  width: 234px !important;
+  width: 376px !important;
   flex: unset;
 }
 
@@ -2199,6 +2203,11 @@
   align-items: center;
   width: 100% !important;
   padding: 4px 0;
+}
+
+.selectLocation  .parent-item, .selectLocation  .child-item{
+  display: flex;
+  align-items: center;
 }
 
 .createChildDropdown {

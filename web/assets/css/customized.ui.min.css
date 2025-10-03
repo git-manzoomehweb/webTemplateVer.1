@@ -559,14 +559,10 @@ video {
   display: none;
 }
 
-html{
-  overflow-x: hidden;
-}
-
 body {
   font-family: 'DanaFaNum';
   overflow-wrap: break-word;
-  overflow-x: inherit;
+  overflow-x: hidden;
 }
 
 .gradient-border {
@@ -2037,7 +2033,14 @@ body {
   }
 
   .hasNot-login-icon{
-    display: block;
+    width: 2rem;           
+    height: 2rem;         
+    display: flex !important;           
+    align-items: center;    
+    justify-content: center;
+    border: 2px solid var(--primary-600);
+    color: var(--primary-600);
+    border-radius: 100%;
   }
 }
 
@@ -2105,6 +2108,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.user-profile-container, .user-profile-btn{
+  width: 100%;
+  height: 100%;
 }
 
 .itemInput,
