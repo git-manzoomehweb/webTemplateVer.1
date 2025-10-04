@@ -646,6 +646,10 @@ body {
   bottom: 0.125rem;
 }
 
+.bottom-12 {
+  bottom: 3rem ;
+}
+
 .left-0 {
   left: 0px;
 }
@@ -723,8 +727,24 @@ body {
   margin-top: -11rem;
 }
 
+.-mt-56 {
+  margin-top: -14rem;
+}
+
 .mb-14 {
   margin-bottom: 3.5rem;
+}
+
+.mb-16 {
+  margin-bottom: 4rem /* 64px */;
+}
+
+.mb-20 {
+  margin-bottom: 5rem /* 80px */;
+}
+
+.mb-24 {
+  margin-bottom: 6rem /* 96px */;
 }
 
 .mb-2 {
@@ -753,6 +773,10 @@ body {
 
 .mt-20 {
   margin-top: 5rem;
+}
+
+.mt-40 {
+  margin-top: 10rem /* 160px */;
 }
 
 .mt-3 {

@@ -9,10 +9,19 @@
   </member>
 </basis>
 <footer class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-20">
+  <basis core="group" if="'[##cms.host.call_to_action##]' <> ''">
+    <basis core="print" datamembername="db.info-number">
+      <face>
+        <div class="fixed flex justify-center bottom-0 w-full left-0 right-0 bg-primary-600 py-3 z-40">
+          <a href="tel:@text" class="text-white">[##cms.host.call_to_action##]</a>
+        </div>
+      </face>
+    </basis>
+  </basis>
   <basis core="call" file="support.inc" pageindexid="2" />
   <basis core="call" file="yektanet.inc" pageindexid="2" />
   <button aria-label="scrolltotop"
-    class="fixed bottom-0.5 right-2 bg-primary-600 text-white rounded-full z-20 w-12 h-12 items-center justify-center scrollTopBtn">
+    class="fixed bottom-12 right-2 bg-primary-600 text-white rounded-full z-20 w-12 h-12 items-center justify-center scrollTopBtn">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
       width="24" height="24">
       <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"></path>
@@ -69,8 +78,8 @@
   <div class="-mt-44">
     <div class="mask-image-mobile relative -z-10 h-48"></div>
     <div class="bg-zinc-100 rounded-b-xl pb-3 px-4">
-      <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/logo.png" class="w-20 h-14 object-contain" alt="logo-footer" width="80"
-        height="56" loading="lazy" />
+      <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/logo.png" class="w-20 h-14 object-contain" alt="logo-footer"
+        width="80" height="56" loading="lazy" />
       <section class="mt-3">
         <h2 class="text-sm font-medium text-zinc-900 mb-3">عضویت در خبرنامه</h2>
         <div class="flex flex-col mx-auto footer-form" id="footer-form-resize">
@@ -381,7 +390,7 @@
       </section>
     </div>
   </div>
-  <section class="relative flex flex-col items-center gap-1 mt-2 mb-6">
+  <section class="relative flex flex-col items-center gap-1 mt-2 mb-20">
     <a href="https://www.basisfly.com/" target="_blank"
       class="flex text-xs text-zinc-500 text-center transition-all duration-300 hover:text-primary-600">
       طراحی سایت آژانس مسافرتی و رزرواسیون آنلاین توسط بیسیس فلای

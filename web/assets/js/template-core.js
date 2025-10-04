@@ -732,12 +732,14 @@ function applyContrastCheck() {
       }
 
       const spans = box.querySelectorAll('span')
-      spans.forEach((span) => {
-        if (hoverColor) {
-          const brightness = getBrightness(hoverColor)
-          span.style.color = brightness < 0.5 ? 'white' : 'black'
-        } else {
-          adjustTextColor(span, originalBgColor)
+      spans.forEach((span, idx) => {
+        if (idx < 2) {                 
+          if (hoverColor) {
+            const brightness = getBrightness(hoverColor)
+            span.style.color = brightness < 0.5 ? 'white' : 'black'
+          } else {
+            adjustTextColor(span, originalBgColor)
+          }
         }
       })
     })
@@ -750,11 +752,13 @@ function applyContrastCheck() {
       }
 
       const spans = box.querySelectorAll('span')
-      spans.forEach((span) => {
-        if (originalTextColor) {
-          span.style.color = originalTextColor
-        } else {
-          adjustTextColor(span, originalBgColor)
+      spans.forEach((span, idx) => {
+        if (idx < 2) {                      
+          if (originalTextColor) {
+            span.style.color = originalTextColor
+          } else {
+            adjustTextColor(span, originalBgColor)
+          }
         }
       })
     })
