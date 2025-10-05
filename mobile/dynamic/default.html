@@ -4,7 +4,7 @@
 
 <body>
   <basis core="call" file="analytics-body.inc" pageindexid="2" />
-  <basis core="call" file="template-header.inc" pageindexid="2" />
+  <basis core="call" file="header.inc" pageindexid="2" />
   <main data-activepage="home" data-sectionorder="">
     <basis core="print" datamembername="db.info">
       <face filter="TypeID in(150)">
@@ -127,8 +127,8 @@
             <face>
               <div class="flex flex-col items-center gap-3 gradient-border bg-zinc-50 from-primary-600 rounded-2xl p-4">
                 <span class="bg-primary-600 rounded-full p-4">
-                  <img src="[##cms.cms.cdn##]/@00040X00040prp" class="w-10 h-10 object-cover" alt="@title" width="40" height="40"
-                    loading="lazy" />
+                  <img src="[##cms.cms.cdn##]/@00040X00040prp" class="w-10 h-10 object-cover" alt="@title" width="40"
+                    height="40" loading="lazy" />
                 </span>
                 <h3 class="text-zinc-900 font-bold text-sm">@title</h3>
                 <div class="text-zinc-500 text-xs text-center leading-5 line-clamp-2">@prp_7244</div>
@@ -173,8 +173,8 @@
               <div class="swiper-slide min-w-60">
                 <a href="/tour-list.bc?catid=@catid" class="relative flex flex-col rounded-2xl overflow-hidden">
                   <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
-                  <img src="[##cms.cms.cdn##]/@image" class="w-full h-60 object-cover" alt="@title" width="246" height="240"
-                    loading="lazy" />
+                  <img src="[##cms.cms.cdn##]/@image" class="w-full h-60 object-cover" alt="@title" width="246"
+                    height="240" loading="lazy" />
                   <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
                     <div
                       class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
@@ -233,8 +233,8 @@
               <div class="swiper-slide min-w-60">
                 <a href="/@link" class="relative flex flex-col rounded-2xl overflow-hidden">
                   <div class="absolute w-full h-full inset-0 bg-gradient-black-bottom"></div>
-                  <img src="[##cms.cms.cdn##]/@image" class="w-full h-60 object-cover" alt="@title" width="246" height="240"
-                    loading="lazy" />
+                  <img src="[##cms.cms.cdn##]/@image" class="w-full h-60 object-cover" alt="@title" width="246"
+                    height="240" loading="lazy" />
                   <div class="px-3 absolute z-10 left-0 right-0 bottom-4">
                     <div
                       class="flex items-center justify-between gradient-border gradient-border-thick from-white to-specialcolor-2 rounded-[37px] px-3">
@@ -309,8 +309,8 @@
                   class="w-full h-64 object-cover" alt="top-banner" width="288" height="256" loading="lazy" />
               </else-layout>
               <face filter="ord in(1)">
-                <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-64 object-cover" alt="@name" width="288" height="256"
-                  loading="lazy" />
+                <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-64 object-cover" alt="@name" width="288"
+                  height="256" loading="lazy" />
               </face>
             </basis>
             <div class="absolute bottom-3 px-3">
@@ -391,8 +391,8 @@
                   class="w-full h-80 object-cover" alt="small-banner" width="288" height="320" loading="lazy" />
               </else-layout>
               <face filter="ord in(1)">
-                <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-80 object-cover" alt="@name" width="288" height="320"
-                  loading="lazy" />
+                <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-80 object-cover" alt="@name" width="288"
+                  height="320" loading="lazy" />
               </face>
             </basis>
             <div class="absolute bottom-3 px-3">
@@ -483,8 +483,8 @@
             <face>
               <div class="swiper-slide min-w-64">
                 <a href="/@link" class="flex flex-col gradient-border from-gray-300 rounded-2xl p-2 min-h-[355px]">
-                  <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title" width="256"
-                    height="160" loading="lazy" />
+                  <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
+                    width="256" height="160" loading="lazy" />
                   <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
                     <h3 class="font-medium text-zinc-900 line-clamp-1">@title</h3>
                     <div class="text-xs text-zinc-700 line-clamp-4 text-justify hyphens-auto leading-5">
@@ -563,8 +563,8 @@
               <div class="swiper-slide">
                 <a href="/visa-list.bc?catid=@catid"
                   class="flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60">
-                  <img src="[##cms.cms.cdn##]/@image" class="w-full h-40 object-cover rounded-2xl" alt="@title" width="272" height="160"
-                    loading="lazy" />
+                  <img src="[##cms.cms.cdn##]/@image" class="w-full h-40 object-cover rounded-2xl" alt="@title"
+                    width="272" height="160" loading="lazy" />
                   <div class="flex items-center justify-between">
                     <h3 class="font-bold">@title</h3>
                     <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -597,8 +597,8 @@
               <div class="swiper-slide">
                 <a href="/@link"
                   class="flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60">
-                  <img src="[##cms.cms.cdn##]/@image" class="w-full h-40 object-cover rounded-2xl" alt="@title" width="272" height="160"
-                    loading="lazy" />
+                  <img src="[##cms.cms.cdn##]/@image" class="w-full h-40 object-cover rounded-2xl" alt="@title"
+                    width="272" height="160" loading="lazy" />
                   <div class="flex items-center justify-between">
                     <h3 class="font-bold">@title</h3>
                     <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -707,7 +707,7 @@
   </main>
 
   <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
-  <basis core="call" file="template-footer.inc" pageindexid="2" />
+  <basis core="call" file="footer.inc" pageindexid="2" />
 </body>
 
 </html>

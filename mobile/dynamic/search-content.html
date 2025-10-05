@@ -3,8 +3,8 @@
 <basis core="call" file="head-elements.inc" pageindexid="2" />
 
 <body>
-    <basis core="call" file="analytics-body.inc" pageindexid="2"/>
-    <basis core="call" file="template-header.inc" pageindexid="2" />
+    <basis core="call" file="analytics-body.inc" pageindexid="2" />
+    <basis core="call" file="header.inc" pageindexid="2" />
     <main>
         <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10">
             <basis core="group" if=" '[##cms.query.q##]' = 'all' ">
@@ -89,8 +89,9 @@
                             <a href="/@link" data-price="@prp_8181" data-days="@prp_8076"
                                 data-airline-name="@prp_10000504"
                                 class="tourL-tour-card flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-[389px]">
-                                <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
-                                    width="256" height="160" loading="lazy" />
+                                <img src="[##cms.cms.cdn##]/@00256X00160prp"
+                                    class="w-full h-40 object-cover rounded-2xl" alt="@title" width="256" height="160"
+                                    loading="lazy" />
                                 <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
                                     <h3 class="font-bold text-zinc-900 text-center line-clamp-1">@title</h3>
                                     <div class="flex flex-col gap-1">
@@ -197,8 +198,8 @@
                         <a href="/@link"
                             class="article-card flex flex-col gradient-border from-gray-300 rounded-2xl p-2 min-h-[355px]"
                             data-title="@title">
-                            <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
-                                width="256" height="160" loading="lazy" />
+                            <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl"
+                                alt="@title" width="256" height="160" loading="lazy" />
                             <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
                                 <h3 class="font-medium text-zinc-900 line-clamp-1">@title</h3>
                                 <div class="text-xs text-zinc-700 line-clamp-4 text-justify hyphens-auto leading-5">
@@ -259,8 +260,8 @@
                     <face>
                         <a href="/@link"
                             class="visa-card flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60">
-                            <img src="[##cms.cms.cdn##]/@00272X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
-                                width="272" height="160" loading="lazy" />
+                            <img src="[##cms.cms.cdn##]/@00272X00160prp" class="w-full h-40 object-cover rounded-2xl"
+                                alt="@title" width="272" height="160" loading="lazy" />
                             <div class="flex items-center justify-between">
                                 <h3 class="visa-card-title font-bold">@title</h3>
                                 <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
@@ -346,8 +347,9 @@
                                 data-city="@prp_[##cms.host.hotel_region##]" data-name="@title"
                                 data-price="@prp_[##cms.host.hotel_price##]"
                                 class="hotel-card flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80">
-                                <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
-                                    width="256" height="160" loading="lazy" />
+                                <img src="[##cms.cms.cdn##]/@00256X00160prp"
+                                    class="w-full h-40 object-cover rounded-2xl" alt="@title" width="256" height="160"
+                                    loading="lazy" />
                                 <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
                                     <h3 class="hotel-card-title font-bold text-zinc-900 line-clamp-1">@title</h3>
                                     <div class="grid grid-cols-2 gap-1 flex-1">
@@ -398,7 +400,7 @@
         </div>
 
     </main>
-    <basis core="call" file="template-footer.inc" pageindexid="2" />
+    <basis core="call" file="footer.inc" pageindexid="2" />
 </body>
 
 </html>

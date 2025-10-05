@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       if (item.submenu) {
         const res = await fetch(
-          `/template-load-items.bc?fetch=${encodeURIComponent(fetchType)}&catid=${item.catid}&mid=${item.mid}&v=${Date.now()}`
+          `/load-items.bc?fetch=${encodeURIComponent(fetchType)}&catid=${item.catid}&mid=${item.mid}&v=${Date.now()}`
         )
 
         if (!res.ok) throw new Error(`خطا در fetch (${res.status})`)
@@ -1078,7 +1078,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
           const res = await fetch(
-            `/template-load-items.bc?fetch=${type}&${paramKey}=${encodeURIComponent(
+            `/load-items.bc?fetch=${type}&${paramKey}=${encodeURIComponent(
               dataId,
             )}`
           )
@@ -1169,7 +1169,7 @@ const fetchArticlePage = async (dataPageNum) => {
   if (!cmsQuery) return
 
   const pagingResponse = await fetch(
-    `/template-load-items.bc?fetch=article-list_group&catid=${cmsQuery}&pagenum=${dataPageNum}`,
+    `/load-items.bc?fetch=article-list_group&catid=${cmsQuery}&pagenum=${dataPageNum}`,
   )
   const pagingData = await pagingResponse.text()
   fetchContentArticle.innerHTML = pagingData

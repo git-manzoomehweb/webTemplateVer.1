@@ -4,7 +4,7 @@
 
 <body>
     <basis core="call" file="analytics-body.inc" pageindexid="1" />
-    <basis core="call" file="template-header.inc" pageindexid="1" />
+    <basis core="call" file="header.inc" pageindexid="1" />
     <main>
         <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-16">
             <basis core="group" if=" '[##cms.query.q##]' = 'all' ">
@@ -86,8 +86,8 @@
                         <a href="/@link" data-price="@prp_8181" data-days="@prp_8076" data-airline-name="@prp_10000504"
                             class="tourL-tour-card group flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-[396px] transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1">
                             <div class="shine-effect relative overflow-hidden rounded-2xl">
-                                <img src="[##cms.cms.cdn##]/@00295X00160prp" class="w-full h-40 object-cover" alt="@title" width="295"
-                                    height="160" loading="lazy" />
+                                <img src="[##cms.cms.cdn##]/@00295X00160prp" class="w-full h-40 object-cover"
+                                    alt="@title" width="295" height="160" loading="lazy" />
                             </div>
                             <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
                                 <h3 class="font-bold text-zinc-900 text-center line-clamp-1">@title</h3>
@@ -225,8 +225,8 @@
                                 </div>
                             </div>
                             <div class="shine-effect relative overflow-hidden rounded-2xl">
-                                <img src="[##cms.cms.cdn##]/@00273X00160prp" class="w-56 h-40 object-cover" alt="@title" width="224"
-                                    height="160" loading="lazy" />
+                                <img src="[##cms.cms.cdn##]/@00273X00160prp" class="w-56 h-40 object-cover" alt="@title"
+                                    width="224" height="160" loading="lazy" />
                             </div>
                         </a>
                     </face>
@@ -269,8 +269,8 @@
                         <a href="/@link"
                             class="visa-card group flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1 hover:from-primary-600">
                             <div class="shine-effect relative overflow-hidden rounded-2xl">
-                                <img src="[##cms.cms.cdn##]/@00295X00160prp" class="w-full h-40 object-cover" alt="@title" width="295"
-                                    height="160" loading="lazy" />
+                                <img src="[##cms.cms.cdn##]/@00295X00160prp" class="w-full h-40 object-cover"
+                                    alt="@title" width="295" height="160" loading="lazy" />
                             </div>
                             <div class="flex items-center justify-between">
                                 <h3 class="visa-card-title font-bold">@title</h3>
@@ -358,8 +358,8 @@
                             data-price="@prp_[##cms.host.hotel_price##]"
                             class="hotel-card group flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1">
                             <div class="shine-effect relative overflow-hidden rounded-2xl">
-                                <img src="[##cms.cms.cdn##]/@00295X00160prp" class="w-full h-40 object-cover" alt="@title" width="295"
-                                    height="160" loading="lazy" />
+                                <img src="[##cms.cms.cdn##]/@00295X00160prp" class="w-full h-40 object-cover"
+                                    alt="@title" width="295" height="160" loading="lazy" />
                             </div>
                             <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
                                 <h3 class="hotel-card-title font-bold text-zinc-900 line-clamp-1">@title</h3>
@@ -410,7 +410,7 @@
         </div>
 
     </main>
-    <basis core="call" file="template-footer.inc" pageindexid="1" />
+    <basis core="call" file="footer.inc" pageindexid="1" />
 </body>
 
 </html>

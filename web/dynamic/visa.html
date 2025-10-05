@@ -19,7 +19,7 @@
 <basis core="dbsource" name="captcha" source="trust_login">
   <member name="code" type="scalar" request="captcha"></member>
 </basis>
-<basis core="dbsource" source="media" name="db"  lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
+<basis core="dbsource" source="media" name="db" lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
   <member name="info-gallery" type="list" format="4" order="ord"></member>
 </basis>
 
@@ -31,12 +31,12 @@
 
 <body>
   <basis core="call" file="analytics-body.inc" pageindexid="1" />
-  <basis core="call" file="template-header.inc" pageindexid="1" />
+  <basis core="call" file="header.inc" pageindexid="1" />
   <main itemscope itemtype="https://schema.org/Product">
     <section class="dynamic-bg relative bg-center bg-cover py-24 mt-6">
       <basis core="print" datamembername="view.gallery">
         <else-layout>
-            <div class="dynamic-img" data-bg="../images/visa-background.jpg"></div>
+          <div class="dynamic-img" data-bg="../../images/visa-background.jpg"></div>
         </else-layout>
         <face filter="ord in(1)">
           <div class="dynamic-img" data-bg="[##cms.cms.cdn##]/@largeIMG"></div>
@@ -225,8 +225,8 @@
                           </div>
                           <span class="field-captcha flex items-center gap-3">
                             <span class="load-captcha">
-                              <img class="captchaa w-20 h-auto" alt="کد امنیتی" src="[##cms.cms.cdn##]/[##captcha.code.captcha##]"
-                                width="80" height="60">
+                              <img class="captchaa w-20 h-auto" alt="کد امنیتی"
+                                src="[##cms.cms.cdn##]/[##captcha.code.captcha##]" width="80" height="60">
                               <input type="hidden" value="[##captcha.code.captcha##]" name="Captchaid">
                             </span>
                             <div onclick="refresh_captcha(this,event)">
@@ -298,13 +298,13 @@
       <aside class="sticky h-fit top-0 w-80">
         <section class="relative rounded-3xl overflow-hidden mt-3">
           <basis core="print" datamembername="db.info-gallery">
-            <face filter="largeIMG is null">
+            <else-layout>
               <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/sidebar-banner.jpg"
                 class="w-full h-[425px] object-cover" alt="@name" width="295" height="425" loading="lazy" />
-            </face>
+            </else-layout>
             <face filter="ord in(2)">
-              <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-[425px] object-cover" alt="@name" width="295" height="425"
-                loading="lazy" />
+              <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-[425px] object-cover" alt="@name" width="295"
+                height="425" loading="lazy" />
             </face>
           </basis>
           <div class="absolute z-10 bottom-7 left-5 right-5">
@@ -409,7 +409,7 @@
 
   <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
 
-  <basis core="call" file="template-footer.inc" pageindexid="1" />
+  <basis core="call" file="footer.inc" pageindexid="1" />
 
   <script type="application/ld+json">
       [##db.json.Column1##]

@@ -899,6 +899,10 @@ body {
   width: 5rem;
 }
 
+.w-32 {
+  width: 8rem;
+}
+
 .w-48 {
   width: 12rem;
 }
@@ -1618,7 +1622,7 @@ body {
 
   font-weight: 400;
 
-  src: url('http://basisflydemo.ir/fonts/DanaFaNum-Regular.ttf')
+  src: url('../_fonts/DanaFaNum-Regular.woff')
     format('truetype');
 }
 
@@ -1631,8 +1635,8 @@ body {
 
   font-weight: 500;
 
-  src: url('http://basisflydemo.ir/fonts/DanaFaNum-Medium.ttf')
-    format('truetype');
+  src: url('../fonts/DanaFaNum-Medium.woff')
+    format('woff');
 }
 
 @font-face {
@@ -1644,7 +1648,7 @@ body {
 
   font-weight: 700;
 
-  src: url('http://basisflydemo.ir/fonts/DanaFaNum-Bold.ttf') format('truetype');
+  src: url('../_fonts/DanaFaNum-Bold.woff') format('woff');
 }
 
 .h1-tag {
@@ -1680,8 +1684,8 @@ body {
 
 .mask-image {
   background-color: #f4f4f5;
-  -webkit-mask-image: url(../images/mask-svg.svg);
-  mask-image: url(../images/mask-svg.svg);
+  -webkit-mask-image: url(../PrimeTemplate_A/images/mask-svg.svg);
+  mask-image: url(../PrimeTemplate_A/images/mask-svg.svg);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
@@ -1695,9 +1699,9 @@ body {
   background: #f4f4f5;
   pointer-events: none;
   z-index: 0;
-  -webkit-mask: url(../images/mask-svg-mobile.svg) no-repeat top center / 100%
+  -webkit-mask: url(../PrimeTemplate_A/images/mask-svg-mobile.svg) no-repeat top center / 100%
     100%;
-  mask: url(../images/mask-svg-mobile.svg) no-repeat top center / 100% 100%;
+  mask: url(../PrimeTemplate_A/images/mask-svg-mobile.svg) no-repeat top center / 100% 100%;
   -webkit-mask-mode: luminance;
   mask-mode: luminance;
 }

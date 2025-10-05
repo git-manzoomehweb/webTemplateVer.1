@@ -22,13 +22,13 @@
 <basis core="call" file="head-elements.inc" pageindexid="1" />
 
 <body>
-  <basis core="call" file="analytics-body.inc" pageindexid="1"/>
-  <basis core="call" file="template-header.inc" pageindexid="1" />
+  <basis core="call" file="analytics-body.inc" pageindexid="1" />
+  <basis core="call" file="header.inc" pageindexid="1" />
   <main>
     <section class="dynamic-bg relative bg-center bg-cover py-24 mt-6">
       <basis core="print" datamembername="view.gallery">
         <else-layout>
-            <div class="dynamic-img" data-bg="../images/article-background.jpg"></div>
+          <div class="dynamic-img" data-bg="../../images/article-background.jpg"></div>
         </else-layout>
         <face filter="ord in(1)">
           <div class="dynamic-img" data-bg="[##cms.cms.cdn##]/@largeIMG"></div>
@@ -48,7 +48,8 @@
           </face>
         </basis>
 
-        <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb flex items-center text-sm gap-1 mt-2">
+        <ul itemscope itemtype="https://schema.org/BreadcrumbList"
+          class="breadcrumb flex items-center text-sm gap-1 mt-2">
           <li class="inline-block font-normal" itemprop="itemListElement" itemscope
             itemtype="https://schema.org/ListItem">
             <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-primary-700"
@@ -160,8 +161,8 @@
                           </div>
                           <span class="field-captcha flex items-center gap-3">
                             <span class="load-captcha">
-                              <img class="captchaa w-20 h-auto" alt="کد امنیتی" src="[##cms.cms.cdn##]/[##captcha.code.captcha##]"
-                                width="80" height="60">
+                              <img class="captchaa w-20 h-auto" alt="کد امنیتی"
+                                src="[##cms.cms.cdn##]/[##captcha.code.captcha##]" width="80" height="60">
                               <input type="hidden" value="[##captcha.code.captcha##]" name="Captchaid">
                             </span>
                             <div onclick="refresh_captcha(this,event)">
@@ -258,7 +259,7 @@
     </div>
 
   </main>
-  <basis core="call" file="template-footer.inc" pageindexid="1" />
+  <basis core="call" file="footer.inc" pageindexid="1" />
 
   <script type="application/ld+json">
       [##db.json.Column1##]

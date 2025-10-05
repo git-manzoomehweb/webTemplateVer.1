@@ -24,13 +24,13 @@
 <basis core="call" file="head-elements.inc" pageindexid="1" />
 
 <body>
-  <basis core="call" file="analytics-body.inc" pageindexid="1"/>
-  <basis core="call" file="template-header.inc" pageindexid="1" />
+  <basis core="call" file="analytics-body.inc" pageindexid="1" />
+  <basis core="call" file="header.inc" pageindexid="1" />
   <main data-activepage="article-list">
     <section class="dynamic-bg relative bg-[center_30%] bg-cover py-16">
       <basis core="print" datamembername="article_group.gallery">
         <else-layout>
-          <div class="dynamic-img" data-bg="../images/article-list-background.jpg"></div>
+          <div class="dynamic-img" data-bg="../../images/article-list-background.jpg"></div>
         </else-layout>
         <face filter="ord in(1)">
           <div class="dynamic-img" data-bg="[##cms.cms.cdn##]/@largeIMG"></div>
@@ -112,7 +112,7 @@
     <section class="flex gap-3 mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-9">
       <aside class="sticky h-fit top-0 w-[295px]">
         <basis core="group" if="'[##cms.query.cid##]' <> ''">
-          <section class="rounded-3xl gradient-border from-gray-300 bg-zinc-50 px-4 py-6">
+          <section class="rounded-3xl gradient-border from-gray-300 bg-zinc-50 px-4 py-6 mb-3">
             <div class="">
               <div
                 class="accordion-toggle flex items-center justify-between border border-dashed border-primary-600 rounded-full py-2 pr-3">
@@ -135,15 +135,15 @@
             </div>
           </section>
         </basis>
-        <section class="relative rounded-3xl overflow-hidden mt-3">
+        <section class="relative rounded-3xl overflow-hidden">
           <basis core="print" datamembername="db.info-gallery">
-            <face filter="largeIMG is null">
+            <else-layout>
               <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/sidebar-banner.jpg"
                 class="w-full h-[425px] object-cover" alt="@name" width="295" height="425" loading="lazy" />
-            </face>
+            </else-layout>
             <face filter="ord in(2)">
-              <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-[425px] object-cover" alt="@name" width="295" height="425"
-                loading="lazy" />
+              <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-[425px] object-cover" alt="@name" width="295"
+                height="425" loading="lazy" />
             </face>
           </basis>
           <div class="absolute z-10 bottom-7 left-5 right-5">
@@ -308,7 +308,7 @@
     </basis>
   </main>
 
-  <basis core="call" file="template-footer.inc" pageindexid="1" />
+  <basis core="call" file="footer.inc" pageindexid="1" />
 </body>
 
 </html>

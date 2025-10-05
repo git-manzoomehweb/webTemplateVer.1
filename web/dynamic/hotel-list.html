@@ -31,13 +31,13 @@
 <basis core="call" file="head-elements.inc" pageindexid="1" />
 
 <body>
-  <basis core="call" file="analytics-body.inc" pageindexid="1"/>
-  <basis core="call" file="template-header.inc" pageindexid="1" />
+  <basis core="call" file="analytics-body.inc" pageindexid="1" />
+  <basis core="call" file="header.inc" pageindexid="1" />
   <main data-activepage="hotel-list">
     <section class="dynamic-bg relative bg-center bg-cover py-24 mt-6">
       <basis core="print" datamembername="hotel_group.gallery">
         <else-layout>
-          <div class="dynamic-img" data-bg="../images/hotel-list-background.jpg"></div>
+          <div class="dynamic-img" data-bg="../../images/hotel-list-background.jpg"></div>
         </else-layout>
         <face filter="ord in(1)">
           <div class="dynamic-img" data-bg="[##cms.cms.cdn##]/@largeIMG"></div>
@@ -115,8 +115,8 @@
         <a href="[##cms.host.featured_hotel_banner_link##]" class="flex flex-col">
           <basis core="print" datamembername="featured_banner.gallery">
             <face filter="ord in(1)">
-              <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-52 object-cover object-[center_70%]" alt="@name" width="208"
-                height="1280" loading="lazy" />
+              <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-52 object-cover object-[center_70%]" alt="@name"
+                width="208" height="1280" loading="lazy" />
             </face>
           </basis>
 
@@ -221,13 +221,13 @@
         </section>
         <section class="relative rounded-3xl overflow-hidden mt-3">
           <basis core="print" datamembername="db.info-gallery">
-            <face filter="largeIMG is null">
+            <else-layout>
               <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/sidebar-banner.jpg"
                 class="w-full h-[425px] object-cover" alt="@name" width="295" height="425" loading="lazy" />
-            </face>
+            </else-layout>
             <face filter="ord in(2)">
-              <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-[425px] object-cover" alt="@name" width="295" height="425"
-                loading="lazy" />
+              <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-[425px] object-cover" alt="@name" width="295"
+                height="425" loading="lazy" />
             </face>
           </basis>
           <div class="absolute z-10 bottom-7 left-5 right-5">
@@ -382,8 +382,8 @@
               data-name="@title" data-price="@prp_[##cms.host.hotel_price##]"
               class="hotel-card group flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80 transition-all duration-300 hover:shadow-lg hover:shadow-primary-100 hover:-translate-y-1">
               <div class="shine-effect relative overflow-hidden rounded-2xl">
-                <img src="[##cms.cms.cdn##]/@00295X00160prp" class="w-full h-40 object-cover" alt="@title" width="295" height="160"
-                  loading="lazy" />
+                <img src="[##cms.cms.cdn##]/@00295X00160prp" class="w-full h-40 object-cover" alt="@title" width="295"
+                  height="160" loading="lazy" />
               </div>
               <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
                 <h3 class="font-bold text-zinc-900 line-clamp-1">@title</h3>
@@ -585,7 +585,7 @@
 
   <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
   <script src="[##cms.cms.cdn##]/PrimeTemplate_A/js/template-list.js"></script>
-  <basis core="call" file="template-footer.inc" pageindexid="1" />
+  <basis core="call" file="footer.inc" pageindexid="1" />
 </body>
 
 </html>

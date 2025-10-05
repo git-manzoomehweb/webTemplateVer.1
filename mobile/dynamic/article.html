@@ -24,7 +24,7 @@
 
 <body>
     <basis core="call" file="analytics-body.inc" pageindexid="2" />
-    <basis core="call" file="template-header.inc" pageindexid="2" />
+    <basis core="call" file="header.inc" pageindexid="2" />
     <main>
         <section class="dynamic-bg relative bg-center bg-cover py-24">
             <basis core="print" datamembername="view.gallery">
@@ -189,7 +189,8 @@
                                             <span class="field-captcha flex items-center gap-3">
                                                 <span class="load-captcha">
                                                     <img class="captchaa w-20 h-auto" alt="کد امنیتی"
-                                                        src="[##cms.cms.cdn##]/[##captcha.code.captcha##]" width="80" height="60">
+                                                        src="[##cms.cms.cdn##]/[##captcha.code.captcha##]" width="80"
+                                                        height="60">
                                                     <input type="hidden" value="[##captcha.code.captcha##]"
                                                         name="Captchaid">
                                                 </span>
@@ -261,7 +262,7 @@
         </section>
 
     </main>
-    <basis core="call" file="template-footer.inc" pageindexid="2" />
+    <basis core="call" file="footer.inc" pageindexid="2" />
 
     <script type="application/ld+json">
         [##db.json.Column1##]

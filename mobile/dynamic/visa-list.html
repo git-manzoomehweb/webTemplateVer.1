@@ -22,8 +22,8 @@
 
 
 <body>
-    <basis core="call" file="analytics-body.inc" pageindexid="2"/>
-    <basis core="call" file="template-header.inc" pageindexid="2" />
+    <basis core="call" file="analytics-body.inc" pageindexid="2" />
+    <basis core="call" file="header.inc" pageindexid="2" />
     <main data-activepage="visa-list">
         <section class="dynamic-bg relative bg-center bg-cover py-20">
             <basis core="print" datamembername="visa_group.gallery">
@@ -126,8 +126,8 @@
                 <face>
                     <a href="/@link"
                         class="flex flex-col gap-3 gradient-border from-gray-300 rounded-xl p-2 bg-zinc-gradient min-h-60">
-                        <img src="[##cms.cms.cdn##]/@00272X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
-                            width="272" height="160" loading="lazy" />
+                        <img src="[##cms.cms.cdn##]/@00272X00160prp" class="w-full h-40 object-cover rounded-2xl"
+                            alt="@title" width="272" height="160" loading="lazy" />
                         <div class="flex items-center justify-between">
                             <h3 class="font-bold">@title</h3>
                             <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
@@ -308,7 +308,7 @@
         </basis>
     </main>
 
-    <basis core="call" file="template-footer.inc" pageindexid="2" />
+    <basis core="call" file="footer.inc" pageindexid="2" />
 </body>
 
 </html>

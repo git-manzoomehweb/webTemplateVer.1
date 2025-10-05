@@ -40,8 +40,8 @@
 <basis core="call" file="head-elements.inc" pageindexid="2" />
 
 <body>
-  <basis core="call" file="analytics-body.inc" pageindexid="2"/>
-  <basis core="call" file="template-header.inc" pageindexid="2" />
+  <basis core="call" file="analytics-body.inc" pageindexid="2" />
+  <basis core="call" file="header.inc" pageindexid="2" />
   <main data-activepage="tour-list">
     <section class="dynamic-bg relative bg-center bg-cover py-24">
       <basis core="print" datamembername="tour_group.gallery">
@@ -190,8 +190,8 @@
           <face>
             <div class="swiper-slide min-w-[272px]">
               <a href="/@link" class="flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-[389px]">
-                <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title" width="256"
-                  height="160" loading="lazy" />
+                <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
+                  width="256" height="160" loading="lazy" />
                 <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
                   <h3 class="font-bold text-zinc-900 text-center line-clamp-1">@title</h3>
                   <div class="flex flex-col gap-1">
@@ -250,8 +250,8 @@
         <a href="[##cms.host.featured_tour_banner_link##]" class="flex flex-col">
           <basis core="print" datamembername="featured_banner.gallery">
             <face filter="ord in(1)">
-              <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-96 object-cover" alt="@name" width="288" height="384"
-                loading="lazy" />
+              <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-96 object-cover" alt="@name" width="288"
+                height="384" loading="lazy" />
             </face>
           </basis>
 
@@ -415,8 +415,8 @@
           <div class="swiper-slide min-w-[272px]">
             <a href="/@link" data-price="@prp_8181" data-days="@prp_8076" data-airline-name="@prp_10000504"
               class="tourL-tour-card flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-[389px]">
-              <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title" width="256"
-                height="160" loading="lazy" />
+              <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
+                width="256" height="160" loading="lazy" />
               <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
                 <h3 class="font-bold text-zinc-900 text-center line-clamp-1">@title</h3>
                 <div class="flex flex-col gap-1">
@@ -565,13 +565,13 @@
 
     <section class="relative rounded-3xl overflow-hidden mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-14">
       <basis core="print" datamembername="db.info-gallery">
-        <face filter="largeIMG is null">
+        <else-layout>
           <img src="[##cms.cms.cdn##]/PrimeTemplate_A/images/sidebar-banner.jpg" class="w-full h-[425px] object-cover"
             alt="@name" width="295" height="425" loading="lazy" />
-        </face>
+        </else-layout>
         <face filter="ord in(2)">
-          <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-[425px] object-cover" alt="@name" width="295" height="425"
-            loading="lazy" />
+          <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-[425px] object-cover" alt="@name" width="295"
+            height="425" loading="lazy" />
         </face>
       </basis>
       <div class="absolute z-10 bottom-7 left-5 right-5">
@@ -736,7 +736,7 @@
 
   <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
   <script src="[##cms.cms.cdn##]/PrimeTemplate_A/js/template-list.js"></script>
-  <basis core="call" file="template-footer.inc" pageindexid="2" />
+  <basis core="call" file="footer.inc" pageindexid="2" />
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-@import url(./customized.ui.min.css);
+@import url(../../css/customized.ui.min.css);
 
 .container {
   width: 100%;
@@ -180,6 +180,10 @@
 
 .mr-2 {
   margin-right: 0.5rem;
+}
+
+.mr-auto {
+  margin-right: auto;
 }
 
 .mt-1 {
@@ -389,10 +393,6 @@
 
 .w-12 {
   width: 3rem;
-}
-
-.w-32 {
-  width: 8rem;
 }
 
 .w-4\/5 {
@@ -999,7 +999,7 @@
 
 .image-text {
   color: transparent;
-  background-image: url('../images/about-image-text.jpg');
+  background-image: url('../../images/about-image-text.jpg');
   background-size: cover;
   background-position: center;
   -webkit-background-clip: text;

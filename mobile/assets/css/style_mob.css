@@ -1,0 +1,390 @@
+@import url(./customized.ui.min.css);
+@font-face {
+  font-display: swap;
+  font-family: "fontawesome";
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: url("../_fonts/fontawesome-webfont.eot");
+  src: url("../_fonts/fontawesome-webfont.eot") format("embedded-opentype"),
+    url("../_fonts/fontawesome-webfont.ttf") format("truetype"),
+    url("../_fonts/fontawesome-webfont.woff") format("truetype"),
+    url("../_fonts/fontawesome-webfont.svg") format("svg");
+}
+@font-face {
+  font-family: "fontawesome";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("../fonts/fontAwesome-solid.eot");
+  src: url("../fonts/fontAwesome-solid.eot") format("embedded-opentype"),
+    url("../fonts/fontAwesome-solid.ttf") format("truetype"),
+    url("../fonts/fontAwesome-solid.svg") format("svg");
+}
+@font-face {
+  font-display: swap;
+  font-family: "IRANSansWebEnNum";
+  font-style: normal;
+  font-weight: lighter;
+  src: url("../_fonts/IRANSansWeb_Medium.eot");
+  src: url("../_fonts/IRANSansWeb_Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("../_fonts/IRANSansWeb_Medium.woff") format("truetype");
+}
+@font-face {
+  font-display: swap;
+  font-family: "flaticon";
+  src: url("../fonts/fontFlaticon.ttf") format("truetype"),
+    url("../fonts/fontFlaticon.eot#iefix") format("embedded-opentype");
+}
+.fa,
+.fas {
+  font-family: "fontawesome";
+  font-weight: 900;
+}
+.fab {
+  font-family: "fontawesome";
+  font-weight: 400;
+}
+.far {
+  font-family: "fontawesome";
+  font-weight: 400;
+}
+.EnNum {
+  font-family: "IRANSansWebEnNum";
+}
+.font-color_1 {
+  color: var(--primary);
+}
+.background-color_1 {
+  background: var(--primary) !important;
+}
+.UserInfo {
+  float: left !important;
+}
+.mm-spn li:before {
+  color: var(--primary);
+}
+.mm-spn.mm-spn--navbar:before {
+  color: var(--primary);
+}
+.item-search:before {
+  border: 1px dashed var(--primary);
+}
+.fa-times {
+  color: var(--primary);
+}
+.createChildDropdown select {
+  background: var(--primary);
+}
+.reserve-button:hover {
+  color: var(--primary);
+}
+.total-cost {
+  color: var(--primary);
+  font-size: 15px;
+}
+.reserve-button {
+  border: 1px solid var(--primary);
+}
+.title-result {
+  border-bottom: 1px solid var(--primary);
+}
+.confirm {
+  background: linear-gradient(-90deg, var(--primary) 0, var(--primary) 100%);
+}
+.confirm:hover {
+  background: linear-gradient(-90deg, var(--primary) 0, var(--primary) 100%);
+}
+.details-item-title {
+  border-bottom: 2px solid var(--primary);
+}
+.section-details button {
+  border: 2px solid var(--primary);
+}
+.section-details button:hover {
+  background: var(--primary);
+}
+.section-research-left button:hover,
+.after-btn:hover,
+.before-btn:hover,
+.section-filter-icon button:hover {
+  color: var(--primary);
+}
+.progress-bar {
+  background: var(--primary);
+}
+.progress-bar {
+  background-image: -webkit-linear-gradient(
+    top,
+    var(--primary) 0,
+    var(--primary) 100%
+  );
+  background-image: -o-linear-gradient(
+    top,
+    var(--primary) 0,
+    var(--primary) 100%
+  );
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(var(--primary)),
+    to(var(--primary))
+  );
+  background-image: linear-gradient(
+    to bottom,
+    var(--primary) 0,
+    var(--primary) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7',endColorstr='#ff286090',GradientType=0);
+  background-repeat: repeat-x;
+}
+.sort-box .sort-items li.active {
+  color: var(--primary);
+}
+.section-input_2 span.checkbox::before {
+  border: 2px solid var(--primary);
+}
+.radioButton:checked + label span::after {
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+.link-2:hover:after {
+  border-color: var(--primary);
+}
+.section-input_2 span.checkbox::before {
+  border: 2px solid var(--primary);
+}
+.section-input_2 input[type="checkbox"]:checked + label span.checkbox::after {
+  background: var(--primary);
+}
+.select-arrow::before {
+  color: var(--primary);
+}
+.selectCountry i {
+  color: var(--primary);
+}
+.highlight {
+  color: var(--primary);
+}
+.ui-datepicker-buttonpane .ui-state-default:hover,
+.ui-datepicker-buttonpane .ui-state-default:focus,
+.ui-datepicker-buttonpane .ui-datepicker-current:hover,
+.ui-datepicker-buttonpane .ui-datepicker-current:focus {
+  background-color: var(--primary);
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+  border: 1px solidvar(--primary);
+  background: var(--primary) !important;
+}
+.section-input_2 input[type="checkbox"]:checked + label span.checkbox::after {
+  background: var(--primary);
+}
+.loader {
+  border-top: 5px solid var(--primary);
+}
+.Link-Forgetpass:hover,
+.Link-Register:hover,
+.Link-ResendMail:hover,
+.Link-Login:hover {
+  color: var(--primary) !important;
+}
+.ChangeFlight-header {
+  background: linear-gradient(-135deg, var(--primary), var(--primary));
+}
+.active_tab_tour {
+  color: #fff !important;
+  background: var(--primary);
+}
+.second-part-header .col1-second-part-header a:after,
+.second-part-header .col1-second-part-header a:before,
+.second-part-header .col1-second-part-header a:after {
+  background: var(--primary);
+}
+.second-part-header .col1-second-part-header a span {
+  background: var(--primary);
+}
+.active-item-search img {
+  background: var(--primary) !important;
+}
+.active-item-search .fa-arrow-down:before {
+  color: var(--primary) !important;
+}
+.active-item-search .item-search:before {
+  border: 1px dashed var(--primary) !important;
+  display: none;
+}
+.radioButton:checked + label span::after {
+  color: var(--primary);
+  border: 3px solid var(--primary);
+}
+.category-title:hover {
+  background: var(--primary) !important;
+}
+.highlight {
+  color: var(--primary);
+}
+.font-color_2 {
+  color: var(--primary);
+}
+.background-color_2 {
+  background: var(--primary) !important;
+}
+.CountPassenger.room::before {
+  color: var(--primary) !important;
+}
+.add-room {
+  background: linear-gradient(-90deg, var(--primary) 0, var(--primary) 100%);
+}
+.row1-footer .fa,
+.row1-footer .far {
+  border: 1px solid var(--primary);
+}
+.circle {
+  color: var(--primary);
+}
+.details-button,
+.Others-Button {
+  border: 1px solid var(--primary);
+}
+.details-button:hover,
+.Others-Button:hover {
+  color: var(--primary);
+}
+.row1-footer .fa:hover,
+.row1-footer .far:hover {
+  color: var(--primary);
+}
+.row1-footer .fa,
+.row1-footer .far {
+  background: var(--primary);
+}
+.fa-angle-double-left:hover,
+.fa-angle-double-right:hover,
+.controlsPage:hover {
+  background: var(--primary);
+}
+.right-border-d {
+  border-left: 2px dashed var(--primary);
+}
+.right-border-d::after {
+  background: var(--primary);
+}
+.right-border-d::before {
+  background: var(--primary);
+}
+.sort-box .sort-items li.active {
+  color: var(--primary);
+}
+.CountPassenger.room::before {
+  color: var(--primary);
+}
+.ui-datepicker-today .ui-state-highlight {
+  background: var(--primary);
+}
+.ui-datepicker table thead th {
+  background-color: var(--primary);
+}
+.ui-datepicker .ui-datepicker-buttonpane button {
+  background-color: var(--primary);
+}
+.fa.fa-user.is-login {
+  color: #00a703;
+}
+.section_tour_room.active_room span {
+  background: #00a703;
+}
+.selected {
+  color: #00a703;
+}
+.width_100 button {
+  background: #00a703;
+}
+.submit:hover {
+  color: #34495e;
+}
+.font-color_3 {
+  color: var(--primary);
+}
+.background-color_3 {
+  background: var(--primary);
+}
+.font-color_4 {
+  color: #fff;
+}
+.top-menu img {
+  width: 150px;
+  height: auto;
+  filter: unset;
+}
+.col2-second-part-header img {
+  width: auto;
+  height: 45px;
+  margin-top: 3px;
+}
+.mm-spn--open {
+  margin-top: 100px !important;
+}
+.Basis_Calendar .selected_date {
+  background: var(--primary) !important;
+}
+.Basis_Calendar .month_day_list table td:hover {
+  background: var(--fourth);
+}
+.Basis_Calendar .month_detail {
+  background: var(--fourth);
+}
+.Basis_Calendar .basis_s_day {
+  color: var(--primary);
+}
+.Basis_Calendar .day_of_date {
+  color: var(--primary);
+}
+.Basis_Calendar .month_of_date {
+  color: var(--primary);
+}
+.Basis_Calendar .date_info_selected {
+  border-bottom: 2px solid var(--primary);
+}
+.Basis_Calendar .month_detail {
+  border-bottom: 2px solid var(--fourth);
+}
+.Basis_Calendar .selected_day {
+  background: var(--fourth);
+}
+.warning {
+  color: red;
+}
+.fa-map-marker-alt,
+.fa-exchange-alt {
+  font-weight: 900;
+}
+input,
+select,
+button {
+  font-family: "DanaFaNum";
+}
+html,
+html body {
+  font-family: "DanaFaNum";
+}
+.mm-spn.mm-spn--navbar.mm-spn--main:after,
+.mm-spn, .mm-spn a, .mm-spn li, .mm-spn ul{
+  font-family: "DanaFaNum";
+}
+.currency-selected::after {
+  font-size: 15px;
+  margin-left: 10px;
+}
+.mm-spn,
+.mm-spn a,
+.mm-spn li,
+.mm-spn ul {
+  display: block !important;
+}
+.item-CountPassenger input{
+  color:  white !important;
+}

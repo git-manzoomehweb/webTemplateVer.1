@@ -14,13 +14,13 @@
 <basis core="call" file="head-elements.inc" pageindexid="1" />
 
 <body>
-    <basis core="call" file="analytics-body.inc" pageindexid="1"/>
-    <basis core="call" file="template-header.inc" pageindexid="1" />
+    <basis core="call" file="analytics-body.inc" pageindexid="1" />
+    <basis core="call" file="header.inc" pageindexid="1" />
     <main data-activepage="contact">
         <section class="dynamic-bg relative bg-center bg-cover py-24 mt-6">
             <basis core="print" datamembername="db.info-gallery">
                 <else-layout>
-                    <div class="dynamic-img" data-bg="../images/contact-background.jpg"></div>
+                    <div class="dynamic-img" data-bg="../../images/contact-background.jpg"></div>
                 </else-layout>
                 <face filter="ord in(1)">
                     <div class="dynamic-img" data-bg="[##cms.cms.cdn##]/@largeIMG"></div>
@@ -401,7 +401,7 @@
         </basis>
     </main>
 
-    <basis core="call" file="template-footer.inc" pageindexid="1" />
+    <basis core="call" file="footer.inc" pageindexid="1" />
 </body>
 
 </html>
