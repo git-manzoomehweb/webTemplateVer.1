@@ -362,9 +362,7 @@
 .fa-exchange-alt {
   font-weight: 900;
 }
-input,
-select,
-button {
+* {
   font-family: "DanaFaNum";
 }
 html,

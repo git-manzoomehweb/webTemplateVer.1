@@ -403,7 +403,7 @@ fieldset hr {
 }
 .loading-img img {
   width: 70px;
-  margin: 0 auto 0 0.6em;
+  margin: .5em auto;
 }
 .loading-img {
   margin-top: 1em;
