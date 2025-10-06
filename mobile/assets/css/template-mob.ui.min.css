@@ -1837,6 +1837,7 @@
 }
 
 .searchHistory-content {
+  display: none !important;
   width: 100% !important;
   margin: 1em !important;
 }
