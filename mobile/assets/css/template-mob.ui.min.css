@@ -974,6 +974,53 @@
   max-width: 100%; 
 }
 
+.search-engine-loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-color: var(--secondary-900) var(--secondary-900) transparent;
+  box-sizing: border-box;
+  animation: rotationSearch 1s linear infinite;
+}
+.search-engine-loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent var(--primary-900) var(--primary-900);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  animation: rotationBackSearch 0.5s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes rotationSearch {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+    
+@keyframes rotationBackSearch {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
 .fetch-loader {
   width: 60px;
   height: 60px;
@@ -1129,7 +1176,7 @@
 }
 .Basis_Calendar_Box {
   font-family: 'DanaFaNum' !important;
-  margin-top: -3.25rem;
+  /* margin-top: -3.25rem; */
 }
 .calendar-apply-date,
 .calendar-switch,

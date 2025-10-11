@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function initializeCalendarPopup() {
+    if (window.innerWidth <= 1024) return;
     document.addEventListener("click", function (e) {
       const dateBox = e.target.closest(".Basis_Date_Box");
       if (!dateBox) return;
