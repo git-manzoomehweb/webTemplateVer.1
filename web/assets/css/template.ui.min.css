@@ -1588,6 +1588,7 @@
 .module-banner-image img {
   position: absolute;
   top: 0;
+  left: 0;
   width: 700px;
   height: 100%;
   object-fit: cover;

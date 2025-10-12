@@ -1212,7 +1212,7 @@
 .reservation-item {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-  gap: 4px !important;
+  gap: 10px 4px !important;
 }
 
 .reserve-btn {
