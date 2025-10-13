@@ -11,10 +11,27 @@
         <h1 class="h1-tag">@text</h1>
       </face>
     </basis>
+    <basis core="group" if="'[##cms.host.popup_link##]' <> ''">
+      <div id="welcome-popup" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+
+        <div id="popup-content" class="relative flex flex-col justify-center">
+          <svg class="close-popup-content cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+          </svg>
+
+          <a href="[##cms.host.popup_link##]" target="_blank" rel="noopener noreferrer">
+            <img src="[##cms.cms.cdn##]/images/popup-image.jpg" alt="notice" class="rounded-2xl w-80 h-[400px]" width="320"
+              height="400" loading="lazy">
+          </a>
+
+        </div>
+      </div>
+    </basis>
     <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6">
       <div class="module-banner-image" data-img-path="[##cms.host.search-engine-images##]">
-        <img src="[##cms.cms.cdn##]/images/flight-search-bg.jpg"
-          class="w-full h-48 object-cover rounded-3xl" alt="search-banner" width="288" height="192" loading="lazy" />
+        <img src="[##cms.cms.cdn##]/images/flight-search-bg.jpg" class="w-full h-48 object-cover rounded-3xl"
+          alt="search-banner" width="288" height="192" loading="lazy" />
       </div>
       <div class="search-banner z-10 gradient-border from-primary-600 bg-white rounded-3xl shadow-search-engine -mt-10">
         <div class="search-box-container mobile-search-box ">

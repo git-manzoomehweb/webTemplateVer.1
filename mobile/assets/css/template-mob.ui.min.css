@@ -255,6 +255,10 @@
   height: 346px;
 }
 
+.h-\[400px\] {
+  height: 400px;
+}
+
 .h-\[425px\] {
   height: 425px;
 }
@@ -293,6 +297,10 @@
 
 .w-44 {
   width: 11rem /* 176px */;
+}
+
+.w-80 {
+  width: 20rem /* 320px */;
 }
 
 .w-5 {
@@ -434,6 +442,9 @@
   background-color: transparent;
 }
 
+.bg-opacity-60 {
+  --tw-bg-opacity: 0.6;
+}
 
 .bg-white\/30 {
   background-color: rgb(255 255 255 / 0.3);

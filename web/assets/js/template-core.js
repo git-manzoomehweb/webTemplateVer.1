@@ -1478,6 +1478,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })
 
+//--------------popup default----------------
+document.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("welcome-popup");
+  const content = document.getElementById("popup-content");
+  const now = new Date().getTime();
+  const popupData = localStorage.getItem("popup_shown");
+  const oneHour = 60 * 60 * 1000; 
+
+  if (!popupData || now - parseInt(popupData) > oneHour) {
+    popup.classList.remove("hidden");
+    localStorage.setItem("popup_shown", now.toString());
+  }
+
+  popup.addEventListener("click", (e) => {
+    if (!content.contains(e.target)) {
+      popup.classList.add("hidden");
+    }
+  });
+
+  document.querySelectorAll(".close-popup-content").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      popup.classList.add("hidden");
+    });
+  });
+});
+
 //--------------POV-form-------------//
 document.querySelectorAll('.pov-form').forEach(function (form) {
   form.addEventListener('submit', function (e) {

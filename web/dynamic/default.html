@@ -12,6 +12,21 @@
         <h1 class="h1-tag">@text</h1>
       </face>
     </basis>
+    <basis core="group" if="'[##cms.host.popup_link##]' <> ''">
+      <div id="welcome-popup" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+        <div id="popup-content" class="relative flex flex-col justify-center">
+          <svg width="15" height="15" class="close-popup-content cursor-pointer">
+            <use xlink:href="/PrimeTemplate_A/images/sprite-icons.svg#engine-close-icon"></use>
+          </svg>
+
+          <a href="[##cms.host.popup_link##]" target="_blank">
+            <img src="[##cms.cms.cdn##]/images/popup-image.jpg" alt="notice"
+              class="rounded-2xl w-[700px] h-[400px]" width="700" height="400" loading="lazy">
+          </a>
+        </div>
+      </div>
+    </basis>
+
     <section class="relative z-10 flex items-center mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-8">
       <div class="module-banner-image" data-img-path="[##cms.host.search-engine-images##]">
         <img src="[##cms.cms.cdn##]/images/flight-search-bg.jpg"
@@ -152,8 +167,8 @@
               <div
                 class="flex flex-col items-center justify-between gap-3 gradient-border from-primary-600 bg-zinc-50 rounded-2xl p-4">
                 <span class="bg-primary-600 rounded-full p-4">
-                  <img src="\@00048X00048prp" class="w-10 h-10 object-cover" alt="@title" width="40" height="40"
-                    loading="lazy" />
+                  <img src="[##cms.cms.cdn##]\@00040X00040prp" class="w-10 h-10 object-cover" alt="@title" width="40"
+                    height="40" loading="lazy" />
                 </span>
                 <h3 class="text-zinc-900 font-bold text-sm">@title</h3>
                 <div class="text-zinc-500 text-xs text-center leading-5 min-h-10 line-clamp-2">

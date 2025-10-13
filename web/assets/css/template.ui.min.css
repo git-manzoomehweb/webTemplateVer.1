@@ -306,6 +306,10 @@
   height: 20rem;
 }
 
+.h-\[400px\] {
+  height: 400px;
+}
+
 .h-\[425px\] {
   height: 425px;
 }
@@ -621,6 +625,10 @@
 
 .bg-transparent {
   background-color: transparent;
+}
+
+.bg-opacity-60 {
+  --tw-bg-opacity: 0.6;
 }
 
 .bg-black {
