@@ -73,12 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
           popup.style.left = rect.left - parent.left + "px";
           popup.style.right = "unset";
         }
-
-        console.log(
-          "✅ موقعیت پاپ‌آپ دقیق اعمال شد",
-          popup.style.top,
-          popup.style.right || popup.style.left
-        );
       }, 50);
     });
   }
@@ -892,9 +886,7 @@ document.addEventListener('DOMContentLoaded', () => {
           text: 'این صفحه رو ببین!',
           url: window.location.href,
         })
-        console.log('صفحه با موفقیت به اشتراک گذاشته شد!')
       } catch (err) {
-        console.log('خطا یا لغو:', err)
         openMenu()
       }
     } else {
@@ -1253,17 +1245,18 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   ]
 
+  let anyContainerExists = false
+  let anyCardExists = false
+
   filters.forEach((filter) => {
     const container = document.querySelector(filter.wrapper)
     const containerTitle = document.querySelector(filter.containerTitle)
+
     if (!container) return
+    anyContainerExists = true
 
     const allItems = Array.from(container.querySelectorAll(filter.items))
-    if (allItems.length === 0) {
-      if (containerTitle) containerTitle.style.display = 'none'
-      container.style.display = 'none'
-      return
-    }
+    if (allItems.length > 0) anyCardExists = true
 
     container.innerHTML = ''
     let hasMatch = false
@@ -1283,7 +1276,29 @@ document.addEventListener('DOMContentLoaded', function () {
       container.style.display = 'none'
     }
   })
+
+  if (!anyCardExists) {
+    const main = document.querySelector('main') || document.body
+    const isMobile = window.innerWidth <= 768
+    main.innerHTML = isMobile
+      ? `
+        <div class="flex flex-col items-center justify-center h-full mt-20">
+          <h2 class="text-xl font-bold mb-2">هیچ موردی پیدا نشد!</h2>
+          <p class="mb-6">چشم‌ها همه‌جا رو گشتن ولی چیزی پیدا نکردن</p>
+          <span class="not-found-loader"></span>
+        </div>
+      `
+      : `
+        <div class="flex flex-col items-center justify-center h-full py-10 mt-24">
+          <h2 class="text-3xl font-bold mb-2">هیچ موردی پیدا نشد!</h2>
+          <p class="text-lg mb-6">چشم‌ها همه‌جا رو گشتن ولی چیزی پیدا نکردن</p>
+          <span class="not-found-loader"></span>
+        </div>
+      `
+  }
 })
+
+
 
 //--------switch-comment-btn---------
 document.addEventListener('DOMContentLoaded', () => {
@@ -1482,6 +1497,9 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById("welcome-popup");
   const content = document.getElementById("popup-content");
+
+  if (!popup || !content) return;
+
   const now = new Date().getTime();
   const popupData = localStorage.getItem("popup_shown");
   const oneHour = 60 * 60 * 1000; 

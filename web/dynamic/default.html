@@ -20,8 +20,8 @@
           </svg>
 
           <a href="[##cms.host.popup_link##]" target="_blank">
-            <img src="[##cms.cms.cdn##]/images/popup-image.jpg" alt="notice"
-              class="rounded-2xl w-[700px] h-[400px]" width="700" height="400" loading="lazy">
+            <img src="[##cms.cms.cdn##]/images/popup-image.jpg" alt="notice" class="rounded-2xl w-[700px] h-[400px]"
+              width="700" height="400" loading="lazy">
           </a>
         </div>
       </div>
@@ -353,7 +353,8 @@
         </basis>
         <basis core="dbsource" source="media" lid="1" name="top_banner" usedforid="[##cms.host.top_banner##]"
           sourcemid="article">
-          <member type="list" name="gallery" format="4" order="ord"></member>
+          <member type="list" name="gallery" format="4" order="ord">
+          </member>
         </basis>
         <section class="section-order relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="5">
           <a href="[##cms.host.top_banner_link##]"
@@ -775,7 +776,7 @@
                   بیشتر</a>
               </div>
             </layout>
-            <face>
+            <face filter="TypeID in(129)">
               <h2 class="inline-block image-text text-3xl font-bold mb-6 line-clamp-1">
                 @text
               </h2>

@@ -2207,6 +2207,14 @@
   display: none;
 }
 
+.passenger-birthday-dropdown{
+  width: auto !important;
+}
+
+.passenger-birthday-dropdown li{
+  font-size: 14px;
+}
+
 .selectLocation {
   display: flex;
   align-items: center;
