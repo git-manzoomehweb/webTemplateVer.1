@@ -1,10 +1,11 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="article-list_category">
-  <member name="cat" type="tree" request="cat" parentid="[##cms.query.cid##]" order="ord"
+  <member name="cat" type="tree" request="cat" parentid="[##cms.query.cid##]"
+    order="[##cms.host.command_order|(date desc)##]"
     postsql="select * from [article-list_category.cat] where catid <> '[##cms.query.cid##]'">
   </member>
 </basis>
 <basis core="dbsource" source="media" lid="1" name="article_group" usedforid="[##cms.query.zid##]" sourcemid="article">
-  <member type="list" name="gallery" format="4" order="ord"></member>
+  <member type="list" name="gallery" format="4" order="[##cms.host.command_order|(date desc)##]"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
   <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid##]" />
@@ -16,7 +17,7 @@
   <member name="view" type="view" size="" propertyid="" />
 </basis>
 <basis core="dbsource" source="media" name="db" lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
-  <member name="info-gallery" type="list" format="4" order="ord"></member>
+  <member name="info-gallery" type="list" format="4" order="[##cms.host.command_order|(date desc)##]"></member>
 </basis>
 
 <!DOCTYPE html>
@@ -280,12 +281,14 @@
 
     <basis core="group" if="'[##cms.host.faq##]' <> ''">
       <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list">
-        <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq##]" order="ord"
+        <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq##]"
+          order="[##cms.host.command_order|(date desc)##]"
           postsql="select * from [faq_list.cat] where catid in([##cms.host.faq##]) or parentid in([##cms.host.faq##])">
         </member>
       </basis>
       <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq_list" catid="[##cms.host.faq##]">
-        <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
+        <member name="list" type="list" link="article.bc" propertyid="" perpage="12"
+          order="[##cms.host.command_order|(date desc)##]" size="320x480" />
       </basis>
       <section class="mt-14">
         <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">

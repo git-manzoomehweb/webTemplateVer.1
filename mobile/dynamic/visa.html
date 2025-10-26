@@ -5,7 +5,7 @@
   <member name="view" type="view" propertyid="7249" />
 </basis>
 <basis core="dbsource" source="media" name="view" lid="1" usedforid="[##cms.query.id##]" sourcemid="product">
-  <member name="gallery" type="list" format="4" order="ord"></member>
+  <member name="gallery" type="list" format="4" order="[##cms.host.command_order|(date desc)##]"></member>
 </basis>
 <basis core="dbsource" source="basiscore" name="db" lid="1" mid="20" usedforid="[##cms.query.id##]">
   <member name="navigation" type="tree" request="navigationcat" />
@@ -14,13 +14,13 @@
   <member name="scalar" type="scalar" typeid="150" />
 </basis>
 <basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
-  <member name="comment" type="list" order="ord" request="listcomment" />
+  <member name="comment" type="list" order="[##cms.host.command_order|(date desc)##]" request="listcomment" />
 </basis>
 <basis core="dbsource" name="captcha" source="trust_login">
   <member name="code" type="scalar" request="captcha"></member>
 </basis>
 <basis core="dbsource" source="media" name="db" lid="1" usedforid="[##cms.cms.ownerid##]" sourcemid="company">
-  <member name="info-gallery" type="list" format="4" order="ord"></member>
+  <member name="info-gallery" type="list" format="4" order="[##cms.host.command_order|(date desc)##]"></member>
 </basis>
 
 <!DOCTYPE html>

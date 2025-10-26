@@ -21,8 +21,8 @@
           </svg>
 
           <a href="[##cms.host.popup_link##]" target="_blank" rel="noopener noreferrer">
-            <img src="[##cms.cms.cdn##]/images/popup-image.jpg" alt="notice" class="rounded-2xl w-80 h-[400px]" width="320"
-              height="400" loading="lazy">
+            <img src="[##cms.cms.cdn##]/images/popup-image.jpg" alt="notice" class="rounded-2xl w-80 h-[400px]"
+              width="320" height="400" loading="lazy">
           </a>
 
         </div>
@@ -45,14 +45,15 @@
     <div class="parent-container">
       <basis core="group" if="'[##cms.host.landing_to_search_engine##]' <> ''">
         <basis core="dbsource" source="basiscore" lid="1" mid="1" name="landing_to_search_engine">
-          <member name="cat" type="tree" request="cat" parentid="[##cms.host.landing_to_search_engine##]" order="ord"
+          <member name="cat" type="tree" request="cat" parentid="[##cms.host.landing_to_search_engine##]"
+            order="[##cms.host.command_order|(date desc)##]"
             postsql="select * from [landing_to_search_engine.cat] where catid in([##cms.host.landing_to_search_engine##])">
           </member>
         </basis>
         <basis core="dbsource" source="basiscore" lid="1" mid="1" name="landing_to_search_engine"
           catid="[##cms.host.landing_to_search_engine##]">
           <member name="list" type="list" link="article.bc" propertyid="[##cms.host.all_prp_landing##]" perpage="8"
-            order="ord" size="" />
+            order="[##cms.host.command_order|(date desc)##]" size="" />
         </basis>
         <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6" data-order="1">
           <basis core="list" datamembername="landing_to_search_engine.cat">
@@ -109,11 +110,13 @@
 
       <basis core="group" if="'[##cms.host.slogans##]' <> ''">
         <basis core="dbsource" source="basiscore" lid="1" mid="1" name="slogans">
-          <member name="cat" type="tree" request="cat" parentid="[##cms.host.slogans##]" order="ord"
+          <member name="cat" type="tree" request="cat" parentid="[##cms.host.slogans##]"
+            order="[##cms.host.command_order|(date desc)##]"
             postsql="select * from [slogans.cat] where catid in([##cms.host.slogans##])"></member>
         </basis>
         <basis core="dbsource" source="basiscore" lid="1" mid="1" name="slogans" catid="[##cms.host.slogans##]">
-          <member name="list" type="list" link="article.bc" propertyid="7244" perpage="8" order="ord" size="40x40" />
+          <member name="list" type="list" link="article.bc" propertyid="7244" perpage="8"
+            order="[##cms.host.command_order|(date desc)##]" size="40x40" />
         </basis>
         <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="2">
           <basis core="list" datamembername="slogans.cat">
@@ -157,7 +160,8 @@
 
       <basis core="group" if="'[##cms.host.tour_category##]' <> ''">
         <basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour_category">
-          <member name="cat" type="tree" request="cat" parentid="[##cms.host.tour_category##]" order="ord"
+          <member name="cat" type="tree" request="cat" parentid="[##cms.host.tour_category##]"
+            order="[##cms.host.command_order|(date desc)##]"
             postsql="select * from [tour_category.cat] where catid in([##cms.host.tour_category##]) or parentid in([##cms.host.tour_category##]) limit 10">
           </member>
         </basis>
@@ -273,7 +277,8 @@
 
       <basis core="group" if="'[##cms.host.tour_group##]' <> ''">
         <basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour_group">
-          <member name="cat" type="tree" request="cat" parentid="[##cms.host.tour_group##]" order="ord"
+          <member name="cat" type="tree" request="cat" parentid="[##cms.host.tour_group##]"
+            order="[##cms.host.command_order|(date desc)##]"
             postsql="select * from [tour_group.cat] where catid in([##cms.host.tour_group##]) or parentid in([##cms.host.tour_group##])">
           </member>
         </basis>
@@ -316,7 +321,7 @@
         </basis>
         <basis core="dbsource" source="media" lid="1" name="top_banner" usedforid="[##cms.host.top_banner##]"
           sourcemid="article">
-          <member type="list" name="gallery" format="4" order="ord"></member>
+          <member type="list" name="gallery" format="4" order="[##cms.host.command_order|(date desc)##]"></member>
         </basis>
         <section class="relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="5">
           <a href="[##cms.host.top_banner_link##]" class="flex flex-col rounded-2xl overflow-hidden">
@@ -352,7 +357,8 @@
 
       <basis core="group" if="'[##cms.host.hotel_group##]' <> ''">
         <basis core="dbsource" source="basiscore" lid="1" mid="1" name="hotel_group">
-          <member name="cat" type="tree" request="cat" parentid="[##cms.host.hotel_group##]" order="ord"
+          <member name="cat" type="tree" request="cat" parentid="[##cms.host.hotel_group##]"
+            order="[##cms.host.command_order|(date desc)##]"
             postsql="select * from [hotel_group.cat] where catid in([##cms.host.hotel_group##]) or parentid in([##cms.host.hotel_group##])">
           </member>
         </basis>
@@ -398,7 +404,7 @@
         </basis>
         <basis core="dbsource" source="media" lid="1" name="bottom_banner" usedforid="[##cms.host.bottom_banner##]"
           sourcemid="article">
-          <member type="list" name="gallery" format="4" order="ord"></member>
+          <member type="list" name="gallery" format="4" order="[##cms.host.command_order|(date desc)##]"></member>
         </basis>
         <section class="relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="7">
           <a href="[##cms.host.small_banner_link##]" class="flex flex-col rounded-2xl overflow-hidden">
@@ -439,13 +445,14 @@
 
       <basis core="group" if="'[##cms.host.article_group##]' <> ''">
         <basis core="dbsource" source="basiscore" lid="1" mid="1" name="article_group">
-          <member name="cat" type="tree" request="cat" parentid="[##cms.host.article_group##]" order="ord"
+          <member name="cat" type="tree" request="cat" parentid="[##cms.host.article_group##]"
+            order="[##cms.host.command_order|(date desc)##]"
             postsql="select * from [article_group.cat] where catid in([##cms.host.article_group##])"></member>
         </basis>
         <basis core="dbsource" source="basiscore" lid="1" mid="1" name="article_group"
           catid="[##cms.host.article_group##]">
-          <member name="list" type="list" link="article.bc" propertyid="7244,7248" perpage="8" order="ord"
-            size="256x160" />
+          <member name="list" type="list" link="article.bc" propertyid="7244,7248" perpage="8"
+            order="[##cms.host.command_order|(date desc)##]" size="256x160" />
         </basis>
         <section class="mt-10" data-order="8">
           <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
@@ -534,7 +541,8 @@
 
       <basis core="group" if="'[##cms.host.visa_category##]' <> ''">
         <basis core="dbsource" source="basiscore" lid="1" mid="20" name="visa_category">
-          <member name="cat" type="tree" request="cat" parentid="[##cms.host.visa_category##]" order="ord"
+          <member name="cat" type="tree" request="cat" parentid="[##cms.host.visa_category##]"
+            order="[##cms.host.command_order|(date desc)##]"
             postsql="select * from [visa_category.cat] where catid in([##cms.host.visa_category##]) or parentid in([##cms.host.visa_category##])">
           </member>
         </basis>
@@ -634,12 +642,14 @@
 
       <basis core="group" if="'[##cms.host.faq##]' <> ''">
         <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq">
-          <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq##]" order="ord"
+          <member name="cat" type="tree" request="cat" parentid="[##cms.host.faq##]"
+            order="[##cms.host.command_order|(date desc)##]"
             postsql="select * from [faq.cat] where catid in([##cms.host.faq##]) or parentid in([##cms.host.faq##])">
           </member>
         </basis>
         <basis core="dbsource" source="basiscore" lid="1" mid="1" name="faq" catid="[##cms.host.faq##]">
-          <member name="list" type="list" link="article.bc" propertyid="" perpage="12" order="ord" size="320x480" />
+          <member name="list" type="list" link="article.bc" propertyid="" perpage="12"
+            order="[##cms.host.command_order|(date desc)##]" size="320x480" />
         </basis>
         <section class="mt-10" data-order="10">
           <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
@@ -684,7 +694,7 @@
         </basis>
         <basis core="dbsource" source="media" lid="1" name="aboutUs_default" usedforid="[##cms.host.aboutUs_default##]"
           sourcemid="article">
-          <member type="list" name="gallery" format="4" order="ord"></member>
+          <member type="list" name="gallery" format="4" order="[##cms.host.command_order|(date desc)##]"></member>
         </basis>
         <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="11">
           <basis core="print" datamembername="aboutUs_default.gallery">

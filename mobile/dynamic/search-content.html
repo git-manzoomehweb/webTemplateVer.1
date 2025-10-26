@@ -11,7 +11,7 @@
                 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour_group"
                     q="[##cms.query.search-content-name##]">
                     <member name="list" type="list" link="tour.bc" propertyid="8076,8077,10000504,8181" perpage="6"
-                        order="ord" size="256x160" />
+                        order="[##cms.host.command_order|(date desc)##]" size="256x160" />
                 </basis>
                 <basis core="list" datamembername="tour_group.list">
                     <layout>
@@ -153,8 +153,8 @@
 
                 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="article-list_group"
                     q="[##cms.query.search-content-name##]">
-                    <member name="list" type="list" link="article.bc" propertyid="7244,7248" perpage="6" order="ord"
-                        size="256x160" />
+                    <member name="list" type="list" link="article.bc" propertyid="7244,7248" perpage="6"
+                        order="[##cms.host.command_order|(date desc)##]" size="256x160" />
                 </basis>
                 <basis core="list" datamembername="article-list_group.list">
                     <layout>
@@ -230,8 +230,8 @@
 
                 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="visa_group"
                     q="[##cms.query.search-content-name##]">
-                    <member name="list" type="list" link="visa.bc" propertyid="" perpage="6" order="ord"
-                        size="272x160" />
+                    <member name="list" type="list" link="visa.bc" propertyid="" perpage="6"
+                        order="[##cms.host.command_order|(date desc)##]" size="272x160" />
                 </basis>
                 <basis core="list" datamembername="visa_group.list">
                     <layout>
@@ -278,7 +278,7 @@
                 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="hotel_group"
                     q="[##cms.query.search-content-name##]">
                     <member name="list" type="list" link="hotel.bc" propertyid="[##cms.host.all_prp_hotel##]"
-                        perpage="6" order="ord" size="256x160" />
+                        perpage="6" order="[##cms.host.command_order|(date desc)##]" size="256x160" />
                 </basis>
                 <basis core="list" datamembername="hotel_group.list">
                     <layout>

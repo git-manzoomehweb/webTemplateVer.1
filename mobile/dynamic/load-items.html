@@ -1,7 +1,7 @@
 <basis core="group" if="'[##cms.query.fetch##]' = 'hotel_group'">
   <basis core="dbsource" source="basiscore" lid="1" mid="1" name="hotel_group" catid="[##cms.query.catid##]">
-    <member name="list" type="list" link="hotel.bc" propertyid="[##cms.host.all_prp_hotel##]" perpage="8" order="ord"
-      size="256x160" />
+    <member name="list" type="list" link="hotel.bc" propertyid="[##cms.host.all_prp_hotel##]" perpage="8"
+      order="[##cms.host.command_order|(date desc)##]" size="256x160" />
   </basis>
   <basis core="list" datamembername="hotel_group.list">
     <layout>
@@ -63,8 +63,8 @@
     <face>
       <div class="swiper-slide min-w-[272px]">
         <a href="/@link" class="flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-80">
-          <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title" width="256" height="160"
-            loading="lazy" />
+          <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
+            width="256" height="160" loading="lazy" />
           <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
             <h3 class="font-bold text-zinc-900 line-clamp-1">@title</h3>
             <div class="grid grid-cols-2 gap-1 flex-1">
@@ -107,8 +107,8 @@
 
 <basis core="group" if="'[##cms.query.fetch##]' = 'tour_group'">
   <basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour_group" catid="[##cms.query.catid##]">
-    <member name="list" type="list" link="tour.bc" propertyid="8076,8077,10000504,8181" perpage="8" order="ord"
-      size="256x160" />
+    <member name="list" type="list" link="tour.bc" propertyid="8076,8077,10000504,8181" perpage="8"
+      order="[##cms.host.command_order|(date desc)##]" size="256x160" />
   </basis>
   <basis core="list" datamembername="tour_group.list">
     <layout>
@@ -181,8 +181,8 @@
     <face>
       <div class="swiper-slide min-w-[272px]">
         <a href="/@link" class="flex flex-col gradient-border from-primary-600 rounded-2xl p-2 min-h-[389px]">
-          <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title" width="256" height="160"
-            loading="lazy" />
+          <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
+            width="256" height="160" loading="lazy" />
           <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
             <h3 class="font-bold text-zinc-900 text-center line-clamp-1">@title</h3>
             <div class="flex flex-col gap-1">
@@ -271,8 +271,8 @@
 
 <basis core="group" if="'[##cms.query.fetch##]' = 'article-list_group'">
   <basis core="dbsource" source="basiscore" lid="1" mid="1" name="article-list_group" catid="[##cms.query.catid##]">
-    <member name="list" type="list" link="article.bc" propertyid="7244,7248" perpage="8" order="ord" size="256x160"
-      pageno="[##cms.query.pagenum|(1)##]" />
+    <member name="list" type="list" link="article.bc" propertyid="7244,7248" perpage="8"
+      order="[##cms.host.command_order|(date desc)##]" size="256x160" pageno="[##cms.query.pagenum|(1)##]" />
     <member name="paging" type="list" request="paging" count="3" parentname="list" />
   </basis>
   <basis core="list" datamembername="article-list_group.list">
@@ -316,8 +316,8 @@
     <face>
       <a href="/@link" class="article-card flex flex-col gradient-border from-gray-300 rounded-2xl p-2 min-h-[355px]"
         data-title="@title">
-        <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title" width="256" height="160"
-          loading="lazy" />
+        <img src="[##cms.cms.cdn##]/@00256X00160prp" class="w-full h-40 object-cover rounded-2xl" alt="@title"
+          width="256" height="160" loading="lazy" />
         <div class="flex flex-1 flex-col justify-between gap-2 mt-3">
           <h3 class="font-medium text-zinc-900 line-clamp-1">@title</h3>
           <div class="text-xs text-zinc-700 line-clamp-4 text-justify hyphens-auto leading-5">@prp_7244</div>
@@ -351,7 +351,7 @@
               onclick="fetchArticlePage('@page')">
               <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
-                  d="M12.4693 3.42432C12.6877 3.62722 12.719 3.95616 12.5552 4.19478L12.5002 4.26344L7.57037 9.57007L12.8767 14.5002C13.0951 14.7031 13.1264 15.032 12.9626 15.2706L12.9076 15.3393C12.7047 15.5577 12.3758 15.589 12.1371 15.4252L12.0685 15.3702L6.32686 10.0359C6.10846 9.83304 6.07718 9.5041 6.24099 9.26548L6.29599 9.19682L11.6302 3.45519C11.8534 3.21495 12.2291 3.20113 12.4693 3.42432Z"
+                  d="M6.53068 15.5757C6.31228 15.3728 6.281 15.0438 6.44481 14.8052L6.49981 14.7366L11.4296 9.42993L6.12326 4.49984C5.90486 4.29693 5.87358 3.968 6.03739 3.72938L6.09239 3.66072C6.2953 3.44232 6.62423 3.41104 6.86285 3.57485L6.93152 3.62985L12.6731 8.96406C12.8915 9.16697 12.9228 9.4959 12.759 9.73452L12.704 9.80318L7.3698 15.5448C7.1466 15.7851 6.77092 15.7989 6.53068 15.5757Z"
                   fill="var(--primary-600)" />
               </svg>
             </span>
@@ -364,7 +364,7 @@
               onclick="fetchArticlePage('@page')">
               <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
-                  d="M12.4693 3.42432C12.6877 3.62722 12.719 3.95616 12.5552 4.19478L12.5002 4.26344L7.57037 9.57007L12.8767 14.5002C13.0951 14.7031 13.1264 15.032 12.9626 15.2706L12.9076 15.3393C12.7047 15.5577 12.3758 15.589 12.1371 15.4252L12.0685 15.3702L6.32686 10.0359C6.10846 9.83304 6.07718 9.5041 6.24099 9.26548L6.29599 9.19682L11.6302 3.45519C11.8534 3.21495 12.2291 3.20113 12.4693 3.42432Z"
+                  d="M6.53068 15.5757C6.31228 15.3728 6.281 15.0438 6.44481 14.8052L6.49981 14.7366L11.4296 9.42993L6.12326 4.49984C5.90486 4.29693 5.87358 3.968 6.03739 3.72938L6.09239 3.66072C6.2953 3.44232 6.62423 3.41104 6.86285 3.57485L6.93152 3.62985L12.6731 8.96406C12.8915 9.16697 12.9228 9.4959 12.759 9.73452L12.704 9.80318L7.3698 15.5448C7.1466 15.7851 6.77092 15.7989 6.53068 15.5757Z"
                   fill="var(--primary-600)" />
               </svg>
             </span>
@@ -411,7 +411,7 @@
               aria-label="angle-right" onclick="fetchArticlePage('@page')">
               <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
-                  d="M6.53068 15.5757C6.31228 15.3728 6.281 15.0438 6.44481 14.8052L6.49981 14.7366L11.4296 9.42993L6.12326 4.49984C5.90486 4.29693 5.87358 3.968 6.03739 3.72938L6.09239 3.66072C6.2953 3.44232 6.62423 3.41104 6.86285 3.57485L6.93152 3.62985L12.6731 8.96406C12.8915 9.16697 12.9228 9.4959 12.759 9.73452L12.704 9.80318L7.3698 15.5448C7.1466 15.7851 6.77092 15.7989 6.53068 15.5757Z"
+                  d="M12.4693 3.42432C12.6877 3.62722 12.719 3.95616 12.5552 4.19478L12.5002 4.26344L7.57037 9.57007L12.8767 14.5002C13.0951 14.7031 13.1264 15.032 12.9626 15.2706L12.9076 15.3393C12.7047 15.5577 12.3758 15.589 12.1371 15.4252L12.0685 15.3702L6.32686 10.0359C6.10846 9.83304 6.07718 9.5041 6.24099 9.26548L6.29599 9.19682L11.6302 3.45519C11.8534 3.21495 12.2291 3.20113 12.4693 3.42432Z"
                   fill="var(--primary-600)" />
               </svg>
             </span>
@@ -424,7 +424,7 @@
               aria-label="angle-right" onclick="fetchArticlePage('@page')">
               <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
-                  d="M6.53068 15.5757C6.31228 15.3728 6.281 15.0438 6.44481 14.8052L6.49981 14.7366L11.4296 9.42993L6.12326 4.49984C5.90486 4.29693 5.87358 3.968 6.03739 3.72938L6.09239 3.66072C6.2953 3.44232 6.62423 3.41104 6.86285 3.57485L6.93152 3.62985L12.6731 8.96406C12.8915 9.16697 12.9228 9.4959 12.759 9.73452L12.704 9.80318L7.3698 15.5448C7.1466 15.7851 6.77092 15.7989 6.53068 15.5757Z"
+                  d="M12.4693 3.42432C12.6877 3.62722 12.719 3.95616 12.5552 4.19478L12.5002 4.26344L7.57037 9.57007L12.8767 14.5002C13.0951 14.7031 13.1264 15.032 12.9626 15.2706L12.9076 15.3393C12.7047 15.5577 12.3758 15.589 12.1371 15.4252L12.0685 15.3702L6.32686 10.0359C6.10846 9.83304 6.07718 9.5041 6.24099 9.26548L6.29599 9.19682L11.6302 3.45519C11.8534 3.21495 12.2291 3.20113 12.4693 3.42432Z"
                   fill="var(--primary-600)" />
               </svg>
             </span>
@@ -437,13 +437,15 @@
 
 <basis core="group" if="'[##cms.query.fetch##]' = 'subMenu'">
   <basis core="dbsource" source="basiscore" lid="1" mid="[##cms.query.mid##]" name="menu">
-    <member name="cat" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"></member>
+    <member name="cat" type="tree" request="cat" parentid="[##cms.query.catid##]"
+      order="[##cms.host.command_order|(date desc)##]"></member>
   </basis>
   <basis core="tree" datamembername="menu.cat" idcol="catid" parentidcol="parentid" nullvalue="[##cms.query.catid##]">
     <layout>
       <li class="">
         <div class="flex items-center justify-between cursor-pointer toggle-dropdown">
-          <a href="" class="header-mainLink-fetch text-zinc-900 font-medium text-sm" data-activepage=""><span class="header-fetch-text"></span></a>
+          <a href="" class="header-mainLink-fetch text-zinc-900 font-medium text-sm" data-activepage=""><span
+              class="header-fetch-text"></span></a>
           <svg width="48" height="48" class="transition-all duration-300 dropdown-icon">
             <use href="/PrimeTemplate_A/images/sprite-icons-mobile.svg#icon-chevron-down-zinc"></use>
           </svg>

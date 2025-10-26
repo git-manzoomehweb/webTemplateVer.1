@@ -1,10 +1,12 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="footer_product_links">
-    <member name="cat" type="tree" request="cat" parentid="[##cms.host.footer_product_links##]" order="ord"
+    <member name="cat" type="tree" request="cat" parentid="[##cms.host.footer_product_links##]"
+        order="[##cms.host.command_order|(date desc)##]"
         postsql="select * from [footer_product_links.cat] where parentid in([##cms.host.footer_product_links##]) and ord in(1,2,3,4,5,6)">
     </member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="footer_article_links">
-    <member name="cat" type="tree" request="cat" parentid="[##cms.host.footer_article_links##]" order="ord"
+    <member name="cat" type="tree" request="cat" parentid="[##cms.host.footer_article_links##]"
+        order="[##cms.host.command_order|(date desc)##]"
         postsql="select * from [footer_article_links.cat] where parentid in([##cms.host.footer_article_links##]) and ord in(1,2,3,4,5,6)">
     </member>
 </basis>
@@ -74,8 +76,8 @@
             <div
                 class="mask-image flex justify-between gradient-border from-gray-200 bg-zinc-100 rounded-b-xl pb-6 px-4 -mt-56 min-h-96 max-xl:min-h-[450px]">
                 <div class="lg:w-[520px] xl:w-[600px] pt-12">
-                    <img src="[##cms.cms.cdn##]/images/logo.png" class="w-20 h-14 object-contain"
-                        alt="logo-footer" width="80" height="56" loading="lazy" />
+                    <img src="[##cms.cms.cdn##]/images/logo.png" class="w-20 h-14 object-contain" alt="logo-footer"
+                        width="80" height="56" loading="lazy" />
                     <section class="mt-3">
                         <h2 class="font-medium text-zinc-900 mb-3">عضویت در خبرنامه</h2>
                         <div class="flex flex-col mx-auto footer-form" id="footer-form-resize">
