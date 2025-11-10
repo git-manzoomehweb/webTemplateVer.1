@@ -273,7 +273,7 @@
   <basis core="dbsource" source="basiscore" lid="1" mid="1" name="article-list_group" catid="[##cms.query.catid##]">
     <member name="list" type="list" link="article.bc" propertyid="7244,7248" perpage="8"
       order="[##cms.host.command_order|(date desc)##]" size="256x160" pageno="[##cms.query.pagenum|(1)##]" />
-    <member name="paging" type="list" request="paging" count="3" parentname="list" />
+    <member name="paging" type="list" request="paging" count="1" parentname="list" />
   </basis>
   <basis core="list" datamembername="article-list_group.list">
     <layout>
@@ -372,6 +372,22 @@
         </face>
       </basis>
       <basis core="print" datamembername="article-list_group.paging">
+        <face
+          filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='min') and ('[##cms.cms.pageurl##]'='') ">
+          <li
+            class="flex items-center justify-center w-12 h-12 text-zinc-900 rounded-lg bg-zinc-100 transition-all duration-300 hover:text-primary-600 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no">
+            <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+              onclick="fetchArticlePage('@page')">@page</span>
+          </li>
+        </face>
+        <face
+          filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='min') and ('[##cms.cms.pageurl##]'<>'') ">
+          <li
+            class="flex items-center justify-center w-12 h-12 text-zinc-900 rounded-lg bg-zinc-100 transition-all duration-300 hover:text-primary-600 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no">
+            <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+              onclick="fetchArticlePage('@page')">@page</span>
+          </li>
+        </face>
         <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
           <li
             class="flex items-center justify-center w-12 h-12 text-primary-600 rounded-lg bg-primary-50 gradient-border from-primary-600 page-no">
@@ -396,6 +412,22 @@
         </face>
         <face
           filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
+          <li
+            class="flex items-center justify-center w-12 h-12 text-zinc-900 rounded-lg bg-zinc-100 transition-all duration-300 hover:text-primary-600 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no">
+            <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+              onclick="fetchArticlePage('@page')">@page</span>
+          </li>
+        </face>
+        <face
+          filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='max') and ('[##cms.cms.pageurl##]'='') ">
+          <li
+            class="flex items-center justify-center w-12 h-12 text-zinc-900 rounded-lg bg-zinc-100 transition-all duration-300 hover:text-primary-600 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no">
+            <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+              onclick="fetchArticlePage('@page')">@page</span>
+          </li>
+        </face>
+        <face
+          filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='max') and ('[##cms.cms.pageurl##]'<>'') ">
           <li
             class="flex items-center justify-center w-12 h-12 text-zinc-900 rounded-lg bg-zinc-100 transition-all duration-300 hover:text-primary-600 hover:bg-primary-50 hover:gradient-border hover:from-primary-600 page-no">
             <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"

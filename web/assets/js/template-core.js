@@ -1700,7 +1700,7 @@ window.refreshCaptchaFooter = footerForm.refreshCaptcha
 window.OnProcessedEditObjectFooter = footerForm.onProcessed
 window.RenderFormFooter = footerForm.renderPlaceholders
 
-// dont repeat breadcrumb
+//-------dont repeat breadcrumb-----
 document.addEventListener('DOMContentLoaded', function () {
   const breadcrumbContainer = document.querySelector('.breadcrumb')
   if (!breadcrumbContainer) return
@@ -1726,6 +1726,74 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })
 })
+
+//---------paging order-----
+document.addEventListener("DOMContentLoaded", function () {
+  const paging = document.querySelector("#wibpaging");
+  if (!paging) return;
+
+  [...paging.querySelectorAll("li")].forEach(li => {
+    if (li.textContent.trim() === "…") li.remove();
+  });
+
+  const pageLinks = [...paging.querySelectorAll("li a[href*='pagenum']")]
+    .filter(a =>
+      !a.closest(".prev-page") &&
+      !a.closest(".next-page")
+    );
+
+  if (pageLinks.length < 2) return;
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentPage = parseInt(urlParams.get("pagenum") || "1", 10);
+
+  const pageNumbers = pageLinks
+    .map(a => parseInt(a.textContent.trim(), 10))
+    .filter(n => !isNaN(n));
+
+  const minPage = Math.min(...pageNumbers);
+  const maxPage = Math.max(...pageNumbers);
+
+  const createDots = () => {
+    const li = document.createElement("li");
+    li.textContent = "…";
+    li.className = "flex items-center justify-center font-bold text-zinc-500";
+    return li;
+  };
+
+  const getLiList = () => [...paging.querySelectorAll("li")];
+
+  const prevLi = getLiList().find(li => li.classList.contains("prev-page"));
+  const nextLi = getLiList().find(li => li.classList.contains("next-page"));
+
+  let firstPageLi = getLiList().find(li => li.textContent.trim() === String(minPage));
+  let lastPageLi = getLiList().find(li => li.textContent.trim() === String(maxPage));
+
+  if (firstPageLi && prevLi && prevLi.nextElementSibling !== firstPageLi) {
+    paging.insertBefore(firstPageLi, prevLi.nextElementSibling);
+  }
+
+  if (lastPageLi && nextLi && lastPageLi.nextElementSibling !== nextLi) {
+    paging.insertBefore(lastPageLi, nextLi);
+  }
+
+  firstPageLi = getLiList().find(li => li.textContent.trim() === String(minPage));
+  lastPageLi = getLiList().find(li => li.textContent.trim() === String(maxPage));
+
+  if (currentPage - minPage > 2 && firstPageLi) {
+    const afterFirst = firstPageLi.nextElementSibling;
+    if (afterFirst && afterFirst.textContent.trim() !== "…") {
+      paging.insertBefore(createDots(), afterFirst);
+    }
+  }
+
+  if (maxPage - currentPage > 2 && lastPageLi) {
+    const beforeLast = lastPageLi.previousElementSibling;
+    if (beforeLast && beforeLast.textContent.trim() !== "…") {
+      paging.insertBefore(createDots(), lastPageLi);
+    }
+  }
+});
 
 //-----------swiper--------------
 if (document.querySelector('.swiper-busy-destination')) {
