@@ -5,7 +5,7 @@
 <body>
   <basis core="call" file="analytics-body.inc" pageindexid="2" />
   <basis core="call" file="header.inc" pageindexid="2" />
-  <main data-activepage="home" data-sectionorder="">
+  <main data-activepage="home" data-sectionorder="[##cms.host.section_order##]">
     <basis core="print" datamembername="db.info">
       <face filter="TypeID in(150)">
         <h1 class="h1-tag">@text</h1>
@@ -55,7 +55,7 @@
           <member name="list" type="list" link="article.bc" propertyid="[##cms.host.all_prp_landing##]" perpage="8"
             order="[##cms.host.command_order|(date desc)##]" size="" />
         </basis>
-        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6" data-order="1">
+        <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-6" data-order="1">
           <basis core="list" datamembername="landing_to_search_engine.cat">
             <face>
               <h2 class="highlight-rest text-zinc-900 mb-3">@title</h2>
@@ -118,7 +118,7 @@
           <member name="list" type="list" link="article.bc" propertyid="7244" perpage="8"
             order="[##cms.host.command_order|(date desc)##]" size="40x40" />
         </basis>
-        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="2">
+        <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="2">
           <basis core="list" datamembername="slogans.cat">
             <face>
               <h2 class="highlight-rest text-zinc-900 mb-3">@title</h2>
@@ -165,7 +165,7 @@
             postsql="select * from [tour_category.cat] where catid in([##cms.host.tour_category##]) or parentid in([##cms.host.tour_category##]) limit 10">
           </member>
         </basis>
-        <section class="mt-10" data-order="3">
+        <section class="section-order mt-10" data-order="3">
           <basis core="list" datamembername="tour_category.cat">
             <layout>
               <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
@@ -282,7 +282,7 @@
             postsql="select * from [tour_group.cat] where catid in([##cms.host.tour_group##]) or parentid in([##cms.host.tour_group##])">
           </member>
         </basis>
-        <section class="mt-10" data-order="4">
+        <section class="section-order mt-10" data-order="4">
           <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
             <basis core="list" datamembername="tour_group.cat">
               <face filter="catid in([##cms.host.tour_group##])">
@@ -323,7 +323,7 @@
           sourcemid="article">
           <member type="list" name="gallery" format="4" order="[##cms.host.command_order|(date desc)##]"></member>
         </basis>
-        <section class="relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="5">
+        <section class="section-order relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="5">
           <a href="[##cms.host.top_banner_link##]" class="flex flex-col rounded-2xl overflow-hidden">
             <basis core="print" datamembername="top_banner.gallery">
               <else-layout>
@@ -362,7 +362,7 @@
             postsql="select * from [hotel_group.cat] where catid in([##cms.host.hotel_group##]) or parentid in([##cms.host.hotel_group##])">
           </member>
         </basis>
-        <section class="mt-10" data-order="6">
+        <section class="section-order mt-10" data-order="6">
           <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
             <basis core="list" datamembername="hotel_group.cat">
               <face filter="catid in([##cms.host.hotel_group##])">
@@ -406,7 +406,7 @@
           sourcemid="article">
           <member type="list" name="gallery" format="4" order="[##cms.host.command_order|(date desc)##]"></member>
         </basis>
-        <section class="relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="7">
+        <section class="section-order relative mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="7">
           <a href="[##cms.host.small_banner_link##]" class="flex flex-col rounded-2xl overflow-hidden">
             <basis core="print" datamembername="bottom_banner.gallery">
               <else-layout>
@@ -454,7 +454,7 @@
           <member name="list" type="list" link="article.bc" propertyid="7244,7248" perpage="8"
             order="[##cms.host.command_order|(date desc)##]" size="256x160" />
         </basis>
-        <section class="mt-10" data-order="8">
+        <section class="section-order mt-10" data-order="8">
           <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
             <basis core="list" datamembername="article_group.cat">
               <face filter="catid in([##cms.host.article_group##])">
@@ -546,7 +546,7 @@
             postsql="select * from [visa_category.cat] where catid in([##cms.host.visa_category##]) or parentid in([##cms.host.visa_category##])">
           </member>
         </basis>
-        <section class="mt-10" data-order="9">
+        <section class="section-order mt-10" data-order="9">
           <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
             <basis core="list" datamembername="visa_category.cat">
               <face filter="catid in([##cms.host.visa_category##])">
@@ -651,7 +651,7 @@
           <member name="list" type="list" link="article.bc" propertyid="" perpage="12"
             order="[##cms.host.command_order|(date desc)##]" size="320x480" />
         </basis>
-        <section class="mt-10" data-order="10">
+        <section class="section-order mt-10" data-order="10">
           <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
             <basis core="list" datamembername="faq.cat">
               <face filter="catid in([##cms.host.faq##])">
@@ -696,7 +696,7 @@
           sourcemid="article">
           <member type="list" name="gallery" format="4" order="[##cms.host.command_order|(date desc)##]"></member>
         </basis>
-        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="11">
+        <section class="section-order mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-10" data-order="11">
           <basis core="print" datamembername="aboutUs_default.gallery">
             <else-layout>
               <div class="relative z-10 about-mask-img">
@@ -705,7 +705,9 @@
               </div>
             </else-layout>
             <face filter="ord in(1)">
-              <img src="[##cms.cms.cdn##]/@largeIMG" alt="@name" width="620" height="470" loading="lazy" />
+              <div class="relative z-10 about-mask-img">
+                <img src="[##cms.cms.cdn##]/@largeIMG" alt="@name" width="620" height="470" loading="lazy" />
+              </div>
             </face>
           </basis>
           <basis core="print" datamembername="aboutUs_default.view">

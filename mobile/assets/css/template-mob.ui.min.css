@@ -1950,3 +1950,9 @@
 .contact-form [data-bc-question] {
   margin-bottom: 0 !important;
 }
+
+#mobile_add_to_screen img{
+  width: 100%;
+  height: 150px !important;
+  margin: 0 auto 40px;
+}
