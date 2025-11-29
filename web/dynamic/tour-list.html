@@ -3,9 +3,6 @@
     order="[##cms.host.command_order|(date desc)##]" size="295x160" pageno="[##cms.query.pagenum|(1)##]" />
   <member name="paging" type="list" request="paging" count="3" parentname="list" />
 </basis>
-<basis core="dbsource" source="media" name="tour_group" lid="1" usedforid="[##cms.query.zid##]" sourcemid="article">
-  <member name="gallery" type="list" format="4" order="[##cms.host.command_order|(date desc)##]"></member>
-</basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="featured_tours">
   <member name="cat" type="tree" request="cat" parentid="[##cms.query.tid##]"
     order="[##cms.host.command_order|(date desc)##]"
@@ -46,13 +43,19 @@
   <basis core="call" file="header.inc" pageindexid="1" />
   <main data-activepage="tour-list">
     <section class="dynamic-bg relative bg-tourList bg-center bg-cover py-24 mt-6">
-      <basis core="print" datamembername="tour_group.gallery">
-        <else-layout>
-          <div class="dynamic-img" data-bg="../PrimeTemplate_A/images/tour-list-background.jpg"></div>
-        </else-layout>
-        <face filter="ord in(1)">
-          <div class="dynamic-img" data-bg="[##cms.cms.cdn##]/@largeIMG"></div>
-        </face>
+      <basis core="group" if="'[##cms.query.zid##]' = ''">
+        <div class="dynamic-img" data-bg="../PrimeTemplate_A/images/tour-list-background.jpg"></div>
+      </basis>
+      <basis core="group" if="'[##cms.query.zid##]' <> ''">
+        <basis core="dbsource" source="media" lid="1" name="tour_group" usedforid="[##cms.query.zid##]"
+          sourcemid="article">
+          <member type="list" name="gallery" format="4" order="[##cms.host.command_order|(date desc)##]"></member>
+        </basis>
+        <basis core="print" datamembername="tour_group.gallery">
+          <face filter="ord in(1)">
+            <div class="dynamic-img" data-bg="[##cms.cms.cdn##]/@largeIMG"></div>
+          </face>
+        </basis>
       </basis>
       <div class="bg-gradient-brown-bottom absolute inset-0 w-full h-full"></div>
       <div class="relative z-10 flex flex-col items-center gap-2">

@@ -1808,6 +1808,10 @@
   display: none;
 }
 
+.passenger-birthday-dropdown li {
+  font-size: 12px;
+}
+
 .selectLocation {
   display: flex;
   align-items: center;
@@ -1847,6 +1851,7 @@
   border: 1px solid var(--primary-300) !important;
   border-radius: 8px;
   margin-top: 0.5rem;
+  font-size: 12px;
 }
 
 .search-box-container .birthdate-dates div::after {

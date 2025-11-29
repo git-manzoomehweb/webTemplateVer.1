@@ -84,6 +84,10 @@
   right: 1.25rem;
 }
 
+.right-12 {
+  right: 3rem;
+}
+
 .top-1\/2 {
   top: 50%;
 }
@@ -1647,7 +1651,7 @@
 
 .reservation-item {
   display: flex;
-  gap: 4px;
+  gap: 10px;
 }
 
 .reserve-btn {
@@ -2241,12 +2245,8 @@
   display: none;
 }
 
-.passenger-birthday-dropdown {
-  width: auto !important;
-}
-
 .passenger-birthday-dropdown li {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .selectLocation {
@@ -2289,6 +2289,7 @@
   border: 1px solid #737373 !important;
   border-radius: 8px;
   margin-top: 0.5rem;
+  font-size: 12px;
 }
 
 .search-box-container .birthdate-dates div::after {
