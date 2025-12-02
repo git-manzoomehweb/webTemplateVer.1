@@ -899,55 +899,60 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 //--------------landing to search-engine------------
-document.querySelectorAll('.ticket-article').forEach((e) => {
-  const rEl = e.querySelector('.dep-text')
-  const r = rEl ? rEl.innerText.trim() : ''
-
-  const iEl = e.querySelector('.dep-id')
-  const i = iEl ? iEl.innerText.trim() : ''
-
-  const aEl = e.querySelector('.des-text')
-  const a = aEl ? aEl.innerText.trim() : ''
-
-  const lEl = e.querySelector('.des-id')
-  const l = lEl ? lEl.innerText.trim() : ''
-
-  const btn = e.querySelector('.set-ticket')
-  if (!btn) return
-
-  btn.addEventListener('click', () => {
-    if (
-      window.location.pathname === '/' 
-    ) {
-      const dep1 = document.querySelector('#r-flight #flightSearch #departure1')
-      const depId = document.querySelector(
-        '#r-flight #flightSearch .departure-route .locationId',
+  document.querySelectorAll('.ticket-article').forEach((e) => {
+    const rEl = e.querySelector('.dep-text')
+    const r = rEl ? rEl.innerText.trim() : ''
+  
+    const iEl = e.querySelector('.dep-id')
+    const i = iEl ? iEl.innerText.trim() : ''
+  
+    const aEl = e.querySelector('.des-text')
+    const a = aEl ? aEl.innerText.trim() : ''
+  
+    const lEl = e.querySelector('.des-id')
+    const l = lEl ? lEl.innerText.trim() : ''
+  
+    const btn = e.querySelector('.set-ticket')
+    if (!btn) return
+  
+    btn.addEventListener('click', () => {
+      const isFlightActive = !!document.querySelector(
+        '.reservation-item .flight-btn.active-module'
       )
-      const des1 = document.querySelector(
-        '#r-flight #flightSearch .destination-route #destination1',
-      )
-      const desId = document.querySelector(
-        '#r-flight #flightSearch .destination-route .locationId',
-      )
-
-      if (dep1) dep1.value = r
-      if (depId) depId.value = i
-      if (des1) des1.value = a
-      if (desId) desId.value = l
-
-      const rFlight = document.querySelector('#r-flight')
-      if (rFlight) rFlight.classList.remove('hidden')
-
-      const scrollTarget = document.querySelector('.search-box-container')
-      if (scrollTarget) {
-        window.scrollTo({
-          top: scrollTarget.offsetTop,
-          behavior: 'smooth',
-        })
+      if (!isFlightActive) return
+      if (
+        window.location.pathname === '/' 
+      ) {
+        const dep1 = document.querySelector('#r-flight #flightSearch #departure1')
+        const depId = document.querySelector(
+          '#r-flight #flightSearch .departure-route .locationId',
+        )
+        const des1 = document.querySelector(
+          '#r-flight #flightSearch .destination-route #destination1',
+        )
+        const desId = document.querySelector(
+          '#r-flight #flightSearch .destination-route .locationId',
+        )
+  
+        if (dep1) dep1.value = r
+        if (depId) depId.value = i
+        if (des1) des1.value = a
+        if (desId) desId.value = l
+  
+        const rFlight = document.querySelector('#r-flight')
+        if (rFlight) rFlight.classList.remove('hidden')
+  
+        const scrollTarget = document.querySelector('.search-box-container')
+        if (scrollTarget) {
+          window.scrollTo({
+            top: scrollTarget.offsetTop,
+            behavior: 'smooth',
+          })
+        }
       }
-    }
+    })
   })
-})
+
 
 // ---------------fetch-content-----------------
 document.addEventListener('DOMContentLoaded', () => {
