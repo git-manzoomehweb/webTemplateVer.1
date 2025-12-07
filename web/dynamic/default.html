@@ -33,14 +33,21 @@
           class="top-0 absolute w-[700px] h-full object-cover rounded-3xl" alt="flight-search-bg" width="700"
           height="569" loading="lazy" />
       </div>
-      <div class="flex justify-start w-full pt-14 pb-14">
+      <div class="search-engine-container w-full pt-14 pb-14">
         <div
           class="search-banner gradient-border from-primary-600 bg-white overflow-visible rounded-3xl shadow-search-engine">
           <div class="search-box-container">
             <div id="search-box" class="dir-rtl" data-view="pc">
-              <div class="flex justify-center items-center min-w-[808px] min-h-[500px]">
-                <span class="search-engine-loader"></span>
-              </div>
+              <basis core="group" if="'[##cms.host.search_engine_version##]' <> '2'">
+                <div class="flex justify-center items-center min-w-[808px] min-h-[500px]">
+                  <span class="search-engine-loader"></span>
+                </div>
+              </basis>
+              <basis core="group" if="'[##cms.host.search_engine_version##]' = '2'">
+                <div class="flex justify-center items-center min-h-60">
+                  <span class="search-engine-loader"></span>
+                </div>
+              </basis>
             </div>
           </div>
         </div>
