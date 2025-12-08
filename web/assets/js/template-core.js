@@ -1678,7 +1678,7 @@ const contactForm = makeFormHandlers({
     },
     {
       selector: '.contact-form-email input[data-bc-text-input]',
-      placeholder: 'ایمیل خود را وارد کنید',
+      placeholder: 'ایمیل یا شماره موبایل خود را وارد نمایید',
     },
   ],
 })
@@ -1695,7 +1695,7 @@ const footerForm = makeFormHandlers({
   placeholders: [
     {
       selector: '.footer-form-email input[data-bc-text-input]',
-      placeholder: 'ایمیل خود را وارد کنید',
+      placeholder: 'ایمیل یا شماره موبایل',
     },
   ],
 })
