@@ -91,7 +91,7 @@
 
 #search-box {
     padding: 24px 16px;
-    max-width: 809px;
+    width: 809px;
 }
 
 .search-nav {
@@ -109,10 +109,11 @@
     align-items: center;
     justify-content: center;
     background-color: #f4f4f5;
-    width: 75px !important;
+    width: auto !important;
+    min-width: 75px !important;
     height: 68px !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0 4px !important;
     border-radius: 12px;
     transition: all 300ms ease;
 }
