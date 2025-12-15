@@ -13,10 +13,11 @@
       </face>
     </basis>
     <basis core="group" if="'[##cms.host.popup_link##]' <> ''">
-      <div id="welcome-popup" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+      <div id="welcome-popup" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
         <div id="popup-content" class="relative flex flex-col justify-center">
-          <svg width="15" height="15" class="close-popup-content cursor-pointer">
-            <use xlink:href="/PrimeTemplate_A/images/sprite-icons.svg#engine-close-icon"></use>
+          <svg class="close-popup-content cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
           </svg>
 
           <a href="[##cms.host.popup_link##]" target="_blank">

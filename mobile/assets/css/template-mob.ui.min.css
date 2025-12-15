@@ -455,6 +455,10 @@
   background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1)) /* #000000 */;
 }
 
+.bg-black\/60 {
+  background-color: rgb(0 0 0 / 0.6);
+}
+
 .bg-zinc-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(244 244 245 / var(--tw-bg-opacity, 1));
