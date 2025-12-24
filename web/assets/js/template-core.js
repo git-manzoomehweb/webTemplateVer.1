@@ -1527,6 +1527,67 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+//-----------Floating Action Button (FAB)-------------
+(function () {
+  const fabContainer = document.querySelector(".fab-container");
+  const socialFab = fabContainer?.querySelector(".social-fab");
+  const fabMenu = fabContainer?.querySelector("#fabMenu");
+  if (!socialFab || !fabMenu) return;
+
+  fabMenu.style.transition = "max-height 280ms ease, opacity 150ms ease";
+  fabMenu.style.maxHeight = "0px";
+
+  function openFabMenu() {
+    fabMenu.classList.remove("opacity-0", "pointer-events-none");
+    fabMenu.classList.add("opacity-100", "pointer-events-auto");
+    fabMenu.setAttribute("aria-hidden", "false");
+    fabMenu.style.maxHeight = fabMenu.scrollHeight + "px";
+  }
+
+  function closeFabMenu() {
+    fabMenu.style.maxHeight = "0px";
+    fabMenu.classList.remove("opacity-100", "pointer-events-auto");
+    fabMenu.classList.add("opacity-0", "pointer-events-none");
+    fabMenu.setAttribute("aria-hidden", "true");
+  }
+
+  function isFabMenuOpen() {
+    return fabMenu.classList.contains("opacity-100");
+  }
+
+  function toggleFabMenu() {
+    isFabMenuOpen() ? closeFabMenu() : openFabMenu();
+  }
+
+  function onSocialFabClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleFabMenu();
+  }
+
+  function onFabMenuClick(e) {
+    e.stopPropagation();
+  }
+
+  function onDocumentClick() {
+    closeFabMenu();
+  }
+
+  function onDocumentKeydown(e) {
+    if (e.key === "Escape") closeFabMenu();
+  }
+
+  function onWindowResize() {
+    if (isFabMenuOpen()) fabMenu.style.maxHeight = fabMenu.scrollHeight + "px";
+  }
+
+  socialFab.addEventListener("click", onSocialFabClick);
+  fabMenu.addEventListener("click", onFabMenuClick);
+  document.addEventListener("click", onDocumentClick);
+  document.addEventListener("keydown", onDocumentKeydown);
+  window.addEventListener("resize", onWindowResize);
+})();
+
 //--------------POV-form-------------//
 document.querySelectorAll('.pov-form').forEach(function (form) {
   form.addEventListener('submit', function (e) {

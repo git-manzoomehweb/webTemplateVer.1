@@ -274,10 +274,6 @@
   height: 3.5rem;
 }
 
-.h-16 {
-  height: 4rem;
-}
-
 .h-36 {
   height: 9rem;
 }
@@ -864,10 +860,6 @@
 
 .pr-7 {
   padding-right: 1.75rem;
-}
-
-.pt-1 {
-  padding-top: 0.25rem;
 }
 
 .pt-14 {

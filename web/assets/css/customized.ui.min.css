@@ -650,6 +650,10 @@ body {
   bottom: 3rem ;
 }
 
+.bottom-\[70px\] {
+  bottom: 70px;
+}
+
 .left-0 {
   left: 0px;
 }
@@ -893,6 +897,10 @@ body {
 
 .w-14 {
   width: 3.5rem;
+}
+
+.w-16 {
+  width: 4rem;
 }
 
 .w-20 {
@@ -1381,10 +1389,9 @@ body {
   padding-right: 0.75rem;
 }
 
-.pt-12 {
-  padding-top: 3rem;
+.pt-1 {
+  padding-top: 0.25rem;
 }
-
 .pt-3 {
   padding-top: 0.75rem;
 }
@@ -1395,6 +1402,10 @@ body {
 
 .pt-6 {
   padding-top: 1.5rem;
+}
+
+.pt-12 {
+  padding-top: 3rem;
 }
 
 .text-center {
@@ -1802,6 +1813,67 @@ body {
   content: '-';
   margin-left: 4px;
   margin-right: 4px;
+}
+
+.social-item {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform, filter;
+  animation: socialNoOverlap 8s ease-in-out infinite;
+}
+
+.social-item.s1 {
+  animation-delay: 0s;
+}
+
+.social-item.s2 {
+  animation-delay: 2s;
+}
+
+.social-item.s3 {
+  animation-delay: 4s;
+}
+
+.social-item.s4 {
+  animation-delay: 6s;
+}
+
+@keyframes socialNoOverlap {
+
+  0% {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(10px) scale(.9);
+  }
+
+  15% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+
+  35% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+
+  55% {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(-10px) scale(.9);
+  }
+
+  100% {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(-10px) scale(.9);
+  }
 }
 
 .hover\:-translate-y-px:hover {

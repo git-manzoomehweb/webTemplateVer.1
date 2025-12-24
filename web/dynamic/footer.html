@@ -14,6 +14,263 @@
     <footer class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-40">
         <basis core="call" file="support.inc" pageindexid="1" />
         <basis core="call" file="yektanet.inc" pageindexid="1" />
+        <basis core="group" if="'[##cms.host.fab_social_btn##]' <> ''">
+            <div class="fab-container fixed right-5 bottom-4 z-50">
+                <button
+                    class="social-fab flex item-CountPassenger justify-center w-16 h-16 rounded-full bg-primary-600 text-white hover:bg-zinc-800 transition"
+                    type="button">
+                    <span class="relative w-full">
+                        <span class="social-item s1" aria-hidden="true">
+                            <svg width="24" height="24" class="text-white">
+                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-instagram"></use>
+                            </svg>
+                        </span>
+
+                        <span class="social-item s2" aria-hidden="true">
+                            <svg width="48" height="48" class="text-white">
+                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-telegram"></use>
+                            </svg>
+                        </span>
+
+                        <span class="social-item s3" aria-hidden="true">
+                            <svg width="48" height="48" class="text-white">
+                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-whatsapp"></use>
+                            </svg>
+                        </span>
+
+                        <span class="social-item s4" aria-hidden="true">
+                            <svg width="28" height="24" class="text-white">
+                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-twitter"></use>
+                            </svg>
+                        </span>
+                    </span>
+
+                </button>
+                <div id="fabMenu" class="fab-menu absolute right-0 bottom-[70px] w-64
+                   rounded-2xl bg-white shadow-lg border border-zinc-200
+                   overflow-hidden max-h-0
+                   opacity-0 pointer-events-none
+                   transition-all duration-300" role="menu" aria-hidden="true">
+                    <div class="flex flex-col gap-1 p-3 divide-y divide-zinc-200">
+                        <basis core="print" datamembername="db.info">
+                            <layout>
+                                <div class="flex flex-col gap-1 divide-y divide-zinc-200">
+                                    @child
+                                </div>
+                            </layout>
+                            <face filter="TypeID in(240)">
+                                <a href="tel:@text"
+                                    class="flex items-center gap-2 text-zinc-900 transition-all duration-300 hover:text-primary-600">
+                                    <svg width="24" height="24" class="flex-shrink-0">
+                                        <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-phone"></use>
+                                    </svg>
+                                    @text
+                                </a>
+                            </face>
+                        </basis>
+                        <basis core="print" datamembername="db.info">
+                            <layout>
+                                <ul class="flex flex-col gap-1 divide-y divide-zinc-200">
+                                    @child
+                                </ul>
+                            </layout>
+
+                            <face filter="TypeID in('245') and text in('توییتر')">
+                                <li class="pt-1">
+                                    <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+                                        class="group flex items-center gap-2">
+                                        <span
+                                            class="relative z-10 overflow-hidden flex items-center justify-center w-6 h-6 rounded-full bg-primary-600">
+                                            <svg width="16" height="12">
+                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-twitter"></use>
+                                            </svg>
+                                            <span
+                                                class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                        </span>
+                                        <span class="text-sm">توییتر</span>
+                                    </a>
+                                </li>
+                            </face>
+
+                            <face filter="TypeID in('245') and text in('اینستاگرام')">
+                                <li class="pt-1">
+                                    <a href="@largetext" target="_blank" rel="noopener noreferrer"
+                                        aria-label="Instagram" class="group flex items-center gap-2">
+                                        <span
+                                            class="relative z-10 overflow-hidden flex items-center justify-center w-6 h-6 rounded-full bg-primary-600">
+                                            <svg width="14" height="14">
+                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-instagram">
+                                                </use>
+                                            </svg>
+                                            <span
+                                                class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                        </span>
+                                        <span class="text-sm">اینستاگرام</span>
+                                    </a>
+                                </li>
+                            </face>
+
+                            <face filter="TypeID in('245') and text in('فیس بوک')">
+                                <li class="pt-1">
+                                    <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                                        class="group flex items-center gap-2">
+                                        <span
+                                            class="relative z-10 overflow-hidden flex items-center justify-center w-6 h-6 rounded-full bg-primary-600">
+                                            <svg width="10" height="16">
+                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-facebook">
+                                                </use>
+                                            </svg>
+                                            <span
+                                                class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                        </span>
+                                        <span class="text-sm">فیس بوک</span>
+                                    </a>
+                                </li>
+                            </face>
+
+                            <face filter="TypeID in('245') and text in('تلگرام')">
+                                <li class="pt-1">
+                                    <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Telegram"
+                                        class="group flex items-center gap-2">
+                                        <span
+                                            class="relative z-10 overflow-hidden flex items-center justify-center w-6 h-6 rounded-full bg-primary-600">
+                                            <svg width="32" height="32">
+                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-telegram">
+                                                </use>
+                                            </svg>
+                                            <span
+                                                class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                        </span>
+                                        <span class="text-sm">تلگرام</span>
+                                    </a>
+                                </li>
+                            </face>
+
+                            <face filter="TypeID in('245') and text in('واتس اپ')">
+                                <li class="pt-1">
+                                    <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Whatsapp"
+                                        class="group flex items-center gap-2">
+                                        <span
+                                            class="relative z-10 overflow-hidden flex items-center justify-center w-6 h-6 rounded-full bg-primary-600">
+                                            <svg width="32" height="32">
+                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-whatsapp">
+                                                </use>
+                                            </svg>
+                                            <span
+                                                class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                        </span>
+                                        <span class="text-sm">واتس اپ</span>
+                                    </a>
+                                </li>
+                            </face>
+
+                            <face filter="TypeID in('245') and text in('لینکدین')">
+                                <li class="pt-1">
+                                    <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Linkdin"
+                                        class="group flex items-center gap-2">
+                                        <span
+                                            class="relative z-10 overflow-hidden flex items-center justify-center w-6 h-6 rounded-full bg-primary-600">
+                                            <svg width="32" height="32">
+                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-linkdin"></use>
+                                            </svg>
+                                            <span
+                                                class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                        </span>
+                                        <span class="text-sm">لینکدین</span>
+                                    </a>
+                                </li>
+                            </face>
+
+                            <face filter="TypeID in('245') and text in('یوتیوب')">
+                                <li class="pt-1">
+                                    <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+                                        class="group flex items-center gap-2">
+                                        <span
+                                            class="relative z-10 overflow-hidden flex items-center justify-center w-6 h-6 rounded-full bg-primary-600">
+                                            <svg width="32" height="32">
+                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-youtube"></use>
+                                            </svg>
+                                            <span
+                                                class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                        </span>
+                                        <span class="text-sm">یوتیوب</span>
+                                    </a>
+                                </li>
+                            </face>
+
+                            <face filter="TypeID in('245') and text in('آپارات')">
+                                <li class="pt-1">
+                                    <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Aparat"
+                                        class="group flex items-center gap-2">
+                                        <span
+                                            class="relative z-10 overflow-hidden flex items-center justify-center w-6 h-6 rounded-full bg-primary-600">
+                                            <svg width="32" height="32">
+                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-aparat"></use>
+                                            </svg>
+                                            <span
+                                                class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                        </span>
+                                        <span class="text-sm">آپارات</span>
+                                    </a>
+                                </li>
+                            </face>
+
+                            <face filter="TypeID in('245') and text in('ایتا')">
+                                <li class="pt-1">
+                                    <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="eita"
+                                        class="group flex items-center gap-2">
+                                        <span
+                                            class="relative z-10 overflow-hidden flex items-center justify-center w-6 h-6 rounded-full bg-primary-600">
+                                            <svg width="14" height="14">
+                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-eita"></use>
+                                            </svg>
+                                            <span
+                                                class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                        </span>
+                                        <span class="text-sm">ایتا</span>
+                                    </a>
+                                </li>
+                            </face>
+
+                            <face filter="TypeID in('245') and text in('بله')">
+                                <li class="pt-1">
+                                    <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Bale"
+                                        class="group flex items-center gap-2">
+                                        <span
+                                            class="relative z-10 overflow-hidden flex items-center justify-center w-6 h-6 rounded-full bg-primary-600">
+                                            <svg width="14" height="14">
+                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-bale"></use>
+                                            </svg>
+                                            <span
+                                                class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                        </span>
+                                        <span class="text-sm">بله</span>
+                                    </a>
+                                </li>
+                            </face>
+
+                            <face filter="TypeID in('245') and text in('روبیکا')">
+                                <li class="pt-1">
+                                    <a href="@largetext" target="_blank" rel="noopener noreferrer" aria-label="Rubika"
+                                        class="group flex items-center gap-2">
+                                        <span
+                                            class="relative z-10 overflow-hidden flex items-center justify-center w-6 h-6 rounded-full bg-primary-600">
+                                            <svg width="20" height="20">
+                                                <use href="/PrimeTemplate_A/images/sprite-icons.svg#icon-rubika"></use>
+                                            </svg>
+                                            <span
+                                                class="absolute left-0 w-full h-full transition-transform duration-300 ease-out transform translate-y-full -bottom-1 -z-10 bg-client group-hover:translate-y-0 group-hover:bottom-0"></span>
+                                        </span>
+                                        <span class="text-sm">روبیکا</span>
+                                    </a>
+                                </li>
+                            </face>
+                        </basis>
+
+                    </div>
+                </div>
+            </div>
+        </basis>
         <div class="relative">
             <div class="flex justify-end px-4">
                 <section class="relative lg:w-[400px] xl:w-[600px] z-10">
