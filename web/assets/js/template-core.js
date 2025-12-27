@@ -1103,6 +1103,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
           if (btnClass === 'article-fetch-btn') {
             bindArticleFilter()
+            if (typeof setupPagingOrder === 'function') {
+              const urlParams = new URLSearchParams(window.location.search)
+              const p = parseInt(urlParams.get('pagenum') || '1', 10)
+              setupPagingOrder(p)
+            }
           }
 
           if (swiperSelector && swiperVar) {
@@ -1163,17 +1168,27 @@ const fetchArticlePage = async (dataPageNum) => {
   const fetchContentArticle = document.querySelector(
     '.fetch-content-article-list_group',
   )
+  if (!fetchContentArticle) return
+
   const cmsQuery = getSelectedCatId()
   if (!cmsQuery) return
 
   const pagingResponse = await fetch(
-    `/load-items.bc?fetch=article-list_group&catid=${cmsQuery}&pagenum=${dataPageNum}`,
+    `/load-items.bc?fetch=article-list_group&catid=${encodeURIComponent(cmsQuery)}&pagenum=${dataPageNum}`,
   )
+
   const pagingData = await pagingResponse.text()
   fetchContentArticle.innerHTML = pagingData
 
-  bindArticleFilter()
+  if (typeof setupPagingOrder === "function") {
+    setupPagingOrder(Number(dataPageNum))
+  }
+
+  if (typeof bindArticleFilter === "function") {
+    bindArticleFilter()
+  }
 }
+
 
 //---------filter-article-title-----------
 function bindArticleFilter() {
@@ -1794,28 +1809,51 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 //---------paging order-----
-document.addEventListener("DOMContentLoaded", function () {
+function setupPagingOrder(currentPageOverride) {
   const paging = document.querySelector("#wibpaging");
   if (!paging) return;
 
-  [...paging.querySelectorAll("li")].forEach(li => {
+  [...paging.querySelectorAll("li")].forEach((li) => {
     if (li.textContent.trim() === "…") li.remove();
   });
 
-  const pageLinks = [...paging.querySelectorAll("li a[href*='pagenum']")]
-    .filter(a =>
-      !a.closest(".prev-page") &&
-      !a.closest(".next-page")
-    );
+  const getLiList = () => [...paging.querySelectorAll("li")];
 
-  if (pageLinks.length < 2) return;
+  const pageLis = getLiList().filter((li) => {
+    if (li.classList.contains("prev-page")) return false;
+    if (li.classList.contains("next-page")) return false;
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const currentPage = parseInt(urlParams.get("pagenum") || "1", 10);
+    const a = li.querySelector("a");
+    const txt = (a ? a.textContent : li.textContent).trim();
+    const n = parseInt(txt, 10);
+    return !isNaN(n);
+  });
 
-  const pageNumbers = pageLinks
-    .map(a => parseInt(a.textContent.trim(), 10))
-    .filter(n => !isNaN(n));
+  if (pageLis.length === 0) return;
+
+  let currentPage;
+  if (typeof currentPageOverride === "number" && !isNaN(currentPageOverride)) {
+    currentPage = currentPageOverride;
+  } else {
+    const activeLi =
+      paging.querySelector("li.active") ||
+      paging.querySelector("li[aria-current='page']") ||
+      paging.querySelector("a[aria-current='page']")?.closest("li");
+    if (activeLi) {
+      const a = activeLi.querySelector("a");
+      currentPage = parseInt((a ? a.textContent : activeLi.textContent).trim(), 10);
+    } else {
+      const urlParams = new URLSearchParams(window.location.search);
+      currentPage = parseInt(urlParams.get("pagenum") || "1", 10);
+    }
+  }
+
+  const pageNumbers = pageLis
+    .map((li) => {
+      const a = li.querySelector("a");
+      return parseInt((a ? a.textContent : li.textContent).trim(), 10);
+    })
+    .filter((n) => !isNaN(n));
 
   const minPage = Math.min(...pageNumbers);
   const maxPage = Math.max(...pageNumbers);
@@ -1827,13 +1865,18 @@ document.addEventListener("DOMContentLoaded", function () {
     return li;
   };
 
-  const getLiList = () => [...paging.querySelectorAll("li")];
+  const prevLi = getLiList().find((li) => li.classList.contains("prev-page"));
+  const nextLi = getLiList().find((li) => li.classList.contains("next-page"));
 
-  const prevLi = getLiList().find(li => li.classList.contains("prev-page"));
-  const nextLi = getLiList().find(li => li.classList.contains("next-page"));
+  const findPageLi = (n) =>
+    pageLis.find((li) => {
+      const a = li.querySelector("a");
+      const txt = (a ? a.textContent : li.textContent).trim();
+      return txt === String(n);
+    });
 
-  let firstPageLi = getLiList().find(li => li.textContent.trim() === String(minPage));
-  let lastPageLi = getLiList().find(li => li.textContent.trim() === String(maxPage));
+  let firstPageLi = findPageLi(minPage);
+  let lastPageLi = findPageLi(maxPage);
 
   if (firstPageLi && prevLi && prevLi.nextElementSibling !== firstPageLi) {
     paging.insertBefore(firstPageLi, prevLi.nextElementSibling);
@@ -1843,8 +1886,8 @@ document.addEventListener("DOMContentLoaded", function () {
     paging.insertBefore(lastPageLi, nextLi);
   }
 
-  firstPageLi = getLiList().find(li => li.textContent.trim() === String(minPage));
-  lastPageLi = getLiList().find(li => li.textContent.trim() === String(maxPage));
+  firstPageLi = findPageLi(minPage);
+  lastPageLi = findPageLi(maxPage);
 
   if (currentPage - minPage > 2 && firstPageLi) {
     const afterFirst = firstPageLi.nextElementSibling;
@@ -1859,7 +1902,8 @@ document.addEventListener("DOMContentLoaded", function () {
       paging.insertBefore(createDots(), lastPageLi);
     }
   }
-});
+}
+document.addEventListener("DOMContentLoaded", () => setupPagingOrder());
 
 //-----------swiper--------------
 if (document.querySelector('.swiper-busy-destination')) {
@@ -1969,6 +2013,29 @@ if (document.querySelector('.swiper-news')) {
       1024: {
         slidesPerView: 'auto',
         spaceBetween: 0,
+      },
+    },
+  })
+}
+if (document.querySelector('.swiper-related-tours')) {
+  var swiperRelatedTours = new Swiper('.swiper-related-tours', {
+    slidesPerView: 1.17,
+    speed: 400,
+    spaceBetween: 4,
+    grabCursor: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      1024: {
+        slidesPerView: 'auto',
+        spaceBetween: 12,
       },
     },
   })
