@@ -1038,69 +1038,37 @@ document.addEventListener('DOMContentLoaded', () => {
       const buttons = document.querySelectorAll(`.${btnClass}`)
       const container = document.querySelector(`.${containerClass}`)
       if (!container) return
-
+  
       async function loadContent(btn) {
-        buttons.forEach((b) => b.classList.remove('active'))
-        btn.classList.add('active')
-
+        if (btn && btn.classList && buttons.length) {
+          buttons.forEach((b) => b.classList.remove('active'))
+          btn.classList.add('active')
+        }
+  
         container.innerHTML =
           '<div class="h-full flex items-center justify-center"><span class="fetch-loader"></span></div>'
-
+  
         const dataId = btn.getAttribute('data-id')
-
-        if (contentCache[dataId]) {
-          container.innerHTML = contentCache[dataId]
-          if (swiperSelector && swiperVar) {
-            initSwiper(swiperSelector, swiperVar)
-          }
-          if (btnClass === 'faq-fetch-btn') {
-            const imgSrc = btn.getAttribute('data-src') 
-            const imgEl = container.querySelector('.faq-img')  
-        
-            if (imgEl) {
-              setImageSrc(imgEl, imgSrc) 
-            }
-        
-            if (typeof initFaqAccordion === 'function') {
-              initFaqAccordion(container) 
-            }
-          }
+        if (!dataId) {
+          container.innerHTML = `
+            <div class="text-center text-red-500 py-6">
+              data-id برای بارگذاری پیدا نشد.
+            </div>`
           return
         }
-
-        const paramKey = btnClass === 'faq-fetch-btn' ? 'id' : 'catid'
-
-        const minLoaderTime = new Promise((resolve) =>
-          setTimeout(resolve, 1000),
-        )
-
-        try {
-          const res = await fetch(
-            `/load-items.bc?fetch=${type}&${paramKey}=${encodeURIComponent(
-              dataId,
-            )}`
-          )
-          if (!res.ok)
-            throw new Error(`خطا در ارتباط با سرور (کد ${res.status})`)
-
-          const html = await res.text()
-          await minLoaderTime
-          container.innerHTML = html
-
-          contentCache[dataId] = html
-
+  
+        if (contentCache[dataId]) {
+          container.innerHTML = contentCache[dataId]
+  
+          if (swiperSelector && swiperVar) initSwiper(swiperSelector, swiperVar)
+  
           if (btnClass === 'faq-fetch-btn') {
             const imgSrc = btn.getAttribute('data-src')
             const imgEl = container.querySelector('.faq-img')
-            if (imgEl) {
-              setImageSrc(imgEl, imgSrc)  
-            }
-
-            if (typeof initFaqAccordion === 'function') {
-              initFaqAccordion(container)
-            }
+            if (imgEl) setImageSrc(imgEl, imgSrc)
+            if (typeof initFaqAccordion === 'function') initFaqAccordion(container)
           }
-
+  
           if (btnClass === 'article-fetch-btn') {
             bindArticleFilter()
             if (typeof setupPagingOrder === 'function') {
@@ -1109,42 +1077,88 @@ document.addEventListener('DOMContentLoaded', () => {
               setupPagingOrder(p)
             }
           }
-
-          if (swiperSelector && swiperVar) {
-            initSwiper(swiperSelector, swiperVar)
+  
+          if (typeof applyContrastCheck === 'function') applyContrastCheck()
+          return
+        }
+  
+        const paramKey = btnClass === 'faq-fetch-btn' ? 'id' : 'catid'
+        const minLoaderTime = new Promise((resolve) => setTimeout(resolve, 1000))
+  
+        try {
+          const res = await fetch(
+            `/load-items.bc?fetch=${type}&${paramKey}=${encodeURIComponent(dataId)}`
+          )
+          if (!res.ok) throw new Error(`خطا در ارتباط با سرور (کد ${res.status})`)
+  
+          const html = await res.text()
+          await minLoaderTime
+          container.innerHTML = html
+          contentCache[dataId] = html
+  
+          if (btnClass === 'faq-fetch-btn') {
+            const imgSrc = btn.getAttribute('data-src')
+            const imgEl = container.querySelector('.faq-img')
+            if (imgEl) setImageSrc(imgEl, imgSrc)
+            if (typeof initFaqAccordion === 'function') initFaqAccordion(container)
           }
-
-          if (typeof applyContrastCheck === 'function') {
-            applyContrastCheck()
+  
+          if (btnClass === 'article-fetch-btn') {
+            bindArticleFilter()
+            if (typeof setupPagingOrder === 'function') {
+              const urlParams = new URLSearchParams(window.location.search)
+              const p = parseInt(urlParams.get('pagenum') || '1', 10)
+              setupPagingOrder(p)
+            }
           }
+  
+          if (swiperSelector && swiperVar) initSwiper(swiperSelector, swiperVar)
+          if (typeof applyContrastCheck === 'function') applyContrastCheck()
         } catch (err) {
           console.error(err)
           await minLoaderTime
-          container.innerHTML = `  
+          container.innerHTML = `
             <div class="text-center text-red-500 py-6">
               خطا در بارگذاری داده‌ها.<br>
               لطفاً دوباره تلاش کنید.
             </div>`
         }
       }
-
-      buttons.forEach((btn) =>
-        btn.addEventListener('click', () => loadContent(btn)),
-      )
-
-      const allId = container.dataset.all_id
-
-      if (allId) {
+  
+      const fallbackId =
+        container.dataset.all_id ||
+        container.dataset.defaultId ||
+        container.dataset.catid ||
+        ''
+  
+      buttons.forEach((btn) => btn.addEventListener('click', () => loadContent(btn)))
+  
+      if (!buttons.length) {
+        if (!fallbackId) {
+          return
+        }
+  
         const tempBtn = {
-          getAttribute: (attr) => (attr === 'data-id' ? allId : null),
+          getAttribute: (attr) => (attr === 'data-id' ? fallbackId : null),
+          classList: null,
+        }
+        loadContent(tempBtn)
+        return
+      }
+  
+      if (fallbackId) {
+        const tempBtn = {
+          getAttribute: (attr) => (attr === 'data-id' ? fallbackId : null),
+          getAttribute2: () => null,
           classList: { remove: () => {}, add: () => {} },
         }
         loadContent(tempBtn)
-      } else if (buttons.length > 0) {
+      } else {
         loadContent(buttons[0])
       }
-    },
+    }
   )
+  
 })
 
 
