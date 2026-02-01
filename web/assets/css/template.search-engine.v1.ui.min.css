@@ -2,71 +2,6 @@
     font-family: 'DanaFaNum' !important;
 }
 
-.Basis_Calendar .selected_date {
-    background: var(--primary-600) !important;
-}
-
-.confirm-date-content button:hover {
-    background: var(--secondary-600);
-}
-
-.confirm-date-content button {
-    background: var(--primary-600);
-    color: #fff;
-}
-
-.calendar-apply-date:hover {
-    background: var(--secondary-600);
-}
-
-.calendar-apply-date {
-    background: var(--primary-600);
-    color: #fff;
-}
-
-.day.days_available {
-    background: var(--secondary-600);
-}
-
-.calendar-switch {
-    color: var(--primary-600);
-}
-
-.Basis_Calendar .section_next_month,
-.Basis_Calendar .section_prev_month {
-    color: var(--primary-600);
-}
-
-.Basis_Calendar .current_day::after {
-    border-color: var(--primary-600) transparent transparent;
-}
-
-.Basis_Calendar .month_day_list table td:not(.disable_day, .empty_day, .expire_day):hover {
-    border-color: var(--primary-600);
-}
-
-.Basis_Calendar .current_day {
-    background: var(--primary-600) !important;
-    color: #fff !important;
-}
-
-.Basis_Calendar_Box {
-    font-family: 'DanaFaNum' !important;
-    margin-top: -3.25rem;
-}
-
-.calendar-apply-date,
-.calendar-switch,
-.calendar-today,
-.calendar-footer input::placeholder {
-    font-family: 'DanaFaNum' !important;
-}
-
-.calendar-footer input,
-.calendar-footer ::placeholder {
-    font-family: 'DanaFaNum';
-}
-
 .search-box-container input,
 .search-box-container select,
 .search-box-container button {
@@ -493,6 +428,13 @@
     border-radius: 8px !important;
 }
 
+.Compartment-text{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
 .searchList {
     position: absolute !important;
     width: 450px !important;
@@ -680,7 +622,8 @@
 }
 
 .add-routs {
-    width: 100% !important;
+    width: 187px !important;
+    height: 48px !important;
     font-size: 16px !important;
     font-weight: 500;
     transition: all 300ms ease;

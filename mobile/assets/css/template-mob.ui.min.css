@@ -89,8 +89,12 @@
 }
 
 .my-40 {
-  margin-top: 10rem /* 160px */;
-  margin-bottom: 10rem /* 160px */;
+  margin-top: 10rem
+    /* 160px */
+  ;
+  margin-bottom: 10rem
+    /* 160px */
+  ;
 }
 
 .-mt-10 {
@@ -195,8 +199,12 @@
 
 .after\:text-2xl::after {
   content: var(--tw-content);
-  font-size: 1.5rem /* 24px */;
-  line-height: 2rem /* 32px */;
+  font-size: 1.5rem
+    /* 24px */
+  ;
+  line-height: 2rem
+    /* 32px */
+  ;
 }
 
 .h-1 {
@@ -296,11 +304,15 @@
 }
 
 .w-44 {
-  width: 11rem /* 176px */;
+  width: 11rem
+    /* 176px */
+  ;
 }
 
 .w-80 {
-  width: 20rem /* 320px */;
+  width: 20rem
+    /* 320px */
+  ;
 }
 
 .w-5 {
@@ -330,7 +342,7 @@
 }
 
 .drop-shadow-\[2px_4px_3px_rgba\(0\2c 0\2c 0\2c 0\.9\)\] {
-  --tw-drop-shadow: drop-shadow(2px 4px 3px rgba(0,0,0,0.9));
+  --tw-drop-shadow: drop-shadow(2px 4px 3px rgba(0, 0, 0, 0.9));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
@@ -452,7 +464,9 @@
 
 .bg-black {
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1)) /* #000000 */;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1))
+    /* #000000 */
+  ;
 }
 
 .bg-black\/60 {
@@ -487,19 +501,15 @@
 }
 
 .bg-gradient-black-bottom {
-  background-image: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 45.53%,
-    rgba(0, 0, 0, 0.86) 100%
-  );
+  background-image: linear-gradient(180deg,
+      rgba(0, 0, 0, 0) 45.53%,
+      rgba(0, 0, 0, 0.86) 100%);
 }
 
 .bg-gradient-brown-bottom {
-  background-image: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 41.56%,
-    rgba(31, 0, 0, 0.82) 100%
-  );
+  background-image: linear-gradient(180deg,
+      rgba(0, 0, 0, 0) 41.56%,
+      rgba(31, 0, 0, 0.82) 100%);
 }
 
 .bg-opacity-70 {
@@ -775,11 +785,9 @@
   border-radius: inherit;
   padding: 2px;
   background: linear-gradient(90deg, #ffffff 0%, #e1e1e1 100%);
-  -webkit-mask: repeating-linear-gradient(
-      90deg,
+  -webkit-mask: repeating-linear-gradient(90deg,
       #000 0 4px,
-      transparent 4px 8px
-    ),
+      transparent 4px 8px),
     repeating-linear-gradient(0deg, #000 0 4px, transparent 4px 8px),
     linear-gradient(#000 0 0);
   -webkit-mask-composite: destination-out;
@@ -826,8 +834,8 @@
   direction: ltr;
 }
 
-.submenu-scroll > li,
-.submenu-scroll > * {
+.submenu-scroll>li,
+.submenu-scroll>* {
   direction: rtl;
   unicode-bidi: isolate;
   text-align: right;
@@ -848,11 +856,9 @@
 }
 
 .submenu-scroll::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    180deg,
-    var(--secondary-100),
-    var(--secondary-900)
-  );
+  background: linear-gradient(180deg,
+      var(--secondary-100),
+      var(--secondary-900));
 }
 
 .shine-effect::before {
@@ -906,7 +912,7 @@
   z-index: 30;
 }
 
-.aboutUs_default-text img{
+.aboutUs_default-text img {
   display: none !important;
 }
 
@@ -926,9 +932,7 @@
 
 .group:hover .group-hover\:translate-y-0 {
   --tw-translate-y: 0px;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
-    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .group:hover .group-hover\:text-primary-500 {
@@ -939,11 +943,11 @@
   color: var(--primary-600);
 }
 
-.peer:checked ~ .peer-checked\:border-primary-600 {
+.peer:checked~.peer-checked\:border-primary-600 {
   border-color: var(--primary-600);
 }
 
-.peer:checked ~ .peer-checked\:bg-primary-600 {
+.peer:checked~.peer-checked\:bg-primary-600 {
   background-color: var(--primary-600);
 }
 
@@ -983,10 +987,10 @@
   list-style: decimal;
 }
 
-.revert-text-styles table{
-  table-layout: fixed;  
-  width: auto;          
-  max-width: 100%; 
+.revert-text-styles table {
+  table-layout: fixed;
+  width: auto;
+  max-width: 100%;
 }
 
 .search-engine-loader {
@@ -1000,8 +1004,9 @@
   box-sizing: border-box;
   animation: rotationSearch 1s linear infinite;
 }
+
 .search-engine-loader::after {
-  content: '';  
+  content: '';
   box-sizing: border-box;
   position: absolute;
   left: 0;
@@ -1022,15 +1027,17 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
-} 
-    
+}
+
 @keyframes rotationBackSearch {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(-360deg);
   }
@@ -1046,6 +1053,7 @@
   border-right: 4px solid transparent;
   animation: spin 1s linear infinite, glow 2s ease-in-out infinite alternate;
 }
+
 .fetch-loader::after {
   content: '';
   position: absolute;
@@ -1057,15 +1065,18 @@
   border-bottom: 4px solid var(--secondary-900);
   border-left: 4px solid transparent;
 }
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
+
 @keyframes glow {
   from {
     box-shadow: 0 0 5px var(--primary-900);
   }
+
   to {
     box-shadow: 0 0 20px var(--secondary-900);
   }
@@ -1082,6 +1093,7 @@
   height: 72px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+
 .not-found-loader::after,
 .not-found-loader::before {
   content: '';
@@ -1094,29 +1106,37 @@
   border-radius: 50%;
   animation: eyeMove 10s infinite, blink 10s infinite;
 }
+
 @keyframes eyeMove {
+
   0%,
   10% {
     background-position: 0px 0px;
   }
+
   13%,
   40% {
     background-position: -15px 0px;
   }
+
   43%,
   70% {
     background-position: 15px 0px;
   }
+
   73%,
   90% {
     background-position: 0px 15px;
   }
+
   93%,
   100% {
     background-position: 0px 0px;
   }
 }
+
 @keyframes blink {
+
   0%,
   10%,
   12%,
@@ -1134,6 +1154,7 @@
   100% {
     height: 48px;
   }
+
   11%,
   21%,
   41%,
@@ -1152,53 +1173,63 @@
 .Basis_Calendar .selected_date {
   background: var(--primary-600) !important;
 }
+
 .confirm-date-content button:hover {
   background: var(--secondary-600);
 }
+
 .confirm-date-content button {
   background: var(--primary-600);
   color: #fff;
 }
+
 .calendar-apply-date:hover {
   background: var(--secondary-600);
 }
+
 .calendar-apply-date {
   background: var(--primary-600);
   color: #fff;
 }
+
 .day.days_available {
   background: var(--secondary-600);
 }
+
 .calendar-switch {
   color: var(--primary-600);
 }
+
 .Basis_Calendar .section_next_month,
 .Basis_Calendar .section_prev_month {
   color: var(--primary-600);
 }
+
 .Basis_Calendar .current_day::after {
   border-color: var(--primary-600) transparent transparent;
 }
-.Basis_Calendar
-  .month_day_list
-  table
-  td:not(.disable_day, .empty_day, .expire_day):hover {
+
+.Basis_Calendar .month_day_list table td:not(.disable_day, .empty_day, .expire_day):hover {
   border-color: var(--primary-600);
 }
+
 .Basis_Calendar .current_day {
   background: var(--primary-600) !important;
   color: #fff !important;
 }
+
 .Basis_Calendar_Box {
   font-family: 'DanaFaNum' !important;
   /* margin-top: -3.25rem; */
 }
+
 .calendar-apply-date,
 .calendar-switch,
 .calendar-today,
 .calendar-footer input::placeholder {
   font-family: 'DanaFaNum' !important;
 }
+
 .calendar-footer input,
 .calendar-footer ::placeholder {
   font-family: 'DanaFaNum';
@@ -1224,6 +1255,7 @@
 .search-nav {
   margin-bottom: 24px !important;
 }
+
 .reservation-item {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
@@ -1296,14 +1328,14 @@
 }
 
 .click-content,
-.reserve-field.departure-date > div:first-of-type,
-.reserve-field.return-date > div:first-of-type {
+.reserve-field.departure-date>div:first-of-type,
+.reserve-field.return-date>div:first-of-type {
   display: flex;
   align-items: center;
 }
 
-.reserve-field.departure-date > div:first-of-type,
-.reserve-field.return-date > div:first-of-type {
+.reserve-field.departure-date>div:first-of-type,
+.reserve-field.return-date>div:first-of-type {
   padding: 0 !important;
 }
 
@@ -1404,11 +1436,11 @@
   right: 9rem;
 }
 
-#flightHotelSearch .reserve-field.flightclass-field{
+#flightHotelSearch .reserve-field.flightclass-field {
   right: 0;
 }
 
-.reserve-field.flightclass-field > div:first-of-type {
+.reserve-field.flightclass-field>div:first-of-type {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1416,18 +1448,18 @@
   padding: 0;
 }
 
-.reserve-field.flightclass-field > div:first-of-type .clr {
+.reserve-field.flightclass-field>div:first-of-type .clr {
   position: absolute;
 }
 
-.label-flightclass > svg:first-of-type,
+.label-flightclass>svg:first-of-type,
 .label-flightclass .label-text {
   display: none;
 }
 
 .form-search,
-#flightHotelSearch > div:first-of-type,
-#trainSearch > div:first-of-type {
+#flightHotelSearch>div:first-of-type,
+#trainSearch>div:first-of-type {
   flex-wrap: wrap;
 }
 
@@ -1478,7 +1510,7 @@
   flex: 1;
 }
 
-.flightclass-in-passengerbox{
+.flightclass-in-passengerbox {
   display: none !important;
 }
 
@@ -1493,11 +1525,11 @@
   margin-bottom: 12px !important;
 }
 
-.reserve-field.passengers-field > div:first-of-type {
+.reserve-field.passengers-field>div:first-of-type {
   display: flex;
   align-items: center;
   padding: 0;
-} 
+}
 
 .exchangeRoute {
   top: 40px !important;
@@ -1710,8 +1742,8 @@
   font-size: 24px !important;
 }
 
-.plus-count > div,
-.minus-count > div {
+.plus-count>div,
+.minus-count>div {
   line-height: 27px !important;
 }
 
@@ -1812,6 +1844,19 @@
   display: none;
 }
 
+.visible-module-form .close-module-form {
+  width: auto !important;
+  height: auto !important;
+  display: flex !important;
+  align-items: center;
+}
+
+.close-module-form svg {
+  margin-top: 0 !important;
+  width: 48px !important;
+  height: 48px !important;
+}
+
 .passenger-birthday-dropdown li {
   font-size: 12px;
 }
@@ -1823,7 +1868,8 @@
   padding: 4px 0;
 }
 
-.selectLocation  .parent-item, .selectLocation  .child-item{
+.selectLocation .parent-item,
+.selectLocation .child-item {
   display: flex;
   align-items: center;
 }
@@ -1959,7 +2005,7 @@
   margin-bottom: 0 !important;
 }
 
-#mobile_add_to_screen img{
+#mobile_add_to_screen img {
   width: 100%;
   height: 100px !important;
   margin: 0 auto 40px;

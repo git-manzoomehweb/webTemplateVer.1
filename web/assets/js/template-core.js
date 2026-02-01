@@ -94,15 +94,6 @@ document.addEventListener('DOMContentLoaded', function () {
           container.innerHTML = ''
           container.appendChild(tpl.content)
 
-          ;['.Basis_Date.end_date', '.Basis_Date.start_date'].forEach(
-            (selector) => {
-              const dateInputs = document.querySelectorAll(selector)
-              dateInputs.forEach((input) => {
-                input.placeholder = ''
-              })
-            },
-          )
-
           const r = document.querySelector('.flighttype-field')
           r.classList.add('flighttype-dropDown')
 
